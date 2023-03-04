@@ -20,7 +20,7 @@ export class UsersController {
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) : Promise<User | null> {
-    return this.usersService.findOne(id);
+    return this.usersService.findOneById(id);
   }
 
   @Patch(':id')
@@ -31,5 +31,10 @@ export class UsersController {
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) : Promise<void> {
     return this.usersService.remove(id);
+  }
+
+  @Get(':id/profile')
+  getProfile(@Param('id', ParseIntPipe) id: number) : Promise<User | null> {
+    return this.usersService.findOneById(id);
   }
 }
