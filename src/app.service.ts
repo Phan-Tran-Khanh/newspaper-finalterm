@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getProfile() {
+    throw new Error('Method not implemented.');
+  }
+  getHome(): string {
+    return 'Home';
   }
 }
