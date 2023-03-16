@@ -1,13 +1,18 @@
-import { Entity } from "typeorm";
+import { Column } from 'typeorm';
 
-@Entity()
-export abstract class Audit {
+export class Audit {
+  @Column({ default: () => 'NOW()' })
   createdAt: Date;
+  @Column()
   createdBy: number;
 
+  @Column()
   updatedAt: Date;
+  @Column()
   updatedBy: number;
 
+  @Column()
   deletedAt: Date;
+  @Column()
   deletedBy: number;
 }
