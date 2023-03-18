@@ -6,13 +6,13 @@ import { Comment } from 'src/entities/comment.entity';
 import { Lable } from 'src/entities/lable.entity';
 import { User } from 'src/entities/user.entity';
 
-export default registerAs('database', () => ({
-  type: process.env.DATABASE_TYPE,
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
-  entities: [User, Article, Category, Comment, Lable],
-  synchronize: true, // WARNING: DO NOT USE IN PRODUCTION
-} as TypeOrmModuleOptions));
+export default registerAs(
+  'database',
+  () =>
+    ({
+      type: process.env.DATABASE_TYPE,
+      url: process.env.DATABASE_URL,
+      entities: [User, Article, Category, Comment, Lable],
+      synchronize: true, // WARNING: DO NOT USE IN PRODUCTION
+    } as TypeOrmModuleOptions),
+);

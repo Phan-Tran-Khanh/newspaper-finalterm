@@ -21,4 +21,7 @@ export class UserService {
   findOneByUsername(username: string): Promise<User | null> {
     return this.userRepository.findOneBy({ username });
   }
+  update(id: number, updateDto: any): Promise<User | null> {
+    return this.userRepository.save({ id, ...updateDto });
+  }
 }

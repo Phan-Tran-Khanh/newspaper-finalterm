@@ -6,7 +6,6 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Article } from './article.entity';
-import { Audit } from './audit.entity';
 
 @Entity()
 export class Category {
@@ -18,9 +17,6 @@ export class Category {
 
   @Column()
   description: string;
-
-  @Column(() => Audit)
-  audit: Audit;
 
   @ManyToOne(() => Category, (category) => category.children)
   parent: Category;

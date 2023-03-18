@@ -44,6 +44,9 @@ export class Article {
   isPremium: boolean;
 
   @Column()
+  isPublished: boolean;
+
+  @Column()
   publishedAt: Date;
 
   @Column()

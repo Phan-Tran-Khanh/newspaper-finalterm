@@ -32,4 +32,12 @@ export class AuthService {
     const res = await this.login(newUser);
     return res;
   }
+
+  changePassword() {
+    // TODO
+  }
+
+  forgotPassword() {
+    // TODO
+  }
 }
