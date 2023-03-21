@@ -8,29 +8,17 @@ export class AppController {
   @Get()
   @Render('index')
   homeView() {
-    return this.appService.getHome();
+    return {
+      categories: [],
+      
+    };
   }
 
-  @Get()
-  @Render('latest')
-  latestPost() {
-  }
+  @Get('/search')
+  @Render('search')
+  searchPostView() {}
 
-  @Get()
-  @Render('popular')
-  popularPost() {
-  }
-
-
-  @Get('/create-post')
-  @Render('create-post')
-  createPostView() {
-    
-  }
-
-  @Get(':username')
-  @Render('profile')
-  profileView() {
-    return this.appService.getProfile();
-  }
+  @Get('/:username/:slug')
+  @Render('detail')
+  detailPostView() {}
 }
