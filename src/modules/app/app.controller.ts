@@ -9,8 +9,7 @@ export class AppController {
   @Render('index')
   homeView() {
     return {
-      categories: [],
-      
+      layout: 'layouts/index',
     };
   }
 

@@ -15,6 +15,7 @@ import authConfig from 'src/config/auth.config';
       envFilePath: ['.dev.env', '.prod.env'],
       load: [databaseConfig, authConfig],
       isGlobal: true,
+      expandVariables: true,
     }),
     TypeOrmModule.forRootAsync(databaseConfig.asProvider()),
     UserModule,
