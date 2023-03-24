@@ -3,9 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from '../user/user.module';
-import { AuthModule } from '../auth/auth.module';
-import { ArticleModule } from '../article/article.module';
+import { UserModule } from 'src/modules/user/user.module';
+import { AuthModule } from 'src/modules/auth/auth.module';
+import { ArticleModule } from 'src/modules/article/article.module';
+import { CategoryModule } from 'src/modules/category/category.module';
 import databaseConfig from 'src/config/database.config';
 import authConfig from 'src/config/auth.config';
 
@@ -21,6 +22,7 @@ import authConfig from 'src/config/auth.config';
     UserModule,
     AuthModule,
     ArticleModule,
+    CategoryModule
   ],
   controllers: [AppController],
   providers: [AppService],

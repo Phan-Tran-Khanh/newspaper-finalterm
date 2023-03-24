@@ -8,6 +8,7 @@ export class AppController {
   @Get()
   @Render('index')
   homeView() {
+    console.log(this.appService.getHome());
     return {
       layout: 'layouts/index',
     };
