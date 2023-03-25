@@ -1,12 +1,6 @@
-import { UserRole } from 'src/enums/UserRole.enum';
-import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { Article } from './article.entity';
-
+import { ROLES, UserRole } from 'src/enums/UserRole.enum';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Role } from './role.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -30,10 +24,10 @@ export class User {
   @Column()
   subcriptionExpiryDate: Date;
 
-  @Column({
-    type: 'enum',
-    enum: UserRole,
-    default: UserRole.USER,
-  })
-  role: UserRole;
+  @ManyToOne(() => Role, (role) => role.id)
+  role: Role;
+
+  get roles(): UserRole[] {
+    return ROLES.filter((role, index) => index > this.role.id);
+  }
 }

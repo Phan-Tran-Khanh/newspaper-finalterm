@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Category } from 'src/entities/category.entity';
 import { Repository } from 'typeorm';
+import { Category } from 'src/entities/category.entity';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
@@ -10,24 +12,27 @@ export class CategoryService {
     private readonly categoryRepository: Repository<Category>,
   ) {}
 
-  create(createCategoryDto: Category): Promise<Category> {
+  create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     return this.categoryRepository.save(createCategoryDto);
   }
 
-  update(updateCategoryDto: Category): Promise<Category> {
-    return this.categoryRepository.save(updateCategoryDto);
+  async findAll(): Promise<Category[]> {
+    const categories = await this.categoryRepository.find({
+      relations: ['parent', 'children'],
+    });
+    return categories.filter((category) => {
+      return category.parent === null;
+    });
+  }
+
+  update(id: number, updateCategoryDto: UpdateCategoryDto): Promise<Category> {
+    return this.categoryRepository.save({
+      id,
+      ...updateCategoryDto,
+    });
   }
 
   async remove(id: number): Promise<void> {
     await this.categoryRepository.delete(id);
-  }
-
-  async findAll(): Promise<Category[]> {
-    const categories = await this.categoryRepository.find(
-      { relations: ['parent', 'children'] },
-    );
-    return categories.filter((category) => {
-      return category.parent === null;
-    });
   }
 }

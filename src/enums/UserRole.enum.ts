@@ -1,6 +1,2 @@
-export enum UserRole {
-  ADMIN = 'admin',
-  EDITOR = 'editor',
-  WRITER = 'writer',
-  USER = 'user',
-}
+export const ROLES = ['ADMIN', 'EDITOR', 'WRITER', 'SUBCRIBER', 'USER'] as const;
+export type UserRole = typeof ROLES[number];

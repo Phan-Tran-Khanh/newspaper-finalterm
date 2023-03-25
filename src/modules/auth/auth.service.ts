@@ -26,6 +26,13 @@ export class AuthService {
     };
   }
 
+  async loginWithGoogle(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
+
   async register(user: any) {
     user.password = await bcrypt.hash(user.password, 10);
     const newUser = await this.usersService.create(user);

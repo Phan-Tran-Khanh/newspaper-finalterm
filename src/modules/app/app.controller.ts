@@ -16,9 +16,9 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  searchPostView() {}
+  searchArticleView() {}
 
-  @Get('/:username/:slug')
+  @Get('/:slug')
   @Render('detail')
-  detailPostView() {}
+  detailArticleView() {}
 }

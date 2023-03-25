@@ -14,6 +14,7 @@ export class ArticleService {
     article.isPublished = false;
     return this.articleRepository.save(article);
   }
+  
   removeDraft(article: Article): Promise<Article> {
     return this.articleRepository.remove(article);
   }
@@ -59,5 +60,49 @@ export class ArticleService {
         },
       },
     });
+  }
+
+  getLastestByCategory(categoryId: number): Promise<Article[]> {
+    return this.articleRepository.find({
+      where: {
+        isPublished: true,
+        category: {
+          id: categoryId,
+        },
+      },
+      order: {
+        publishedAt: 'DESC',
+      },
+      take: 10,
+    });
+  }
+
+  getMostViewByCategory(categoryId: number): Promise<Article[]> {
+    return this.articleRepository.find({
+      where: {
+        isPublished: true,
+        category: {
+          id: categoryId,
+        },
+      },
+      order: {
+        viewCount: 'DESC',
+      },
+      take: 10,
+    });
+  }
+
+  async getDetailBySlug(slug: string): Promise<Article | null> {
+    const article = await this.articleRepository.findOne({
+      where: {
+        slug,
+      },
+      relations: ['author', 'category'],
+    });
+    if (article) {
+      article.viewCount++;
+      await this.articleRepository.save(article);
+    }
+    return article;
   }
 }
