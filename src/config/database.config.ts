@@ -1,11 +1,11 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Article } from 'src/entities/article.entity';
-import { Category } from 'src/entities/category.entity';
-import { Comment } from 'src/entities/comment.entity';
-import { Lable } from 'src/entities/lable.entity';
-import { Role } from 'src/entities/role.entity';
-import { User } from 'src/entities/user.entity';
+import { Article } from 'src/entity/article.entity';
+import { Category } from 'src/entity/category.entity';
+import { Comment } from 'src/entity/comment.entity';
+import { Lable } from 'src/entity/lable.entity';
+import { Role } from 'src/entity/role.entity';
+import { User } from 'src/entity/user.entity';
 
 export default registerAs(
   'database',

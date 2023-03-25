@@ -1,4 +1,4 @@
-import { ROLES, UserRole } from 'src/enums/UserRole.enum';
+import { ROLES, UserRole } from 'src/enum/UserRole.enum';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from './role.entity';
 @Entity()
