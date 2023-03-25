@@ -28,6 +28,6 @@ export class User {
   role: Role;
 
   get roles(): UserRole[] {
-    return ROLES.filter((role, index) => index > this.role.id);
+    return ROLES.filter((role, index) => index >= this.role.id);
   }
 }

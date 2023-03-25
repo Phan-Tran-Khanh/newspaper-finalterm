@@ -12,7 +12,6 @@ export class UserService {
   ) {}
 
   create(createUserDto: CreateUserDto): Promise<User> {
-    // const user = this.userRepository.create(createUserDto);
     return this.userRepository.save(createUserDto);
   }
 
@@ -21,7 +20,10 @@ export class UserService {
   }
 
   findOneByUsername(username: string): Promise<User | null> {
-    return this.userRepository.findOneBy({ username });
+    return this.userRepository.findOne({
+      where: { username },
+      relations: ['role'],
+    });
   }
 
   update(id: number, updateDto: any): Promise<User | null> {
