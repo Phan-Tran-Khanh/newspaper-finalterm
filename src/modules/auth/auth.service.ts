@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
+import { LoginDto } from './dto/login.dto';
+import { User } from 'src/entities/user.entity';
+import { CreateUserDto } from '../user/dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,20 +13,27 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOneByUsername(username);
-    if (user && (await bcrypt.compare(pass, user.password))) {
-      const { password, ...result } = user;
-      return result;
+  async validateUser(loginUserDto: LoginDto): Promise<User | null> {
+    const user = await this.usersService.findOneByUsername(
+      loginUserDto.username,
+    );
+    if (user && (await bcrypt.compare(loginUserDto.password, user.password))) {
+      return user;
     }
     return null;
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  jwtSign(user: User) {
+    const payload = { username: user.username, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  async login(loginDto: LoginDto) {
+    const user = await this.validateUser(loginDto);
+    if (!user) return "Invalid username or password";
+    return this.jwtSign(user);
   }
 
   async loginWithGoogle(user: any) {
@@ -33,11 +43,10 @@ export class AuthService {
     };
   }
 
-  async register(user: any) {
-    user.password = await bcrypt.hash(user.password, 10);
-    const newUser = await this.usersService.create(user);
-    const res = await this.login(newUser);
-    return res;
+  async register(createUserDto: CreateUserDto) {
+    createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
+    const user = await this.usersService.create(createUserDto);
+    return this.jwtSign(user);
   }
 
   changePassword() {

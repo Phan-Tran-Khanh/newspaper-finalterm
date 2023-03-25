@@ -21,7 +21,7 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({ nullable: true })
   subcriptionExpiryDate: Date;
 
   @ManyToOne(() => Role, (role) => role.id)
