@@ -7,6 +7,7 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { AuthController } from './auth.controller';
 import authConfig from 'src/config/auth.config';
 import { UserModule } from 'src/modules/user/user.module';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({
   imports: [
@@ -14,11 +15,7 @@ import { UserModule } from 'src/modules/user/user.module';
     PassportModule,
     JwtModule.registerAsync(authConfig.asProvider()),
   ],
-  providers: [
-    AuthService,
-    LocalStrategy,
-    JwtStrategy,
-  ],
+  providers: [AuthService, LocalStrategy, JwtStrategy, GoogleStrategy],
   exports: [AuthService],
   controllers: [AuthController],
 })
