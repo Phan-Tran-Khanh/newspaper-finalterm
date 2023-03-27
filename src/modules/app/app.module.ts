@@ -9,12 +9,14 @@ import { ArticleModule } from 'src/modules/article/article.module';
 import { CategoryModule } from 'src/modules/category/category.module';
 import databaseConfig from 'src/config/database.config';
 import authConfig from 'src/config/auth.config';
+import { EmailModule } from '../email/email.module';
+import emailConfig from 'src/config/email.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.dev.env', '.prod.env'],
-      load: [databaseConfig, authConfig],
+      load: [databaseConfig, authConfig, emailConfig],
       isGlobal: true,
       expandVariables: true,
     }),
@@ -22,7 +24,8 @@ import authConfig from 'src/config/auth.config';
     UserModule,
     AuthModule,
     ArticleModule,
-    CategoryModule
+    CategoryModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
