@@ -21,9 +21,25 @@ export class AuthController {
     return this.authService.login(req.user);
   }
 
-  @Post('register')
-  async register(@Body() createUserDto: CreateUserDto) {
-    return this.authService.register(createUserDto);
+  @Post('signup')
+  async signup(@Body() createUserDto: CreateUserDto) {
+    return this.authService.signup(createUserDto);
+  }
+
+  @Post('forgot-password')
+  forgotPassword(@Body() body: { email?: string, username?: string }) {
+    console.log(body);
+    this.authService.forgotPassword(body);
+  }
+
+  @Post('reset-password')
+  resetPassword(@Body() body: any) {
+    const { token, password } = body;
+  }
+
+  @Get('refresh-token')
+  refresh() {
+    // TODO
   }
 
   @Get('google')
@@ -32,5 +48,5 @@ export class AuthController {
 
   @Get('google/redirect')
   @UseGuards(GoogleAuthGuard)
-  async googleAuthRedirect() {}
+  googleAuthRedirect() {}
 }

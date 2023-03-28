@@ -26,6 +26,13 @@ export class UserService {
     });
   }
 
+  findOneByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findOne({
+      where: { email },
+      relations: ['role'],
+    });
+  }
+
   update(id: number, updateDto: any): Promise<User | null> {
     return this.userRepository.save({ id, ...updateDto });
   }
