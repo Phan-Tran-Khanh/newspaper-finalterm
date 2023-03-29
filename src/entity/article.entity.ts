@@ -13,6 +13,7 @@ import { Lable } from './lable.entity';
 import { User } from './user.entity';
 import { Comment } from './comment.entity';
 import { Category } from './category.entity';
+import { MaxLength } from 'class-validator';
 
 @Entity()
 export class Article {
@@ -20,9 +21,10 @@ export class Article {
   id: number;
 
   @Column()
+  @MaxLength(255)
   title: string;
 
-  @Column()
+  @Column({ unique: true })
   slug: string;
 
   @Column()
@@ -31,7 +33,7 @@ export class Article {
   @Column()
   content: string;
 
-  @Column()
+  @Column({ default: 0 })
   viewCount: number;
 
   @Column()
@@ -40,10 +42,10 @@ export class Article {
   @Column()
   pdfUrl: string;
 
-  @Column()
+  @Column({ default: false })
   isPremium: boolean;
 
-  @Column()
+  @Column({ default: false })
   isPublished: boolean;
 
   @Column()

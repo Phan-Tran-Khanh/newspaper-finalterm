@@ -1,3 +1,4 @@
+import { IsEmail, IsString, Length } from 'class-validator';
 import { ROLES, UserRole } from 'src/enum/UserRole.enum';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Role } from './role.entity';
@@ -6,19 +7,23 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
+  @IsEmail()
   email: string;
 
-  @Column()
+  @Column({ unique: true })
+  @IsString()
   username: string;
 
   @Column()
   password: string;
 
   @Column()
+  @Length(1, 32)
   firstName: string;
 
   @Column()
+  @Length(1, 32)
   lastName: string;
 
   @Column({ nullable: true })
