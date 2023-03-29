@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -21,6 +21,9 @@ import emailConfig from 'src/config/email.config';
       expandVariables: true,
     }),
     TypeOrmModule.forRootAsync(databaseConfig.asProvider()),
+    CacheModule.register({
+      isGlobal: true,
+    }),
     UserModule,
     AuthModule,
     ArticleModule,

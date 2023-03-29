@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import bcrypt from 'bcrypt';
 import { User } from 'src/entity/user.entity';
@@ -47,32 +47,38 @@ export class AuthService {
     // TODO
   }
 
-  sendResetPasswordEmail(user: User) {
-    const token = this.jwtService.sign({
-      sub: user.id,
-      username: user.username,
-      roles: user.roles,
-    });
-    const url = `http://localhost:3000/reset-password/${token}`;
-    this.emailService.sendMail({
-      to: user.email,
-      subject: 'Reset your password',
-      text: `Click the link to reset your password: ${url}`,
-      html: `<p>Click the link to reset your password: <a href="${url}">${url}</a></p>`,
-    });
+  async resetPassword(body: any) {
+    const { token, password } = body;
+    const { sub: userId } = this.jwtService.verify(token);
+    const user = await this.usersService.findOneById(userId);
+    if (user) {
+      this.usersService.update(userId, { password });
+    } else {
+      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+    }
   }
 
-  async forgotPassword(body: { email?: string; username?: string }) {
+  async forgotPassword(body: any) {
     const { email, username } = body;
     let user: User | null = null;
     if (email) {
       user = await this.usersService.findOneByEmail(email);
     } else if (username) {
       user = await this.usersService.findOneByUsername(username);
+    } else {
+      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
     }
+
     if (user) {
-      console.log(user);
-      this.sendResetPasswordEmail(user);
+      const token = this.jwtService.sign(
+        { sub: user.id },
+        { expiresIn: '10m' },
+      );
+      const mailOptions = this.emailService.forgotPasswordTemplate(
+        user.email,
+        token,
+      );
+      this.emailService.sendMail(mailOptions);
     }
   }
 }

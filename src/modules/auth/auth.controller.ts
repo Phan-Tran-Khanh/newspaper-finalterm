@@ -27,14 +27,17 @@ export class AuthController {
   }
 
   @Post('forgot-password')
-  forgotPassword(@Body() body: { email?: string, username?: string }) {
-    console.log(body);
+  forgotPassword(@Body() body: any) {
     this.authService.forgotPassword(body);
   }
 
+  @Get('reset-password')
+  // render
+  resetPassword() {}
+
   @Post('reset-password')
-  resetPassword(@Body() body: any) {
-    const { token, password } = body;
+  resetPasswordHandler(@Body() body: any) {
+    this.authService.resetPassword(body);
   }
 
   @Get('refresh-token')
