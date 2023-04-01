@@ -1,6 +1,5 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
   Patch,
@@ -20,7 +19,6 @@ export class CategoryController {
 
   @Post()
   create(@Request() req: any, @Body() createCategoryDto: CreateCategoryDto) {
-    console.log(req.user);
     return this.categoryService.create(createCategoryDto);
   }
 

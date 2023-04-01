@@ -30,10 +30,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       username: username,
       accessToken,
     };
-    
-    console.log('GoogleStrategy.validate() user:', user);
-
-    // const jwt = await this.authService.validateOAuthLogin(user);
     callback(null, user);
   }
 }

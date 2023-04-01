@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CategoryService } from '../category/category.service';
+import { CategoryService } from 'src/modules/category/category.service';
 
 @Injectable()
 export class AppService {
