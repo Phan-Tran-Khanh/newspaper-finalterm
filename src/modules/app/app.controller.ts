@@ -8,7 +8,7 @@ export class AppController {
   @Get()
   @Render('index')
   homeView() {
-    console.log(this.appService.getHome());
+    this.appService.getHome();
     return {
       layout: 'layouts/index',
     };
@@ -16,9 +16,13 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  searchArticleView() {}
+  searchArticleView() {
+    // TODO
+  }
 
   @Get('/:slug')
   @Render('detail')
-  detailArticleView() {}
+  detailArticleView() {
+    // TODO
+  }
 }

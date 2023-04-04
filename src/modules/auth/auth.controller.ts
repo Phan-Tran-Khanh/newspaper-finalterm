@@ -32,8 +32,9 @@ export class AuthController {
   }
 
   @Get('reset-password')
-  // render
-  resetPassword() {}
+  resetPassword() {
+    // TODO
+  }
 
   @Post('reset-password')
   resetPasswordHandler(@Body() body: any) {
@@ -47,9 +48,13 @@ export class AuthController {
 
   @Get('google')
   @UseGuards(GoogleAuthGuard)
-  googleAuth() {}
+  googleAuth() {
+    // TODO
+  }
 
   @Get('google/redirect')
   @UseGuards(GoogleAuthGuard)
-  googleAuthRedirect() {}
+  googleAuthRedirect() {
+    // TODO
+  }
 }
