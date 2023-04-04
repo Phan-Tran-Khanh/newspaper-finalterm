@@ -1,6 +1,10 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { User } from 'src/entity/user.entity';
 import { UserService } from 'src/modules/user/user.service';
 import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
@@ -54,7 +58,7 @@ export class AuthService {
     if (user) {
       this.usersService.update(userId, { password });
     } else {
-      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+      throw new ForbiddenException();
     }
   }
 
@@ -66,7 +70,7 @@ export class AuthService {
     } else if (username) {
       user = await this.usersService.findOneByUsername(username);
     } else {
-      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException();
     }
 
     if (user) {

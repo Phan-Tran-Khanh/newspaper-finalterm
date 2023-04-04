@@ -1,18 +1,26 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 import { IsEmail, IsString, Length } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { ROLES, UserRole } from 'src/enum/UserRole.enum';
 import { Role } from './role.entity';
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
+  @Unique('unique_email', ['email'])
   @Column({ unique: true })
   @IsEmail()
   email: string;
 
-  @Column({ unique: true })
+  @Unique('unique_username', ['username'])
+  @Column()
   @IsString()
   username: string;
 

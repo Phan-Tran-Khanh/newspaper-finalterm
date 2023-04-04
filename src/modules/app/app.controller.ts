@@ -16,9 +16,13 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  searchArticleView() {}
+  searchArticleView() {
+    // TODO
+  }
 
   @Get('/:slug')
   @Render('detail')
-  detailArticleView() {}
+  detailArticleView() {
+    // TODO
+  }
 }

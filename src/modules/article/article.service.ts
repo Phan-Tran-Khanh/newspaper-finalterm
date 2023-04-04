@@ -14,7 +14,7 @@ export class ArticleService {
     article.isPublished = false;
     return this.articleRepository.save(article);
   }
-  
+
   removeDraft(article: Article): Promise<Article> {
     return this.articleRepository.remove(article);
   }
