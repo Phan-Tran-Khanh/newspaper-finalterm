@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Newspaper</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Booststrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- Brand Name -->
+                <a href="#" class="navbar-brand me-auto">Navbar</a>
+
+                <!-- Search Bar -->
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
+                            aria-label="Search">
+                        <span class="input-group-append">
+                            <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
+                                title="Search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- Login Button -->
+                <a href="#" class="link-dark text-decoration-none ms-3" data-bs-toggle="modal"
+                    data-bs-target="#modalLoginForm">
+                    <i class="bi bi-person-circle"></i>
+                    Log in
+                </a>
+            </div>
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <!-- <h5 class="modal-title" id="exampleModalLabel">Brandname</h5> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <ul class="nav nav-tabs" id="login-register-tabs" role="tablist">
+                                <li class="nav-item flex-fill">
+                                    <a class="nav-link active text-center" id="tab-login" data-toggle="tab"
+                                        href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                                </li>
+                                <li class="nav-item flex-fill">
+                                    <a class="nav-link text-center" id="tab-register" data-toggle="tab" href="#register"
+                                        role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="login-register-tabs-content">
+                                <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                    aria-labelledby="tab-login">
+                                    <form>
+                                        <!-- Username Input -->
+                                        <div class="form-group mb-2">
+                                            <label for="login-username">Username</label>
+                                            <input type="text" class="form-control" id="login-username"
+                                                placeholder="Enter username">
+                                        </div>
+
+                                        <!-- Password Input -->
+                                        <div class="form-group mb-2">
+                                            <label for="login-password">Password</label>
+                                            <input type="password" class="form-control" id="login-password"
+                                                placeholder="Enter password">
+                                        </div>
+
+                                        <!-- 2 column grid layout -->
+                                        <div class="row mb-2">
+                                            <!-- Checkbox RememberMe -->
+                                            <div class="col-md-6 d-flex justify-content-center">
+                                                <div class="form-check mb-3 mb-md-0">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="loginCheck" checked />
+                                                    <label class="form-check-label" for="loginCheck"> Remember me
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Forget Password -->
+                                            <div class="col-md-6 d-flex justify-content-center">
+                                                <a href="#!">Forgot password?</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-grid mb-2">
+                                            <button type="submit" class="btn btn-primary">Login</button>
+                                        </div>
+
+                                        <!-- Thired-party Login -->
+                                        <div class="text-center mb-2">
+                                            <p>or</p>
+                                            <p>Sign in with:</p>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-facebook"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-google"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-twitter"></i>
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="tab-register">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="register-username">Username</label>
+                                            <input type="text" class="form-control" id="register-username"
+                                                placeholder="Enter username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="register-email">Email address</label>
+                                            <input type="email" class="form-control" id="register-email"
+                                                placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="register-password">Password</label>
+                                            <input type="password" class="form-control" id="register-password"
+                                                placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Register</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Activate the first tab by default
+            $('#login-register-tabs a:first').tab('show');
+
+            // Switch to the corresponding tab when clicking on a tab link
+            $('#login-register-tabs a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
