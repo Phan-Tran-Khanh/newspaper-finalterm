@@ -17,17 +17,18 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-dark bg-dark sticky-top">
+            <!-- Upper Header -->
             <div class="container-fluid">
                 <!-- Brand Name -->
-                <a href="#" class="navbar-brand me-auto">Navbar</a>
+                <a href="#" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
 
                 <!-- Search Bar -->
                 <form class="d-flex">
                     <div class="input-group">
                         <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
                             aria-label="Search">
-                        <span class="input-group-append">
+                        <span>
                             <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
                                 title="Search">
                                 <i class="bi bi-search"></i>
@@ -36,19 +37,21 @@
                     </div>
                 </form>
 
-                <!-- Login Button -->
-                <a href="#" class="link-dark text-decoration-none ms-3" data-bs-toggle="modal"
+                <!-- Login/ Register Modals Trigger -->
+                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
                     data-bs-target="#modalLoginForm">
                     <i class="bi bi-person-circle"></i>
                     Log in
                 </a>
             </div>
+            <!-- Upper Header -->
+
+            <!-- Login/ Register Modals -->
             <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-
-                        <div class="modal-header">
+                        <div class="modal-header" style="border-bottom: 0; padding-bottom: 0;">
                             <!-- <h5 class="modal-title" id="exampleModalLabel">Brandname</h5> -->
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -65,48 +68,47 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="login-register-tabs-content">
+                                <!-- Login Tab -->
                                 <div class="tab-pane fade show active" id="login" role="tabpanel"
                                     aria-labelledby="tab-login">
-                                    <form>
-                                        <!-- Username Input -->
-                                        <div class="form-group mb-2">
-                                            <label for="login-username">Username</label>
-                                            <input type="text" class="form-control" id="login-username"
-                                                placeholder="Enter username">
+                                    <form class="row g-3">
+                                        <!-- Email Input -->
+                                        <div class="form-group">
+                                            <label for="login-email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="login-email"
+                                                placeholder="Enter email">
                                         </div>
 
                                         <!-- Password Input -->
-                                        <div class="form-group mb-2">
-                                            <label for="login-password">Password</label>
+                                        <div class="form-group">
+                                            <label for="login-password" class="form-label">Password</label>
                                             <input type="password" class="form-control" id="login-password"
                                                 placeholder="Enter password">
                                         </div>
 
-                                        <!-- 2 column grid layout -->
-                                        <div class="row mb-2">
-                                            <!-- Checkbox RememberMe -->
-                                            <div class="col-md-6 d-flex justify-content-center">
-                                                <div class="form-check mb-3 mb-md-0">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="loginCheck" checked />
-                                                    <label class="form-check-label" for="loginCheck"> Remember me
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Forget Password -->
-                                            <div class="col-md-6 d-flex justify-content-center">
-                                                <a href="#!">Forgot password?</a>
+                                        <!-- Checkbox RememberMe -->
+                                        <div class="col-md-6 d-flex">
+                                            <div class="form-check mb-md-0">
+                                                <input class="form-check-input" type="checkbox" value="" id="loginCheck"
+                                                    checked />
+                                                <label class="form-check-label" for="loginCheck"> Remember me
+                                                </label>
                                             </div>
                                         </div>
 
-                                        <div class="d-grid mb-2">
+                                        <!-- Forget Password Link -->
+                                        <div class="col-md-6 d-flex justify-content-end">
+                                            <a href="#!">Forgot password?</a>
+                                        </div>
+
+                                        <!-- Login Button -->
+                                        <div class="d-grid">
                                             <button type="submit" class="btn btn-primary">Login</button>
                                         </div>
 
-                                        <!-- Thired-party Login -->
-                                        <div class="text-center mb-2">
-                                            <p>or</p>
+                                        <!-- Third-party Login -->
+                                        <div class="text-center">
+                                            <p class="text-muted">or</p>
                                             <p>Sign in with:</p>
 
                                             <button type="button" class="btn btn-link btn-floating mx-1">
@@ -124,41 +126,141 @@
 
                                     </form>
                                 </div>
+
+                                <!-- Registration Tab -->
                                 <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="tab-register">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="register-username">Username</label>
-                                            <input type="text" class="form-control" id="register-username"
-                                                placeholder="Enter username">
+                                    <form class="row g-3">
+                                        <!-- 2 Column Grid Layout -->
+                                        <div class="col-md-6">
+                                            <label for="register-firstname" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="register-firstname"
+                                                placeholder="Enter first name">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="register-email">Email address</label>
+                                        <div class="col-md-6">
+                                            <label for="register-lastname" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="register-lastname"
+                                                placeholder="Enter last name">
+                                        </div>
+                                        <!-- 2 Column Grid Layout -->
+
+                                        <!-- 2 Column Grid Layout -->
+                                        <div class="col-md-6">
+                                            <label for="register-dob" class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control" id="register-dob" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="register-gender" class="form-label">Gender</label><br>
+                                            <select class="form-select" id="register-gender">
+                                                <option value="">Select your gender</option>
+                                                <option value="female">Female</option>
+                                                <option value="male">Male</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                        <!-- 2 Column Grid Layout -->
+
+                                        <!-- Email Input -->
+                                        <div class="col-12">
+                                            <label for="register-email" class="form-label">Email Address</label>
                                             <input type="email" class="form-control" id="register-email"
                                                 placeholder="Enter email">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="register-password">Password</label>
+
+                                        <!-- 2 Column Grid Layout -->
+                                        <div class="col-md-6">
+                                            <label for="register-password" class="form-label">Password</label>
                                             <input type="password" class="form-control" id="register-password"
-                                                placeholder="Password">
+                                                placeholder="Enter password">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Register</button>
+                                        <div class="col-md-6">
+                                            <label for="register-repassword" class="form-label">Re-password</label>
+                                            <input type="password" class="form-control" id="register-repassword"
+                                                placeholder="Re-enter password">
+                                        </div>
+                                        <!-- 2 Column Grid Layout -->
+
+                                        <!-- Register Button -->
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-primary">Register</button>
+                                        </div>
+
+                                        <!-- Third-party Sign up -->
+                                        <div class="text-center mb-3">
+                                            <p class="text-muted">or</p>
+                                            <p>Sign up with:</p>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-facebook"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-google"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                                <i class="bi bi-twitter"></i>
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> -->
                     </div>
                 </div>
             </div>
-
+            <!-- Login/ Register Modals -->
         </nav>
+
+        <!-- Lower Header -->
+        <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 0;">
+            <div class="container-fluid">
+                <!-- Mobile Devices Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Categories -->
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Global</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Politics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Economy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Technology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Science</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Health</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Arts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Lower Header -->
     </header>
     <main>
-
+    
     </main>
     <footer>
         <!-- place footer here -->
