@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Newspaper</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Booststrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Temporary Style -->
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky-top">
+        <!-- Upper Header -->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- Brand Name -->
+                <a href="#" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
+
+                <!-- Search Bar -->
+                <form class="d-flex">
+                    <div class="input-group">
+                        <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
+                            aria-label="Search">
+                        <span>
+                            <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
+                                title="Search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- Login/ Register Modals Trigger -->
+                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
+                    data-bs-target="#modalLoginForm">
+                    <i class="bi bi-person-circle"></i>
+                    Log in
+                </a>
+            </div>
+        </nav>
+        <!-- Upper Header -->
+
+        <!-- Lower Header -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light" style="padding: 0;">
+            <div class="container-fluid">
+                <!-- Mobile Devices Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Categories Navigation -->
+                <div class="collapse navbar-collapse" id="categoriesToggle">
+                    <ul class="navbar-nav mx-auto mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Global</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Politics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Economy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Technology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Science</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Health</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Arts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Lower Header -->
+    </header>
+
+    <!-- Login/ Register Modals -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: 0; padding-bottom: 0;">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="login-register-tabs" role="tablist">
+                        <li class="nav-item flex-fill">
+                            <a class="nav-link active text-center" id="tab-login" data-toggle="tab" href="#login"
+                                role="tab" aria-controls="login" aria-selected="true">Login</a>
+                        </li>
+                        <li class="nav-item flex-fill">
+                            <a class="nav-link text-center" id="tab-register" data-toggle="tab" href="#register"
+                                role="tab" aria-controls="register" aria-selected="false">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="login-register-tabs-content">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="tab-login">
+                            <form class="row g-3">
+                                <!-- Email Input -->
+                                <div class="form-group">
+                                    <label for="login-email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+                                </div>
+
+                                <!-- Password Input -->
+                                <div class="form-group">
+                                    <label for="login-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="login-password"
+                                        placeholder="Enter password">
+                                </div>
+
+                                <!-- Checkbox RememberMe -->
+                                <div class="col-md-6 d-flex">
+                                    <div class="form-check mb-md-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="loginCheck"
+                                            checked />
+                                        <label class="form-check-label" for="loginCheck"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Forget Password Link -->
+                                <div class="col-md-6 d-flex justify-content-end">
+                                    <a href="#!">Forgot password?</a>
+                                </div>
+
+                                <!-- Login Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+
+                                <!-- Third-party Login -->
+                                <div class="text-center">
+                                    <p class="text-muted">or</p>
+                                    <p>Sign in with:</p>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-facebook"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-google"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-twitter"></i>
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- Registration Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="tab-register">
+                            <form class="row g-3">
+                                <!-- 2 Column Grid Layout -->
+                                <div class="col-md-6">
+                                    <label for="register-firstname" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="register-firstname"
+                                        placeholder="Enter first name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="register-lastname" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="register-lastname"
+                                        placeholder="Enter last name">
+                                </div>
+                                <!-- 2 Column Grid Layout -->
+
+                                <!-- 2 Column Grid Layout -->
+                                <div class="col-md-6">
+                                    <label for="register-dob" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="register-dob" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="register-gender" class="form-label">Gender</label><br>
+                                    <select class="form-select" id="register-gender">
+                                        <option value="">Select your gender</option>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <!-- 2 Column Grid Layout -->
+
+                                <!-- Email Input -->
+                                <div class="col-12">
+                                    <label for="register-email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="register-email"
+                                        placeholder="Enter email">
+                                </div>
+
+                                <!-- 2 Column Grid Layout -->
+                                <div class="col-md-6">
+                                    <label for="register-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="register-password"
+                                        placeholder="Enter password">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="register-repassword" class="form-label">Re-password</label>
+                                    <input type="password" class="form-control" id="register-repassword"
+                                        placeholder="Re-enter password">
+                                </div>
+                                <!-- 2 Column Grid Layout -->
+
+                                <!-- Register Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+
+                                <!-- Third-party Sign up -->
+                                <div class="text-center mb-3">
+                                    <p class="text-muted">or</p>
+                                    <p>Sign up with:</p>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-facebook"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-google"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-twitter"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login/ Register Modals -->
+
+    <main class="container mt-3 p-2 bg-light">
+        <h2>SEARCHING</h2>
+        <!-- Search Bar with Filters -->
+        <form>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 my-3">
+                <div class="col">
+                    <div class="input-group">
+                        <label class="input-group-text" for="filter1">Filter 1</label>
+                        <select class="form-select" id="filter1">
+                            <option selected>Choose...</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <label class="input-group-text" for="filter2">Filter 2</label>
+                        <select class="form-select" id="filter2">
+                            <option selected>Choose...</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group">
+                        <label class="input-group-text" for="filter3">Filter 3</label>
+                        <select class="form-select" id="filter3">
+                            <option selected>Choose...</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Search Bar with Filters -->
+
+        <!-- List News Queried -->
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-8 d-flex flex-column">
+                    <div class="card-body">
+                        <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        <h6 class="card-subtitle text-muted">Politics</h6>
+                        <h5 class="card-title mb-2">BBC News has been banned in Vietnam</h5>
+                        <p class="card-text small flex-grow-1">Example Abstract</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text small text-muted mt-auto">tags: newspaper</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="public/images/news1.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-8 d-flex flex-column">
+                    <div class="card-body">
+                        <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        <h6 class="card-subtitle text-muted">Politics</h6>
+                        <h5 class="card-title mb-2">BBC News has been banned in Vietnam</h5>
+                        <p class="card-text small flex-grow-1">Example Abstract</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text small text-muted mt-auto">tags: newspaper</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="public/images/news2.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+            </div>
+        </div>
+        <!-- List News Queried -->
+
+        <!-- Pagination -->
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Pagination -->
+    </main>
+
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>20120018 - Tran Kieu Minh Lam</p>
+                    <p>20120067 - Ng Pham Ba Duy</p>
+                    <p>20120304 - Phan Tran Khanh</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</p>
+                    <p><i class="bi bi-telephone"></i> +1 (123) 456-7890</p>
+                    <p><i class="bi bi-envelope"></i> info@newspaper.com</p>
+                </div>
+
+                <!-- Digital Contact -->
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Brand Name -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">© 2023 Newspaper.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Activate the first tab by default
+            $('#login-register-tabs a:first').tab('show');
+
+            // Switch to the corresponding tab when clicking on a tab link
+            $('#login-register-tabs a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
