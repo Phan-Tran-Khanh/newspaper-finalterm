@@ -16,10 +16,6 @@
 
     <!-- Temporary Style -->
     <style>
-        a {
-            text-decoration: none;
-            color: black;
-        }
     </style>
 </head>
 
@@ -265,13 +261,14 @@
     <!-- Login/ Register Modals -->
 
     <main class="mt-3 p-2 bg-light">
+        <!-- Main Article -->
         <div class="row g-2">
-            <!-- Main Article -->
+            <!-- Detail -->
             <div class="col-md-9">
                 <!-- Category and Date Time -->
                 <div class="row row-cols-2">
                     <div class="col text-start small">
-                        <a href="#" class="text-primary">
+                        <a href="#" class="text-decoration-none">
                             Politics
                         </a>
                     </div>
@@ -326,7 +323,7 @@
                 <div class="row row-cols-2">
                     <div class="col text-start small">
                         <span>tags: </span>
-                        <a href="#" class="text-primary">
+                        <a href="#" class="text-decoration-none">
                             Agriculture
                         </a>
                     </div>
@@ -337,7 +334,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Main Article -->
+            <!-- Detail -->
 
             <!-- Same Category -->
             <div class="col-md-3">
@@ -362,7 +359,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <a class="text-decoration-none" href="#">
+                        <a class="text-decoration-none text-reset" href="#">
                             <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
                             <div class="card-body small">
                                 <h6 class="card-title">BBC News has been banned in Vietnam</h6>
@@ -376,6 +373,56 @@
             </div>
             <!-- Same Category -->
         </div>
+        <!-- Main Article -->
+
+        <!-- Comment Section -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">COMMENT</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="comment">Leave your comment:</label>
+                                <textarea class="form-control" id="comment" rows="2"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-end">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media">
+                            <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">John Doe</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptatibus quae, rem
+                                    dolorum facilis est perspiciatis alias maiores. Similique, vitae! Inventore
+                                    provident eveniet possimus repudiandae unde quibusdam cum sunt sit.</p>
+                            </div>
+                            <p class="card-text small text-muted">Posted 2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media">
+                            <img src="https://via.placeholder.com/50x50" class="mr-3" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Jane Doe</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis quaerat
+                                    necessitatibus error cum molestias accusantium possimus enim facilis. Vel quidem
+                                    quod id aperiam ut, beatae dignissimos numquam ea error. </p>
+                            </div>
+                            <p class="card-text small text-muted">Posted 3 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Comment Section -->
     </main>
 
     <footer class="bg-dark text-light py-5">
