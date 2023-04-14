@@ -37,10 +37,10 @@
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <!-- Brand Name -->
-                <a href="#" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
+                <a href="index.html" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
 
                 <!-- Search Bar -->
-                <form class="d-flex">
+                <form class="d-flex" action="list.html">
                     <div class="input-group">
                         <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
                             aria-label="Search">
@@ -272,66 +272,146 @@
     </div>
     <!-- Login/ Register Modals -->
 
-    <main class="bg-light">
-        <div class="mx-2 my-3">
-            <!-- Top Section -->
-            <div class="row g-1">
-                <!-- Top 10 Categories -->
-                <div class="col-md-3">
-                    <div class="overflow-auto" style="height: 30rem">
-                        <div class="card">
-                            <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+    <main class="mx-2 my-3 bg-light">
+        <!-- Top Section -->
+        <div class="row g-2">
+            <!-- Top 10 Categories -->
+            <div class="col-md-3">
+                <div class="overflow-auto" style="height: 30rem">
+                    <div class="card">
+                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                        <div class="card-body small">
+                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                            <p class="card-text">Example Abstract</p>
+                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                        <div class="card-body small">
+                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                            <p class="card-text">Example Abstract</p>
+                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a class="text-decoration-none" href="#">
+                            <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
                             <div class="card-body small">
                                 <h6 class="card-title">BBC News has been banned in Vietnam</h6>
                                 <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
                                 <p class="card-text">Example Abstract</p>
                                 <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                             </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
-                            <div class="card-body small">
-                                <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                <p class="card-text">Example Abstract</p>
-                                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <a class="text-decoration-none" href="#">
-                                <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
-                                <div class="card-body small">
-                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                    <p class="card-text">Example Abstract</p>
-                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Top 10 Categories -->
+
+            <!-- Weekly News -->
+            <div class="col-md-9">
+                <h1 class="p-1 fw-bold">RISING THIS WEEK <i class="bi bi-graph-up-arrow"></i></h1>
+                <div id="carouselWeeklyNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Top 10 Categories -->
+            </div>
+            <!-- Weekly News -->
+        </div>
+        <!-- Top Section -->
 
-                <!-- Weekly News -->
-                <div class="col-md-9">
-                    <h1 class="p-1 fw-bold">RISING THIS WEEK <i class="bi bi-graph-up-arrow"></i></h1>
-                    <div id="carouselWeeklyNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <!-- All Categories Section -->
+        <div class="mt-2">
+
+            <!-- First Category -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Category Name -->
+                    <h2 class="bg-dark p-2">
+                        <a class="text-light" href="#">Politics</a>
+                    </h2>
+
+                    <!-- Latest News -->
+                    <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0"
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0"
                                 class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1"
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
                                 aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2"
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
                                 aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="card">
-                                    <div class="row g-0">
-                                        <div class="col-md-7">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
                                             <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div>
                                             <div class="card-body">
                                                 <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                                 <h6 class="card-subtitle text-muted">Politics</h6>
@@ -344,11 +424,11 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="card">
-                                    <div class="row g-0">
-                                        <div class="col-md-7">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
                                             <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div>
                                             <div class="card-body">
                                                 <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                                 <h6 class="card-subtitle text-muted">Politics</h6>
@@ -361,11 +441,11 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="card">
-                                    <div class="row g-0">
-                                        <div class="col-md-7">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
                                             <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="card-body">
                                                 <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                                 <h6 class="card-subtitle text-muted">Politics</h6>
@@ -378,431 +458,302 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Weekly News -->
-            </div>
-            <!-- Top Section -->
+                    <!-- Latest News -->
 
-            <!-- All Categories Section -->
-            <div class="mt-2">
+                    <h4><i class="bi bi-eyeglasses"></i> Trending now</h4>
 
-                <!-- First Category -->
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <!-- Category Name -->
-                        <h2 class="bg-dark p-2">
-                            <a class="text-light" href="#">Politics</a>
-                        </h2>
-
-                        <!-- Latest News -->
-                        <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
+                    <!-- Most Popular -->
+                    <div id="carouselMostPopular1" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
+                            <div class="carousel-item">
+                                <div class="card-group">
                                     <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div>
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item">
                                     <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div>
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item">
                                     <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Latest News -->
-
-                        <h4><i class="bi bi-eyeglasses"></i> Trending now</h4>
-
-                        <!-- Most Popular -->
-                        <div id="carouselMostPopular1" class="carousel carousel-dark slide mx-4"
-                            data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row row-cols-4 g-1">
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news3.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row row-cols-4 g-1">
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news3.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular1"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular1"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- Most Popular -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular1"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular1"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+                    <!-- Most Popular -->
                 </div>
-                <!-- First Category -->
-
-                <!-- Second Category -->
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <!-- Category Name -->
-                        <h2 class="bg-dark p-2">
-                            <a class="text-light" href="#">Economy</a>
-                        </h2>
-
-                        <!-- Latest News -->
-                        <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div>
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div>
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card">
-                                        <div class="row row-cols-2 g-0">
-                                            <div>
-                                                <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card-body">
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                    <h6 class="card-subtitle text-muted">Politics</h6>
-                                                    <h5 class="card-title mb-2">Card title</h5>
-                                                    <p class="card-text small">Example Abstract</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Latest News -->
-
-                        <h4><i class="bi bi-eyeglasses"></i> Trending now</h4>
-
-                        <!-- Most Popular -->
-                        <div id="carouselMostPopular1" class="carousel carousel-dark slide mx-4"
-                            data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row row-cols-4 g-1">
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news3.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row row-cols-4 g-1">
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news3.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news1.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card">
-                                                <img class="card-img-top" src="public/images/news2.jpg"
-                                                    alt="Card image cap">
-                                                <div class="card-body small">
-                                                    <h6 class="card-title">BBC News has been banned in Vietnam</h6>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
-                                                    <p class="card-text">Example Abstract</p>
-                                                    <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular1"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular1"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- Most Popular -->
-                    </div>
-                </div>
-                <!-- Second Category -->
             </div>
-            <!-- All Categories Section -->
+            <!-- First Category -->
+
+            <!-- Second Category -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Category Name -->
+                    <h2 class="bg-dark p-2">
+                        <a class="text-light" href="#">Economy</a>
+                    </h2>
+
+                    <!-- Latest News -->
+                    <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
+                                            <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div>
+                                            <div class="card-body">
+                                                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                                <h6 class="card-subtitle text-muted">Politics</h6>
+                                                <h5 class="card-title mb-2">Card title</h5>
+                                                <p class="card-text small">Example Abstract</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
+                                            <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div>
+                                            <div class="card-body">
+                                                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                                <h6 class="card-subtitle text-muted">Politics</h6>
+                                                <h5 class="card-title mb-2">Card title</h5>
+                                                <p class="card-text small">Example Abstract</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card">
+                                    <div class="row row-cols-2 g-0">
+                                        <div>
+                                            <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card-body">
+                                                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                                <h6 class="card-subtitle text-muted">Politics</h6>
+                                                <h5 class="card-title mb-2">Card title</h5>
+                                                <p class="card-text small">Example Abstract</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Latest News -->
+
+                    <h4><i class="bi bi-eyeglasses"></i> Trending now</h4>
+
+                    <!-- Most Popular -->
+                    <div id="carouselMostPopular2" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular2"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular2"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <!-- Most Popular -->
+                </div>
+            </div>
+            <!-- Second Category -->
         </div>
+        <!-- All Categories Section -->
     </main>
 
     <footer class="bg-dark text-light py-5">
         <div class="container">
             <div class="row">
+                <!-- About developers -->
                 <div class="col-md-4">
                     <h5>About Us</h5>
                     <p>20120018 - Tran Kieu Minh Lam</p>
                     <p>20120067 - Ng Pham Ba Duy</p>
                     <p>20120304 - Phan Tran Khanh</p>
                 </div>
+
+                <!-- Address -->
                 <div class="col-md-4">
                     <h5>Contact Us</h5>
                     <p><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</p>
