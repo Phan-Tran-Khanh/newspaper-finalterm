@@ -1,0 +1,44 @@
+i {
+    color: #B8621B;
+}
+
+/* Categories */
+.navbar-nav li.nav-item a:hover {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/* Categories */
+
+/* Toggle Button After Logging in */
+.navbar-toggler:hover {
+    background-color: white;
+}
+
+.navbar-toggler .navbar-toggler-icon:hover {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+/* Toggle Button After Logging in */
+
+/* Submit Buttons in Modals */
+.modal-content button[type="submit"] {
+    background-color: #B8621B;
+    border-color: #B8621B;
+    color: #000;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #E3CCAE;
+    border-color: #E3CCAE;
+    color: #000;
+}
+/* Submit Buttons in Modals */
+
+/* Premium Tiers */
+.premium-tier a:hover {
+    font-weight: bold;
+}
+/* Premium Tiers */

@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Newspaper</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Booststrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="public/css/global.css">
+    <link rel="stylesheet" href="public/css/index.css">
+</head>
+
+<body>
+    <header class="sticky-top">
+        <!-- Upper Header -->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- Brand Name -->
+                <a href="index.html" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
+
+                <!-- Search Bar -->
+                <form class="d-flex" action="list.html">
+                    <div class="input-group">
+                        <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
+                            aria-label="Search">
+                        <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
+                            title="Search">
+                            <i class="bi bi-search text-dark"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Login/ Register Modals Trigger -->
+                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
+                    data-bs-target="#modalLoginRegister" id="anonymity-btn">
+                    <i class="bi bi-person-circle"></i>
+                    Log in
+                </a>
+
+                <!-- Logged in Offcanvas Trigger -->
+                <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Upper Header -->
+
+        <!-- Lower Header -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
+            <div class="container-fluid">
+                <!-- Categories Navigation -->
+                <div class="collapse navbar-collapse justify-content-between" id="categoriesToggle">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-house-door-fill"></i> Home
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="internationalDropdown" role="button">
+                                International
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="internationalDropdown">
+                                <a class="dropdown-item" href="list.html">International Sports</a>
+                                <a class="dropdown-item" href="list.html">Global Business & Economy</a>
+                                <a class="dropdown-item" href="list.html">International Politics</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="politicsDropdown" role="button">
+                                Politics
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="politicsDropdown">
+                                <a class="dropdown-item" href="list.html">Domestic Politics</a>
+                                <a class="dropdown-item" href="list.html">Election News</a>
+                                <a class="dropdown-item" href="list.html">Political Scandals & Corruption</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="economyDropdown" role="button">
+                                Economy
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="economyDropdown">
+                                <a class="dropdown-item" href="list.html">Macroeconomics</a>
+                                <a class="dropdown-item" href="list.html">Microeconomics</a>
+                                <a class="dropdown-item" href="list.html">Labor Market</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="technologyDropdown" role="button">
+                                Technology
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="technologyDropdown">
+                                <a class="dropdown-item" href="list.html">Cybersecurity & Privacy</a>
+                                <a class="dropdown-item" href="list.html">Internet of Things</a>
+                                <a class="dropdown-item" href="list.html">Blockchain & Cryptocurrency</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="scienceDropdown" role="button">
+                                Science
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="scienceDropdown">
+                                <a class="dropdown-item" href="list.html">Space & Astronomy</a>
+                                <a class="dropdown-item" href="list.html">Neuroscience</a>
+                                <a class="dropdown-item" href="list.html">Engineering & Technology</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="healthDropdown" role="button">
+                                Health
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="healthDropdown">
+                                <a class="dropdown-item" href="list.html">Mental Health</a>
+                                <a class="dropdown-item" href="list.html">Food & Nutrition</a>
+                                <a class="dropdown-item" href="list.html">Health Policy</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="sportsDropdown" role="button">
+                                Sports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="sportsDropdown">
+                                <a class="dropdown-item" href="list.html">Football</a>
+                                <a class="dropdown-item" href="list.html">Golf</a>
+                                <a class="dropdown-item" href="list.html">Olympics</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="entertainmentDropdown" role="button">
+                                Entertainment
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="entertainmentDropdown">
+                                <a class="dropdown-item" href="list.html">Film & Television</a>
+                                <a class="dropdown-item" href="list.html">Music</a>
+                                <a class="dropdown-item" href="list.html">Gaming</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="educationDropdown" role="button">
+                                Education
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="educationDropdown">
+                                <a class="dropdown-item" href="list.html">Higher Education</a>
+                                <a class="dropdown-item" href="list.html">K-12 Education</a>
+                                <a class="dropdown-item" href="list.html">Educational Policy</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="list.html" id="tourismDropdown" role="button">
+                                Tourism
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="tourismDropdown">
+                                <a class="dropdown-item" href="list.html">Ecotourism</a>
+                                <a class="dropdown-item" href="list.html">Medical Tourism</a>
+                                <a class="dropdown-item" href="list.html">Travel Destinations</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Lower Header -->
+    </header>
+
+    <!-- Login/ Register Modals -->
+    <div class="modal fade" id="modalLoginRegister" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pb-0 border-bottom-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body mx-3 pt-0">
+                    <ul class="nav nav-tabs" id="login-register-tabs" role="tablist">
+                        <li class="nav-item flex-fill">
+                            <a class="nav-link active text-center" id="tab-login" data-toggle="tab" href="#login"
+                                role="tab" aria-controls="login" aria-selected="true">Login</a>
+                        </li>
+                        <li class="nav-item flex-fill">
+                            <a class="nav-link text-center" id="tab-register" data-toggle="tab" href="#register"
+                                role="tab" aria-controls="register" aria-selected="false">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="login-register-tabs-content">
+                        <!-- Login Tab -->
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="tab-login">
+                            <form class="row g-3">
+                                <!-- Email Input -->
+                                <div class="col-md-12">
+                                    <label for="login-email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="login-email" placeholder="Enter email"
+                                        required>
+                                </div>
+
+                                <!-- Password Input -->
+                                <div class="col-md-12">
+                                    <label for="login-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="login-password"
+                                        placeholder="Enter password" required>
+                                </div>
+
+                                <!-- Checkbox RememberMe -->
+                                <div class="col-md-6">
+                                    <div class="form-check mb-md-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="login-check"
+                                            checked />
+                                        <label class="form-check-label" for="loginCheck"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Forget Password Link -->
+                                <div class="col-md-6 d-flex justify-content-end">
+                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#modalForgetPassword">
+                                        Forgot password?</a>
+                                </div>
+
+                                <!-- Login Button -->
+                                <div class="d-grid">
+                                    <button id="login-btn" type="submit" class="btn">Login</button>
+                                </div>
+
+                                <!-- Third-party Login -->
+                                <div class="text-center">
+                                    <p class="text-muted">or</p>
+                                    <p>Sign in with:</p>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-facebook"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-google"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-twitter"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Registration Tab -->
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="tab-register">
+                            <form class="row g-3">
+                                <!-- Full Name Input -->
+                                <div class="col-md-6">
+                                    <label for="register-firstname" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="register-firstname"
+                                        placeholder="Enter first name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="register-lastname" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="register-lastname"
+                                        placeholder="Enter last name" required>
+                                </div>
+
+                                <!-- DOB Input -->
+                                <div class="col-md-6">
+                                    <label for="register-dob" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="register-dob" required />
+                                </div>
+
+                                <!-- Gender Input -->
+                                <div class="col-md-6">
+                                    <label for="register-gender" class="form-label">Gender</label><br>
+                                    <select class="form-select" id="register-gender" required>
+                                        <option value="">Select your gender</option>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <!-- Email Input -->
+                                <div class="col-md-12">
+                                    <label for="register-email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="register-email"
+                                        placeholder="Enter email" required>
+                                </div>
+
+                                <!-- Password Input -->
+                                <div class="col-md-6">
+                                    <label for="register-password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="register-password"
+                                        placeholder="Enter password" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="register-repassword" class="form-label">Re-password</label>
+                                    <input type="password" class="form-control" id="register-repassword"
+                                        placeholder="Re-enter password" required>
+                                </div>
+
+                                <!-- Register Button -->
+                                <div class="d-grid">
+                                    <button id="register-btn" type="submit" class="btn">Register</button>
+                                </div>
+
+                                <!-- Third-party Sign up -->
+                                <div class="text-center mb-3">
+                                    <p class="text-muted">or</p>
+                                    <p>Sign up with:</p>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-facebook"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-google"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <i class="bi bi-twitter"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login/ Register Modals -->
+
+    <!-- Forget Password Modal -->
+    <div class="modal fade" id="modalForgetPassword" tabindex="-1" aria-labelledby="modalForgetPasswordLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalForgetPasswordLabel">Forget Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mx-3">
+                    <p>Please enter your email address below and we'll send you a code to reset your
+                        password.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="forgetpw-email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="forgetpw-email" aria-describedby="emailHelp"
+                                placeholder="Enter your email" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#modalResetCode">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forget Password Modal -->
+
+    <!-- Reset Code Modal -->
+    <div class="modal fade" id="modalResetCode" tabindex="-1" aria-labelledby="modalResetCodeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalResetCodeLabel">Confirm Reset Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mx-3">
+                    <p>We just sent a code to [email address]</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="forgetpw-code" class="form-label">Reset Code</label>
+                            <input type="email" class="form-control" id="forgetpw-code" aria-describedby="codeHelp"
+                                placeholder="Enter your reset code" required>
+                            <div id="codeHelp" class="form-text">Enter 6-digits number in your mailbox</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#modalForgetPassword">Back</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reset Code Modal -->
+
+    <!-- Logged in Offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasLoggedin"
+        aria-labelledby="offcanvasLoggedinLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled ms-3">
+                <li class="mb-3">
+                    <a href="#" class="link-light text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#modalUserInformation">
+                        <img src="https://via.placeholder.com/50x50" alt="...">
+                        <span>DongNike</span>
+                    </a>
+                </li>
+                <li class="mb-3">
+                    <a href="#footer" class="link-light text-decoration-none">
+                        <i class="bi bi-people"></i> About us
+                    </a>
+                </li>
+                <li class="mb-3">
+                    <a href="#" class="link-light text-decoration-none" id="logout-btn" data-bs-dismiss="offcanvas"
+                        aria-label="Log out">
+                        <i class="bi bi-box-arrow-left"></i> Log out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Logged in Offcanvas -->
+
+    <!-- User Info Modal -->
+    <div class="modal fade" tabindex="-1" id="modalUserInformation">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header pb-0 border-bottom-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body mx-3 pt-0">
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <h5>PERSONAL INFO</h5>
+                        </div>
+
+                        <hr class="border border-2 border-dark m-0">
+
+                        <!-- Full Name -->
+                        <div class="col-md-6">
+                            <label for="update-firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="update-firstname" value="Lam">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="update-lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="update-lastname" value="Tran Kieu Minh">
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="col-md-6">
+                            <label for="update-dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="update-dob" value="2018-07-22" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="update-gender" class="form-label">Gender</label><br>
+                            <select class="form-select" id="update-gender">
+                                <option value="">Select your gender</option>
+                                <option value="female" selected>Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5>ACCOUNT INFO</h5>
+                        </div>
+
+                        <hr class="border border-2 border-dark m-0">
+
+                        <!-- Email Input -->
+                        <div class="col-md-6">
+                            <label for="update-email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="update-email"
+                                value="20120018@student.hcmus.edu.vn" disabled>
+                        </div>
+
+                        <!-- Premium Expiration -->
+                        <div class="col-md-6">
+                            <label for="update-premium" class="form-label">
+                                Premium Expiration
+                                <!-- Extend Premium Modal Trigger -->
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalExtendPremium">
+                                    <i class="bi bi-info-circle-fill"></i>
+                                </a>
+                            </label>
+                            <input type="date" class="form-control" id="update-premium" value="2023-07-22" disabled />
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="col-md-6">
+                            <label for="update-password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="update-password"
+                                placeholder="Enter new password">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="update-repassword" class="form-label">Re-password</label>
+                            <input type="password" class="form-control" id="update-repassword"
+                                placeholder="Re-enter new password">
+                        </div>
+                        <div class="modal-footer justify-content-center p-0">
+                            <button type="submit" class="btn" data-bs-dismiss="modal"
+                                aria-label="Save changes">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- User Info Modal -->
+
+    <!-- Extend Premium Modal -->
+    <div class="modal fade" id="modalExtendPremium" tabindex="-1" role="dialog"
+        aria-labelledby="modalExtendPremiumLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalExtendPremiumLabel">Premium Subscription</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Tier 1: Basic -->
+                        <div class="col-md-4">
+                            <div class="card text-dark bg-light premium-tier">
+                                <div class="card-body">
+                                    <h5 class="card-title">Basic</h5>
+                                    <p class="card-text">1 Month</p>
+                                    <h6 class="card-subtitle mb-2 text-muted">$9.99</h6>
+                                    <ul class="card-text list-unstyled small text-muted">
+                                        <li>Quickly Set Up a Website</li>
+                                        <li>Live Preview</li>
+                                        <li>Support Limited</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tier 2: Standard -->
+                        <div class="col-md-4">
+                            <div class="card text-white bg-dark premium-tier">
+                                <div class="card-body">
+                                    <h5 class="card-title">Standard</h5>
+                                    <p class="card-text">3 Months</p>
+                                    <h6 class="card-subtitle mb-2 text-muted">$24.99</h6>
+                                    <ul class="card-text list-unstyled small text-muted">
+                                        <li>Online System</li>
+                                        <li>Free Apps</li>
+                                        <li>Full Access</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tier 3: Deluxe -->
+                        <div class="col-md-4">
+                            <div class="card text-dark bg-warning premium-tier">
+                                <div class="card-body">
+                                    <h5 class="card-title">Deluxe</h5>
+                                    <p class="card-text">6 Months</p>
+                                    <h6 class="card-subtitle mb-2">$49.99</h6>
+                                    <ul class="card-text list-unstyled small">
+                                        <li>Modern Design</li>
+                                        <li>Easy to Customize</li>
+                                        <li>24/7 Customer Support</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Extend Premium Modal -->
+
+    <main class="my-3 bg-light">
+        <!-- Top Section -->
+        <div class="row g-2">
+            <!-- Top 10 Categories -->
+            <div class="col-md-3">
+                <div class="overflow-auto" style="height: 30rem">
+                    <div class="card">
+                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                        <div class="card-body small">
+                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                            <p class="card-text">Example Abstract</p>
+                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                        <div class="card-body small">
+                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                            <p class="card-text">Example Abstract</p>
+                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a class="text-decoration-none text-reset" href="#">
+                            <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                            <div class="card-body small">
+                                <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                <p class="card-text">Example Abstract</p>
+                                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Top 10 Categories -->
+
+            <!-- Weekly News -->
+            <div class="col-md-9">
+                <h1 class="p-1 fw-bold">RISING THIS WEEK <i class="bi bi-graph-up-arrow text-primary"></i></h1>
+                <div id="carouselWeeklyNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-7">
+                                        <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Weekly News -->
+        </div>
+        <!-- Top Section -->
+
+        <!-- First Category -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <!-- Category Name -->
+                <h2 class="bg-dark p-2">
+                    <a class="text-light text-decoration-none" href="#">Politics</a>
+                </h2>
+
+                <!-- Latest News -->
+                <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div>
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div>
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Latest News -->
+
+                <div class="mt-3">
+                    <h4 class="p-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
+
+                    <!-- Most Popular -->
+                    <div id="carouselMostPopular1" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular1"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular1"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Most Popular -->
+            </div>
+        </div>
+        <!-- First Category -->
+
+        <!-- Second Category -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <!-- Category Name -->
+                <h2 class="bg-dark p-2">
+                    <a class="text-light text-decoration-none" href="#">Economy</a>
+                </h2>
+
+                <!-- Latest News -->
+                <div id="carouselLatestNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselLatestNews" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news1.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div>
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news2.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div>
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card">
+                                <div class="row row-cols-2 g-0">
+                                    <div>
+                                        <img src="public/images/news3.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                            <h6 class="card-subtitle text-muted">Politics</h6>
+                                            <h5 class="card-title mb-2">Card title</h5>
+                                            <p class="card-text small">Example Abstract</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Latest News -->
+
+                <!-- Most Popular -->
+                <div class="mt-3">
+                    <h4 class="p-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
+                    <div id="carouselMostPopular2" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card-group">
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news1.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img class="card-img-top" src="public/images/news2.jpg" alt="Card image cap">
+                                        <div class="card-body small">
+                                            <h6 class="card-title">BBC News has been banned in Vietnam</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Politics</h6>
+                                            <p class="card-text">Example Abstract</p>
+                                            <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular2"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular2"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Most Popular -->
+            </div>
+        </div>
+        <!-- Second Category -->
+    </main>
+
+    <footer id="footer" class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <!-- About developers -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>20120018 - Tran Kieu Minh Lam</p>
+                    <p>20120067 - Ng Pham Ba Duy</p>
+                    <p>20120304 - Phan Tran Khanh</p>
+                </div>
+
+                <!-- Address -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</p>
+                    <p><i class="bi bi-telephone"></i> +1 (123) 456-7890</p>
+                    <p><i class="bi bi-envelope"></i> info@newspaper.com</p>
+                </div>
+
+                <!-- Digital Contact -->
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="https://www.facebook.com"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.twitter.com"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.instagram.com"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Brand Name -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">© 2023 Newspaper.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+
+    <!-- jQuery Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Switch to the corresponding tab when clicking on a tab link in Login/Register Modals
+            $('#login-register-tabs a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show', 'active');
+            });
+
+            // Hide #user-btn and show #anonymity-btn by default
+            $('#user-btn').hide();
+            $('#anonymity-btn').show();
+
+            // Event handler for login/register buttons
+            $('#login-btn, #register-btn').click(function (e) {
+                $('#anonymity-btn').hide();
+                $('#user-btn').show();
+            });
+
+            // Event handler for logout button
+            $('#logout-btn').click(function (e) {
+                $('#anonymity-btn').show();
+                $('#user-btn').hide();
+            });
+        });
+    </script>
+</body>
+
+</html>
