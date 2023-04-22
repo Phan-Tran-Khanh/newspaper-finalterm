@@ -1,9 +1,9 @@
 i:not(.bi.bi-search) {
-    color: #B8621B;
+    color: #ffc107;
 }
 
 i:not(.bi.bi-search):hover {
-    color: #E3CCAE;
+    color: #f8f9fa;
 }
 
 a {
@@ -11,10 +11,14 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: #007bff;
+}
+
 /* Categories */
 .navbar-nav li.nav-item a:hover {
-    background-color: #343a40;
-    color: #f8f9fa;
+    background-color: #212529;
+    color: #F8F9FA;
 }
 
 .nav-item.dropdown:hover .dropdown-menu {
@@ -24,27 +28,27 @@ a {
 
 /* Toggle Button After Logging in */
 .navbar-toggler:hover {
-    background-color: white;
+    background-color: #F8F9FA;
 }
 
 .navbar-toggler .navbar-toggler-icon:hover {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33, 37, 41, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 /* Toggle Button After Logging in */
 
-/* Submit Buttons in Modals */
-.modal-content button[type="submit"] {
-    background-color: #B8621B;
-    border-color: #B8621B;
-    color: #000;
+/* Submit Buttons to Server */
+button[type="submit"] {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #f8f9fa;
 }
 
-.modal-content button[type="submit"]:hover {
-    background-color: #E3CCAE;
-    border-color: #E3CCAE;
-    color: #000;
+button[type="submit"]:hover {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+    color: #212529;
 }
-/* Submit Buttons in Modals */
+/* Submit Buttons to Server */
 
 /* Premium Tiers */
 .premium-tier a:hover {

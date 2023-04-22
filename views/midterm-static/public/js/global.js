@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Switch to the corresponding tab when clicking on a tab link in Login/Register Modals
-    $('#login-register-tabs a').click(function (e) {
+    $('#login-register-tabs a').on('click', function (e) {
         e.preventDefault();
         $(this).tab('show', 'active');
     });
@@ -10,13 +10,13 @@ $(document).ready(function () {
     $('#anonymity-btn').show();
 
     // Event handler for login/register buttons
-    $('#login-btn, #register-btn').click(function (e) {
+    $('#login-btn, #register-btn').on('click', function () {
         $('#anonymity-btn').hide();
         $('#user-btn').show();
     });
 
     // Event handler for logout button
-    $('#logout-btn').click(function (e) {
+    $('#logout-btn').on('click', function () {
         $('#anonymity-btn').show();
         $('#user-btn').hide();
     });

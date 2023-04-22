@@ -3,7 +3,8 @@ $(document).ready(function () {
     $('[data-bs-toggle="popover"]').popover();
 
     // Event listener for "First" button click
-    $('#first').on('click', function () {
+    $('#first').on('click', function (e) {
+        e.preventDefault();
         $('.pagination li a.active').removeClass('active');
         $('.pagination li').eq(1).find('a').addClass('active');
         $('[id^="group-"]').hide();
@@ -11,7 +12,8 @@ $(document).ready(function () {
     });
 
     // Event listener for "Last" button click
-    $('#last').on('click', function () {
+    $('#last').on('click', function (e) {
+        e.preventDefault();
         $('.pagination li a.active').removeClass('active');
         $('.pagination li').eq(-2).find('a').addClass('active');
         $('[id^="group-"]').hide();
@@ -20,7 +22,8 @@ $(document).ready(function () {
     });
 
     // Add click event listeners to page links in Pagination
-    $('.pagination li a:not(#first, #last)').on('click', function () {
+    $('.pagination li a:not(#first, #last)').on('click', function (e) {
+        e.preventDefault();
         $('.pagination li a.active').removeClass('active');
         $(this).addClass('active');
         $('[id^="group-"]').hide();
