@@ -1,5 +1,14 @@
-i {
+i:not(.bi.bi-search) {
     color: #B8621B;
+}
+
+i:not(.bi.bi-search):hover {
+    color: #E3CCAE;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* Categories */
