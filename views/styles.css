@@ -1,0 +1,66 @@
+/* general */
+html {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding-left: 0px 10px !important;
+}
+
+.container {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+blockquote {
+    margin-bottom: 0px;
+}
+
+/* Editor - header */
+.e_Header {
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.e_Branding, .e_User{
+    display: flex;
+    align-items: center;
+}
+
+.e_Branding img {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.e_User img {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+/* Editor - footerr */
+.e_Footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+
+}
+
+.e_Footer img {
+    width: 180px;
+    height: 180px;
+    margin-right: 20px;
+}
+
+.e_Footer address {
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+/* Editor - main */
