@@ -106,25 +106,66 @@
 
 
     <div class="e_Content_Details container">
-        <div class="post-detail">
-            <div class="post-pane-l header">
-                <div class="post-subpane-l category">Kinh doanh</div>
-                <div class="post-subpane-l datetime">23/4/2023</div>
-            </div>
-            <div class="post-pane-l title">XYZ</div>
-            <div class="post-pane-l abstract">abcabc</div>
-            <div class="post-pane-l img">                
-                <div class="post-subpane-l img-url">
-                    <img src="../assets/image.jpg" class="img-fluid"/>
+        <!-- Detail -->
+        <div class="post-detail col-md-9">
+            <!-- Category and Date Time -->
+            <div class="row row-cols-2">
+                <div class="col text-start small back-to-list">
+                    <a href="#" class="text-decoration-none">
+                        Politics
+                    </a>
                 </div>
-                <div class="post-subpane-l img-desp">xxxx</div>
+                <div class="col text-end small">
+                    <p class="text-muted">
+                        Thứ sáu, 14/4/2023, 16:15 (GMT+7)
+                    </p>
+                </div>
             </div>
-            <div class="post-pane-l details">abcabccdcdscdscds</div>
-            <div class="post-pane-l footer">
-                <div class="post-subpane-l tags">Nông sản</div>
-                <div class="post-subpane-l reported">Trần Minh Lâm</div>
+
+            <!-- Title and Content -->
+            <div class="row">
+                <h2>
+                    Example Title
+                </h2>
+                <p>
+                    Example Abstract:
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sed aliquam
+                    pariatur delectus, quod, quo autem accusantium ullam nulla doloremque placeat a magnam quos
+                    facere cum ipsam quia illo quis.
+                    Dignissimos sit officiis cum quos possimus perferendis delectus voluptatum perspiciatis
+                    architecto nulla accusamus quaerat dolorum culpa, reiciendis sequi deleniti iste quod! Et
+                    debitis ullam nostrum explicabo eligendi eaque similique optio.
+                </p>
+                <figure>
+                    <img src="public/images/news1.jpg" alt="..." class="img-fluid">
+                    <figcaption class="small">Fig.1 - BBC News</figcaption>
+                </figure>
+                <p>
+                    Example Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea vitae natus
+                    iure nisi iusto magni, quaerat repudiandae sapiente vero illo? Earum praesentium quis enim
+                    veniam ipsam voluptas, delectus repudiandae explicabo.
+                    Asperiores quo, explicabo ab quae commodi nam ea, nulla dolore consequatur fugiat accusamus
+                    eius maxime atque quasi ipsa minus iure voluptatibus temporibus ipsum nihil doloremque
+                    necessitatibus! Amet aliquam voluptatem architecto.
+                </p>
+            </div>
+
+            <!-- Tags and Reporter -->
+            <div class="row row-cols-2">
+                <div class="col text-start small">
+                    <span>tags: </span>
+                    <a href="#" class="text-decoration-none">
+                        Agriculture
+                    </a>
+                </div>
+                <div class="col text-end">
+                    <p class="fw-bold">
+                        Lệ Tuyết
+                    </p>
+                </div>
             </div>
         </div>
+        <!-- Detail -->
         <div class="post action">
             <button type="button" class="btn btn-danger disapprove">Từ chối</button>
             <button type="button" class="btn btn-success approve">Duyệt</button>

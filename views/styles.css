@@ -17,8 +17,10 @@ blockquote {
 }
 
 .action {
+    width: inherit;
     margin-top: 20px;
-    display: flex;
+    margin-bottom: 40px;
+    display: flex !important;
     justify-content: space-between;
 }
 
@@ -154,8 +156,10 @@ blockquote {
 .e_Content_Details {
     display: flex;
     flex-direction: column;
+    text-align: justify;
+    align-items: center;
 }
-
+/* 
 .post-detail {
     display: flex;
     flex-direction: column;
@@ -194,7 +198,7 @@ blockquote {
 
 .post-pane-l.details {
     height: 40% !important;
-}
+} */
 
 /* Editor - disapprove */
 .e_Disapprove {

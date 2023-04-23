@@ -18,18 +18,18 @@ $(document).ready(function() {
 
 //Function: [INDEX]  navigate to detail post
 $("body").on("click", ".post-info-s, .post-img-s", function(){
-    let Post_id = parseInt($('.e_Post').data("post-id"));
+    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
     window.location.replace('./pages/details.html?post_id='+Post_id);
 });
 
 //Function: [INDEX]  navigate to disapprove post
 $("body").on("click", ".post-btn-del", function(){
-    let Post_id = parseInt($('.e_Post').data("post-id"));
+    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
     window.location.replace('./pages/disapprove.html?post_id='+Post_id);
 });
 
 //Function: [DETAIL] return to post list
-$("body").on("click", ".post-subpane-l.category", function(){
+$("body").on("click", ".back-to-list", function(){
     window.location.replace('../index.html');
 });
 
@@ -45,7 +45,7 @@ $("body").on("click", ".btn-approve", function(){
     window.location.replace('./approve.html?post_id='+Post_id);
 });
 
-//Function: [DISAPPROVE]  return to post detail
+//Function: [DISAPPROVE/APPROVE]  return to post detail
 $("body").on("click", ".btn-back", function(){
     window.location.replace('./details.html?post_id='+cur_id);
 });
@@ -138,24 +138,35 @@ function LoadDetailedPost(id) {
     var item = posts[id];
     item['image']='.'+item['image'];
     $(".e_Content_Details").empty();
-    let html_post = $('<div class="post-detail" data-post-id="'+item['id']+'"></div>');
-    html_post.append('<div class="post-pane-l header">\
-                        <div class="post-subpane-l category">'+item['category']+'</div>\
-                        <div class="post-subpane-l datetime">'+Date().toLocaleString()+'</div>\
-                    </div>');
-    html_post.append('<div class="post-pane-l title">'+item['title']+'</div>');  
-    html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
-    html_post.append('<div class="post-pane-l img">\
-                        <div class="post-subpane-l img-url">\
-                            <img src="'+item['image']+'" class="img-fluid"/>\
+    let html_post = $('<div class="post-detail col-md-9" data-post-id="'+item['id']+'"></div>');
+    html_post.append('<div class="row row-cols-2">\
+                        <div class="col text-start small back-to-list">\
+                            <a href="#" class="text-decoration-none">'+item['category']+'</a>\
                         </div>\
-                        <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
-                    </div>');     
-    html_post.append('<div class="post-pane-l details">'+item['details']+'</div>');     
-    html_post.append('<div class="post-pane-l footer">\
-                        <div class="post-subpane-l tags">'+item['tags']+'</div>\
-                        <div class="post-subpane-l reported">'+item['reporter']+'</div>\
-                    </div>');                 
+                        <div class="col text-end small">\
+                            <p class="text-muted">\
+                                Chủ nhật, 23/4/2023, 16:15 (GMT+7)\
+                            </p>\
+                        </div>\
+                    </div>');
+    html_post.append('<div class="row">\
+                        <h2>'+item['title']+'</h2>\
+                        <p>'+item['abstract']+'</p>\
+                        <figure style="display: flex !important; flex-direction: column; align-items: center;">\
+                            <img src="'+item['image']+'" alt="..." class="img-fluid">\
+                            <figcaption class="small">'+item['image_desp']+'</figcaption>\
+                        </figure>\
+                        <p>'+item['details']+'</p>\
+                    </div>');  
+    html_post.append('<div class="row row-cols-2">\
+                        <div class="col text-start small">\
+                            <span>tags: </span>\
+                            <a href="#" class="text-decoration-none">'+item['tags']+'</a>\
+                        </div>\
+                        <div class="col text-end">\
+                            <p class="fw-bold">'+item['reporter']+'</p>\
+                        </div>\
+                    </div>');                
     $(".e_Content_Details").append(html_post);
     $(".e_Content_Details").append('<div class="post action">\
                                     <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
