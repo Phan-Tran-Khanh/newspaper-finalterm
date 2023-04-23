@@ -162,28 +162,46 @@ function LoadDetailedPost(id) {
 function LoadApprovedPost(id) {
     var item = posts[id];
     item['image']='.'+item['image'];
-    $(".e_Content_Details").empty();
-    let html_post = $('<div class="post-detail" data-post-id="'+item['id']+'"></div>');
-    html_post.append('<div class="post-pane-l header">\
-                        <div class="post-subpane-l category">'+item['category']+'</div>\
-                        <div class="post-subpane-l datetime">'+Date().toLocaleString()+'</div>\
-                    </div>');
-    html_post.append('<div class="post-pane-l title">'+item['title']+'</div>');  
-    html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
-    html_post.append('<div class="post-pane-l img">\
-                        <div class="post-subpane-l img-url">\
-                            <img src="'+item['image']+'" class="img-responsive"/>\
+    $(".approve-area").empty();
+    $(".approve-area").append('<div class="approve header h2">\
+                                <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>\
+                            </div>');
+    let html_post = $('<div class="approve-content" data-post-id="'+item['id']+'"></div>');
+    html_post.append('<div class="approve-c text">\
+                    <div class="approve-r datetime">\
+                        <label for="a-datetime">Datetime</label>\
+                        <div class="input-group date" id="a-datetime">\
+                        <input type="text" class="form-control" />\
+                        <span class="input-group-addon">\
+                        <span class="glyphicon glyphicon-calendar"></span>\
+                        </span>\
                         </div>\
-                        <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
-                    </div>');     
-    html_post.append('<div class="post-pane-l details">'+item['details']+'</div>');     
-    html_post.append('<div class="post-pane-l footer">\
-                        <div class="post-subpane-l tags">'+item['tags']+'</div>\
-                        <div class="post-subpane-l reported">'+item['reporter']+'</div>\
-                    </div>');                 
-    $(".e_Content_Details").append(html_post);
-    $(".e_Content_Details").append('<div class="post action">\
-                                    <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
-                                    <button type="button" class="btn btn-success btn-approve">Duyệt</button>\
-                                </div>');
+                        <script type="text/javascript">\
+                            $(function () {\
+                                $("#a-datetime").datetimepicker();\
+                            });\
+                        </script>\
+                    </div>\
+                    <div class="approve-r category">\
+                        <label for="a-category">Category</label>\
+                        <input type="text" class="form-control" id="a-category" value="'+item['category']+'">\
+                    </div>\
+                    <div class="approve-r title">\
+                        <label for="a-title">Title</label>\
+                        <input type="text" class="form-control" id="a-title" value="'+item['title']+'">\
+                    </div>\
+                    <div class="approve-r abstract">\
+                        <label for="a-abstract">Abstract</label>\
+                        <textarea type="text" class="form-control" id="a-abstract">'+item['abstract']+'</textarea>\
+                    </div>\
+                    <div class="approve-r tags">\
+                        <label for="a-tags">tags:</label>\
+                        <input type="text" class="form-control" id="a-tags" value="'+item['tags']+'">\
+                    </div>\
+                </div>');
+    html_post.append('<div class="approve-c image">\
+                        <img src="'+item['image']+'" class="img-responsive">\
+                    </div>');
+                    
+    $(".approve-area").append(html_post);
 }

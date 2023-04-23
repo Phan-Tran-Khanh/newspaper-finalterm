@@ -93,6 +93,10 @@ blockquote {
 }
 
 /* Editor - main */
+.e_SrcFind {
+    margin-bottom: 10px;
+}
+
 .e_Posts {
     display: flex;
     flex-direction: column;
