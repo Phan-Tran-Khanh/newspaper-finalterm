@@ -106,109 +106,39 @@ blockquote {
     margin-right: 10px;
 }
 
-.e_User img {
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
+.e_User .user{
     margin-right: 10px;
+}
+
+.e_User img {
+    width: 30px;
+    height: 30px;
+    margin: 0px;
 }
 
 /* Editor - footer */
 .e_Footer {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: aliceblue;
-
 }
 
 .e_Footer img {
     width: 150px;
     height: 150px;
-    margin-right: 20px;
-}
-
-.e_Footer address {
-    margin-bottom: 0px;
-}
-
-.e_Footer blockquote {
-    margin-bottom: 0px;
     margin-left: 20px;
-    font-size: 0.8em;
 }
 
 /* Editor - main */
-.e_SrcFind {
-    margin-bottom: 10px;
-}
-
 .e_Posts {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.e_Post {
-    background-color: bisque;
-    padding: 5px;
-    height: 200px;
+
+.d-grid .btn {
+    border-radius: 0px 4px 4px 0px !important;
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-}
-
-.post-list-area {
-    width: 100%;
-}
-
-.post-info-s {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    margin: 5px;
-    margin-top: 0px;
-}
-
-.post-pane-s {
-    background-color: beige;
-    height: 15%;
-    margin: 2px;
-    border-radius: 4px;
-}
-
-.post-pane-s span {
-    padding-left: 20px;
-    font-size: 1.1em;
-}
-
-.abstract {
-    height: 40%
-}
-
-.post-img-s {
-    width: 30%;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.post-img-s img {
-    width: 100%;
-    border-radius: 4px;
-}
-
-.post-btn-del {
-    width: 10%;
-    margin: 5px;
-}
-
-.post-btn-del .btn {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .pagination table {

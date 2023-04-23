@@ -47,10 +47,15 @@
                 </form>
 
                 <!-- Login/ Register Modals Trigger -->
-                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
-                    data-bs-target="#modalLoginRegister">
-                    <i class="bi bi-person-circle"></i>
-                    Log in
+                <a href="#" class="link-light text-decoration-none ms-3 e_User" data-bs-toggle="modal"
+                    data-bs-target="#modalUserInformation">
+                    <div class="user">
+                        <img src="https://via.placeholder.com/25x25" alt="...">
+                        <span>
+                            DongNike
+                        </span>
+                    </div>
+                    <button type="button" class="btn btn-danger"><i class="bi bi-box-arrow-right" style="padding-left: 1px;"></i></button>
                 </a>
             </div>
         </nav>
@@ -156,18 +161,43 @@
     </div>
 
 
-    <footer class="e_Footer">
+    <footer class="e_Footer bg-dark text-light py-5">
         <img src="../assets/logo.png">
-        <address class="e_Contact">
-            <blockquote>
-                <strong>NEWSPAPER</strong> <br>
-                Email: <a href="#">email@email.emal</a> <br>
-                Số điện thoại: (000)-0000-0000 <br>
-                Địa chỉ: địa chỉ/địa chỉ, Địa chỉ, Địa chỉ <br>
-                <br>
-                NEWSPAPER &#169 2023
-            </blockquote>
-        </address>
+        <div class="container">
+            <div class="row">
+                <!-- About developers -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>20120018 - Tran Kieu Minh Lam</p>
+                    <p>20120067 - Ng Pham Ba Duy</p>
+                    <p>20120304 - Phan Tran Khanh</p>
+                </div>
+
+                <!-- Address -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</p>
+                    <p><i class="bi bi-telephone"></i> +1 (123) 456-7890</p>
+                    <p><i class="bi bi-envelope"></i> info@newspaper.com</p>
+                </div>
+
+                <!-- Digital Contact -->
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Brand Name -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">© 2023 Newspaper.com</p>
+                </div>
+            </div>
+        </div>
     </footer>
     
     <script>
