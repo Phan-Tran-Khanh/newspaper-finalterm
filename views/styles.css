@@ -53,14 +53,95 @@ blockquote {
 }
 
 .e_Footer img {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     margin-right: 20px;
 }
 
 .e_Footer address {
     margin-bottom: 0px;
+}
+
+.e_Footer blockquote {
+    margin-bottom: 0px;
     margin-left: 20px;
+    font-size: 0.8em;
 }
 
 /* Editor - main */
+.e_Posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.e_Post {
+    background-color: bisque;
+    padding: 5px;
+    height: 200px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.post-list-area {
+    width: 100%;
+}
+
+.post-info-s {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+.post-pane-s {
+    background-color: beige;
+    height: 15%;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+.post-pane-s span {
+    padding-left: 20px;
+    font-size: 1.1em;
+}
+
+.abstract {
+    height: 40%
+}
+
+.post-img-s {
+    width: 30%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.post-img-s img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.post-btn-del {
+    width: 10%;
+    margin: 5px;
+}
+
+.post-btn-del .btn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination table {
+    empty-cells: show;
+    align-self: center;
+}
+
+.pagination th {
+    font-size: 1.1em;
+}

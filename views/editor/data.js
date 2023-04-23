@@ -1,4 +1,4 @@
-[
+var posts = [
     {
         "id": "0",
         "title": "ABC",
