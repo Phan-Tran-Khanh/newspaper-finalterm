@@ -90,11 +90,11 @@ function LoadPosts() {
                             </div>\
                         </div>');
             html_post.append('<div class="post-img-s">\
-                                <img src="'+item['image']+'" class="img-responsive">\
+                                <img src="'+item['image']+'" class="img-fluid">\
                             </div>');
             html_post.append('<div class="post-btn-del">\
                                 <div class="btn btn-danger">\
-                                    <i class="glyphicon glyphicon-trash"></i>\
+                                    <i class="bi bi-trash"></i>\
                                 </div>\
                             </div>');
             html_postList.append(html_post);
@@ -142,7 +142,7 @@ function LoadDetailedPost(id) {
     html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
     html_post.append('<div class="post-pane-l img">\
                         <div class="post-subpane-l img-url">\
-                            <img src="'+item['image']+'" class="img-responsive"/>\
+                            <img src="'+item['image']+'" class="img-fluid"/>\
                         </div>\
                         <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
                     </div>');     
@@ -171,16 +171,8 @@ function LoadApprovedPost(id) {
                     <div class="approve-r datetime">\
                         <label for="a-datetime">Datetime</label>\
                         <div class="input-group date" id="a-datetime">\
-                        <input type="text" class="form-control" />\
-                        <span class="input-group-addon">\
-                        <span class="glyphicon glyphicon-calendar"></span>\
-                        </span>\
+                            <input class="form-control" type="datetime-local">\
                         </div>\
-                        <script type="text/javascript">\
-                            $(function () {\
-                                $("#a-datetime").datetimepicker();\
-                            });\
-                        </script>\
                     </div>\
                     <div class="approve-r category">\
                         <label for="a-category">Category</label>\
@@ -200,7 +192,7 @@ function LoadApprovedPost(id) {
                     </div>\
                 </div>');
     html_post.append('<div class="approve-c image">\
-                        <img src="'+item['image']+'" class="img-responsive">\
+                        <img src="'+item['image']+'" class="img-fluid">\
                     </div>');
                     
     $(".approve-area").append(html_post);

@@ -2,9 +2,12 @@
 <html lang="vn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Booststrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="../styles.css" rel="stylesheet" type="text/css">
 
     <!-- jQuery library -->
@@ -14,20 +17,90 @@
     <title>Editor</title>
 </head>
 <body class="container-fluid">
-    <header class="e_Header">
-        <div class="e_Branding">
-            <img src="./assets/logo.png">
-            <h1 class="">NEWSPAPER</h1>
-        </div>
-        <div class="e_User d-flex">
-            <button type="button" class="btn btn-danger">Đăng xuất</button>
-            <img src="./assets/avt.png">
-        </div>
+    <header class="sticky-top">
+        <!-- Upper Header -->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="e_Branding container-fluid">
+                <!-- Brand Name -->
+                <img src="./assets/logo.png">
+                <a href="index.html" class="navbar-brand me-auto">Newspaper Brandname and Icon</a>
+
+                <!-- Search Bar -->
+                <form class="d-flex" action="list.html">
+                    <div class="input-group">
+                        <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
+                            aria-label="Search">
+                        <span>
+                            <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
+                                title="Search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+
+                <!-- Login/ Register Modals Trigger -->
+                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
+                    data-bs-target="#modalLoginRegister">
+                    <i class="bi bi-person-circle"></i>
+                    Log in
+                </a>
+            </div>
+        </nav>
+        <!-- Upper Header -->
+
+        <!-- Lower Header -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light" style="padding: 0;">
+            <div class="container-fluid">
+                <!-- Mobile Devices Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Categories Navigation -->
+                <div class="collapse navbar-collapse" id="categoriesToggle">
+                    <ul class="navbar-nav mx-auto mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Global</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Politics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Economy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Technology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Science</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Health</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Arts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Lower Header -->
     </header>
 
 
     <div class="e_Content container">
-        <div class="e-PageTitle header h2"><span><strong>TÌM KIẾM </strong><i class="glyphicon glyphicon-info-sign"></i></span></div>
+        <div class="e-PageTitle header h2"><span><strong>TÌM KIẾM </strong><i class="bi bi-exclamation-circle-fill"></i></span></div>
         <div class="e_Search">
             <div class="e_SrcFind row">
                 <div class="col-lg-8">
