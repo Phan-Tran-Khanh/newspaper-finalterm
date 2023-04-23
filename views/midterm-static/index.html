@@ -11,12 +11,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-    <!-- Booststrap Icons -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- External CSS -->
     <link rel="stylesheet" href="public/css/global.css">
     <link rel="stylesheet" href="public/css/index.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,14 +37,14 @@
                             aria-label="Search">
                         <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit"
                             title="Search">
-                            <i class="bi bi-search text-dark"></i>
+                            <i class="bi bi-search"></i>
                         </button>
                     </div>
                 </form>
 
                 <!-- Login/ Register Modals Trigger -->
-                <a href="#" class="link-light text-decoration-none ms-3" data-bs-toggle="modal"
-                    data-bs-target="#modalLoginRegister" id="anonymity-btn">
+                <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginRegister"
+                    id="anonymity-btn">
                     <i class="bi bi-person-circle"></i>
                     Log in
                 </a>
@@ -62,8 +65,8 @@
                 <div class="collapse navbar-collapse justify-content-between" id="categoriesToggle">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="bi bi-house-door-fill"></i> Home
+                            <a class="nav-link active" aria-current="page" href="index.html">
+                                <i class="bi bi-house-door"></i> Home
                             </a>
                         </li>
                     </ul>
@@ -423,20 +426,18 @@
         <div class="offcanvas-body">
             <ul class="list-unstyled ms-3">
                 <li class="mb-3">
-                    <a href="#" class="link-light text-decoration-none" data-bs-toggle="modal"
-                        data-bs-target="#modalUserInformation">
+                    <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
                         <img src="https://via.placeholder.com/50x50" alt="...">
                         <span>DongNike</span>
                     </a>
                 </li>
                 <li class="mb-3">
-                    <a href="#footer" class="link-light text-decoration-none">
+                    <a href="#footer" class="link-light">
                         <i class="bi bi-people"></i> About us
                     </a>
                 </li>
                 <li class="mb-3">
-                    <a href="#" class="link-light text-decoration-none" id="logout-btn" data-bs-dismiss="offcanvas"
-                        aria-label="Log out">
+                    <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out">
                         <i class="bi bi-box-arrow-left"></i> Log out
                     </a>
                 </li>
@@ -523,8 +524,8 @@
                                 placeholder="Re-enter new password">
                         </div>
                         <div class="modal-footer justify-content-center p-0">
-                            <button type="submit" class="btn" data-bs-dismiss="modal"
-                                aria-label="Save changes">Save Changes</button>
+                            <button type="submit" class="btn" data-bs-dismiss="modal" aria-label="Save changes">Save
+                                Changes</button>
                         </div>
                     </form>
                 </div>
@@ -558,7 +559,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                    <a href="payment.html" class="" target="_blank">Get started</a>
                                 </div>
                             </div>
                         </div>
@@ -576,7 +577,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                    <a href="payment.html" class="" target="_blank">Get started</a>
                                 </div>
                             </div>
                         </div>
@@ -594,7 +595,7 @@
                                     </ul>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="payment.html" class="text-reset text-decoration-none" target="_blank">Get started</a>
+                                    <a href="payment.html" class="" target="_blank">Get started</a>
                                 </div>
                             </div>
                         </div>
@@ -630,7 +631,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <a class="text-decoration-none text-reset" href="#">
+                        <a class="" href="#">
                             <img class="card-img-top" src="public/images/news3.jpg" alt="Card image cap">
                             <div class="card-body small">
                                 <h6 class="card-title">BBC News has been banned in Vietnam</h6>
@@ -720,7 +721,7 @@
             <div class="col-md-12">
                 <!-- Category Name -->
                 <h2 class="bg-dark p-2">
-                    <a class="text-light text-decoration-none" href="#">Politics</a>
+                    <a class="link-light" href="#">Politics</a>
                 </h2>
 
                 <!-- Latest News -->
@@ -898,7 +899,7 @@
             <div class="col-md-12">
                 <!-- Category Name -->
                 <h2 class="bg-dark p-2">
-                    <a class="text-light text-decoration-none" href="#">Economy</a>
+                    <a class="link-light" href="#">Economy</a>
                 </h2>
 
                 <!-- Latest News -->
@@ -1085,9 +1086,9 @@
                 <!-- Address -->
                 <div class="col-md-4">
                     <h5>Contact Us</h5>
-                    <p><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</p>
+                    <a href="https://www.google.com/maps?q=227+Nguyen+Van+Cu+Str.,+D5,+HCMC,+Vietnam+10001" target="_blank"><i class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam 10001</a>
                     <p><i class="bi bi-telephone"></i> +1 (123) 456-7890</p>
-                    <p><i class="bi bi-envelope"></i> info@newspaper.com</p>
+                    <a href="mailto:info@newspaper.com"><i class="bi bi-envelope"></i> info@newspaper.com</a>
                 </div>
 
                 <!-- Digital Contact -->
@@ -1117,34 +1118,7 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
 
-    <!-- jQuery Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            // Switch to the corresponding tab when clicking on a tab link in Login/Register Modals
-            $('#login-register-tabs a').click(function (e) {
-                e.preventDefault();
-                $(this).tab('show', 'active');
-            });
-
-            // Hide #user-btn and show #anonymity-btn by default
-            $('#user-btn').hide();
-            $('#anonymity-btn').show();
-
-            // Event handler for login/register buttons
-            $('#login-btn, #register-btn').click(function (e) {
-                $('#anonymity-btn').hide();
-                $('#user-btn').show();
-            });
-
-            // Event handler for logout button
-            $('#logout-btn').click(function (e) {
-                $('#anonymity-btn').show();
-                $('#user-btn').hide();
-            });
-        });
-    </script>
+    <script src="public/js/global.js"></script>
 </body>
 
 </html>
