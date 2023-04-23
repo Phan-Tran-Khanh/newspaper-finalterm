@@ -5,15 +5,26 @@ function delay(ms) {
 
 // Action when load page:
 $(document).ready(function() {
-    LoadPosts();
+    if (site_list) LoadPosts();
+    if (site_detail) {        
+        let params = new URLSearchParams(location.search);
+        let cur_id = params.get('post_id')
+        LoadDetailedPost(cur_id)
+    }
 });
 
 //Function: navigate to a certain post page
+$("body").on("click", ".post-subpane-l.category", function(){
+    window.location.replace('../index.html');
+});
+
+//Function: navigate to post list
 $("body").on("click", ".e_Post", function(){
     let Post_id = parseInt($(this).data("post-id"));
     window.location.replace('./pages/details.html?post_id='+Post_id);
 });
 
+//Function: load all posts
 function LoadPosts() {
     console.log(posts);
     let numPages = 4;
@@ -79,4 +90,34 @@ function LoadPosts() {
 
         $(this).append(table);
     });
+}
+
+//Function: Load detail of a post
+function LoadDetailedPost(id) {
+    var item = posts[id];
+    item['image']='.'+item['image'];
+    $(".e_Content_Details").empty();
+    let html_post = $('<div class="post-detail" data-post-id="'+item['id']+'"></div>');
+    html_post.append('<div class="post-pane-l header">\
+                        <div class="post-subpane-l category">'+item['category']+'</div>\
+                        <div class="post-subpane-l datetime">'+Date().toLocaleString()+'</div>\
+                    </div>');
+    html_post.append('<div class="post-pane-l title">'+item['title']+'</div>');  
+    html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
+    html_post.append('<div class="post-pane-l img">\
+                        <div class="post-subpane-l img-url">\
+                            <img src="'+item['image']+'" class="img-responsive"/>\
+                        </div>\
+                        <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
+                    </div>');     
+    html_post.append('<div class="post-pane-l details">'+item['details']+'</div>');     
+    html_post.append('<div class="post-pane-l footer">\
+                        <div class="post-subpane-l tags">'+item['tags']+'</div>\
+                        <div class="post-subpane-l reported">'+item['reporter']+'</div>\
+                    </div>');                 
+    $(".e_Content_Details").append(html_post);
+    $(".e_Content_Details").append('<div class="post-action">\
+                                    <button type="button" class="btn btn-danger">Từ chối</button>\
+                                    <button type="button" class="btn btn-success">Duyệt</button>\
+                                </div>');
 }
