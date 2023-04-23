@@ -3,25 +3,55 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+let cur_id = null;
+
 // Action when load page:
 $(document).ready(function() {
     if (site_list) LoadPosts();
     if (site_detail) {        
         let params = new URLSearchParams(location.search);
-        let cur_id = params.get('post_id')
+        cur_id = params.get('post_id')
         LoadDetailedPost(cur_id)
     }
 });
 
-//Function: navigate to a certain post page
+//Function: [INDEX]  navigate to detail post
+$("body").on("click", ".post-info-s, .post-img-s", function(){
+    let Post_id = parseInt($('.e_Post').data("post-id"));
+    window.location.replace('./pages/details.html?post_id='+Post_id);
+});
+
+//Function: [INDEX]  navigate to disapprove post
+$("body").on("click", ".post-btn-del", function(){
+    let Post_id = parseInt($('.e_Post').data("post-id"));
+    window.location.replace('./pages/disapprove.html?post_id='+Post_id);
+});
+
+//Function: [DETAIL] return to post list
 $("body").on("click", ".post-subpane-l.category", function(){
     window.location.replace('../index.html');
 });
 
-//Function: navigate to post list
-$("body").on("click", ".e_Post", function(){
-    let Post_id = parseInt($(this).data("post-id"));
-    window.location.replace('./pages/details.html?post_id='+Post_id);
+//Function: [INDEX] navigate to disapprove page
+$("body").on("click", ".btn-disapprove", function(){
+    let Post_id = parseInt($('.post-detail').data("post-id"));
+    window.location.replace('./disapprove.html?post_id='+Post_id);
+});
+
+
+//Function: [INDEX] navigate to approve page
+// $("body").on("click", ".btn-approve", function(){
+//     window.location.replace('../index.html');
+// });
+
+//Function: [DISAPPROVE]  return to post detail
+$("body").on("click", ".btn-back", function(){
+    window.location.replace('./details.html?post_id='+cur_id);
+});
+
+//Function: [DISAPPROVE]  navigate to post list
+$("body").on("click", ".btn-send", function(){
+    window.location.replace('../index.html');
 });
 
 //Function: load all posts
@@ -117,7 +147,7 @@ function LoadDetailedPost(id) {
                     </div>');                 
     $(".e_Content_Details").append(html_post);
     $(".e_Content_Details").append('<div class="post-action">\
-                                    <button type="button" class="btn btn-danger">Từ chối</button>\
-                                    <button type="button" class="btn btn-success">Duyệt</button>\
+                                    <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
+                                    <button type="button" class="btn btn-success btn-approve">Duyệt</button>\
                                 </div>');
 }

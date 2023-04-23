@@ -202,3 +202,32 @@ blockquote {
     height: 40px;
 }
 
+/* Editor - disapprove */
+.e_Disapprove {
+    display: flex;
+    flex-direction: column;
+}
+
+.disapprove.header {
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.disapprove.header span {
+    margin-left: 20px;
+}
+
+.disapprove-action {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.disapprove-action button {
+    width: 300px;
+    height: 40px;
+}
