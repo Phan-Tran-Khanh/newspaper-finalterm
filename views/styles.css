@@ -1,4 +1,8 @@
 /* general */
+html, body {
+    height: 100%;
+}
+
 html {
     font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
@@ -255,4 +259,28 @@ blockquote {
 
 .approve-r.tags label{
     margin-right: 5px;
+}
+
+/* Admin */
+.Admin {
+    height: 100%;
+    display: flex;
+}
+#a-sidebar {
+    height: 100%;
+    width: 200px;
+}
+
+.Admin .nav-item {
+    margin-bottom: 5px;
+}
+
+.Admin .nav-content {
+    width: 100%;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.nav-content table {
+    width: 100%;
 }

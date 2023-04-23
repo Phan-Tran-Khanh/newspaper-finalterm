@@ -17,7 +17,7 @@
     <title>Admin</title>
 </head>
 <body class="container-fluid">
-    <header class="sticky-top">
+    <header class="position-relative w-100 p-3" style="z-index: 1001; padding: 0px !important;">
         <!-- Upper Header -->
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid e_Branding">
@@ -53,63 +53,76 @@
             </div>
         </nav>
         <!-- Upper Header -->
-
-        <!-- Lower Header -->
-        <nav class="navbar navbar-expand-sm navbar-light bg-light" style="padding: 0;">
-            <div class="container-fluid">
-                <!-- Mobile Devices Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#categoriesToggle" aria-controls="categoriesToggle" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Categories Navigation -->
-                <div class="collapse navbar-collapse" id="categoriesToggle">
-                    <ul class="navbar-nav mx-auto mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="bi bi-house-door"></i> Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Global</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Politics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Economy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Technology</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Science</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Health</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Arts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sports</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Lower Header -->
     </header>
 
 
-    <div class="e_Admin container">
-        <div class="e_Navpane">
-
+    <div class="Admin container-fluid" style="padding: 0px;">
+        <!-- Main Sidebar Container -->
+        <div id="a-sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-4">[Name] News</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item" data-type="categories">
+                    <a href="#" class="nav-link active">
+                        <i class="bi bi-columns-gap"></i>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item" data-type="tags">
+                    <a href="#" class="nav-link text-white">
+                        <i class="bi bi-tags"></i>
+                        Tags
+                    </a>
+                </li>
+                <li class="nav-item" data-type="news">
+                    <a href="#" class="nav-link text-white">
+                        <i class="bi bi-newspaper"></i>
+                        News
+                    </a>
+                </li>
+                <li class="nav-item" data-type="users">
+                    <a href="#" class="nav-link text-white">
+                        <i class="bi bi-people"></i>
+                        Users
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="e_Pane">
 
+        <div class="nav-content">
+            <div class="header h1">Category</div>       
+            <hr>     
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Num editors</th>
+                        <th>Num news</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Category 1</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td><i class="bi bi-pencil-square"></i></td>
+                        <td><i class="bi bi-trash3"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Category 2</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td><i class="bi bi-pencil-square"></i></td>
+                        <td><i class="bi bi-trash3"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <button type="button" class="btn btn-default" style="color:dodgerblue;"><i class="bi bi-plus"></i>Add</button>
         </div>
     </div>
 
