@@ -16,6 +16,30 @@ blockquote {
     margin-bottom: 0px;
 }
 
+.action {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.action button {
+    width: 300px;
+    height: 40px;
+}
+
+.header.h2 {
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.header.h2 span {
+    margin-left: 20px;
+}
+
 /* Editor - header */
 .e_Header {
     background-color: aliceblue;
@@ -192,36 +216,13 @@ blockquote {
     height: 40% !important;
 }
 
-.post-action {
-    display: flex;
-    justify-content: space-between;
-}
-
-.post-action button {
-    width: 300px;
-    height: 40px;
-}
-
 /* Editor - disapprove */
 .e_Disapprove {
     display: flex;
     flex-direction: column;
 }
 
-.disapprove.header {
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-}
-
-.disapprove.header span {
-    margin-left: 20px;
-}
-
-.disapprove-action {
+/* .disapprove-action {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -230,4 +231,44 @@ blockquote {
 .disapprove-action button {
     width: 300px;
     height: 40px;
+} */
+
+/* Editor - approve */
+.e_Approve {
+    display: flex;
+    flex-direction: column;
+}
+
+.approve-content {
+    display: flex;
+}
+
+.approve-c.text {
+    width: 60%;
+    margin-right: 5px;
+}
+
+.approve-c.image {
+    width: 40%;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.approve-r {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.approve-r.abstract {
+    height: 100px;
+}
+
+.approve-r.tags {
+    display: flex;
+    align-items: center;
+}
+
+.approve-r.tags label{
+    margin-right: 5px;
 }

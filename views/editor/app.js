@@ -11,7 +11,8 @@ $(document).ready(function() {
     if (site_detail) {        
         let params = new URLSearchParams(location.search);
         cur_id = params.get('post_id')
-        LoadDetailedPost(cur_id)
+        if (!site_approve && !site_disapprove) LoadDetailedPost(cur_id)
+        else if (site_approve) LoadApprovedPost(cur_id)
     }
 });
 
@@ -32,17 +33,17 @@ $("body").on("click", ".post-subpane-l.category", function(){
     window.location.replace('../index.html');
 });
 
-//Function: [INDEX] navigate to disapprove page
+//Function: [DETAIL] navigate to disapprove page
 $("body").on("click", ".btn-disapprove", function(){
     let Post_id = parseInt($('.post-detail').data("post-id"));
     window.location.replace('./disapprove.html?post_id='+Post_id);
 });
 
-
-//Function: [INDEX] navigate to approve page
-// $("body").on("click", ".btn-approve", function(){
-//     window.location.replace('../index.html');
-// });
+//Function: [DETAIL] navigate to disapprove page
+$("body").on("click", ".btn-approve", function(){
+    let Post_id = parseInt($('.post-detail').data("post-id"));
+    window.location.replace('./approve.html?post_id='+Post_id);
+});
 
 //Function: [DISAPPROVE]  return to post detail
 $("body").on("click", ".btn-back", function(){
@@ -51,6 +52,11 @@ $("body").on("click", ".btn-back", function(){
 
 //Function: [DISAPPROVE]  navigate to post list
 $("body").on("click", ".btn-send", function(){
+    window.location.replace('../index.html');
+});
+
+//Function: [APPROVE]  navigate to post list
+$("body").on("click", ".btn-publish", function(){
     window.location.replace('../index.html');
 });
 
@@ -146,7 +152,37 @@ function LoadDetailedPost(id) {
                         <div class="post-subpane-l reported">'+item['reporter']+'</div>\
                     </div>');                 
     $(".e_Content_Details").append(html_post);
-    $(".e_Content_Details").append('<div class="post-action">\
+    $(".e_Content_Details").append('<div class="post action">\
+                                    <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
+                                    <button type="button" class="btn btn-success btn-approve">Duyệt</button>\
+                                </div>');
+}
+
+//Function: Load detail of a post
+function LoadApprovedPost(id) {
+    var item = posts[id];
+    item['image']='.'+item['image'];
+    $(".e_Content_Details").empty();
+    let html_post = $('<div class="post-detail" data-post-id="'+item['id']+'"></div>');
+    html_post.append('<div class="post-pane-l header">\
+                        <div class="post-subpane-l category">'+item['category']+'</div>\
+                        <div class="post-subpane-l datetime">'+Date().toLocaleString()+'</div>\
+                    </div>');
+    html_post.append('<div class="post-pane-l title">'+item['title']+'</div>');  
+    html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
+    html_post.append('<div class="post-pane-l img">\
+                        <div class="post-subpane-l img-url">\
+                            <img src="'+item['image']+'" class="img-responsive"/>\
+                        </div>\
+                        <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
+                    </div>');     
+    html_post.append('<div class="post-pane-l details">'+item['details']+'</div>');     
+    html_post.append('<div class="post-pane-l footer">\
+                        <div class="post-subpane-l tags">'+item['tags']+'</div>\
+                        <div class="post-subpane-l reported">'+item['reporter']+'</div>\
+                    </div>');                 
+    $(".e_Content_Details").append(html_post);
+    $(".e_Content_Details").append('<div class="post action">\
                                     <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
                                     <button type="button" class="btn btn-success btn-approve">Duyệt</button>\
                                 </div>');
