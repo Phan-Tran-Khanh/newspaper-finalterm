@@ -1,0 +1,58 @@
+<main class="mx-3 my-3 bg-light p-3">
+    <form action="./reporter_list.html">
+        <!-- WYSIWYG Section (TinyMCE) -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-light bg-dark p-2">
+                    Newsroom
+                </h2>
+                <textarea id="reporter-editor" class="w-100"></textarea>
+            </div>
+        </div>
+        <!-- WYSIWYG Section (TinyMCE) -->
+
+        <!-- Preview Section -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!-- Category Name -->
+                <h2 class="text-light bg-dark p-2">
+                    Preview Article
+                </h2>
+
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-8 d-flex flex-column">
+                            <div class="card-body">
+                                <p class="card-text small text-muted">[Reporter Account] - [Today]</p>
+                                <h6 class="card-subtitle tinymce-heading text-muted">
+                                    Example Category
+                                </h6>
+                                <h5 class="card-title tinymce-heading">
+                                    Example Title
+                                </h5>
+                                <p class="card-text tinymce-body">Example Abstract</p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text small text-muted">
+                                    <span class="fw-semibold">
+                                        tags:
+                                    </span>
+                                    <span class="tinymce-heading">
+                                        example tag1, example tag2
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="tinymce-img" class="col-md-4">
+                            <img src="/images/news1.jpg" class="img-fluid rounded-end" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Preview Section -->
+        <div class="text-center border-top p-2 mt-3">
+            <button type="submit" class="btn px-5">Publish</button>
+        </div>
+    </form>
+</main>
