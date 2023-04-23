@@ -14,6 +14,18 @@ export class AppController {
     };
   }
 
+  @Get('/article')
+  @Render('article')
+  articleView() {
+    // TODO
+  }
+
+  @Get('/list')
+  @Render('list')
+  listView() {
+    // TODO
+  }
+
   @Get('/search')
   @Render('search')
   searchArticleView() {

@@ -1,0 +1,82 @@
+<div class="modal fade" tabindex="-1" id="modalUserInformation">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header pb-0 border-bottom-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body mx-3 pt-0">
+        <form class="row g-3">
+          <div class="col-md-12">
+            <h5>PERSONAL INFO</h5>
+          </div>
+
+          <hr class="border border-2 border-dark m-0">
+
+          <!-- Full Name -->
+          <div class="col-md-6">
+            <label for="update-firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="update-firstname" value="Lam">
+          </div>
+          <div class="col-md-6">
+            <label for="update-lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="update-lastname" value="Tran Kieu Minh">
+          </div>
+
+          <!-- Additional Info -->
+          <div class="col-md-6">
+            <label for="update-dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="update-dob" value="2018-07-22" />
+          </div>
+          <div class="col-md-6">
+            <label for="update-gender" class="form-label">Gender</label><br>
+            <select class="form-select" id="update-gender">
+              <option value="">Select your gender</option>
+              <option value="female" selected>Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="col-md-12">
+            <h5>ACCOUNT INFO</h5>
+          </div>
+
+          <hr class="border border-2 border-dark m-0">
+
+          <!-- Email Input -->
+          <div class="col-md-6">
+            <label for="update-email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="update-email" value="20120018@student.hcmus.edu.vn" disabled>
+          </div>
+
+          <!-- Premium Expiration -->
+          <div class="col-md-6">
+            <label for="update-premium" class="form-label">
+              Premium Expiration
+              <!-- Extend Premium Modal Trigger -->
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modalExtendPremium">
+                <i class="bi bi-info-circle-fill"></i>
+              </a>
+            </label>
+            <input type="date" class="form-control" id="update-premium" value="2023-07-22" disabled />
+          </div>
+
+          <!-- Change Password -->
+          <div class="col-md-6">
+            <label for="update-password" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="update-password" placeholder="Enter new password">
+          </div>
+          <div class="col-md-6">
+            <label for="update-repassword" class="form-label">Re-password</label>
+            <input type="password" class="form-control" id="update-repassword" placeholder="Re-enter new password">
+          </div>
+          <div class="modal-footer justify-content-center p-0">
+            <button type="submit" class="btn" data-bs-dismiss="modal" aria-label="Save changes">Save
+              Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
