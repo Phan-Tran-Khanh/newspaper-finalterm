@@ -18,18 +18,18 @@ $(document).ready(function() {
 
 //Function: [INDEX]  navigate to detail post
 $("body").on("click", ".post-info-s, .post-img-s", function(){
-    let Post_id = parseInt($('.e_Post').data("post-id"));
+    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
     window.location.replace('./pages/details.html?post_id='+Post_id);
 });
 
 //Function: [INDEX]  navigate to disapprove post
 $("body").on("click", ".post-btn-del", function(){
-    let Post_id = parseInt($('.e_Post').data("post-id"));
+    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
     window.location.replace('./pages/disapprove.html?post_id='+Post_id);
 });
 
 //Function: [DETAIL] return to post list
-$("body").on("click", ".post-subpane-l.category", function(){
+$("body").on("click", ".back-to-list", function(){
     window.location.replace('../index.html');
 });
 
@@ -45,7 +45,7 @@ $("body").on("click", ".btn-approve", function(){
     window.location.replace('./approve.html?post_id='+Post_id);
 });
 
-//Function: [DISAPPROVE]  return to post detail
+//Function: [DISAPPROVE/APPROVE]  return to post detail
 $("body").on("click", ".btn-back", function(){
     window.location.replace('./details.html?post_id='+cur_id);
 });
@@ -71,32 +71,28 @@ function LoadPosts() {
         let html_postList = $('<div class="post-list" data-page="'+page+'"></div>'); 
         for (let i=0; i<4; i++){
             let item = posts[i];
-            let html_post = $('<div class="e_Post" data-post-id="'+item['id']+'"></div>');
-            html_post.append('<div class="post-info-s">\
-                            <div class="post-pane-s datetime">\
-                                <span>'+Date().toLocaleString()+'</span>\
-                            </div>\
-                            <div class="post-pane-s category">\
-                                <span>'+item['category']+'</span>\
-                            </div>\
-                            <div class="post-pane-s title">\
-                                <span>'+item['title']+'</span>\
-                            </div>\
-                            <div class="post-pane-s abstract">\
-                                <span>'+item['abstract']+'</span>\
-                            </div>\
-                            <div class="post-pane-s tags">\
-                                <span>tags: '+item['tags']+'</span>\
-                            </div>\
-                        </div>');
-            html_post.append('<div class="post-img-s">\
-                                <img src="'+item['image']+'" class="img-responsive">\
-                            </div>');
-            html_post.append('<div class="post-btn-del">\
-                                <div class="btn btn-danger">\
-                                    <i class="glyphicon glyphicon-trash"></i>\
+            let html_post = $('<div class="e_Post card mb-3" data-post-id="'+item['id']+'"></div>');
+            let html_row = $('<div class="row g-0"></div>');
+            html_row.append('<div class="col-md-7 d-flex flex-column post-info-s">\
+                                <div class="card-body">\
+                                    <p class="card-text small text-muted">Dong Nai - 23/4/2023</p>\
+                                    <h6 class="card-subtitle text-muted">'+item['category']+'</h6>\
+                                    <h5 class="card-title mb-2">'+item['title']+'</h5>\
+                                    <p class="card-text small flex-grow-1">'+item['abstract']+'</p>\
+                                </div>\
+                                <div class="card-footer">\
+                                    <p class="card-text small text-muted mt-auto">tags: '+item['tags']+'</p>\
                                 </div>\
                             </div>');
+            html_row.append('<div class="col-md-4 post-img-s">\
+                                <img src="'+item['image']+'" class="img-fluid" alt="...">\
+                            </div>');
+            html_row.append('<div class="col-md-1 d-grid post-btn-del">\
+                                <div class="btn btn-danger btn-block">\
+                                    <i class="bi bi-trash"></i>\
+                                </div>\
+                            </div>');
+            html_post.append(html_row);
             html_postList.append(html_post);
         }
         $(".post-list-area").append(html_postList);
@@ -107,21 +103,30 @@ function LoadPosts() {
         $(this).empty();
         var table = $('<table></table>');
         var row = $('<tr></tr>');
-        row.append('<th>N</th>');
+        row.append('<th class="text-center">N</th>');
         for (let page=1; page<=numPages; page++){
-            row.append('<th>e</th>');
+            row.append('<th class="text-center">e</th>');
         }
         row.append('<th>w</th>');
         row.append('<th>s</th>');
         table.append(row);
 
         row = $('<tr></tr>');
-        row.append('<td>&nbsp;</td>');
+        row.append('<td class="page-item">\
+                        <a class="page-link" href="#" aria-label="Previous">\
+                            <span aria-hidden="true">&laquo;</span>\
+                            <span class="visually-hidden">Previous</span>\
+                        </a>\
+                    </td>');
         for (let page=1; page<=numPages; page++){
-            row.append('<td><a href="#">'+page+'</a></td>');
+            row.append('<td class="page-item"><a class="page-link" href="#">'+page+'</a></td>');
         }
-        row.append('<td>&nbsp;</td>');
-        row.append('<td>&nbsp;</td>');
+        row.append('<td colspan="2" class="page-item">\
+                        <a class="page-link" href="#" aria-label="Next">\
+                            <span aria-hidden="true">&raquo;</span>\
+                            <span class="visually-hidden">Next</span>\
+                        </a>\
+                    </td>');
         table.append(row);
 
         $(this).append(table);
@@ -133,24 +138,35 @@ function LoadDetailedPost(id) {
     var item = posts[id];
     item['image']='.'+item['image'];
     $(".e_Content_Details").empty();
-    let html_post = $('<div class="post-detail" data-post-id="'+item['id']+'"></div>');
-    html_post.append('<div class="post-pane-l header">\
-                        <div class="post-subpane-l category">'+item['category']+'</div>\
-                        <div class="post-subpane-l datetime">'+Date().toLocaleString()+'</div>\
-                    </div>');
-    html_post.append('<div class="post-pane-l title">'+item['title']+'</div>');  
-    html_post.append('<div class="post-pane-l abstract">'+item['abstract']+'</div>');   
-    html_post.append('<div class="post-pane-l img">\
-                        <div class="post-subpane-l img-url">\
-                            <img src="'+item['image']+'" class="img-responsive"/>\
+    let html_post = $('<div class="post-detail col-md-9" data-post-id="'+item['id']+'"></div>');
+    html_post.append('<div class="row row-cols-2">\
+                        <div class="col text-start small back-to-list">\
+                            <a href="#" class="text-decoration-none">'+item['category']+'</a>\
                         </div>\
-                        <div class="post-subpane-l img-desp">'+item['image_desp']+'</div>\
-                    </div>');     
-    html_post.append('<div class="post-pane-l details">'+item['details']+'</div>');     
-    html_post.append('<div class="post-pane-l footer">\
-                        <div class="post-subpane-l tags">'+item['tags']+'</div>\
-                        <div class="post-subpane-l reported">'+item['reporter']+'</div>\
-                    </div>');                 
+                        <div class="col text-end small">\
+                            <p class="text-muted">\
+                                Chủ nhật, 23/4/2023, 16:15 (GMT+7)\
+                            </p>\
+                        </div>\
+                    </div>');
+    html_post.append('<div class="row">\
+                        <h2>'+item['title']+'</h2>\
+                        <p>'+item['abstract']+'</p>\
+                        <figure style="display: flex !important; flex-direction: column; align-items: center;">\
+                            <img src="'+item['image']+'" alt="..." class="img-fluid">\
+                            <figcaption class="small">'+item['image_desp']+'</figcaption>\
+                        </figure>\
+                        <p>'+item['details']+'</p>\
+                    </div>');  
+    html_post.append('<div class="row row-cols-2">\
+                        <div class="col text-start small">\
+                            <span>tags: </span>\
+                            <a href="#" class="text-decoration-none">'+item['tags']+'</a>\
+                        </div>\
+                        <div class="col text-end">\
+                            <p class="fw-bold">'+item['reporter']+'</p>\
+                        </div>\
+                    </div>');                
     $(".e_Content_Details").append(html_post);
     $(".e_Content_Details").append('<div class="post action">\
                                     <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
@@ -171,16 +187,8 @@ function LoadApprovedPost(id) {
                     <div class="approve-r datetime">\
                         <label for="a-datetime">Datetime</label>\
                         <div class="input-group date" id="a-datetime">\
-                        <input type="text" class="form-control" />\
-                        <span class="input-group-addon">\
-                        <span class="glyphicon glyphicon-calendar"></span>\
-                        </span>\
+                            <input class="form-control" type="datetime-local">\
                         </div>\
-                        <script type="text/javascript">\
-                            $(function () {\
-                                $("#a-datetime").datetimepicker();\
-                            });\
-                        </script>\
                     </div>\
                     <div class="approve-r category">\
                         <label for="a-category">Category</label>\
@@ -200,7 +208,7 @@ function LoadApprovedPost(id) {
                     </div>\
                 </div>');
     html_post.append('<div class="approve-c image">\
-                        <img src="'+item['image']+'" class="img-responsive">\
+                        <img src="'+item['image']+'" class="img-fluid">\
                     </div>');
                     
     $(".approve-area").append(html_post);
