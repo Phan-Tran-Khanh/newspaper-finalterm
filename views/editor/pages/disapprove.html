@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="../../styles.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.18/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.18/js/froala_editor.pkgd.min.js"></script>
+
+
+    <title>Editor</title>
+</head>
+<body class="container-fluid">
+    <header class="e_Header">
+        <div class="e_Branding">
+            <img src="../assets/logo.png">
+            <h1 class="">NEWSPAPER</h1>
+        </div>
+        <div class="e_User d-flex">
+            <button type="button" class="btn btn-danger">Đăng xuất</button>
+            <img src="../assets/avt.png">
+        </div>
+    </header>
+
+
+    <div class="e_Disapprove container">
+        <div class="disapprove-content">
+            <div class="disapprove header h2">
+                <span><strong>NỘI DUNG BÀI VIẾT</strong></span>
+            </div>
+            <div id="d-content-area">
+                <script> 
+                    var editor = new FroalaEditor('#d-content-area');
+                </script>
+            </div>
+        </div>
+        <div class="disapprove-reason">
+            <div class="disapprove header h2">
+                <span><strong>LÝ DO TỪ CHỐI</strong></span>
+            </div>
+            <div id="d-reason-area">
+                <script> 
+                    var editor = new FroalaEditor('#d-reason-area');
+                </script>
+            </div>
+            
+        </div>
+        <div class="disapprove action">
+            <button type="button" class="btn btn-default btn-back">Trở lại</button>
+            <button type="button" class="btn btn-primary btn-send">Gửi</button>
+        </div>
+    </div>
+
+
+    <footer class="e_Footer">
+        <img src="../assets/logo.png">
+        <address class="e_Contact">
+            <blockquote>
+                <strong>NEWSPAPER</strong> <br>
+                Email: <a href="#">email@email.emal</a> <br>
+                Số điện thoại: (000)-0000-0000 <br>
+                Địa chỉ: địa chỉ/địa chỉ, Địa chỉ, Địa chỉ <br>
+                <br>
+                NEWSPAPER &#169 2023
+            </blockquote>
+        </address>
+    </footer>
+    
+    <script>
+        var site_list = false;
+        var site_detail = true;
+        var site_disapprove = true;
+        var site_approve = false;
+    </script>
+    <script src="../data.js"></script>
+    <script src="../app.js"></script>
+</body>
+</html>
