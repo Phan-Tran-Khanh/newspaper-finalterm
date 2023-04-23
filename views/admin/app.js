@@ -161,46 +161,80 @@ function showNews() {
 
 function showUsers() {
     $('div.nav-content').empty();
-    $('div.nav-content').append('<div class="header h1">NEWS</div><hr>');
+    $('div.nav-content').append('<div class="header h1">USERS</div><hr>');
     $('div.nav-content').append('<table class="table table-striped">\
                                 <colgroup>\
-                                    <col span="1" style="width: 10%;">\
-                                    <col span="1" style="width: 30%;">\
-                                    <col span="1" style="width: 20%;">\
-                                    <col span="1" style="width: 20%;">\
-                                    <col span="1" style="width: 5%;">\
-                                    <col span="1" style="width: 5%;">\
+                                    <col span="1" style="width: 23%;">\
+                                    <col span="1" style="width: 23%;">\
+                                    <col span="1" style="width: 23%;">\
+                                    <col span="1" style="width: 23%;">\
+                                    <col span="1" style="width: 4%;">\
+                                    <col span="1" style="width: 4%;">\
                                 </colgroup>\
                                 <thead class="table-dark">\
                                     <tr>\
-                                        <th>Title</th>\
-                                        <th>Abstract</th>\
-                                        <th>Views</th>\
-                                        <th>Status</th>\
+                                        <th>Username</th>\
+                                        <th>Permission</th>\
+                                        <th>Category</th>\
+                                        <th>Premium Duration</th>\
                                         <th>&nbsp;</th>\
                                         <th>&nbsp;</th>\
                                     </tr>\
                                 </thead>\
                                 <tbody>\
                                     <tr>\
-                                        <td>Title 1</td>\
-                                        <td>abababab</td>\
-                                        <td>0</td>\
+                                        <td>#username 1</td>\
+                                        <td>Độc giả</td>\
                                         <td><select class="form-select">\
-                                            <option>Xuất bản</option>\
-                                            <option>Bản nháp</option>\
+                                            <option selected>Mục lục</option>\
+                                            <option>Kinh doanh</option>\
+                                            <option>Thế giới</option>\
                                         </select></td>\
+                                        <td><div class="input-group date">\
+                                            <input class="form-control" type="datetime-local">\
+                                        </div></td>\
                                         <td class="text-center"><i class="bi bi-pencil-square"></i></td>\
                                         <td class="text-center"><i class="bi bi-trash3"></i></td>\
                                     </tr>\
                                     <tr>\
-                                        <td>Title 2</td>\
-                                        <td>xyxyxyxy</td>\
-                                        <td>232332</td>\
+                                        <td>#username 2</td>\
+                                        <td>Biên tập</td>\
                                         <td><select class="form-select">\
-                                            <option>Xuất bản</option>\
-                                            <option>Bản nháp</option>\
+                                            <option selected>Mục lục</option>\
+                                            <option>Kinh doanh</option>\
+                                            <option>Thế giới</option>\
                                         </select></td>\
+                                        <td><div class="input-group date">\
+                                            <input class="form-control" type="datetime-local">\
+                                        </div></td>\
+                                        <td class="text-center"><i class="bi bi-pencil-square"></i></td>\
+                                        <td class="text-center"><i class="bi bi-trash3"></i></td>\
+                                    </tr>\
+                                    <tr>\
+                                        <td>#username 3</td>\
+                                        <td>Phóng viên</td>\
+                                        <td><select class="form-select">\
+                                            <option selected>Mục lục</option>\
+                                            <option>Kinh doanh</option>\
+                                            <option>Thế giới</option>\
+                                        </select></td>\
+                                        <td><div class="input-group date">\
+                                            <input class="form-control" type="datetime-local">\
+                                        </div></td>\
+                                        <td class="text-center"><i class="bi bi-pencil-square"></i></td>\
+                                        <td class="text-center"><i class="bi bi-trash3"></i></td>\
+                                    </tr>\
+                                    <tr>\
+                                        <td>#username 4</td>\
+                                        <td>Độc giả</td>\
+                                        <td><select class="form-select">\
+                                            <option selected>Mục lục</option>\
+                                            <option>Kinh doanh</option>\
+                                            <option>Thế giới</option>\
+                                        </select></td>\
+                                        <td><div class="input-group date">\
+                                            <input class="form-control" type="datetime-local">\
+                                        </div></td>\
                                         <td class="text-center"><i class="bi bi-pencil-square"></i></td>\
                                         <td class="text-center"><i class="bi bi-trash3"></i></td>\
                                     </tr>\
