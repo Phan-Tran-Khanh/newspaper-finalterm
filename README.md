@@ -1,3 +1,29 @@
+### FrontEnd (Static Website)
+
+Hosted on Render: <a href="https://ptudw-20tn-nhom9-gk.onrender.com/">ptudw-20tn-nhom9-gk</a>
+
+<ol>
+  <li>Guest/Subscriber
+    <ul>
+      <li>Homepage (Login, Register, Forgot Password, Change Password, Personal Information, Extend Premium): <a href="https://ptudw-20tn-nhom9-gk.onrender.com/index.html" target="blank">Homepage</a></li>
+      <li>List Page/ Search Page: <a href="https://ptudw-20tn-nhom9-gk.onrender.com/list.html" target="blank">List Page</a></li>
+      <li>Article Page: <a href="https://ptudw-20tn-nhom9-gk.onrender.com/article.html" target="blank">Article Page</a></li>
+    </ul>
+  </li>
+  <li>Writer
+    <ul>
+      <li>Homepage (Write/ Modify Articles, Personal Information): <a href="https://ptudw-20tn-nhom9-gk.onrender.com/reporter_index.html" target="blank">Homepage</a></li>
+      <li>List Page/ Search Page: <a href="https://ptudw-20tn-nhom9-gk.onrender.com/reporter_list.html" target="blank">List Page</a></li>
+    </ul>
+  </li>
+  <li>Editor: Homepage (View List Articles, Disapprove/Approve Articles): <a href="https://ptudw-20tn-nhom9-gk.onrender.com/editor/index.html" target="blank">Homepage</a>
+  </li>
+  <li>Admin: Homepage (Manage Categories, Tags, Articles, Users; Select Category for Editor; Extend Premium Duration for Subscribers): <a href="https://ptudw-20tn-nhom9-gk.onrender.com/admin/index.html" target="blank">Homepage</a>
+  </li>
+</ol>
+
+### BackEnd
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
