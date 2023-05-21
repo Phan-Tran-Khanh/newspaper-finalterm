@@ -1,0 +1,485 @@
+<body class="container-fluid">
+  <header class="position-relative w-100 p-3" style="z-index: 1001; padding: 0px !important;">
+    <!-- Upper Header -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <!-- Brand Name -->
+        <a href="../index.html" class="navbar-brand w-50 h-50 me-auto">
+          <img class="w-50 h-50" src="../public/images/logo.png"></img>
+        </a>
+
+        <!-- Logged in Offcanvas Trigger -->
+        <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Upper Header -->
+  </header>
+
+  <!-- Logged in Offcanvas -->
+  <div class="offcanvas offcanvas-end text-bg-dark w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasLoggedin"
+    aria-labelledby="offcanvasLoggedinLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled ms-3">
+        <li class="mb-3">
+          <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
+            <img src="https://via.placeholder.com/50x50" alt="...">
+            <span>DongNike</span>
+          </a>
+        </li>
+        <li class="mb-3">
+          <a href="#footer" class="link-light">
+            <i class="bi bi-people"></i> About us
+          </a>
+        </li>
+        <li class="mb-3">
+          <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="modal" aria-label="Log out">
+            <i class="bi bi-box-arrow-left"></i> Log out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Logged in Offcanvas -->
+
+  <!-- The Modal Edit Category -->
+  <div id="modalEditCate" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>CATEGORY</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="update-cate" class="form-label">Category: </label>
+              <input type="text" class="form-control" id="update-cate" value="Category#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Add Category -->
+  <div id="modalAddCate" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>ADD CATEGORY</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="input-cate" class="form-label">Category: </label>
+              <input type="text" class="form-control" id="input-cate" value="Category#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" id="add-category-btn" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Edit Tag -->
+  <div id="modalEditTag" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>Tag</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="update-tag" class="form-label">Tag: </label>
+              <input type="text" class="form-control" id="update-tag" value="Tag#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Add Tag -->
+  <div id="modalAddTag" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>ADD Tag</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="input-tag" class="form-label">Tag: </label>
+              <input type="text" class="form-control" id="input-tag" value="Tag#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" id="add-tag-btn" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Edit News -->
+  <div id="modalEditNews" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>News</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="update-title" class="form-label">Title: </label>
+              <input type="text" class="form-control" id="update-title" value="News#1">
+            </div>
+            <div class="col-md-6">
+              <label for="update-abs" class="form-label">Abstract: </label>
+              <input type="text" class="form-control" id="update-abs" value="News#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Add News -->
+  <div id="modalAddNews" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>ADD News</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="input-news-title" class="form-label">Title: </label>
+              <input type="text" class="form-control" id="input-news-title" value="News#1">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" id="add-news-btn" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- The Modal Edit User -->
+  <div id="modalEditUser" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>User</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="update-username" class="form-label">Username: </label>
+              <input type="text" class="form-control" id="update-username" value="User#1">
+            </div>
+            <div class="col-md-6">
+              <label for="update-permission" class="form-label">Permission: </label>
+              <input type="text" class="form-control" id="update-permission" value="User#1">
+            </div>
+
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- The Modal Add User -->
+  <div id="modalAddUser" class="modal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>ADD User</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="input-username" class="form-label">Username: </label>
+              <input type="text" class="form-control" id="input-username" value="User#1">
+            </div>
+            <div class="col-md-6">
+              <label for="input-permission" class="form-label">Permission: </label>
+              <select id="input-permission" class="form-select" aria-label="Select an option">
+                <option value="Subcriber">Subcriber</option>
+                <option value="Editor">Editor</option>
+                <option value="Writer">Writer</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer justify-content-center p-0">
+          <button type="submit" class="btn btn-primary" id="add-user-btn" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Writer Info Modals -->
+  <div class="modal fade" tabindex="-1" id="modalUserInformation">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>PERSONAL INFO</h5>
+            </div>
+
+            <hr class="border border-2 border-dark m-0">
+
+            <!-- Full Name -->
+            <div class="col-md-6">
+              <label for="update-fullname" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="update-fullname" value="Lam Tran Kieu Minh">
+            </div>
+            <div class="col-md-6">
+              <label for="update-penname" class="form-label">Pen Name</label>
+              <input type="text" class="form-control" id="update-penname" value="MLam depchai">
+            </div>
+
+            <!-- Additional Info -->
+            <div class="col-md-6">
+              <label for="update-dob" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="update-dob" value="2018-07-22" />
+            </div>
+            <div class="col-md-6">
+              <label for="update-gender" class="form-label">Gender</label><br>
+              <select class="form-select" id="update-gender">
+                <option value="">Select your gender</option>
+                <option value="female" selected>Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <h5>ACCOUNT INFO</h5>
+            </div>
+
+            <hr class="border border-2 border-dark m-0">
+
+            <!-- Email Input -->
+            <div class="col-12">
+              <label for="update-email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="update-email" value="20120018@student.hcmus.edu.vn" disabled>
+            </div>
+
+            <div class="col-md-6">
+              <label for="update-password" class="form-label">New Password</label>
+              <input type="password" class="form-control" id="update-password" placeholder="Enter new password">
+            </div>
+            <div class="col-md-6">
+              <label for="update-repassword" class="form-label">Re-password</label>
+              <input type="password" class="form-control" id="update-repassword" placeholder="Re-enter new password">
+            </div>
+            <div class="modal-footer justify-content-center p-0">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Writer Info Modals -->
+
+
+  <div class="Admin container-fluid" style="padding: 0px;">
+    <!-- Main Sidebar Container -->
+    <div id="a-sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item" data-type="categories">
+          <a href="#" class="nav-link active">
+            <i class="bi bi-columns-gap"></i>
+            Categories
+          </a>
+        </li>
+        <li class="nav-item" data-type="tags">
+          <a href="#" class="nav-link text-white">
+            <i class="bi bi-tags"></i>
+            Tags
+          </a>
+        </li>
+        <li class="nav-item" data-type="news">
+          <a href="#" class="nav-link text-white">
+            <i class="bi bi-newspaper"></i>
+            News
+          </a>
+        </li>
+        <li class="nav-item" data-type="users">
+          <a href="#" class="nav-link text-white">
+            <i class="bi bi-people"></i>
+            Users
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-content">
+      <div class="header h1">Category</div>
+      <hr>
+      <table class="table table-striped">
+        <colgroup>
+          <col span="1" style="width: 50%;">
+          <col span="1" style="width: 20%;">
+          <col span="1" style="width: 20%;">
+          <col span="1" style="width: 5%;">
+          <col span="1" style="width: 5%;">
+        </colgroup>
+        <thead class="table-dark">
+          <tr>
+            <th>Category</th>
+            <th>No. editors</th>
+            <th>No. news</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Category 1</td>
+            <td>5</td>
+            <td>5</td>
+            <td class="text-center btn-edit-cate"><i class="bi bi-pencil-square"></i></td>
+            <td class="text-center btn-remove-cate"><i class="bi bi-trash3"></i></td>
+          </tr>
+          <tr>
+            <td>Category 2</td>
+            <td>5</td>
+            <td>5</td>
+            <td class="text-center btn-edit-cate"><i class="bi bi-pencil-square"></i></td>
+            <td class="text-center btn-remove-cate"><i class="bi bi-trash3"></i></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <button type="button" class="btn btn-default" style="color:dodgerblue;"><i class="bi bi-plus"></i>Add</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+
+  <script>
+    var site_list = true;
+    var site_detail = false;
+    var site_disapprove = false;
+    var site_approve = false;
+  </script>
+  <script src="../public/mock/admin.js"></script>
+  <script src="../public/js/admin.js"></script>
+</body>
