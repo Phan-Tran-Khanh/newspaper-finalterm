@@ -1,3 +1,172 @@
-<header>
-  This is header
+<header class="sticky-top">
+  <!-- Upper Header -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!-- Brand Name -->
+      <a href="/" class="navbar-brand w-50 h-50 me-auto">
+        <img class="w-50 h-50" src="../../public/images/logo.png"></img>
+      </a>
+
+      <!-- Search Bar -->
+      <form class="d-flex" action="list.html">
+        <div class="input-group">
+          <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
+            aria-label="Search">
+          <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit" title="Search">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+
+      <!-- Login/ Register Modals Trigger -->
+      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginRegister"
+        id="anonymity-btn">
+        <i class="bi bi-person-circle"></i>
+        Log in
+      </a>
+
+      <!-- Logged in Offcanvas Trigger -->
+      <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- Upper Header -->
+
+  <!-- Categories Navigation -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse justify-content-between" id="categoriesToggle">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="internationalDropdown" role="button">
+              International
+            </a>
+            <div class="dropdown-menu" aria-labelledby="internationalDropdown">
+              <a class="dropdown-item" href="list.html">International Sports</a>
+              <a class="dropdown-item" href="list.html">Global Business & Economy</a>
+              <a class="dropdown-item" href="list.html">International Politics</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="politicsDropdown" role="button">
+              Politics
+            </a>
+            <div class="dropdown-menu" aria-labelledby="politicsDropdown">
+              <a class="dropdown-item" href="list.html">Domestic Politics</a>
+              <a class="dropdown-item" href="list.html">Election News</a>
+              <a class="dropdown-item" href="list.html">Political Scandals & Corruption</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="economyDropdown" role="button">
+              Economy
+            </a>
+            <div class="dropdown-menu" aria-labelledby="economyDropdown">
+              <a class="dropdown-item" href="list.html">Macroeconomics</a>
+              <a class="dropdown-item" href="list.html">Microeconomics</a>
+              <a class="dropdown-item" href="list.html">Labor Market</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="technologyDropdown" role="button">
+              Technology
+            </a>
+            <div class="dropdown-menu" aria-labelledby="technologyDropdown">
+              <a class="dropdown-item" href="list.html">Cybersecurity & Privacy</a>
+              <a class="dropdown-item" href="list.html">Internet of Things</a>
+              <a class="dropdown-item" href="list.html">Blockchain & Cryptocurrency</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="scienceDropdown" role="button">
+              Science
+            </a>
+            <div class="dropdown-menu" aria-labelledby="scienceDropdown">
+              <a class="dropdown-item" href="list.html">Space & Astronomy</a>
+              <a class="dropdown-item" href="list.html">Neuroscience</a>
+              <a class="dropdown-item" href="list.html">Engineering & Technology</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="healthDropdown" role="button">
+              Health
+            </a>
+            <div class="dropdown-menu" aria-labelledby="healthDropdown">
+              <a class="dropdown-item" href="list.html">Mental Health</a>
+              <a class="dropdown-item" href="list.html">Food & Nutrition</a>
+              <a class="dropdown-item" href="list.html">Health Policy</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="sportsDropdown" role="button">
+              Sports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="sportsDropdown">
+              <a class="dropdown-item" href="list.html">Football</a>
+              <a class="dropdown-item" href="list.html">Golf</a>
+              <a class="dropdown-item" href="list.html">Olympics</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="entertainmentDropdown" role="button">
+              Entertainment
+            </a>
+            <div class="dropdown-menu" aria-labelledby="entertainmentDropdown">
+              <a class="dropdown-item" href="list.html">Film & Television</a>
+              <a class="dropdown-item" href="list.html">Music</a>
+              <a class="dropdown-item" href="list.html">Gaming</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="educationDropdown" role="button">
+              Education
+            </a>
+            <div class="dropdown-menu" aria-labelledby="educationDropdown">
+              <a class="dropdown-item" href="list.html">Higher Education</a>
+              <a class="dropdown-item" href="list.html">K-12 Education</a>
+              <a class="dropdown-item" href="list.html">Educational Policy</a>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="list.html" id="tourismDropdown" role="button">
+              Tourism
+            </a>
+            <div class="dropdown-menu" aria-labelledby="tourismDropdown">
+              <a class="dropdown-item" href="list.html">Ecotourism</a>
+              <a class="dropdown-item" href="list.html">Medical Tourism</a>
+              <a class="dropdown-item" href="list.html">Travel Destinations</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Categories Navigation -->
 </header>

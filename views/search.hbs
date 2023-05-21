@@ -1,3 +1,317 @@
-<main>
-  This is search view
+<main class="container my-3 bg-light">
+  <div>
+    <span class="h2">
+      SEARCHING
+    </span>
+    <i class="bi bi-info-circle-fill pop-me-over h6 text-secondary" tabindex="0" data-bs-toggle="popover"
+      data-bs-trigger="hover" title="Search"
+      data-bs-content="You can search articles by title, abstract, and full-text."></i>
+  </div>
+
+  <!-- Search Bar with Filters -->
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group">
+          <input type="search" class="form-control" placeholder="Search" id="search-input">
+          <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-md-3 my-3">
+      <div class="col">
+        <div class="input-group">
+          <label class="input-group-text" for="filter1">Time</label>
+          <select class="form-select" id="filter1">
+            <option selected>Choose...</option>
+            <option value="today">Today</option>
+            <option value="this_week">This week</option>
+            <option value="this_month">This month</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group">
+          <label class="input-group-text" for="filter2">Category</label>
+          <select class="form-select" id="filter2">
+            <option selected>Choose...</option>
+            <option value="politics">Politics</option>
+            <option value="economy">Economy</option>
+            <option value="sports">Sports</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group">
+          <label class="input-group-text" for="filter3">Tags</label>
+          <select class="form-select" id="filter3">
+            <option selected>Choose...</option>
+            <option value="food">Food</option>
+            <option value="agriculture">Agriculture</option>
+            <option value="green_economy">Green Economy</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- Search Bar with Filters -->
+
+  <!-- List News Queried -->
+  <!-- Page 1 -->
+  <div id="group-1">
+    <div class="card mb-3 position-relative">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Phan Anh - May 2nd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                International
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Vietnamese man dies at Japanese police station
+              </a>
+            </h5>
+            <p class="card-text small">A Vietnamese man died while in detention at a Japanese police station on April
+              29,
+              and his cause of death is yet to be confirmed.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags: <a href="list.html">suicide</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/news4.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+      <!-- Premium Tag -->
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+        Excl
+        <span class="visually-hidden">Premium Article</span>
+      </span>
+      <!-- Premium Tag -->
+    </div>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Duc Trung - May 2nd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Markets
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Vietnamese-Americans help legalize rau muong in US
+              </a>
+            </h5>
+            <p class="card-text small">When Le Dam Doan moved to Georgia in 2004, she was surprised to learn that “rau
+              muong”, or water spinach.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags:
+              <a href="list.html">agriculture</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/news2.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Lam Thoa - April 30th, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Sports
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                ‘Vietnam won, that’s important’: Coach Troussier
+              </a>
+            </h5>
+            <p class="card-text small">Coach Philippe Troussier wanted to emphasize on Vietnam’s victory against Laos on
+              Sunday evening in their first match in SEA Games 32.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags:
+              <a href="list.html">football</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/news6.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page 1 -->
+
+  <!-- Page 2 -->
+  <div id="group-2">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Anh Tu - May 3rd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Business
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Southern industrial real estate occupancy down in Q1
+              </a>
+            </h5>
+            <p class="card-text small">Occupancy rates of all southern industrial real estate segments
+              decreased in the first quarter of this year due to economic difficulties, according to property
+              consultancy Cushman & Wakefield Vietnam.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags:
+              <a href="list.html">industries</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/eco2.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">AFP - May 2nd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Transaction
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Dollar continues to fall on black market
+              </a>
+            </h5>
+            <p class="card-text small">The U.S. dollar dropped against the Vietnamese dong on the black market
+              Tuesday morning.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags: <a href="list.html">dollar</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/eco3.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Reuters - May 2nd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Agriculture
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Durian prices plunge 40% in a month
+              </a>
+            </h5>
+            <p class="card-text small">Ri6 durian prices grown in the Mekong Delta have plunged by 30-40% to
+              VND50,000-55,000 ($2.13-2.34) per kilogram from early April.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags:
+              <a href="list.html">fruit</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/eco4.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page 2 -->
+
+  <!-- Page 3 -->
+  <div id="group-3">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex flex-column">
+          <div class="card-body">
+            <p class="card-text small text-muted">Reuters - May 3rd, 2023</p>
+            <h6 class="card-subtitle text-muted">
+              <a href="list.html">
+                Exportation
+              </a>
+            </h6>
+            <h5 class="card-title">
+              <a href="article.html">
+                Exports down 12% in four months
+              </a>
+            </h5>
+            <p class="card-text small">Vietnam's exports totaled US$108.57 billion in the first four months of
+              this year, a year-on-year decrease of 11.8%, the General Statistics Office announced.</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text small text-muted">
+              tags:
+              <a href="list.html">foreign</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="../../public/images/eco1.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page 3 -->
+  <!-- List News Queried -->
+
+  <!-- Pagination -->
+  <nav class="d-flex justify-content-center" aria-label="Page navigation">
+    <ul class="pagination pagination-sm">
+      <li class="page-item">
+        <a id="first" class="page-link" href="#">
+          <span aria-hidden="true">&laquo;</span> First
+        </a>
+      </li>
+      <li class="page-item" aria-current="page">
+        <a class="page-link active" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a id="last" class="page-link next" href="#">
+          Last <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Pagination -->
 </main>
