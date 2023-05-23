@@ -8,7 +8,7 @@
       </a>
 
       <!-- Search Bar -->
-      <form class="d-flex" action="list.html">
+      <form class="d-flex" action="/search">
         <div class="input-group">
           <input class="form-control rounded-start border-end-0" type="search" placeholder="Search..."
             aria-label="Search">
@@ -49,10 +49,10 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link" href="/search?category={{slug}}" role="button">
-              {{ name }}
+              {{name}}
             </a>
             <div class="dropdown-menu">
-              {{#each children }}
+              {{#each children}}
               <a class="dropdown-item" href="/search?category={{slug}}">{{name}}</a>
               {{/each}}
             </div>
