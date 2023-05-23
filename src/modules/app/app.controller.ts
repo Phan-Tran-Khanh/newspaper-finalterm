@@ -15,13 +15,13 @@ export class AppController {
         this.appService.getTopArticles(),
         this.appService.getTopAllCategories(),
       ]);
-    console.log(categories);
     return {
       layout: 'layouts/index',
       categories,
       weeklyArticles,
       topArticles,
       allCategories,
+      test: 'test',
     };
   }
 
@@ -41,6 +41,7 @@ export class AppController {
   @Render('search')
   searchView(@Query() query: any) {
     const { category, tags, abstract, title, content, time } = query;
+
     return {
       layout: 'layouts/index',
     };
