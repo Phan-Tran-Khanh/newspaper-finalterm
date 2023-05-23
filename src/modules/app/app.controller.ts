@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -8,13 +8,20 @@ export class AppController {
   @Get()
   @Render('index')
   async homeView() {
+    const [categories, weeklyArticles, topArticles, allCategories] =
+      await Promise.all([
+        this.appService.getCategories(),
+        this.appService.getWeeklyArticles(),
+        this.appService.getTopArticles(),
+        this.appService.getTopAllCategories(),
+      ]);
+    console.log(categories);
     return {
       layout: 'layouts/index',
-      categories: await this.appService.getCategories(),
-      weeklyArticles: await this.appService.getWeeklyArticles(),
-      topArticles: await this.appService.getTopArticles(),
-      allCategories: await this.appService.getTopAllCategories(),
-      test: 'test',
+      categories,
+      weeklyArticles,
+      topArticles,
+      allCategories,
     };
   }
 
@@ -32,8 +39,11 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  searchArticleView() {
-    // TODO
+  searchView(@Query() query: any) {
+    const { category, tags, abstract, title, content, time } = query;
+    return {
+      layout: 'layouts/index',
+    };
   }
 
   // @Get('/:slug')
