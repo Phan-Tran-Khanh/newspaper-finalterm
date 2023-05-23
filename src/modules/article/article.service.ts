@@ -11,7 +11,6 @@ export class ArticleService {
   ) {}
 
   createDraft(article: Article): Promise<Article> {
-    article.isPublished = false;
     return this.articleRepository.save(article);
   }
 
@@ -25,14 +24,12 @@ export class ArticleService {
     return this.articleRepository.save(article);
   }
   unpublishDraft(article: Article): Promise<Article> {
-    article.isPublished = false;
     return this.articleRepository.save(article);
   }
 
   getDraftsByUser(userId: number): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: false,
         author: {
           id: userId,
         },
@@ -43,7 +40,6 @@ export class ArticleService {
   getPulishedByUser(userId: number): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: true,
         author: {
           id: userId,
         },
@@ -54,7 +50,6 @@ export class ArticleService {
   getPublishedByCategory(categoryId: number): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: true,
         category: {
           id: categoryId,
         },
@@ -65,7 +60,6 @@ export class ArticleService {
   getLastestByCategory(categoryId: number): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: true,
         category: {
           id: categoryId,
         },
@@ -80,7 +74,6 @@ export class ArticleService {
   getMostViewByCategory(categoryId: number): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: true,
         category: {
           id: categoryId,
         },

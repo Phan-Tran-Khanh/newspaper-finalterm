@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Audit } from './audit.entity';
-import { Lable } from './lable.entity';
+import { Label } from './label.entity';
 import { User } from './user.entity';
 import { Comment } from './comment.entity';
 import { Category } from './category.entity';
@@ -45,8 +45,8 @@ export class Article {
   @Column({ default: false })
   isPremium: boolean;
 
-  @Column({ default: false })
-  isPublished: boolean;
+  @Column()
+  status: boolean;
 
   @Column()
   publishedAt: Date;
@@ -57,9 +57,9 @@ export class Article {
   @Column(() => Audit, { prefix: false })
   audit: Audit;
 
-  @ManyToMany(() => Lable)
-  @JoinTable({ name: 'article_lables' })
-  lables: Lable[];
+  @ManyToMany(() => Label)
+  @JoinTable({ name: 'article_labels' })
+  labels: Label[];
 
   @ManyToOne(() => User)
   author: User;

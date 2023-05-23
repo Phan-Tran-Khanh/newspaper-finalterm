@@ -37,6 +37,12 @@ export class User {
   lastName: string;
 
   @Column({ nullable: true })
+  penName: string;
+
+  @Column({ nullable: true })
+  dateOfBirth: Date;
+
+  @Column({ nullable: true })
   subcriptionExpiryDate: Date;
 
   @ManyToOne(() => Role, (role) => role.id)

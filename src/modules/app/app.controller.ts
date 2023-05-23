@@ -29,7 +29,7 @@ export class AppController {
   async searchView(@Query() query: any) {
     const [categories, tags, articles] = await Promise.all([
       this.appService.getCategories(),
-      this.appService.getLables(),
+      this.appService.getLabels(),
       this.appService.searchArticles(query),
     ]);
     return {

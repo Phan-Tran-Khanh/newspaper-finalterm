@@ -20,7 +20,7 @@ export class AppService {
       },
     ];
   }
-  async getLables() {
+  async getLabels() {
     return [
       {
         name: 'Bitcoin',
