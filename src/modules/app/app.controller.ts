@@ -8,19 +8,19 @@ export class AppController {
   @Get()
   @Render('index')
   async homeView() {
-    const [categories, weeklyArticles, topArticles, allCategories] =
+    const [categories, weeklyArticles, topArticles, topArticlesByCategory] =
       await Promise.all([
         this.appService.getCategories(),
         this.appService.getWeeklyArticles(),
         this.appService.getTopArticles(),
-        this.appService.getTopAllCategories(),
+        this.appService.getTopArticlesByCategory(),
       ]);
     return {
       layout: 'layouts/index',
       categories,
       weeklyArticles,
       topArticles,
-      allCategories,
+      topArticlesByCategory,
     };
   }
 
@@ -41,7 +41,7 @@ export class AppController {
   }
 
   @Get('/:slug')
-  @Render('detail')
+  @Render('article')
   async articleView(@Param('slug') slug: string) {
     const [categories, article] = await Promise.all([
       this.appService.getCategories(),
