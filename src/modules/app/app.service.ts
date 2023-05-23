@@ -5,20 +5,7 @@ import { CategoryService } from 'src/modules/category/category.service';
 export class AppService {
   constructor(private readonly categoryService: CategoryService) {}
   async getCategories() {
-    await this.categoryService.findAll();
-    return [
-      {
-        name: 'International',
-        slug: 'international',
-        children: [
-          { name: 'International Sports', slug: 'international-sports' },
-          {
-            name: 'Global Business & Economy',
-            slug: 'global-bussess-economy',
-          },
-        ],
-      },
-    ];
+    return this.categoryService.findAll();
   }
   async getLabels() {
     return [
@@ -68,7 +55,7 @@ export class AppService {
       },
     ];
   }
-  async getTopAllCategories() {
+  async getTopArticlesByCategory() {
     return [
       {
         international: [
