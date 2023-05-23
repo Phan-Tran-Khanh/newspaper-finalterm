@@ -7,10 +7,14 @@ export class AppController {
 
   @Get()
   @Render('index')
-  homeView() {
-    this.appService.getHome();
+  async homeView() {
     return {
       layout: 'layouts/index',
+      categories: await this.appService.getCategories(),
+      weeklyArticles: await this.appService.getWeeklyArticles(),
+      topArticles: await this.appService.getTopArticles(),
+      allCategories: await this.appService.getTopAllCategories(),
+      test: 'test',
     };
   }
 
@@ -32,9 +36,9 @@ export class AppController {
     // TODO
   }
 
-  @Get('/:slug')
-  @Render('detail')
-  detailArticleView() {
-    // TODO
-  }
+  // @Get('/:slug')
+  // @Render('detail')
+  // detailArticleView() {
+  //   // TODO
+  // }
 }
