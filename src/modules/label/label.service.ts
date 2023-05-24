@@ -15,8 +15,8 @@ export class LabelService {
     return 'This action adds a new label';
   }
 
-  findAll() {
-    return `This action returns all label`;
+  findAll(): Promise<Label[]> {
+    return this.labelRepository.find();
   }
 
   findOne(id: number) {

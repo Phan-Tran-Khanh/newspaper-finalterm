@@ -1,18 +1,18 @@
 import { Column } from 'typeorm';
 
 export class Audit {
-  @Column({ default: () => 'NOW()' })
+  @Column({ default: () => 'NOW()', nullable: true })
   createdAt: Date;
-  @Column()
+  @Column({ nullable: true })
   createdBy: number;
 
-  @Column()
+  @Column({ nullable: true })
   updatedAt: Date;
-  @Column()
+  @Column({ nullable: true })
   updatedBy: number;
 
-  @Column()
+  @Column({ nullable: true })
   deletedAt: Date;
-  @Column()
+  @Column({ nullable: true })
   deletedBy: number;
 }

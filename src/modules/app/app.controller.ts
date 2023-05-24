@@ -15,6 +15,19 @@ export class AppController {
         this.appService.getTopArticles(),
         this.appService.getTopArticlesByCategory(),
       ]);
+    console.log(
+      JSON.stringify(
+        {
+          layout: 'layouts/index',
+          categories,
+          weeklyArticles,
+          topArticles,
+          topArticlesByCategory,
+        },
+        null,
+        2,
+      ),
+    );
     return {
       layout: 'layouts/index',
       categories,
@@ -26,11 +39,21 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  async searchView(@Query() query: any) {
+  async searchView(
+    @Query('category') category: string,
+    @Query('label') label: string,
+    @Query('time') time: 'day' | 'week' | 'month' | 'year',
+    @Query('queryString') queryString: string,
+  ) {
     const [categories, tags, articles] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.searchArticles(query),
+      this.appService.searchArticles({
+        category,
+        label,
+        time,
+        queryString,
+      }),
     ]);
     return {
       layout: 'layouts/index',
@@ -43,9 +66,10 @@ export class AppController {
   @Get('/:slug')
   @Render('article')
   async articleView(@Param('slug') slug: string) {
+    console.log('slug', slug);
     const [categories, article] = await Promise.all([
       this.appService.getCategories(),
-      this.appService.getArticleBySlug(slug),
+      this.appService.getDetailArticleBySlug(slug),
     ]);
     const relatedArticles = await this.appService.getRelatedArticles(article);
     return {

@@ -35,4 +35,12 @@ export class CategoryService {
   async remove(id: number): Promise<void> {
     await this.categoryRepository.delete(id);
   }
+
+  async getMostViewedCategories(take = 10): Promise<Category[]> {
+    // join category and article table to get the sum of weeklyViewCount for each category
+    const categories = await this.categoryRepository.find({
+      take,
+    });
+    return categories;
+  }
 }

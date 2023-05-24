@@ -18,6 +18,9 @@ async function bootstrap() {
   app.setViewEngine('hbs');
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
   hbs.registerHelper('slugify', (str: string) => slugify(str));
+  hbs.registerHelper('inRange', (index: number, start: number, end: number) => {
+    return start <= index && index <= end;
+  });
 
   // set up request logger
   app.use(

@@ -14,6 +14,7 @@ import { User } from './user.entity';
 import { Comment } from './comment.entity';
 import { Category } from './category.entity';
 import { MaxLength } from 'class-validator';
+import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 
 @Entity()
 export class Article {
@@ -36,6 +37,9 @@ export class Article {
   @Column({ default: 0 })
   viewCount: number;
 
+  @Column({ default: 0 })
+  weeklyViewCount: number;
+
   @Column()
   bannerImageUrl: string;
 
@@ -45,24 +49,24 @@ export class Article {
   @Column({ default: false })
   isPremium: boolean;
 
-  @Column()
-  status: boolean;
+  @Column({ enum: ArticleStatus, default: ArticleStatus.Draft })
+  status: ArticleStatus;
 
-  @Column()
+  @Column({ nullable: true })
   publishedAt: Date;
 
-  @Column()
+  @Column({ nullable: true })
   publishedBy: number;
 
   @Column(() => Audit, { prefix: false })
   audit: Audit;
 
+  @ManyToOne(() => User)
+  createdBy: User;
+
   @ManyToMany(() => Label)
   @JoinTable({ name: 'article_labels' })
   labels: Label[];
-
-  @ManyToOne(() => User)
-  author: User;
 
   @OneToMany(() => Comment, (comment) => comment.article)
   comments: Comment[];

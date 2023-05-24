@@ -1,176 +1,64 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Query } from '@nestjs/common';
 import { CategoryService } from 'src/modules/category/category.service';
+import { LabelService } from '../label/label.service';
+import { ArticleService } from '../article/article.service';
 
 @Injectable()
 export class AppService {
-  constructor(private readonly categoryService: CategoryService) {}
+  constructor(
+    private readonly categoryService: CategoryService,
+    private readonly labelService: LabelService,
+    private readonly articleService: ArticleService,
+  ) {}
   async getCategories() {
     return this.categoryService.findAll();
   }
   async getLabels() {
-    return [
-      {
-        name: 'Bitcoin',
-        slug: 'bitcoin',
-      },
-      {
-        name: 'Ethereum',
-        slug: 'ethereum',
-      },
-    ];
+    return this.labelService.findAll();
   }
   async getWeeklyArticles() {
-    return [
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-    ];
+    return this.articleService.getWeeklyArticles();
   }
   async getTopArticles() {
-    return [
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-    ];
+    const topCategories = await this.categoryService.getMostViewedCategories();
+    const topArticles = [];
+    for (const category of topCategories) {
+      const articles = await this.articleService.getMostViewedByCategory(
+        category.id,
+        1,
+      );
+      topArticles.push(...articles);
+    }
+    return topArticles;
   }
   async getTopArticlesByCategory() {
-    return [
-      {
-        international: [
-          {
-            title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-            slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-            summary:
-              'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-            bannerImgUrl: '/images/news1.jpg',
-            isPremium: false,
-            category: {
-              name: 'International Sports',
-              slug: 'international-sports',
-            },
-            publishedAt: new Date(),
-            createdBy: 'admin',
-          },
-          {
-            title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-            slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-            summary:
-              'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-            bannerImgUrl: '/images/news1.jpg',
-            isPremium: false,
-            category: {
-              name: 'International Sports',
-              slug: 'international-sports',
-            },
-            publishedAt: new Date(),
-            createdBy: 'admin',
-          },
-        ],
-      },
-    ];
+    const categories = await this.categoryService.findAll();
+    const topArticles: Record<string, any> = {};
+    for (const category of categories) {
+      const mostViewed = await this.articleService.getMostViewedByCategory(
+        category.id,
+      );
+      const latest = await this.articleService.getLatestByCategory(category.id);
+      topArticles[category.name] = {
+        mostViewed,
+        latest,
+      };
+    }
+
+    return topArticles;
   }
-  async searchArticles(query: any) {
-    return [
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-    ];
+  async searchArticles(query: {
+    category: string;
+    label: string;
+    time: 'day' | 'week' | 'month' | 'year';
+    queryString: string;
+  }) {
+    return this.articleService.searchArticles(query);
   }
-  async getArticleBySlug(slug: string) {
-    console.log(slug);
-    return {
-      title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-      slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-      summary:
-        'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-      bannerImgUrl: '/images/news1.jpg',
-      isPremium: false,
-      category: {
-        name: 'International Sports',
-        slug: 'international-sports',
-      },
-      publishedAt: new Date(),
-      createdBy: 'admin',
-    };
+  async getDetailArticleBySlug(slug: string) {
+    return this.articleService.getDetailArticleBySlug(slug);
   }
   async getRelatedArticles(article: any) {
-    console.log(article);
-    return [
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-      {
-        title: 'The 10 Most Important Cryptocurrencies Other Than Bitcoin',
-        slug: 'the-10-most-important-cryptocurrencies-other-than-bitcoin',
-        summary:
-          'Bitcoin has not just been a trendsetter, ushering in a wave of cryptocurrencies built on a decentralized peer-to-peer network, it’s become the de facto standard for cryptocurrencies, inspiring an ever-growing legion of followers and spinoffs.',
-        bannerImgUrl: '/images/news1.jpg',
-        isPremium: false,
-        category: {
-          name: 'International Sports',
-          slug: 'international-sports',
-        },
-        publishedAt: new Date(),
-        createdBy: 'admin',
-      },
-    ];
+    return this.articleService.getMostViewedByCategory(article.category.id);
   }
 }
