@@ -17,7 +17,9 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
-  hbs.registerHelper('slugify', (str: string) => slugify(str));
+  hbs.registerHelper('slugify', (options: Handlebars.HelperOptions) => {
+    return slugify(options.fn(this), { lower: true });
+  });
   hbs.registerHelper('inRange', (index: number, start: number, end: number) => {
     return start <= index && index <= end;
   });

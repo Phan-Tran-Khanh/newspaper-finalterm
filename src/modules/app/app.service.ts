@@ -2,6 +2,7 @@ import { Injectable, Query } from '@nestjs/common';
 import { CategoryService } from 'src/modules/category/category.service';
 import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
+import slugify from 'slugify';
 
 @Injectable()
 export class AppService {
@@ -11,10 +12,18 @@ export class AppService {
     private readonly articleService: ArticleService,
   ) {}
   async getCategories() {
-    return this.categoryService.findAll();
+    const categories = await this.categoryService.findAll();
+    return categories.map((category) => ({
+      ...category,
+      slug: slugify(category.name, { lower: true }),
+    }));
   }
   async getLabels() {
-    return this.labelService.findAll();
+    const labels = await this.labelService.findAll();
+    return labels.map((label) => ({
+      ...label,
+      slug: slugify(label.name, { lower: true }),
+    }));
   }
   async getWeeklyArticles() {
     return this.articleService.getWeeklyArticles();

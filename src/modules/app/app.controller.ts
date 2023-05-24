@@ -15,21 +15,9 @@ export class AppController {
         this.appService.getTopArticles(),
         this.appService.getTopArticlesByCategory(),
       ]);
-    console.log(
-      JSON.stringify(
-        {
-          layout: 'layouts/index',
-          categories,
-          weeklyArticles,
-          topArticles,
-          topArticlesByCategory,
-        },
-        null,
-        2,
-      ),
-    );
     return {
       layout: 'layouts/index',
+      file: 'index',
       categories,
       weeklyArticles,
       topArticles,
@@ -57,6 +45,7 @@ export class AppController {
     ]);
     return {
       layout: 'layouts/index',
+      file: 'search',
       categories,
       tags,
       articles,
@@ -74,6 +63,7 @@ export class AppController {
     const relatedArticles = await this.appService.getRelatedArticles(article);
     return {
       layout: 'layouts/index',
+      file: 'article',
       categories,
       article,
       relatedArticles,
