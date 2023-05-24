@@ -2,7 +2,7 @@ export const ROLES = [
   'ADMIN',
   'EDITOR',
   'WRITER',
-  'SUBCRIBER',
+  'SUBSCRIBER',
   'USER',
 ] as const;
 export type UserRole = (typeof ROLES)[number];

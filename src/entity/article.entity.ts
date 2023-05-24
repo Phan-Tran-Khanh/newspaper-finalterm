@@ -8,7 +8,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Audit } from './audit.entity';
 import { Label } from './label.entity';
 import { User } from './user.entity';
 import { Comment } from './comment.entity';
@@ -56,13 +55,30 @@ export class Article {
   publishedAt: Date;
 
   @Column({ nullable: true })
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'publishedBy' })
   publishedBy: number;
 
-  @Column(() => Audit, { prefix: false })
-  audit: Audit;
-
+  @Column({ default: () => 'NOW()', nullable: true })
+  createdAt: Date;
+  @Column({ nullable: true })
   @ManyToOne(() => User)
-  createdBy: User;
+  @JoinColumn({ name: 'createdBy' })
+  createdBy: number;
+
+  @Column({ nullable: true })
+  updatedAt: Date;
+  @Column({ nullable: true })
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'updatedBy' })
+  updatedBy: number;
+
+  @Column({ nullable: true })
+  deletedAt: Date;
+  @Column({ nullable: true })
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'deletedBy' })
+  deletedBy: number;
 
   @ManyToMany(() => Label)
   @JoinTable({ name: 'article_labels' })

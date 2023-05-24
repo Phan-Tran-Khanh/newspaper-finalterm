@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
-                    <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
                       <a href="/search?category={{category.slug}}">
                         {{category.name}}
@@ -74,7 +74,7 @@
               </p>
             </div>
             <div class="card-footer bg-white">
-              <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
   <!-- Top 10 Categories -->
 
   <!-- All Category -->
-  {{#with allCategories}}
+  {{#each topArticlesByCategory}}
   <div class="row mt-5">
     <div class="col-md-12">
       <!-- Category Name -->
@@ -113,7 +113,7 @@
                 </div>
                 <div>
                   <div class="card-body">
-                    <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
                       <a href="/search?category={{category.slug}}">
                         {{category.name}}
@@ -161,7 +161,7 @@
               <p class="card-text">
                 {{summary}}
               </p>
-              <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
           {{/each}}
@@ -170,6 +170,6 @@
       <!-- Most Popular -->
     </div>
   </div>
-  {{/with}}
+  {{/each}}
   <!-- All Category -->
 </main>

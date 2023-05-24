@@ -25,8 +25,8 @@
         <div class="d-flex flex-column">
           {{title}}
           {{summary}}
-          {{bannerImageUrl}}
-          {{body}}
+          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
+          {{content}}
         </div>
 
         <!-- Tags and Reporter -->
@@ -41,7 +41,7 @@
           </div>
           <div class="col text-end">
             <p class="fw-bold">
-              {{createdBy}}
+              {{createdBy.penName}}
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@
             <p class="card-text">
               {{summary}}
             </p>
-            <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
           </div>
         </div>
         {{/each}}

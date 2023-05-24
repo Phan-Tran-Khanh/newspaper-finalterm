@@ -52,7 +52,7 @@
           <label class="input-group-text" for="filter3">Tags</label>
           <select class="form-select" id="filter3">
             <option selected>Choose...</option>
-            {{#each label}}
+            {{#each labels}}
             <option value="{{slug}}">{{name}}</option>
             {{/each}}
           </select>
@@ -70,7 +70,7 @@
       <div class="row g-0">
         <div class="col-md-7 d-flex flex-column">
           <div class="card-body">
-            <p class="card-text small text-muted">{{createdBy}} - {{publishedAt}}</p>
+            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             <h6 class="card-subtitle text-muted">
               {{#with category}}
               <a href="/search?category={{slug}}">

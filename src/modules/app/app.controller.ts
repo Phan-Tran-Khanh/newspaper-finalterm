@@ -33,7 +33,7 @@ export class AppController {
     @Query('time') time: 'day' | 'week' | 'month' | 'year',
     @Query('queryString') queryString: string,
   ) {
-    const [categories, tags, articles] = await Promise.all([
+    const [categories, labels, articles] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
       this.appService.searchArticles({
@@ -47,7 +47,7 @@ export class AppController {
       layout: 'layouts/index',
       file: 'search',
       categories,
-      tags,
+      labels,
       articles,
     };
   }
@@ -55,7 +55,6 @@ export class AppController {
   @Get('/:slug')
   @Render('article')
   async articleView(@Param('slug') slug: string) {
-    console.log('slug', slug);
     const [categories, article] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getDetailArticleBySlug(slug),

@@ -42,18 +42,18 @@ export class AppService {
   }
   async getTopArticlesByCategory() {
     const categories = await this.categoryService.findAll();
-    const topArticles: Record<string, any> = {};
+    const topArticles = [];
     for (const category of categories) {
       const mostViewed = await this.articleService.getMostViewedByCategory(
         category.id,
       );
       const latest = await this.articleService.getLatestByCategory(category.id);
-      topArticles[category.name] = {
+      topArticles.push({
+        category,
         mostViewed,
         latest,
-      };
+      });
     }
-
     return topArticles;
   }
   async searchArticles(query: {

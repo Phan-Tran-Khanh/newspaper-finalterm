@@ -52,6 +52,7 @@ export class ArticleService {
   }
   async getWeeklyArticles(take = 4): Promise<Article[]> {
     return this.articleRepository.find({
+      relations: ['createdBy', 'publishedBy'],
       where: {
         status: ArticleStatus.Published,
       },
@@ -72,7 +73,6 @@ export class ArticleService {
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.category', 'category')
       .leftJoinAndSelect('article.labels', 'label')
-      .leftJoinAndSelect('article.createdBy', 'createdBy')
       .where('article.status = :status', { status: ArticleStatus.Published });
     if (category) {
       qb.andWhere('category.slug = :category', { category });
