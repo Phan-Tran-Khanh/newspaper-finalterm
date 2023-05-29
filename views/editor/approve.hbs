@@ -2,10 +2,10 @@
   <header class="sticky-top">
     <!-- Upper Header -->
     <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
+      <div class="e_Branding container-fluid">
         <!-- Brand Name -->
-        <a href="index.html" class="navbar-brand w-50 h-50 me-auto">
-          <img class="w-50 h-50" src="../public/images/logo.png"></img>
+        <a href="../../index.html" class="navbar-brand w-50 h-50 me-auto">
+          <img class="w-50 h-50" src="../../public/images/logo.png"></img>
         </a>
 
         <!-- Logged in Offcanvas Trigger -->
@@ -17,104 +17,6 @@
     </nav>
     <!-- Upper Header -->
   </header>
-
-  <div class="e_Content container mt-3 p-2 bg-light">
-    <div class="e-PageTitle header h2">
-      <span>
-        <strong>TÌM KIẾM </strong>
-        <i class="bi bi-info-circle-fill pop-me-over h6" tabindex="0" data-bs-toggle="popover"
-          data-bs-trigger="hover" title="Search"
-          data-bs-content="You can search articles by title, abstract, and full-text."></i>
-      </span>
-    </div>
-    <form>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="input-group">
-            <input type="search" class="form-control" placeholder="Search">
-            <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class="row row-cols-md-3 my-3">
-        <div class="col">
-          <div class="input-group">
-            <label class="input-group-text" for="filter1">Mục lục</label>
-            <select class="form-select" id="filter1">
-              <option selected>Choose...</option>
-              <option value="business">Kinh doanh</option>
-              <option value="world">Thế giới</option>
-            </select>
-          </div>
-        </div>
-        <div class="col">
-          <div class="input-group">
-            <label class="input-group-text" for="filter2">Tags</label>
-            <select class="form-select" id="filter2">
-              <option selected>Choose...</option>
-              <option value="agriculture">Nông sản</option>
-              <option value="seafood">Hải sản</option>
-            </select>
-          </div>
-        </div>
-        <div class="col">
-          <div class="input-group">
-            <label class="input-group-text" for="filter3">Phóng viên</label>
-            <select class="form-select" id="filter3">
-              <option selected>Choose...</option>
-              <option value="mlam">Trần Minh Lâm</option>
-              <option value="bduy">Bá Duy</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <div class="e_Posts">
-      <div class="post-list-area">
-        <div class="post-list">
-          <div class="row g-0">
-            <div class="col-md-7 d-flex flex-column post-info-s">
-              <div class="card-body">
-                <p class="card-text small text-muted">Khalifa - 04/09/2023</p>
-                <h6 class="card-subtitle text-muted">Politics</h6>
-                <h5 class="card-title mb-2">BBC News has been banned in Vietnam</h5>
-                <p class="card-text small flex-grow-1">Example Abstract</p>
-              </div>
-              <div class="card-footer">
-                <p class="card-text small text-muted mt-auto">tags: newspaper</p>
-              </div>
-            </div>
-            <div class="col-md-4 post-img-s">
-              <img src="./assets/news1.jpg" class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-1 d-grid post-btn-del">
-              <div class="btn btn-danger btn-block">
-                <i class="bi bi-trash"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pagination">
-        <table>
-          <tr>
-            <th>N</th>
-            <th>e</th>
-            <th>w</th>
-            <th>s</th>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>1</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
 
   <!-- Logged in Offcanvas -->
   <div class="offcanvas offcanvas-end text-bg-dark w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasLoggedin"
@@ -218,6 +120,56 @@
   </div>
   <!-- Writer Info Modals -->
 
+  <div class="e_Approve container">
+    <div class="approve-area">
+      <div class="approve header h2">
+        <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>
+      </div>
+      <div class="approve-content">
+        <div class="approve-c text">
+          <div class="approve-r datetime">
+            <label for="a-datetime">Datetime</label>
+            <div class='input-group date' id='a-datetime'>
+              <input type='text' class="form-control" />
+              <span class="input-group-text">
+                <span class="bi bi-calendar3"></span>
+              </span>
+            </div>
+            <script type="text/javascript">
+              $(function () {
+                $('#a-datetime').datetimepicker();
+              });
+            </script>
+          </div>
+          <div class="approve-r category">
+            <label for="a-category">Category</label>
+            <input type="text" class="form-control" id="a-category" value="dcsdac">
+          </div>
+          <div class="approve-r title">
+            <label for="a-title">Title</label>
+            <input type="text" class="form-control" id="a-title" value="dcsdac">
+          </div>
+          <div class="approve-r abstract">
+            <label for="a-abstract">Abstract</label>
+            <textarea type="text" class="form-control" id="a-abstract">dcsdac</textarea>
+          </div>
+          <div class="approve-r tags">
+            <label for="a-tags">tags:</label>
+            <input type="text" class="form-control" id="a-tags" value="dcsdac">
+          </div>
+        </div>
+        <div class="approve-c image">
+          <img src="../assets/image.jpg" class="img-responsive">
+        </div>
+      </div>
+    </div>
+    <div class="approve action">
+      <button type="button" class="btn btn-secondary btn-back">Trở lại</button>
+      <button type="button" class="btn btn-success btn-publish">Xuất bản</button>
+    </div>
+  </div>
+
+
   <footer id="footer" class="bg-dark text-light py-5">
     <div class="container">
       <div class="row">
@@ -273,12 +225,15 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
   <script>
-    var site_list = true;
-    var site_detail = false;
+    var site_list = false;
+    var site_detail = true;
     var site_disapprove = false;
-    var site_approve = false;
+    var site_approve = true;
   </script>
-  <script src="../public/mock/editor.js"></script>
-  <script src="../public/js/editor.js"></script>
+  <script src="../../public/mock/editor.js"></script>
+  <script src="../../public/js/editor.js"></script>
 </body>
