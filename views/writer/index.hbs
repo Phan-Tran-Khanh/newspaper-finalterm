@@ -1,12 +1,15 @@
 <main class="mx-3 my-3 bg-light p-3">
-  <form action="reporter_list.html">
+  {{#with article}}
+  <form action="/writer/list" method="post">
     <!-- WYSIWYG Section (TinyMCE) -->
     <div class="row">
       <div class="col-md-12">
         <h2 class="text-light bg-dark p-2">
           Newsroom
         </h2>
-        <textarea id="reporter-editor" class="w-100"></textarea>
+        <textarea id="reporter-editor" class="w-100" name="content">
+          {{content}}
+        </textarea>
       </div>
     </div>
     <!-- WYSIWYG Section (TinyMCE) -->
@@ -23,14 +26,14 @@
           <div class="row g-0">
             <div class="col-md-7 d-flex flex-column">
               <div class="card-body">
-                <p class="card-text small text-muted">DongNike - [Today]</p>
+                <p class="card-text small text-muted">{{createdBy.penName}} - {{createdAt}}</p>
                 <h6 class="card-subtitle tinymce-heading text-muted">
-                  [Example Category]
+                  {{category}}
                 </h6>
                 <h5 class="card-title tinymce-heading">
-                  [Example Title]
+                  {{title}}
                 </h5>
-                <p class="card-text tinymce-body">[Example Abstract]</p>
+                <p class="card-text tinymce-body">{{summary}}</p>
               </div>
               <div class="card-footer">
                 <p class="card-text small text-muted">
@@ -38,15 +41,13 @@
                     tags:
                   </span>
                   <span class="tinymce-heading">
-                    [example tag1], [example tag2]
+                    {{label}}
                   </span>
                 </p>
               </div>
             </div>
-            <div id="tinymce-img" class="col-md-5 d-flex justify-content-center align-items-center">
-              <p class="text-center">
-                UPLOAD IMAGE
-              </p>
+            <div id="tinymce-img" class="col-md-5">
+              <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end">
             </div>
           </div>
         </div>
@@ -54,7 +55,8 @@
     </div>
     <!-- Preview Section -->
     <div class="text-center border-top p-2 mt-3">
-      <button type="submit" class="btn px-5">Publish</button>
+      <button type="submit" id="publish-btn" class="btn px-5">Publish</button>
     </div>
   </form>
+  {{/width}}
 </main>

@@ -13,85 +13,37 @@
           <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
+          {{#each weeklyArticles}}
           <div class="carousel-item active">
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
-                  <img src="../../public/images/news1.jpg" class="d-block w-100 rounded-start" alt="...">
+                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
-                    <p class="card-text small text-muted">Le Tuyet - April 30th, 2023</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Entertainment
+                      {{#with category}}
+                      <a href="/search?category={{slug}}">
+                        {{name}}
                       </a>
+                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        American movie star impressed by Hanoi while filming for Netflix
+                      <a href="/{{slug}}">
+                        {{title}}
                       </a>
                     </h5>
-                    <p class="card-text small">American actor-producer Ben Feldman, who stars in Netflix movie "A
-                      Tourist's Guide to Love," has been gushing about the beauty of Hanoi and eating and drinking on
-                      its sidewalks.</p>
+                    <p class="card-text small">
+                      {{summary}}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row g-0">
-                <div class="col-md-7">
-                  <img src="../../public/images/news2.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div class="col-md-5">
-                  <div class="card-body">
-                    <p class="card-text small text-muted">Pham Nga - May 2nd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Life
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Couples regret marrying too late in life
-                      </a>
-                    </h5>
-                    <p class="card-text small">At age 31, Thanh Mai realized she was no longer young and needed to
-                      start considering marriage and having children seriously.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row g-0">
-                <div class="col-md-7">
-                  <img src="../../public/images/news3.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div class="col-md-5">
-                  <div class="card-body">
-                    <p class="card-text small text-muted">Tu Nguyen - May 2nd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Tourism
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        No boom for Phu Quoc tour guides this holiday
-                      </a>
-                    </h5>
-                    <p class="card-text small">Tour guides on Phu Quoc Island were short on work this holiday due to
-                      higher airfares that have led to fewer visitors.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -100,99 +52,53 @@
 
   <!-- Top 10 Categories -->
   <div class="row mt-2 g-2 overflow-auto flex-nowrap d-flex align-items-stretch">
+    {{#each topArticles}}
     <div class="col-md-8">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="../../public/images/news4.jpg" class="d-block w-100 h-100 rounded-start" alt="...">
+            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
           </div>
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
               <h6 class="card-subtitle text-muted">
-                <a href="list.html">
-                  International
+                {{#with category}}
+                <a href="/search?category={{slug}}">
+                  {{name}}
                 </a>
+                {{/with}}
               </h6>
               <h6 class="card-title">
-                <a href="article.html">
-                  Vietnamese man dies at Japanese police station
+                <a href="/{{slug}}">
+                  {{title}}
                 </a>
               </h6>
-              <p class="card-text">A Vietnamese man died while in detention at a Japanese police station on April 29,
-                and his cause of death is yet to be confirmed.</p>
+              <p class="card-text">
+                {{summary}}
+              </p>
             </div>
             <div class="card-footer bg-white">
-              <p class="card-text small text-muted">Phan Anh - May 2nd, 2023</p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-5">
-            <img src="../../public/images/news5.jpg" class="d-block w-100 h-100 rounded-start" alt="...">
-          </div>
-          <div class="col-md-7 d-flex flex-column small">
-            <div class="card-body">
-              <h6 class="card-subtitle text-muted">
-                <a href="list.html">
-                  Business
-                </a>
-              </h6>
-              <h6 class="card-title">
-                <a href="article.html">
-                  Vietnamese-Americans help legalize rau muong in US
-                </a>
-              </h6>
-              <p class="card-text">When Le Dam Doan moved to Georgia in 2004, she was surprised to learn that “rau
-                muong”, or water spinach.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <p class="card-text small text-muted">Duc Trung - May 2nd, 2023</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-5">
-            <img src="../../public/images/news6.jpg" class="d-block w-100 h-100 rounded-start" alt="...">
-          </div>
-          <div class="col-md-7 d-flex flex-column small">
-            <div class="card-body">
-              <h6 class="card-subtitle text-muted">
-                <a href="list.html">
-                  Sports
-                </a>
-              </h6>
-              <h6 class="card-title">
-                <a href="article.html">
-                  ‘Vietnam won, that’s important’: Coach Troussier
-                </a>
-              </h6>
-              <p class="card-text">Coach Philippe Troussier wanted to emphasize on Vietnam’s victory against Laos on
-                Sunday evening in their first match in SEA Games 32.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <p class="card-text small text-muted">Lam Thoa - April 30th, 2023</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{/each}}
   </div>
   <!-- Top 10 Categories -->
 
-  <!-- First Category -->
+  <!-- All Category -->
+  {{#each topArticlesByCategory}}
   <div class="row mt-5">
     <div class="col-md-12">
       <!-- Category Name -->
       <h2 class="bg-dark p-2">
-        <a class="link-light" href="list.html">World</a>
+        {{#with category}}
+        <a class="link-light" href="/search?category={{slug}}">
+          {{name}}
+        </a>
+        {{/with}}
       </h2>
 
       <!-- Latest News -->
@@ -206,87 +112,37 @@
             aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
+          {{#each mostViewed}}
           <div class="carousel-item active">
             <div class="card">
               <div class="row row-cols-2 g-0">
                 <div>
-                  <img src="../../public/images/world1.jpg" class="d-block w-100 rounded-start" alt="...">
+                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
                 </div>
                 <div>
                   <div class="card-body">
-                    <p class="card-text small text-muted">Reuters - May 3rd, 2023</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Crime
+                      {{#with category}}
+                      <a href="/search?category={{slug}}">
+                        {{name}}
                       </a>
+                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Man suspected of killing 5 Texas neighbors arrested after manhunt
+                      <a href="/{{slug}}">
+                        {{title}}
                       </a>
                     </h5>
-                    <p class="card-text small">A man suspected of killing five neighbors in Texas over complaints of
-                      noise he was making by firing his gun outside at night was arrested in a neighboring town on
-                      Tuesday after a massive, four-day manhunt, a county sheriff said.</p>
+                    <p class="card-text small">
+                      {{summary}}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row row-cols-2 g-0">
-                <div>
-                  <img src="../../public/images/world2.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div>
-                  <div class="card-body">
-                    <p class="card-text small text-muted">Reuters - May 3rd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Politics
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        US stands with Philippines against Chinese 'intimidation' in S. China Sea: official
-                      </a>
-                    </h5>
-                    <p class="card-text small">The United States stands with treaty ally the Philippines in the face
-                      of harassment by China's coast guard in the South China Sea and remains deeply concerned about
-                      "intimidation" by Beijing, a senior U.S. official said on Tuesday.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row row-cols-2 g-0">
-                <div>
-                  <img src="../../public/images/world3.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div>
-                  <div class="card-body">
-                    <p class="card-text small text-muted">AFP - May 2nd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Health
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Australia announces crackdown on vaping
-                      </a>
-                    </h5>
-                    <p class="card-text small">Australia's health minister on Tuesday announced a sweeping crackdown
-                      on vaping, accusing tobacco companies of deliberately luring in teenagers to hook the next
-                      "generation of nicotine addicts".</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {{/each}}
         </div>
       </div>
       <!-- Latest News -->
@@ -295,455 +151,35 @@
       <div class="mt-3">
         <h4 class="px-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
 
-        <div id="carouselMostPopular1" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="card-group">
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world4.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        South Korea, Indonesia c.banks agree to promote local currency transactions
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <p class="card-text">The central banks of South Korea and Indonesia signed a memorandum of
-                      understanding on Tuesday to cooperate.</p>
-                    <p class="card-text small text-muted">Reuters - May 2nd, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world5.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Thai PM candidate gives birth two weeks before election
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Election
-                      </a>
-                    </h6>
-                    <p class="card-text">Thailand's leading prime ministerial candidate, Paetongtarn Shinawatra, gave
-                      birth on Monday to a baby boy two weeks before elections.</p>
-                    <p class="card-text small text-muted">Reuters - May 1st, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world6.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Twitter to allow publishers to charge users on a per article basis starting May
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Media
-                      </a>
-                    </h6>
-                    <p class="card-text">Twitter Inc CEO Elon Musk said on Saturday that the social media platform
-                      will allow media publishers to charge users on a per article.</p>
-                    <p class="card-text small text-muted">Reuters - April 30th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world7.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Zelenskiy says he would have fought to the death had Russians attacked his headquarters
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        War
-                      </a>
-                    </h6>
-                    <p class="card-text">Ukrainian President Volodymyr Zelenskiy carries a pistol and would have
-                      fought to the death with his inner circle.</p>
-                    <p class="card-text small text-muted">Reuters - April 30th, 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="card-group">
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world5.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Thai PM candidate gives birth two weeks before election
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Election
-                      </a>
-                    </h6>
-                    <p class="card-text">Thailand's leading prime ministerial candidate, Paetongtarn Shinawatra, gave
-                      birth on Monday to a baby boy two weeks before elections.</p>
-                    <p class="card-text small text-muted">Reuters - May 1st, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world4.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        South Korea, Indonesia c.banks agree to promote local currency transactions
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Currency
-                      </a>
-                    </h6>
-                    <p class="card-text">The central banks of South Korea and Indonesia signed a memorandum of
-                      understanding on Tuesday to cooperate.</p>
-                    <p class="card-text small text-muted">Reuters - May 2nd, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world7.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Zelenskiy says he would have fought to the death had Russians attacked his headquarters
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        War
-                      </a>
-                    </h6>
-                    <p class="card-text">Ukrainian President Volodymyr Zelenskiy carries a pistol and would have
-                      fought to the death with his inner circle.</p>
-                    <p class="card-text small text-muted">Reuters - April 30th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/world6.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Twitter to allow publishers to charge users on a per article basis starting May
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Media
-                      </a>
-                    </h6>
-                    <p class="card-text">Twitter Inc CEO Elon Musk said on Saturday that the social media platform
-                      will allow media publishers to charge users on a per article.</p>
-                    <p class="card-text small text-muted">Reuters - April 30th, 2023</p>
-                  </div>
-                </div>
-              </div>
+        <div class="row d-flex flex-nowrap">
+          {{#each latest}}
+          <div class="card w-25">
+            <img class="card-img-top w-100" src="{{bannerImageUrl}}" alt="Card image cap">
+            <div class="card-body small">
+              <h6 class="card-title">
+                <a href="/{{slug}}">
+                  {{title}}
+                </a>
+              </h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {{#with category}}
+                <a href="/search?category={{slug}}">
+                  {{name}}
+                </a>
+                {{/with}}
+              </h6>
+              <p class="card-text">
+                {{summary}}
+              </p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular1"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular1"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          {{/each}}
         </div>
       </div>
       <!-- Most Popular -->
     </div>
   </div>
-  <!-- First Category -->
-
-  <!-- Second Category -->
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <!-- Category Name -->
-      <h2 class="bg-dark p-2">
-        <a class="link-light" href="list.html">Economy</a>
-      </h2>
-
-      <!-- Latest News -->
-      <div id="carouselLatestNews2" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselLatestNews2" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselLatestNews2" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselLatestNews2" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="card">
-              <div class="row row-cols-2 g-0">
-                <div>
-                  <img src="../../public/images/eco1.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div>
-                  <div class="card-body">
-                    <p class="card-text small text-muted">Reuters - May 3rd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Exportation
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Exports down 12% in four months
-                      </a>
-                    </h5>
-                    <p class="card-text small">Vietnam's exports totaled US$108.57 billion in the first four months of
-                      this year, a year-on-year decrease of 11.8%, the General Statistics Office announced.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row row-cols-2 g-0">
-                <div>
-                  <img src="../../public/images/eco2.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div>
-                  <div class="card-body">
-                    <p class="card-text small text-muted">Anh Tu - May 3rd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Industries
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Southern industrial real estate occupancy down in Q1
-                      </a>
-                    </h5>
-                    <p class="card-text small">Occupancy rates of all southern industrial real estate segments
-                      decreased in the first quarter of this year due to economic difficulties, according to property
-                      consultancy Cushman & Wakefield Vietnam.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="card">
-              <div class="row row-cols-2 g-0">
-                <div>
-                  <img src="../../public/images/eco3.jpg" class="d-block w-100 rounded-start" alt="...">
-                </div>
-                <div>
-                  <div class="card-body">
-                    <p class="card-text small text-muted">AFP - May 2nd, 2023</p>
-                    <h6 class="card-subtitle text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <h5 class="card-title mb-2">
-                      <a href="article.html">
-                        Dollar continues to fall on black market
-                      </a>
-                    </h5>
-                    <p class="card-text small">The U.S. dollar dropped against the Vietnamese dong on the black market
-                      Tuesday morning.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Latest News -->
-
-      <!-- Most Popular -->
-      <div class="mt-3">
-        <h4 class="px-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
-
-        <div id="carouselMostPopular2" class="carousel carousel-dark slide mx-4" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="card-group">
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco4.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Durian prices plunge 40% in a month
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <p class="card-text">Ri6 durian prices grown in the Mekong Delta have plunged by 30-40% to
-                      VND50,000-55,000 ($2.13-2.34) per kilogram from early April.</p>
-                    <p class="card-text small text-muted">Reuters - May 2nd, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco5.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Serviced apartment market warming up
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Property
-                      </a>
-                    </h6>
-                    <p class="card-text">Serviced apartment buildings in Ho Chi Minh City posted higher occupancy
-                      rates in the first four months of this year, thanks to larger numbers of short-term business
-                      visitors and tourists.</p>
-                    <p class="card-text small text-muted">Phu Le - May 4th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco6.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        iPhone imports cost Vietnam $1.6B
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Industries
-                      </a>
-                    </h6>
-                    <p class="card-text">iPhone imports cost Vietnam US$1.61 billion last year, equivalent to 46% of
-                      all phone imports.</p>
-                    <p class="card-text small text-muted">Tuan Hung - April 30th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco7.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Get-rich-quick courses becoming get-debt-quick schemes
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <p class="card-text">Many netizens with dreams of becoming millionaires overnight followed
-                      “specialists” on the Internet only to find themselves in crippling debt.</p>
-                    <p class="card-text small text-muted">Kim Ngan - April 30th, 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="card-group">
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco5.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Serviced apartment market warming up
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Property
-                      </a>
-                    </h6>
-                    <p class="card-text">Serviced apartment buildings in Ho Chi Minh City posted higher occupancy
-                      rates in the first four months of this year, thanks to larger numbers of short-term business
-                      visitors and tourists.</p>
-                    <p class="card-text small text-muted">Phu Le - May 4th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco4.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Durian prices plunge 40% in a month
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <p class="card-text">Ri6 durian prices grown in the Mekong Delta have plunged by 30-40% to
-                      VND50,000-55,000 ($2.13-2.34) per kilogram from early April.</p>
-                    <p class="card-text small text-muted">Reuters - May 2nd, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco7.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        Get-rich-quick courses becoming get-debt-quick schemes
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Markets
-                      </a>
-                    </h6>
-                    <p class="card-text">Many netizens with dreams of becoming millionaires overnight followed
-                      “specialists” on the Internet only to find themselves in crippling debt.</p>
-                    <p class="card-text small text-muted">Kim Ngan - April 30th, 2023</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="../../public/images/eco6.jpg" alt="Card image cap">
-                  <div class="card-body small">
-                    <h6 class="card-title">
-                      <a href="article.html">
-                        iPhone imports cost Vietnam $1.6B
-                      </a>
-                    </h6>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      <a href="list.html">
-                        Industries
-                      </a>
-                    </h6>
-                    <p class="card-text">iPhone imports cost Vietnam US$1.61 billion last year, equivalent to 46% of
-                      all phone imports.</p>
-                    <p class="card-text small text-muted">Tuan Hung - April 30th, 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselMostPopular2"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselMostPopular2"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-      <!-- Most Popular -->
-    </div>
-  </div>
-  <!-- Second Category -->
+  {{/each}}
+  <!-- All Category -->
 </main>

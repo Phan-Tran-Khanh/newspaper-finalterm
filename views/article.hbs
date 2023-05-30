@@ -1,191 +1,82 @@
 <main class="my-3 bg-light">
   <!-- Main Article -->
   <div class="row g-2">
+    {{#with article}}
     <!-- Detail -->
     <div class="col-md-9">
       <div class="container">
         <!-- Category and Date Time -->
         <div class="row row-cols-2">
+          {{#with category}}
           <div class="col text-start small fw-bold text-muted">
-            <a href="list.html" class="text-decoration-none">
-              Entertainment
+            <a href="/search?category={{slug}}" class="text-decoration-none">
+              {{name}}
             </a>
           </div>
+          {{/with}}
           <div class="col text-end small">
             <p class="text-muted">
-              Friday, 14/4/2023, 16:15 (GMT+7)
+              {{publishedAt}}
             </p>
           </div>
         </div>
 
         <!-- Title and Content -->
         <div class="d-flex flex-column">
-          <h2>
-            American movie star impressed by Hanoi while filming for Netflix
-          </h2>
-          <p>
-            American actor-producer Ben Feldman, who stars in Netflix movie "A Tourist's Guide to Love,"
-            has been gushing about the beauty of Hanoi and eating and drinking on its sidewalks.
-          </p>
-          <p>
-            Hanoi is an unbelievably beautiful city," he told American magazine Hollywood Reporter.
-          </p>
-          <p>
-            "There’s a lot to unpack because a big part of that beauty - the incredible architecture and food in this
-            rich, vibrant culture - is due to French colonialism."
-          </p>
-          <p>
-            While in Hanoi for filming the Netflix movie, he stayed at a hotel not far from the old quarter, which
-            gave him an opportunity to explore daily life in the vicinity.
-          </p>
-          <figure>
-            <img src="../../public/images/news1.jpg" alt="..." class="img-fluid d-block mx-auto">
-            <figcaption class="small">Fig.1 - Ben Feldman (L) and Rachael Leigh Cook during a scene of
-              "A Tourist's Guide to Love" filmed in Hanoi. Photo by Netflix</figcaption>
-          </figure>
-          <p>
-            "Hanoi is an unbelievably beautiful city," he told American magazine Hollywood Reporter.
-
-            "There’s a lot to unpack because a big part of that beauty - the incredible architecture and
-            food in this rich, vibrant culture - is due to French colonialism."
-          </p>
-          <p>
-            American actor-producer Ben Feldman, who stars in Netflix movie "A Tourist's Guide to Love,"
-            has been gushing about the beauty of Hanoi and eating and drinking on its sidewalks.
-          </p>
-          <p>
-            Hanoi is an unbelievably beautiful city," he told American magazine Hollywood Reporter.
-          </p>
-          <p>
-            "There’s a lot to unpack because a big part of that beauty - the incredible architecture and food in this
-            rich, vibrant culture - is due to French colonialism."
-          </p>
-          <p>
-            While in Hanoi for filming the Netflix movie, he stayed at a hotel not far from the old quarter, which
-            gave him an opportunity to explore daily life in the vicinity.
-          </p>
-          <p>
-            While in Hanoi for filming the Netflix movie, he stayed at a hotel not far from the old
-            quarter, which gave him an opportunity to explore daily life in the vicinity.
-
-            One of his favorite experiences was sitting in a tiny plastic chair to drink a cup of coffee
-            and eat pho (Vietnamese noodle soup), a popular breakfast among Hanoians, he said.
-          </p>
-          <p>
-            "A Tourist's Guide to Love" started streaming on April 21 and follows the story of American
-            travel executive Amanda, played by Rachael Leigh Cook, who breaks with her boyfriend before
-            going undercover to Vietnam to research a local tour agency.
-          </p>
-          <p>
-            Ben, who plays John, Amanda’s ex-boyfriend, comes to Hanoi to pursue her again.
-          </p>
-          <p>
-            Feldman, 43, started his movie career in 2003.
-          </p>
-          <p>
-            "Hanoi is an unbelievably beautiful city," he told American magazine Hollywood Reporter.
-
-            "There’s a lot to unpack because a big part of that beauty - the incredible architecture and
-            food in this rich, vibrant culture - is due to French colonialism."
-          </p>
-          <p>
-            While in Hanoi for filming the Netflix movie, he stayed at a hotel not far from the old
-            quarter, which gave him an opportunity to explore daily life in the vicinity.
-
-            One of his favorite experiences was sitting in a tiny plastic chair to drink a cup of coffee
-            and eat pho (Vietnamese noodle soup), a popular breakfast among Hanoians, he said.
-          </p>
-          <p>
-            Ben, who plays John, Amanda’s ex-boyfriend, comes to Hanoi to pursue her again.
-          </p>
-          <p>
-            Feldman, 43, started his movie career in 2003.
-          </p>
+          {{title}}
+          {{summary}}
+          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
+          {{content}}
         </div>
 
         <!-- Tags and Reporter -->
         <div class="row row-cols-2">
           <div class="col text-start small">
             <span>tags: </span>
-            <a href="list.html" class="text-decoration-none">
-              Film
+            {{#each labels}}
+            <a href="/search?label={{slug}}" class="text-decoration-none">
+              {{name}}
             </a>
-            <a href="list.html" class="text-decoration-none">
-              Netflix
-            </a>
-            <a href="list.html" class="text-decoration-none">
-              Actor
-            </a>
+            {{/each}}
           </div>
           <div class="col text-end">
             <p class="fw-bold">
-              Le Tuyet
+              {{createdBy.penName}}
             </p>
           </div>
         </div>
       </div>
     </div>
+    {{/with}}
     <!-- Detail -->
 
     <!-- Same Category -->
     <div class="col-md-3">
       <div class="position-sticky top-0">
-        <a class="h5 fw-bold" href="list.html"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        {{#each relatedArticles}}
         <div class="card">
-          <img class="card-img-top" src="../../public/images/news1.jpg" alt="Card image cap">
+          <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
           <div class="card-body small">
             <h6 class="card-title">
-              <a href="article.html">
-                American movie star impressed by Hanoi while filming for Netflix
+              <a href="/{{slug}}">
+                {{title}}
               </a>
             </h6>
             <h6 class="card-subtitle mb-2 text-muted">
-              <a href="list.html">
-                Entertainment
+              {{#with category}}
+              <a href="/search?category={{slug}}">
+                {{name}}
               </a>
+              {{/with}}
             </h6>
-            <p class="card-text">American actor-producer Ben Feldman, who stars in Netflix movie "A
-              Tourist's Guide to Love," has been gushing about the beauty of Hanoi and eating and drinking on
-              its sidewalks.</p>
-            <p class="card-text small text-muted">Pham Nga - May 2nd, 2023</p>
+            <p class="card-text">
+              {{summary}}
+            </p>
+            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img-top" src="../../public/images/news2.jpg" alt="Card image cap">
-          <div class="card-body small">
-            <h6 class="card-title">
-              <a href="article.html">
-                Couples regret marrying too late in life
-              </a>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-              <a href="list.html">
-                Social Life
-              </a>
-            </h6>
-            <p class="card-text">At age 31, Thanh Mai realized she was no longer young and needed to
-              start considering marriage and having children seriously.</p>
-            <p class="card-text small text-muted">Pham Nga - May 6th, 2023</p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="../../public/images/news3.jpg" alt="Card image cap">
-          <div class="card-body small">
-            <h6 class="card-title">
-              <a href="article.html">
-                No boom for Phu Quoc tour guides this holiday
-              </a>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-              <a href="list.html">
-                Tourism
-              </a>
-            </h6>
-            <p class="card-text">Tour guides on Phu Quoc Island were short on work this holiday due to
-              higher airfares that have led to fewer visitors.</p>
-            <p class="card-text small text-muted">Tu Nguyen - May 2nd, 2023</p>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </div>
     <!-- Same Category -->
@@ -213,23 +104,24 @@
       <!-- Reply -->
 
       <!-- Old Comments -->
+      {{#each comments}}
       <div class="card mt-2">
         <div class="card-body">
           <div class="media">
-            <img src="https://via.placeholder.com/50x50" alt="...">
+            <img src="{{user.avatarUrl}}">
             <div class="media-body">
-              <h5 class="mt-0">John Doe</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptatibus quae, rem
-                dolorum facilis est perspiciatis alias maiores. Similique, vitae! Inventore
-                provident eveniet possimus repudiandae unde quibusdam cum sunt sit.</p>
+              <h5 class="mt-0">{{user.fullname}}</h5>
+              <p>
+                {{body}}
+              </p>
             </div>
-            <p class="card-text small text-muted">Posted 2 days ago</p>
+            <p class="card-text small text-muted">{{createdAt}}</p>
           </div>
           <div class="d-flex align-items-center mt-3">
             <a href="#" class="like-input me-3 position-relative">
               <i class="bi bi-hand-thumbs-up"></i> Like
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                3
+                {{likesCount}}
                 <span class="visually-hidden">Total Likes</span>
               </span>
             </a>
@@ -237,6 +129,7 @@
           </div>
         </div>
 
+        {{!-- TODO: Replies Children --}}
         <!-- Nested Replies -->
         <div class="card-footer bg-white border-0">
           <a href="#" class="nested-replies">
@@ -250,7 +143,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
+                    <img src="https://via.placeholder.com/25x25">
                     <div class="media-body">
                       <h6 class="mt-0">Joke Doe</h6>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
@@ -276,7 +169,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
+                    <img src="https://via.placeholder.com/25x25">
                     <div class="media-body">
                       <h6 class="mt-0">Jekeke Doe</h6>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
@@ -303,97 +196,7 @@
         </div>
         <!-- Nested Replies -->
       </div>
-
-      <div class="card mt-2">
-        <div class="card-body">
-          <div class="media">
-            <img src="https://via.placeholder.com/50x50" alt="...">
-            <div class="media-body">
-              <h5 class="mt-0">Jane Doe</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis quaerat
-                necessitatibus error cum molestias accusantium possimus enim facilis. Vel quidem
-                quod id aperiam ut, beatae dignissimos numquam ea error. </p>
-            </div>
-            <p class="card-text small text-muted">Posted 3 days ago</p>
-          </div>
-          <div class="d-flex align-items-center mt-3">
-            <a href="#" class="like-input me-3 position-relative">
-              <i class="bi bi-hand-thumbs-up"></i> Like
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                3
-                <span class="visually-hidden">Total Likes</span>
-              </span>
-            </a>
-            <a href="#" class="reply-old">Reply</a>
-          </div>
-        </div>
-
-        <!-- Nested Replies -->
-        <div class="card-footer bg-white border-0">
-          <a href="#" class="nested-replies">
-            <i class="bi bi-arrow-return-right"></i> 32 Replies
-          </a>
-          <!-- Reply Children -->
-          <div class="replies-container hstack gap-1">
-            <div class="vr"></div>
-            <div class="container-fluid small">
-              <!-- First Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
-                    <div class="media-body">
-                      <h6 class="mt-0">Joke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- First Child -->
-
-              <!-- Second Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
-                    <div class="media-body">
-                      <h6 class="mt-0">Jekeke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- Second Child -->
-            </div>
-          </div>
-          <!-- Reply Children -->
-        </div>
-        <!-- Nested Replies -->
-      </div>
+      {{/each}}
       <!-- Old Comments -->
     </div>
   </div>
