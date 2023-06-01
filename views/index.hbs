@@ -14,25 +14,35 @@
         </div>
         <div class="carousel-inner">
           {{#each weeklyArticles}}
+          {{#each weeklyArticles}}
           <div class="carousel-item active">
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
                   <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      <a href="/search?category={{category.slug}}">
-                        {{category.name}}
+                      {{#with category}}
+                      <a href="/search?category={{slug}}">
+                        {{name}}
                       </a>
+                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
                       <a href="/{{slug}}">
                         {{title}}
+                      <a href="/{{slug}}">
+                        {{title}}
                       </a>
                     </h5>
+                    <p class="card-text small">
+                      {{summary}}
+                    </p>
                     <p class="card-text small">
                       {{summary}}
                     </p>
@@ -41,6 +51,7 @@
               </div>
             </div>
           </div>
+          {{/each}}
           {{/each}}
         </div>
       </div>
@@ -51,20 +62,26 @@
   <!-- Top 10 Categories -->
   <div class="row mt-2 g-2 overflow-auto flex-nowrap d-flex align-items-stretch">
     {{#each topArticles}}
+    {{#each topArticles}}
     <div class="col-md-8">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-5">
             <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
+            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
           </div>
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
               <h6 class="card-subtitle text-muted">
-                <a href="/search?category={{category.slug}}">
-                  {{category.name}}
+                {{#with category}}
+                <a href="/search?category={{slug}}">
+                  {{name}}
                 </a>
+                {{/with}}
               </h6>
               <h6 class="card-title">
+                <a href="/{{slug}}">
+                  {{title}}
                 <a href="/{{slug}}">
                   {{title}}
                 </a>
@@ -72,8 +89,12 @@
               <p class="card-text">
                 {{summary}}
               </p>
+              <p class="card-text">
+                {{summary}}
+              </p>
             </div>
             <div class="card-footer bg-white">
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
               <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
@@ -90,7 +111,7 @@
     <div class="col-md-12">
       <!-- Category Name -->
       <h2 class="bg-dark p-2">
-        <a class="link-light" href="/search?category={{category.slug}}">{{category.name}}</a>
+        <a class="link-light" href="list.html">World</a>
       </h2>
 
       <!-- Latest News -->
@@ -115,9 +136,11 @@
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      <a href="/search?category={{category.slug}}">
-                        {{category.name}}
+                      {{#with category}}
+                      <a href="/search?category={{slug}}">
+                        {{name}}
                       </a>
+                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
                       <a href="/{{slug}}">

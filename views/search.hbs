@@ -9,11 +9,11 @@
   </div>
 
   <!-- Search Bar with Filters -->
-  <form>
+  <form action="/search" method="get">
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
-          <input type="search" class="form-control" placeholder="Search" id="search-input">
+          <input type="search" name="queryString" class="form-control" placeholder="Search" id="search-input">
           <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
         </div>
       </div>
@@ -25,18 +25,18 @@
           <label class="input-group-text" for="filter1">Time</label>
           <select class="form-select" id="filter1">
             <option selected>Choose...</option>
-            <option value="day">Today</option>
-            <option value="week">This week</option>
-            <option value="month">This month</option>
+            <option value="today">Today</option>
+            <option value="this_week">This week</option>
+            <option value="this_month">This month</option>
           </select>
         </div>
       </div>
       <!-- Categories -->
       <div class="col">
         <div class="input-group">
-          <label class="input-group-text" for="filter2">Category</label>
-          <select class="form-select" id="filter2">
-            <option selected>Choose...</option>
+          <label class="input-group-text" for="category">Category</label>
+          <select class="form-select" name="category" id="category">
+            <option value="" selected>Choose...</option>
             {{#each categories}}
             <option value="{{slug}}">{{name}}</option>
             {{#each children}}
@@ -49,9 +49,9 @@
       <!-- Tags -->
       <div class="col">
         <div class="input-group">
-          <label class="input-group-text" for="filter3">Tags</label>
-          <select class="form-select" id="filter3">
-            <option selected>Choose...</option>
+          <label class="input-group-text" for="label">Tags</label>
+          <select class="form-select" name="label" id="label">
+            <option value="" selected>Choose...</option>
             {{#each labels}}
             <option value="{{slug}}">{{name}}</option>
             {{/each}}
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end" >
+          <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end">
         </div>
       </div>
       <!-- Premium Tag -->
@@ -143,7 +143,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img src="/images/eco2.jpg" class="d-block w-100 h-100 rounded-end" >
+          <img src="../../public/images/eco2.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img src="/images/eco3.jpg" class="d-block w-100 h-100 rounded-end" >
+          <img src="../../public/images/eco3.jpg" class="d-block w-100 h-100 rounded-end" alt="...">
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img src="/images/eco4.jpg" class="d-block w-100 h-100 rounded-end" >
+          <img src="/images/eco4.jpg" class="d-block w-100 h-100 rounded-end">
         </div>
       </div>
     </div>
@@ -237,7 +237,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <img src="/images/eco1.jpg" class="d-block w-100 h-100 rounded-end" >
+          <img src="/images/eco1.jpg" class="d-block w-100 h-100 rounded-end">
         </div>
       </div>
     </div>
