@@ -23,6 +23,12 @@ async function bootstrap() {
   hbs.registerHelper('inRange', (index: number, start: number, end: number) => {
     return start <= index && index <= end;
   });
+  hbs.registerHelper(
+    'ifEquals',
+    (a: any, b: any, options: Handlebars.HelperOptions) => {
+      return a == b ? options.fn(this) : options.inverse(this);
+    },
+  );
 
   // set up request logger
   app.use(

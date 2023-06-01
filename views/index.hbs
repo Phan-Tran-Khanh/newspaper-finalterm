@@ -1,4 +1,4 @@
-<main class="container-fluid my-3 bg-light">
+<main class="container my-3 bg-light">
   <!-- Weekly News -->
   <div class="row">
     <div class="col-md-12">
@@ -10,6 +10,7 @@
           <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           {{#each weeklyArticles}}
@@ -17,7 +18,7 @@
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
@@ -32,6 +33,7 @@
                     <h5 class="card-title mb-2">
                       <a href="/{{slug}}">
                         {{title}}
+                      </a>
                     </h5>
                     <p class="card-text small">
                       {{summary}}
@@ -51,12 +53,11 @@
   <!-- Top 10 Categories -->
   <div class="row mt-2 g-2 overflow-auto flex-nowrap d-flex align-items-stretch">
     {{#each topArticles}}
-    {{#each topArticles}}
     <div class="col-md-8">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
+            <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
           </div>
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
@@ -93,7 +94,11 @@
     <div class="col-md-12">
       <!-- Category Name -->
       <h2 class="bg-dark p-2">
-        <a class="link-light" href="list.html">World</a>
+        {{#with category}}
+        <a class="link-light" href="/search?category={{slug}}">
+          {{name}}
+        </a>
+        {{/with}}
       </h2>
 
       <!-- Latest News -->
@@ -112,7 +117,7 @@
             <div class="card">
               <div class="row row-cols-2 g-0">
                 <div>
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div>
                   <div class="card-body">
@@ -149,7 +154,7 @@
         <div class="row d-flex flex-nowrap">
           {{#each latest}}
           <div class="card w-25">
-            <img class="card-img-top w-100" src="{{bannerImageUrl}}" alt="Card image cap">
+            <img class="card-img-top banner" src="{{bannerImageUrl}}" alt="Card image cap">
             <div class="card-body small">
               <h6 class="card-title">
                 <a href="/{{slug}}">
