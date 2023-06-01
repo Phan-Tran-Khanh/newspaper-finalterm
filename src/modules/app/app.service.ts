@@ -3,6 +3,7 @@ import { CategoryService } from 'src/modules/category/category.service';
 import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
 import slugify from 'slugify';
+import { Article } from 'src/entity/article.entity';
 
 @Injectable()
 export class AppService {
@@ -16,6 +17,10 @@ export class AppService {
     return categories.map((category) => ({
       ...category,
       slug: slugify(category.name, { lower: true }),
+      children: category.children.map((child) => ({
+        ...child,
+        slug: slugify(child.name, { lower: true }),
+      })),
     }));
   }
   async getLabels() {
@@ -67,7 +72,7 @@ export class AppService {
   async getDetailArticleBySlug(slug: string) {
     return this.articleService.getDetailArticleBySlug(slug);
   }
-  async getRelatedArticles(article: any) {
+  async getRelatedArticles(article: Article) {
     return this.articleService.getMostViewedByCategory(article.category.id);
   }
 }

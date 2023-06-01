@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Article } from 'src/entity/article.entity';
 
 @Controller()
 export class AppController {
@@ -59,7 +60,9 @@ export class AppController {
       this.appService.getCategories(),
       this.appService.getDetailArticleBySlug(slug),
     ]);
-    const relatedArticles = await this.appService.getRelatedArticles(article);
+    const relatedArticles = await this.appService.getRelatedArticles(
+      article as Article,
+    );
     return {
       layout: 'layouts/index',
       file: 'article',

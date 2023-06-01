@@ -2,26 +2,20 @@
   <!-- Main Article -->
   <div class="row g-2">
     {{#with article}}
-    {{#with article}}
     <!-- Detail -->
     <div class="col-md-9">
       <div class="container">
         <!-- Category and Date Time -->
         <div class="row row-cols-2">
           {{#with category}}
-          {{#with category}}
           <div class="col text-start small fw-bold text-muted">
-            <a href="/search?category={{slug}}" class="text-decoration-none">
-              {{name}}
             <a href="/search?category={{slug}}" class="text-decoration-none">
               {{name}}
             </a>
           </div>
           {{/with}}
-          {{/with}}
           <div class="col text-end small">
             <p class="text-muted">
-              {{publishedAt}}
               {{publishedAt}}
             </p>
           </div>
@@ -29,10 +23,6 @@
 
         <!-- Title and Content -->
         <div class="d-flex flex-column">
-          {{title}}
-          {{summary}}
-          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
-          {{content}}
           {{title}}
           {{summary}}
           <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
@@ -46,23 +36,17 @@
             {{#each labels}}
             <a href="/search?label={{slug}}" class="text-decoration-none">
               {{name}}
-            {{#each labels}}
-            <a href="/search?label={{slug}}" class="text-decoration-none">
-              {{name}}
             </a>
-            {{/each}}
             {{/each}}
           </div>
           <div class="col text-end">
             <p class="fw-bold">
-              {{createdBy.penName}}
               {{createdBy.penName}}
             </p>
           </div>
         </div>
       </div>
     </div>
-    {{/with}}
     {{/with}}
     <!-- Detail -->
 
@@ -71,15 +55,10 @@
       <div class="position-sticky top-0">
         <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
         {{#each relatedArticles}}
-        <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
-        {{#each relatedArticles}}
         <div class="card">
-          <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
           <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
           <div class="card-body small">
             <h6 class="card-title">
-              <a href="/{{slug}}">
-                {{title}}
               <a href="/{{slug}}">
                 {{title}}
               </a>
@@ -88,24 +67,15 @@
               {{#with category}}
               <a href="/search?category={{slug}}">
                 {{name}}
-              {{#with category}}
-              <a href="/search?category={{slug}}">
-                {{name}}
               </a>
-              {{/with}}
               {{/with}}
             </h6>
             <p class="card-text">
               {{summary}}
             </p>
             <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
-            <p class="card-text">
-              {{summary}}
-            </p>
-            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
           </div>
         </div>
-        {{/each}}
         {{/each}}
       </div>
     </div>
@@ -138,7 +108,7 @@
       <div class="card mt-2">
         <div class="card-body">
           <div class="media">
-            <img src="https://via.placeholder.com/50x50" alt="...">
+            <img src="{{user.avatarUrl}}">
             <div class="media-body">
               <h5 class="mt-0">{{user.fullname}}</h5>
               <p>
@@ -152,7 +122,6 @@
               <i class="bi bi-hand-thumbs-up"></i> Like
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {{likesCount}}
-                {{likesCount}}
                 <span class="visually-hidden">Total Likes</span>
               </span>
             </a>
@@ -160,7 +129,6 @@
           </div>
         </div>
 
-        {{!-- TODO: Replies Children --}}
         {{!-- TODO: Replies Children --}}
         <!-- Nested Replies -->
         <div class="card-footer bg-white border-0">
@@ -175,7 +143,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="media">
-                    <img src="https://via.placeholder.com/25x25" >
+                    <img src="https://via.placeholder.com/25x25">
                     <div class="media-body">
                       <h6 class="mt-0">Joke Doe</h6>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
@@ -201,7 +169,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
+                    <img src="https://via.placeholder.com/25x25">
                     <div class="media-body">
                       <h6 class="mt-0">Jekeke Doe</h6>
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
@@ -228,7 +196,6 @@
         </div>
         <!-- Nested Replies -->
       </div>
-      {{/each}}
       {{/each}}
       <!-- Old Comments -->
     </div>

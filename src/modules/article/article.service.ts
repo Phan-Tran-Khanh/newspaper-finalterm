@@ -63,40 +63,41 @@ export class ArticleService {
     });
   }
   async searchArticles(query: {
-    category: string;
-    label: string;
-    time: 'day' | 'week' | 'month' | 'year';
-    queryString: string;
+    category: string | undefined;
+    label: string | undefined;
+    time: 'day' | 'week' | 'month' | 'year' | undefined;
+    queryString: string | undefined;
   }): Promise<Article[]> {
-    const { category, label, queryString, time } = query;
-    const qb = this.articleRepository
-      .createQueryBuilder('article')
-      .leftJoinAndSelect('article.category', 'category')
-      .leftJoinAndSelect('article.labels', 'label')
-      .where('article.status = :status', { status: ArticleStatus.Published });
-    if (category) {
-      qb.andWhere('category.slug = :category', { category });
-    }
-    if (label) {
-      qb.andWhere('label.slug = :label', { label });
-    }
-    if (queryString) {
-      qb.andWhere('article.title LIKE :queryString', {
-        queryString: `%${queryString}%`,
-      });
-    }
-    if (time) {
-      const now = new Date();
-      const timeMap = {
-        day: now.setDate(now.getDate() - 1),
-        week: now.setDate(now.getDate() - 7),
-        month: now.setDate(now.getDate() - 30),
-        year: now.setDate(now.getDate() - 365),
-      };
-      qb.andWhere('article.createdAt > :time', {
-        time: timeMap[time],
-      });
-    }
-    return qb.getMany();
+    return this.articleRepository.find();
+    // const { category, label, queryString, time } = query;
+    // const qb = this.articleRepository
+    //   .createQueryBuilder('article')
+    //   .leftJoinAndSelect('article.category', 'category')
+    //   .leftJoinAndSelect('article.labels', 'label')
+    //   .where('article.status = :status', { status: ArticleStatus.Published });
+    // if (category) {
+    //   qb.andWhere('category.slug = :category', { category });
+    // }
+    // if (label) {
+    //   qb.andWhere('label.slug = :label', { label });
+    // }
+    // if (queryString) {
+    //   qb.andWhere('article.title LIKE :queryString', {
+    //     queryString: `%${queryString}%`,
+    //   });
+    // }
+    // if (time) {
+    //   const now = new Date();
+    //   const timeMap = {
+    //     day: now.setDate(now.getDate() - 1),
+    //     week: now.setDate(now.getDate() - 7),
+    //     month: now.setDate(now.getDate() - 30),
+    //     year: now.setDate(now.getDate() - 365),
+    //   };
+    //   qb.andWhere('article.createdAt > :time', {
+    //     time: timeMap[time],
+    //   });
+    // }
+    // return qb.getMany();
   }
 }
