@@ -1,8 +1,7 @@
-import { Injectable, Query } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CategoryService } from 'src/modules/category/category.service';
 import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
-import slugify from 'slugify';
 import { Article } from 'src/entity/article.entity';
 import { SearchParms } from './dto/SearchQuery';
 import { Page } from './dto/Page';
@@ -15,22 +14,10 @@ export class AppService {
     private readonly articleService: ArticleService,
   ) {}
   async getCategories() {
-    const categories = await this.categoryService.findAll();
-    return categories.map((category) => ({
-      ...category,
-      slug: slugify(category.name, { lower: true }),
-      children: category.children.map((child) => ({
-        ...child,
-        slug: slugify(child.name, { lower: true }),
-      })),
-    }));
+    return this.categoryService.findAll();
   }
   async getLabels() {
-    const labels = await this.labelService.findAll();
-    return labels.map((label) => ({
-      ...label,
-      slug: slugify(label.name, { lower: true }),
-    }));
+    return this.labelService.findAll();
   }
   async getWeeklyArticles() {
     return this.articleService.getWeeklyArticles();

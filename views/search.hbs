@@ -38,9 +38,9 @@
           <select class="form-select" name="category" id="category">
             <option value="" selected>Choose...</option>
             {{#each categories}}
-            <option value="{{slugify name}}">{{name}}</option>
+            <option value="{{name}}">{{name}}</option>
             {{#each children}}
-            <option value="{{slugify name}}">{{name}}</option>
+            <option value="{{name}}">{{name}}</option>
             {{/each}}
             {{/each}}
           </select>
@@ -53,7 +53,7 @@
           <select class="form-select" name="label" id="label">
             <option value="" selected>Choose...</option>
             {{#each labels}}
-            <option value="{{slugify name}}">{{name}}</option>
+            <option value="{{name}}">{{name}}</option>
             {{/each}}
           </select>
         </div>
@@ -69,7 +69,7 @@
           <div class="card-body">
             <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             <h6 class="card-subtitle text-muted">
-              <a href="/search?category={{slugify category.name}}">
+              <a href="/search?category={{category.name}}">
                 {{category.name}}
               </a>
             </h6>
@@ -86,7 +86,7 @@
             <p class="card-text small text-muted">
               tags:
               {{#each labels}}
-              <a href="/search?label={{slugify name}}">{{name}}</a>
+              <a href="/search?label={{name}}">{{name}}</a>
               {{/each}}
             </p>
           </div>

@@ -48,12 +48,12 @@
         {{#each categories}}
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link" href="/search?category={{slugify name}}" role="button">
+            <a class="nav-link" href="/search?category={{name}}" role="button">
               {{name}}
             </a>
             <div class="dropdown-menu">
               {{#each children}}
-              <a class="dropdown-item" href="/search?category={{slugify name}}">{{name}}</a>
+              <a class="dropdown-item" href="/search?category={{name}}">{{name}}</a>
               {{/each}}
             </div>
           </li>

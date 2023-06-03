@@ -5,6 +5,7 @@ export class Label {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ unique: true })
   @Column()
   name: string;
 

@@ -8,7 +8,7 @@
         <!-- Category and Date Time -->
         <div class="row row-cols-2">
           <div class="col text-start small fw-bold text-muted">
-            <a href="/search?category={{slugify category.name}}" class="text-decoration-none">
+            <a href="/search?category={{category.name}}" class="text-decoration-none">
               {{category.name}}
             </a>
           </div>
@@ -32,7 +32,7 @@
           <div class="col text-start small">
             <span>tags: </span>
             {{#each labels}}
-            <a href="/search?label={{slugify name}}" class="text-decoration-none">
+            <a href="/search?label={{name}}" class="text-decoration-none">
               {{name}}
             </a>
             {{/each}}
@@ -51,7 +51,7 @@
     <!-- Same Category -->
     <div class="col-md-3">
       <div class="position-sticky top-0">
-        <a class="h5 fw-bold" href="/search?category={{slugify article.category.name}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        <a class="h5 fw-bold" href="/search?category={{article.category.name}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
         {{#each relatedArticles}}
         <div class="card">
           <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
@@ -62,7 +62,7 @@
               </a>
             </h6>
             <h6 class="card-subtitle mb-2 text-muted">
-              <a href="/search?category={{slugify category.name}}">
+              <a href="/search?category={{category.name}}">
                 {{category.name}}
               </a>
             </h6>
