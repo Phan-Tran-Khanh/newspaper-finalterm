@@ -7,7 +7,7 @@ import * as hbs from 'hbs';
 import { join } from 'path';
 import * as morgan from 'morgan';
 import { AppModule } from 'src/modules/app/app.module';
-import slugify from 'slugify';
+import registerHelpers from './utils/hbs';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -17,15 +17,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
-  hbs.registerHelper('slugify', (text: string) => {
-    return new Handlebars.SafeString(slugify(text, { lower: true }));
-  });
-  hbs.registerHelper(
-    'ifEquals',
-    (a: any, b: any, options: Handlebars.HelperOptions) => {
-      return a == b ? options.fn(this) : options.inverse(this);
-    },
-  );
+  registerHelpers(hbs);
 
   // set up request logger
   app.use(
