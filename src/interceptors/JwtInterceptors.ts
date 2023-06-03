@@ -14,7 +14,7 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class JwtInterceptor implements NestInterceptor {
   constructor(
-    @Inject(JwtService) private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService,
     @Inject(UserService) private readonly userService: UserService,
     private readonly configService: ConfigService,
   ) {}

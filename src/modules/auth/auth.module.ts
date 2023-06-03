@@ -15,17 +15,15 @@ import { EmailService } from '../email/email.service';
     UserModule,
     PassportModule,
     JwtModule.registerAsync(authConfig.asProvider()),
-    PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   providers: [
-    AuthService,
     LocalStrategy,
     JwtStrategy,
     GoogleStrategy,
+    AuthService,
     EmailService,
-    JwtService,
   ],
-  exports: [AuthService, JwtService],
+  exports: [AuthService, JwtModule],
   controllers: [AuthController],
 })
 export class AuthModule {}
