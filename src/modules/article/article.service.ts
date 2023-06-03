@@ -5,6 +5,7 @@ import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
 import { SearchParms } from '../app/dto/SearchQuery';
 import { Page } from '../app/dto/Page';
+import slugify from 'slugify';
 
 @Injectable()
 export class ArticleService {
@@ -12,6 +13,18 @@ export class ArticleService {
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
   ) {}
+  findAll(): Promise<Article[]> {
+    return this.articleRepository.find();
+  }
+  create(dto: Article): Promise<Article> {
+    dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
+    return this.articleRepository.save(dto);
+  }
+  update(id: number, dto: Article): Promise<Article | null> {
+    dto.id = id;
+    dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
+    return this.articleRepository.save(dto);
+  }
   getLatestByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
@@ -65,18 +78,46 @@ export class ArticleService {
     });
   }
   async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
-    const { page, pageSize } = searchQuery;
-    const [articles, total] = await this.articleRepository.findAndCount({
-      relations: ['createdBy', 'publishedBy'],
-      where: {
-        status: ArticleStatus.Published,
-      },
-      order: {
-        publishedAt: 'DESC',
-      },
-      take: pageSize,
-      skip: (page - 1) * pageSize,
-    });
+    const { page, pageSize, label, category, query, time } = searchQuery;
+    const queryBuilder = this.articleRepository
+      .createQueryBuilder('article')
+      .leftJoinAndSelect('article.category', 'category')
+      .leftJoinAndSelect('article.labels', 'label');
+    console.log(query);
+    if (query.length > 0)
+      queryBuilder.andWhere('article.textSearch @@ to_tsquery(:query)', {
+        query,
+      });
+
+    if (category.length > 0)
+      queryBuilder.andWhere('category.name = :category', { category });
+
+    if (label.length > 0)
+      queryBuilder.andWhere('label.name = :label', { label });
+
+    if (time === 'day') {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      queryBuilder.andWhere('article.publishedAt >= :today', { today });
+    } else if (time === 'week') {
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      queryBuilder.andWhere('article.publishedAt >= :oneWeekAgo', {
+        oneWeekAgo,
+      });
+    } else if (time === 'month') {
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      queryBuilder.andWhere('article.publishedAt >= :oneMonthAgo', {
+        oneMonthAgo,
+      });
+    }
+    queryBuilder.orderBy('article.publishedAt', 'DESC');
+
+    const [articles, total] = await queryBuilder
+      .skip((page - 1) * pageSize)
+      .take(pageSize)
+      .getManyAndCount();
 
     return {
       content: articles,

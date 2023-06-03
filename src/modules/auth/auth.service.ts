@@ -7,8 +7,8 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/entity/user.entity';
 import { UserService } from 'src/modules/user/user.service';
-import { CreateUserDto } from 'src/modules/user/dto/create-user.dto';
 import { EmailService } from 'src/modules/email/email.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
@@ -16,11 +16,12 @@ export class AuthService {
     private readonly usersService: UserService,
     private readonly jwtService: JwtService,
     private readonly emailService: EmailService,
+    private readonly configService: ConfigService,
   ) {}
 
   async validateUser(email: string, password: string): Promise<User | null> {
     const user = await this.usersService.findOneByEmail(email);
-    if (user && (await bcrypt.compare(password, user.password))) {
+    if (user && (await this.comparePassword(password, user.password))) {
       return user;
     }
     return null;
@@ -37,13 +38,24 @@ export class AuthService {
     };
   }
 
+  async hashPassword(password: string) {
+    return await bcrypt.hash(
+      password,
+      parseInt(this.configService.get('BCRYPT_SALT') as string, 10),
+    );
+  }
+
+  async comparePassword(password: string, hashedPassword: string) {
+    return await bcrypt.compare(password, hashedPassword);
+  }
+
   login(user: User) {
     return this.jwtSign(user);
   }
 
-  async signup(createUserDto: CreateUserDto) {
-    createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
-    const user = await this.usersService.create(createUserDto);
+  async signup(dto: User) {
+    dto.password = await this.hashPassword(dto.password);
+    const user = await this.usersService.create(dto);
     return this.jwtSign(user);
   }
 

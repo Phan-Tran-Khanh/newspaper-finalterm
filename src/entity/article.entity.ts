@@ -45,6 +45,9 @@ export class Article extends Audit {
   @Column({ default: false })
   isPremium: boolean;
 
+  @Column({ type: 'tsvector', select: false })
+  textSearch: string;
+
   @Column({ enum: ArticleStatus, default: ArticleStatus.Draft })
   status: ArticleStatus;
 

@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from '../user/dto/create-user.dto';
 import { LocalAuthGuard } from 'src/guards/local-auth.guard';
 import { GoogleAuthGuard } from 'src/guards/google-auth.guard';
 import { User } from 'src/entity/user.entity';
@@ -28,8 +27,8 @@ export class AuthController {
   }
 
   @Post('signup')
-  async signup(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
-    const { accessToken } = await this.authService.signup(createUserDto);
+  async signup(@Res() res: Response, @Body() dto: User) {
+    const { accessToken } = await this.authService.signup(dto);
     res.cookie('jwt', accessToken, { httpOnly: true, path: '/' });
     res.redirect('/');
   }

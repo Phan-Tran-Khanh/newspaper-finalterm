@@ -8,9 +8,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { LabelService } from './label.service';
-import { CreateLabelDto } from './dto/create-label.dto';
-import { UpdateLabelDto } from './dto/update-label.dto';
 import { Protected } from 'src/decorator/protected.decorator';
+import { Label } from 'src/entity/label.entity';
 
 @Controller('label')
 @Protected('Admin')
@@ -18,8 +17,8 @@ export class LabelController {
   constructor(private readonly labelService: LabelService) {}
 
   @Post()
-  create(@Body() createLabelDto: CreateLabelDto) {
-    return this.labelService.create(createLabelDto);
+  create(@Body() dto: Label) {
+    return this.labelService.create(dto);
   }
 
   @Get()
@@ -33,8 +32,8 @@ export class LabelController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLabelDto: UpdateLabelDto) {
-    return this.labelService.update(+id, updateLabelDto);
+  update(@Param('id') id: string, @Body() dto: Label) {
+    return this.labelService.update(+id, dto);
   }
 
   @Delete(':id')

@@ -17,7 +17,6 @@ import { User } from 'src/entity/user.entity';
 @UseInterceptors(JwtInterceptor)
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
   @Get()
   @Render('index')
   async homeView(@Req() req: Request & { user: User }) {
@@ -83,5 +82,11 @@ export class AppController {
       relatedArticles,
       user: req.user,
     };
+  }
+
+  @Get('faker')
+  async faker() {
+    await this.appService.faker();
+    return 'ok';
   }
 }

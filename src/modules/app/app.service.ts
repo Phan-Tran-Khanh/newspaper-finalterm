@@ -5,6 +5,8 @@ import { ArticleService } from '../article/article.service';
 import { Article } from 'src/entity/article.entity';
 import { SearchParms } from './dto/SearchQuery';
 import { Page } from './dto/Page';
+import fake from 'src/utils/faker';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AppService {
@@ -12,8 +14,26 @@ export class AppService {
     private readonly categoryService: CategoryService,
     private readonly labelService: LabelService,
     private readonly articleService: ArticleService,
+    private readonly userService: UserService,
   ) {}
+  async faker() {
+    return fake(
+      this.categoryService,
+      this.labelService,
+      this.userService,
+      this.articleService,
+    );
+  }
   async getCategories() {
+    // const categories = await this.categoryService.findAll();
+    // const labels = await this.labelService.findAll();
+    // const users = await this.userService.findAll();
+    // categories.forEach((category) => {
+    //   for (let i = 0; i < 20; i++) {
+    //     const article = fakeArticle(category, labels, users);
+    //     this.articleService.create(article);
+    //   }
+    // });
     return this.categoryService.findAll();
   }
   async getLabels() {

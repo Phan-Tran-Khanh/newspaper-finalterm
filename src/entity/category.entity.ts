@@ -21,7 +21,7 @@ export class Category {
   @ManyToOne(() => Category, (category) => category.children)
   parent: Category;
 
-  @OneToMany(() => Category, (category) => category.parent)
+  @OneToMany(() => Category, (category) => category.parent, { cascade: true })
   children: Category[];
 
   @OneToMany(() => Article, (article) => article.category)
