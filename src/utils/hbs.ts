@@ -3,7 +3,9 @@ import * as hbsModule from 'hbs';
 export default function registerHelpers(hbs: typeof hbsModule) {
   hbs.registerHelper(
     'ifEquals',
-    (a: string, b: string, options: Handlebars.HelperOptions) => {
+    (a: any, b: any, options: Handlebars.HelperOptions) => {
+      console.log(a, b);
+      if (!a || !b) return options.inverse(this);
       return a == b ? options.fn(this) : options.inverse(this);
     },
   );

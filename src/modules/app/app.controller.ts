@@ -1,15 +1,26 @@
-import { Controller, Get, Param, Query, Render } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  Render,
+  Req,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { Article } from 'src/entity/article.entity';
 import { SearchParms, SearchParamsType } from './dto/SearchQuery';
+import { JwtInterceptor } from 'src/interceptors/JwtInterceptors';
+import { User } from 'src/entity/user.entity';
 
 @Controller()
+@UseInterceptors(JwtInterceptor)
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
   @Render('index')
-  async homeView() {
+  async homeView(@Req() req: Request & { user: User }) {
     const [categories, weeklyArticles, topArticles, topArticlesByCategory] =
       await Promise.all([
         this.appService.getCategories(),
@@ -19,6 +30,7 @@ export class AppController {
       ]);
     return {
       file: 'index',
+      user: req.user,
       categories,
       weeklyArticles,
       topArticles,
@@ -28,29 +40,35 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  async searchView(@Query() query: SearchParamsType) {
-    const searchQuery = new SearchParms(query);
+  async searchView(
+    @Query() query: SearchParamsType,
+    @Req() req: Request & { user: User },
+  ) {
+    const searchParams = new SearchParms(query);
 
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.searchArticles(searchQuery),
+      this.appService.searchArticles(searchParams),
     ]);
 
     return {
       file: 'search',
+      user: req.user,
       categories,
       labels,
       articles: articlesPage.content,
       totalPage: articlesPage.totalPage,
-      page: articlesPage.page,
-      pageSize: articlesPage.pageSize,
+      searchParams,
     };
   }
 
-  @Get('/:slug')
+  @Get('article/:slug')
   @Render('article')
-  async articleView(@Param('slug') slug: string) {
+  async articleView(
+    @Param('slug') slug: string,
+    @Req() req: Request & { user: User },
+  ) {
     const [categories, article] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getDetailArticleBySlug(slug),
@@ -63,6 +81,7 @@ export class AppController {
       categories,
       article,
       relatedArticles,
+      user: req.user,
     };
   }
 }

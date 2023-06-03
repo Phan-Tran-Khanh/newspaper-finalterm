@@ -15,12 +15,12 @@ export class SearchParms {
   page: number;
   pageSize: number;
 
-  constructor(query: SearchParamsType) {
-    this.category = query.category || '';
-    this.label = query.label || '';
-    this.time = query.time || 'all';
-    this.query = query.query || '';
-    this.page = query.page || 1;
-    this.pageSize = query.pageSize || 10;
+  constructor(params: SearchParamsType) {
+    this.category = params.category || '';
+    this.label = params.label || '';
+    this.time = params.time || 'all';
+    this.query = params.query || '';
+    this.page = params.page || 1;
+    this.pageSize = params.pageSize || 10;
   }
 }

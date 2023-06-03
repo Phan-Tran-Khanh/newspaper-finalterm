@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
-import { IsEmail, IsString, Length } from 'class-validator';
+import { IsEmail, Length } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { ROLES, UserRole } from 'src/enum/UserRole.enum';
 import { Role } from './role.entity';

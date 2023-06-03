@@ -6,6 +6,7 @@ import { Logger } from '@nestjs/common';
 import * as hbs from 'hbs';
 import { join } from 'path';
 import * as morgan from 'morgan';
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from 'src/modules/app/app.module';
 import registerHelpers from './utils/hbs';
 
@@ -19,6 +20,9 @@ async function bootstrap() {
   app.set('view options', { layout: 'layouts/main' });
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
   registerHelpers(hbs);
+
+  //set up cookies
+  app.use(cookieParser());
 
   // set up request logger
   app.use(
