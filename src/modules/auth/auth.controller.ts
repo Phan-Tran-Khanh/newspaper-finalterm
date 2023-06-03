@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  NotFoundException,
   Post,
   Req,
   Res,
@@ -34,18 +35,17 @@ export class AuthController {
   }
 
   @Post('forgot-password')
-  forgotPassword(@Body() body: any) {
-    this.authService.forgotPassword(body);
+  forgotPassword(@Body() body: { email: string | undefined }) {
+    if (!body.email) {
+      throw new NotFoundException('Email is required');
+    }
+    this.authService.forgotPassword(body.email);
   }
 
   @Post('reset-password')
-  resetPasswordHandler(@Body() body: any) {
+  resetPassword(@Body() body: { otp: string; password: string }) {
+    // const { otp, password } = body;
     this.authService.resetPassword(body);
-  }
-
-  @Get('change-password')
-  resetPassword() {
-    this.authService.changePassword();
   }
 
   @Get('refresh-token')

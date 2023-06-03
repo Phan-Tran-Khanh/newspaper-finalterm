@@ -63,15 +63,8 @@ export class AuthService {
     }
   }
 
-  async forgotPassword(body: any) {
-    const { email } = body;
-    let user: User | null = null;
-    if (email) {
-      user = await this.usersService.findOneByEmail(email);
-    } else {
-      throw new UnauthorizedException('Email is required');
-    }
-
+  async forgotPassword(email: string) {
+    const user = await this.usersService.findOneByEmail(email);
     if (user) {
       const token = this.jwtService.sign(
         { sub: user.id },
