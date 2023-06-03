@@ -1,5 +1,7 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Article } from 'src/entity/article.entity';
+import { SearchParms, SearchParamsType } from './dto/SearchQuery';
 
 @Controller()
 export class AppController {
@@ -7,34 +9,60 @@ export class AppController {
 
   @Get()
   @Render('index')
-  homeView() {
-    this.appService.getHome();
+  async homeView() {
+    const [categories, weeklyArticles, topArticles, topArticlesByCategory] =
+      await Promise.all([
+        this.appService.getCategories(),
+        this.appService.getWeeklyArticles(),
+        this.appService.getTopArticles(),
+        this.appService.getTopArticlesByCategory(),
+      ]);
     return {
-      layout: 'layouts/index',
+      file: 'index',
+      categories,
+      weeklyArticles,
+      topArticles,
+      topArticlesByCategory,
     };
-  }
-
-  @Get('/article')
-  @Render('article')
-  articleView() {
-    // TODO
-  }
-
-  @Get('/list')
-  @Render('list')
-  listView() {
-    // TODO
   }
 
   @Get('/search')
   @Render('search')
-  searchArticleView() {
-    // TODO
+  async searchView(@Query() query: SearchParamsType) {
+    const searchQuery = new SearchParms(query);
+
+    const [categories, labels, articlesPage] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.searchArticles(searchQuery),
+    ]);
+
+    return {
+      file: 'search',
+      categories,
+      labels,
+      articles: articlesPage.content,
+      totalPage: articlesPage.totalPage,
+      page: articlesPage.page,
+      pageSize: articlesPage.pageSize,
+    };
   }
 
   @Get('/:slug')
-  @Render('detail')
-  detailArticleView() {
-    // TODO
+  @Render('article')
+  async articleView(@Param('slug') slug: string) {
+    const [categories, article] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getDetailArticleBySlug(slug),
+    ]);
+    const relatedArticles = await this.appService.getRelatedArticles(
+      article as Article,
+    );
+    return {
+      file: 'article',
+      categories,
+      article,
+      relatedArticles,
+    };
   }
 }

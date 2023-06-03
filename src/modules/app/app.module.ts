@@ -11,6 +11,7 @@ import { AppService } from './app.service';
 import databaseConfig from 'src/config/database.config';
 import authConfig from 'src/config/auth.config';
 import emailConfig from 'src/config/email.config';
+import { LabelModule } from '../label/label.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import emailConfig from 'src/config/email.config';
     AuthModule,
     ArticleModule,
     CategoryModule,
+    LabelModule,
     EmailModule,
   ],
   controllers: [AppController],

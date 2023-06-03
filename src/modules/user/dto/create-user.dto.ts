@@ -1,7 +1,10 @@
+import { Gender } from 'src/enum/Gender.enum';
+
 export class CreateUserDto {
-  username: string;
   email: string;
   password: string;
   firstName: string;
   lastName: string;
+  dateOfBirth: Date;
+  gender: Gender;
 }

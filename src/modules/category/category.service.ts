@@ -35,4 +35,11 @@ export class CategoryService {
   async remove(id: number): Promise<void> {
     await this.categoryRepository.delete(id);
   }
+
+  async getMostViewedCategories(take = 10): Promise<Category[]> {
+    const categories = await this.categoryRepository.find({
+      take,
+    });
+    return categories;
+  }
 }

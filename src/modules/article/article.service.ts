@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/entity/article.entity';
+import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
+import { SearchParms } from '../app/dto/SearchQuery';
+import { Page } from '../app/dto/Page';
 
 @Injectable()
 export class ArticleService {
@@ -9,100 +12,77 @@ export class ArticleService {
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
   ) {}
-
-  createDraft(article: Article): Promise<Article> {
-    article.isPublished = false;
-    return this.articleRepository.save(article);
-  }
-
-  removeDraft(article: Article): Promise<Article> {
-    return this.articleRepository.remove(article);
-  }
-
-  publishDraft(article: Article, userId: number): Promise<Article> {
-    article.publishedAt = new Date();
-    article.publishedBy = userId;
-    return this.articleRepository.save(article);
-  }
-  unpublishDraft(article: Article): Promise<Article> {
-    article.isPublished = false;
-    return this.articleRepository.save(article);
-  }
-
-  getDraftsByUser(userId: number): Promise<Article[]> {
+  getLatestByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: false,
-        author: {
-          id: userId,
-        },
-      },
-    });
-  }
-
-  getPulishedByUser(userId: number): Promise<Article[]> {
-    return this.articleRepository.find({
-      where: {
-        isPublished: true,
-        author: {
-          id: userId,
-        },
-      },
-    });
-  }
-
-  getPublishedByCategory(categoryId: number): Promise<Article[]> {
-    return this.articleRepository.find({
-      where: {
-        isPublished: true,
         category: {
           id: categoryId,
         },
-      },
-    });
-  }
-
-  getLastestByCategory(categoryId: number): Promise<Article[]> {
-    return this.articleRepository.find({
-      where: {
-        isPublished: true,
-        category: {
-          id: categoryId,
-        },
+        status: ArticleStatus.Published,
       },
       order: {
         publishedAt: 'DESC',
       },
-      take: 10,
+      take,
     });
   }
-
-  getMostViewByCategory(categoryId: number): Promise<Article[]> {
+  getMostViewedByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
-        isPublished: true,
         category: {
           id: categoryId,
         },
+        status: ArticleStatus.Published,
       },
       order: {
         viewCount: 'DESC',
       },
-      take: 10,
+      take,
     });
   }
-
-  async getDetailBySlug(slug: string): Promise<Article | null> {
+  async getDetailArticleBySlug(slug: string): Promise<Article | null> {
     const article = await this.articleRepository.findOne({
-      where: {
-        slug,
-      },
-      relations: ['author', 'category'],
+      where: { slug, status: ArticleStatus.Published },
+      relations: ['createdBy', 'category', 'labels'],
     });
     if (article) {
       article.viewCount++;
+      article.weeklyViewCount++;
       await this.articleRepository.save(article);
     }
     return article;
+  }
+  async getWeeklyArticles(take = 4): Promise<Article[]> {
+    return this.articleRepository.find({
+      relations: ['createdBy', 'publishedBy'],
+      where: {
+        status: ArticleStatus.Published,
+      },
+      order: {
+        weeklyViewCount: 'DESC',
+      },
+      take,
+    });
+  }
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
+    const { page, pageSize } = searchQuery;
+    const [articles, total] = await this.articleRepository.findAndCount({
+      relations: ['createdBy', 'publishedBy'],
+      where: {
+        status: ArticleStatus.Published,
+      },
+      order: {
+        publishedAt: 'DESC',
+      },
+      take: pageSize,
+      skip: (page - 1) * pageSize,
+    });
+
+    return {
+      content: articles,
+      totalPage: Math.ceil(total / pageSize),
+      page,
+      pageSize,
+    };
   }
 }

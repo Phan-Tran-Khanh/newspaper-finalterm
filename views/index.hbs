@@ -1,4 +1,4 @@
-<main class="container-fluid my-3 bg-light">
+<main class="container my-3 bg-light">
   <!-- Weekly News -->
   <div class="row">
     <div class="col-md-12">
@@ -18,7 +18,7 @@
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
@@ -55,7 +55,7 @@
       <div class="card">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
+            <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
           </div>
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
@@ -111,7 +111,7 @@
             <div class="card">
               <div class="row row-cols-2 g-0">
                 <div>
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div>
                   <div class="card-body">
@@ -146,7 +146,7 @@
         <div class="row d-flex flex-nowrap">
           {{#each latest}}
           <div class="card w-25">
-            <img class="card-img-top w-100" src="{{bannerImageUrl}}" alt="Card image cap">
+            <img class="card-img-top banner" src="{{bannerImageUrl}}" alt="Card image cap">
             <div class="card-body small">
               <h6 class="card-title">
                 <a href="/{{slug}}">

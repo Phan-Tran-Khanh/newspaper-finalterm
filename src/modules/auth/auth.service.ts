@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
@@ -18,8 +19,8 @@ export class AuthService {
     private readonly emailService: EmailService,
   ) {}
 
-  async validateUser(username: string, password: string): Promise<User | null> {
-    const user = await this.usersService.findOneByUsername(username);
+  async validateUser(email: string, password: string): Promise<User | null> {
+    const user = await this.usersService.findOneByEmail(email);
     if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
@@ -29,11 +30,11 @@ export class AuthService {
   jwtSign(user: User) {
     const payload = {
       sub: user.id,
-      username: user.username,
+      email: user.email,
       roles: user.roles,
     };
     return {
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(payload),
     };
   }
 
@@ -62,17 +63,8 @@ export class AuthService {
     }
   }
 
-  async forgotPassword(body: any) {
-    const { email, username } = body;
-    let user: User | null = null;
-    if (email) {
-      user = await this.usersService.findOneByEmail(email);
-    } else if (username) {
-      user = await this.usersService.findOneByUsername(username);
-    } else {
-      throw new BadRequestException();
-    }
-
+  async forgotPassword(email: string) {
+    const user = await this.usersService.findOneByEmail(email);
     if (user) {
       const token = this.jwtService.sign(
         { sub: user.id },
@@ -83,6 +75,8 @@ export class AuthService {
         token,
       );
       this.emailService.sendMail(mailOptions);
+    } else {
+      throw new BadRequestException('Email not found');
     }
   }
 }

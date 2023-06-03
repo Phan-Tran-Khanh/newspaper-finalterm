@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Lable {
+export class Label {
   @PrimaryGeneratedColumn()
   id: number;
 

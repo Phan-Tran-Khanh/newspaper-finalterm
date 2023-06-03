@@ -6,20 +6,17 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Audit } from './audit.entity';
-import { Lable } from './lable.entity';
+import { Label } from './label.entity';
 import { User } from './user.entity';
 import { Comment } from './comment.entity';
 import { Category } from './category.entity';
 import { MaxLength } from 'class-validator';
+import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
+import { Audit } from './audit';
 
 @Entity()
-export class Article {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Article extends Audit {
   @Column()
   @MaxLength(255)
   title: string;
@@ -36,6 +33,9 @@ export class Article {
   @Column({ default: 0 })
   viewCount: number;
 
+  @Column({ default: 0 })
+  weeklyViewCount: number;
+
   @Column()
   bannerImageUrl: string;
 
@@ -45,24 +45,20 @@ export class Article {
   @Column({ default: false })
   isPremium: boolean;
 
-  @Column({ default: false })
-  isPublished: boolean;
+  @Column({ enum: ArticleStatus, default: ArticleStatus.Draft })
+  status: ArticleStatus;
 
-  @Column()
+  @Column({ nullable: true })
   publishedAt: Date;
 
-  @Column()
+  @Column({ nullable: true })
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'publishedBy' })
   publishedBy: number;
 
-  @Column(() => Audit, { prefix: false })
-  audit: Audit;
-
-  @ManyToMany(() => Lable)
-  @JoinTable({ name: 'article_lables' })
-  lables: Lable[];
-
-  @ManyToOne(() => User)
-  author: User;
+  @ManyToMany(() => Label)
+  @JoinTable({ name: 'article_labels' })
+  labels: Label[];
 
   @OneToMany(() => Comment, (comment) => comment.article)
   comments: Comment[];

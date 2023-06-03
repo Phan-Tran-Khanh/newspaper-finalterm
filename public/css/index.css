@@ -8,10 +8,10 @@
     width: 5%;
 }
 
-.overflow-auto.flex-nowrap {
-    overflow: scroll;
+.d-flex.flex-nowrap {
+    overflow-x: scroll;
 }
 
-.overflow-auto.flex-nowrap::-webkit-scrollbar { 
+.d-flex.flex-nowrap::-webkit-scrollbar { 
     display: none;
 }
