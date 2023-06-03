@@ -13,7 +13,7 @@
           <span>DongNike</span>
         </a>
       </li>
-      {{#ifEquals role 'WRITER'}}
+      {{#ifEquals role.name 'Writer'}}
       <li class="mb-3">
         <a href="/writer/index" class="link-light">
           <i class="bi bi-newspaper"></i> Submit Article
@@ -25,9 +25,9 @@
         </a>
       </li>
       {{/ifEquals}}
-      {{#ifEquals role 'EDITOR'}}
+      {{#ifEquals role.name 'Editor'}}
       {{/ifEquals}}
-      {{#ifEquals role 'ADMIN'}}
+      {{#ifEquals role.name 'Admin'}}
       {{/ifEquals}}
       <li class="mb-3">
         <a href="#footer" class="link-light">

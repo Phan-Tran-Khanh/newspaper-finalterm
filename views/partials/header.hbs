@@ -18,18 +18,20 @@
         </div>
       </form>
 
-      <!-- Login/ signup Modals Trigger -->
-      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginRegister"
-        id="anonymity-btn">
-        <i class="bi bi-person-circle"></i>
-        Log in
-      </a>
-
+      {{#if user}}
       <!-- Logged in Offcanvas Trigger -->
       <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
         <span class="navbar-toggler-icon"></span>
       </button>
+      {{else}}
+      <!-- Login/ Signup Modals Trigger -->
+      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginRegister"
+        id="anonymity-btn">
+        <i class="bi bi-person-circle"></i>
+        Log in
+      </a>
+      {{/if}}
     </div>
   </nav>
   <!-- Upper Header -->
