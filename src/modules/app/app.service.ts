@@ -4,6 +4,7 @@ import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
 import slugify from 'slugify';
 import { Article } from 'src/entity/article.entity';
+import { SearchQuery } from './SearchQuery';
 
 @Injectable()
 export class AppService {
@@ -61,13 +62,8 @@ export class AppService {
     }
     return topArticles;
   }
-  async searchArticles(query: {
-    category: string;
-    label: string;
-    time: 'day' | 'week' | 'month' | 'year';
-    queryString: string;
-  }) {
-    return this.articleService.searchArticles(query);
+  async searchArticles(searchQuery: SearchQuery) {
+    return this.articleService.searchArticles(searchQuery);
   }
   async getDetailArticleBySlug(slug: string) {
     return this.articleService.getDetailArticleBySlug(slug);

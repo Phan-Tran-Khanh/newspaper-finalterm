@@ -16,6 +16,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
+  app.set('view options', { layout: 'layouts/main' });
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
   registerHelpers(hbs);
 
@@ -37,6 +38,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
+  // set up application
   const configService = app.get(ConfigService);
   const port = configService.get('PORT') || 3000;
   await app.listen(port);

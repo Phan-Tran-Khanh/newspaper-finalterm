@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Article } from 'src/entity/article.entity';
+import { SearchQuery, SearchQueryType } from './SearchQuery';
 
 @Controller()
 export class AppController {
@@ -17,7 +18,6 @@ export class AppController {
         this.appService.getTopArticlesByCategory(),
       ]);
     return {
-      layout: 'layouts/index',
       file: 'index',
       categories,
       weeklyArticles,
@@ -28,28 +28,21 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  async searchView(
-    @Query('category') category: string,
-    @Query('label') label: string,
-    @Query('time') time: 'day' | 'week' | 'month' | 'year',
-    @Query('queryString') queryString: string,
-  ) {
+  async searchView(@Query() query: SearchQueryType) {
+    const searchQuery = new SearchQuery(query);
+
     const [categories, labels, articles] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.searchArticles({
-        category,
-        label,
-        time,
-        queryString,
-      }),
+      this.appService.searchArticles(searchQuery),
     ]);
+
     return {
-      layout: 'layouts/index',
       file: 'search',
       categories,
       labels,
       articles,
+      totalPage: Math.ceil(articles.length / 10),
     };
   }
 
@@ -64,7 +57,6 @@ export class AppController {
       article as Article,
     );
     return {
-      layout: 'layouts/index',
       file: 'article',
       categories,
       article,

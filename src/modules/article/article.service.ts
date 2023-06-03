@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/entity/article.entity';
 import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
+import { SearchQuery } from '../app/SearchQuery';
 
 @Injectable()
 export class ArticleService {
@@ -62,12 +63,8 @@ export class ArticleService {
       take,
     });
   }
-  async searchArticles(query: {
-    category: string | undefined;
-    label: string | undefined;
-    time: 'day' | 'week' | 'month' | 'year' | undefined;
-    queryString: string | undefined;
-  }): Promise<Article[]> {
+  async searchArticles(searchQuery: SearchQuery): Promise<Article[]> {
+    console.log(searchQuery);
     return this.articleRepository.find();
     // const { category, label, queryString, time } = query;
     // const qb = this.articleRepository
