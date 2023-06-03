@@ -9,6 +9,8 @@ import { IsEmail, IsString, Length } from 'class-validator';
 import { Exclude } from 'class-transformer';
 import { ROLES, UserRole } from 'src/enum/UserRole.enum';
 import { Role } from './role.entity';
+import { Gender } from 'src/enum/Gender.enum';
+import { Category } from './category.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -39,6 +41,9 @@ export class User {
   @Column({ nullable: true })
   penName: string;
 
+  @Column({ enum: Gender, nullable: true })
+  gender: Gender;
+
   @Column({ nullable: true })
   dateOfBirth: Date;
 
@@ -48,7 +53,10 @@ export class User {
   @ManyToOne(() => Role, (role) => role.id)
   role: Role;
 
+  @ManyToOne(() => Category, (category) => category.id)
+  category: Category;
+
   get roles(): UserRole[] {
-    return ROLES.filter((role, index) => index >= this.role.id);
+    return ROLES.filter((_, index) => index >= this.role.id);
   }
 }

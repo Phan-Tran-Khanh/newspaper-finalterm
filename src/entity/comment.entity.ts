@@ -1,24 +1,17 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Article } from './article.entity';
-import { User } from './user.entity';
+import { Audit } from './audit';
 
 @Entity()
-export class Comment {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Comment extends Audit {
   @Column()
   content: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn()
-  user: User;
+  @ManyToOne(() => Comment, (comment) => comment.children)
+  parent: number;
+
+  @OneToMany(() => Comment, (comment) => comment.parent)
+  children: Comment[];
 
   @ManyToOne(() => Article, (article) => article.comments)
   @JoinColumn()

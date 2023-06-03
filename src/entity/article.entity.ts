@@ -6,7 +6,6 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Label } from './label.entity';
 import { User } from './user.entity';
@@ -14,12 +13,10 @@ import { Comment } from './comment.entity';
 import { Category } from './category.entity';
 import { MaxLength } from 'class-validator';
 import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
+import { Audit } from './audit';
 
 @Entity()
-export class Article {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Article extends Audit {
   @Column()
   @MaxLength(255)
   title: string;
@@ -58,27 +55,6 @@ export class Article {
   @ManyToOne(() => User)
   @JoinColumn({ name: 'publishedBy' })
   publishedBy: number;
-
-  @Column({ default: () => 'NOW()', nullable: true })
-  createdAt: Date;
-  @Column({ nullable: true })
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'createdBy' })
-  createdBy: number;
-
-  @Column({ nullable: true })
-  updatedAt: Date;
-  @Column({ nullable: true })
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'updatedBy' })
-  updatedBy: number;
-
-  @Column({ nullable: true })
-  deletedAt: Date;
-  @Column({ nullable: true })
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'deletedBy' })
-  deletedBy: number;
 
   @ManyToMany(() => Label)
   @JoinTable({ name: 'article_labels' })

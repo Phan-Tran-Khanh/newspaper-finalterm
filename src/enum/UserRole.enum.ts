@@ -1,8 +1,8 @@
 export const ROLES = [
-  'ADMIN',
-  'EDITOR',
-  'WRITER',
-  'SUBSCRIBER',
-  'USER',
+  'Admin',
+  'Editor',
+  'Writer',
+  'Subscriber',
+  'User',
 ] as const;
 export type UserRole = (typeof ROLES)[number];
