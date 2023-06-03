@@ -1,0 +1,46 @@
+<!-- Logged in Sidebar -->
+{{#with user}}
+<div class="offcanvas offcanvas-end text-bg-dark w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasLoggedin"
+  aria-labelledby="offcanvasLoggedinLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled ms-3">
+      <li class="mb-3">
+        <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
+          <img src="https://via.placeholder.com/50x50">
+          <span>DongNike</span>
+        </a>
+      </li>
+      {{#ifEquals role 'WRITER'}}
+      <li class="mb-3">
+        <a href="/writer/index" class="link-light">
+          <i class="bi bi-newspaper"></i> Submit Article
+        </a>
+      </li>
+      <li class="mb-3">
+        <a href="/writer/list" class="link-light">
+          <i class="bi bi-newspaper"></i> My Submitted Articles
+        </a>
+      </li>
+      {{/ifEquals}}
+      {{#ifEquals role 'EDITOR'}}
+      {{/ifEquals}}
+      {{#ifEquals role 'ADMIN'}}
+      {{/ifEquals}}
+      <li class="mb-3">
+        <a href="#footer" class="link-light">
+          <i class="bi bi-people"></i> About us
+        </a>
+      </li>
+      <li class="mb-3">
+        <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out">
+          <i class="bi bi-box-arrow-left"></i> Log out
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+{{/with}}
+<!-- Logged in Sidebar -->

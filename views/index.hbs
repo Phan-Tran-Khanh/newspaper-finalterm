@@ -24,11 +24,9 @@
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      {{#with category}}
-                      <a href="/search?category={{slug}}">
-                        {{name}}
+                      <a href="/search?category={{slugify category.name}}">
+                        {{category.name}}
                       </a>
-                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
                       <a href="/{{slug}}">
@@ -62,11 +60,9 @@
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
               <h6 class="card-subtitle text-muted">
-                {{#with category}}
-                <a href="/search?category={{slug}}">
-                  {{name}}
+                <a href="/search?category={{slugify category.name}}">
+                  {{category.name}}
                 </a>
-                {{/with}}
               </h6>
               <h6 class="card-title">
                 <a href="/{{slug}}">
@@ -94,11 +90,9 @@
     <div class="col-md-12">
       <!-- Category Name -->
       <h2 class="bg-dark p-2">
-        {{#with category}}
-        <a class="link-light" href="/search?category={{slug}}">
-          {{name}}
+        <a class="link-light" href="/search?category={{slugify category.name}}">
+          {{category.name}}
         </a>
-        {{/with}}
       </h2>
 
       <!-- Latest News -->
@@ -123,11 +117,9 @@
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      {{#with category}}
-                      <a href="/search?category={{slug}}">
-                        {{name}}
+                      <a href="/search?category={{slugify category.name}}">
+                        {{category.name}}
                       </a>
-                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
                       <a href="/{{slug}}">
@@ -162,11 +154,9 @@
                 </a>
               </h6>
               <h6 class="card-subtitle mb-2 text-muted">
-                {{#with category}}
-                <a href="/search?category={{slug}}">
-                  {{name}}
+=                <a href="/search?category={{slugify category.name}}">
+                  {{category.name}}
                 </a>
-                {{/with}}
               </h6>
               <p class="card-text">
                 {{summary}}

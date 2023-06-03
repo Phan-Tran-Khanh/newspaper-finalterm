@@ -53,4 +53,15 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.page-link').on('click', function () {
+        let val = $(this).text();
+        let url = new URL(window.location.href);
+
+        // Add the query parameter
+        url.searchParams.set('page', val);
+
+        // Navigate to the new URL
+        window.location.href = url.href;
+    });
 });

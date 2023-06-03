@@ -39,11 +39,9 @@
   <script src="/js/global.js"></script>
   <script src="/js/{{file}}.js"></script>
 
-  {{#with user}}
-  {{#ifEquals role 'WRITER'}}
+  {{#ifEquals user.role 'WRITER'}}
   <script src="/js/writer.js"></script>
   {{/ifEquals}}
-  {{/width}}
 </body>
 
 </html>

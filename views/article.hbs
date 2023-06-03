@@ -7,13 +7,11 @@
       <div class="container">
         <!-- Category and Date Time -->
         <div class="row row-cols-2">
-          {{#with category}}
           <div class="col text-start small fw-bold text-muted">
-            <a href="/search?category={{slug}}" class="text-decoration-none">
-              {{name}}
+            <a href="/search?category={{slugify category.name}}" class="text-decoration-none">
+              {{category.name}}
             </a>
           </div>
-          {{/with}}
           <div class="col text-end small">
             <p class="text-muted">
               {{publishedAt}}
@@ -34,7 +32,7 @@
           <div class="col text-start small">
             <span>tags: </span>
             {{#each labels}}
-            <a href="/search?label={{slug}}" class="text-decoration-none">
+            <a href="/search?label={{slugify name}}" class="text-decoration-none">
               {{name}}
             </a>
             {{/each}}
@@ -53,7 +51,7 @@
     <!-- Same Category -->
     <div class="col-md-3">
       <div class="position-sticky top-0">
-        <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        <a class="h5 fw-bold" href="/search?category={{slugify article.category.name}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
         {{#each relatedArticles}}
         <div class="card">
           <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
@@ -64,11 +62,9 @@
               </a>
             </h6>
             <h6 class="card-subtitle mb-2 text-muted">
-              {{#with category}}
-              <a href="/search?category={{slug}}">
-                {{name}}
+              <a href="/search?category={{slugify category.name}}">
+                {{category.name}}
               </a>
-              {{/with}}
             </h6>
             <p class="card-text">
               {{summary}}
@@ -97,7 +93,7 @@
             </div>
           </div>
           <div class="card-footer text-end bg-white border-0">
-            <button id="reply-new" type="submit" class="btn">Reply</button>
+            <button id="reply-new" {{#if user}} type="submit" {{else}} type="button" data-bs-toggle="modal" data-bs-target="#modalLoginRegister" {{/if}} class="btn">Reply</button>
           </div>
         </form>
       </div>
@@ -108,11 +104,11 @@
       <div class="card mt-2">
         <div class="card-body">
           <div class="media">
-            <img src="{{user.avatarUrl}}">
+            <img src="{{createdBy.avatarUrl}}">
             <div class="media-body">
-              <h5 class="mt-0">{{user.fullname}}</h5>
+              <h5 class="mt-0">{{createdBy.firstName}} {{createdBy.lastName}}</h5>
               <p>
-                {{body}}
+                {{content}}
               </p>
             </div>
             <p class="card-text small text-muted">{{createdAt}}</p>
@@ -121,7 +117,7 @@
             <a href="#" class="like-input me-3 position-relative">
               <i class="bi bi-hand-thumbs-up"></i> Like
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {{likesCount}}
+                {{reactCount}}
                 <span class="visually-hidden">Total Likes</span>
               </span>
             </a>
@@ -129,9 +125,8 @@
           </div>
         </div>
 
-        {{!-- TODO: Replies Children --}}
         <!-- Nested Replies -->
-        <div class="card-footer bg-white border-0">
+        {{!-- <div class="card-footer bg-white border-0">
           <a href="#" class="nested-replies">
             <i class="bi bi-arrow-return-right"></i> 32 Replies
           </a>
@@ -193,7 +188,7 @@
             </div>
           </div>
           <!-- Reply Children -->
-        </div>
+        </div> --}}
         <!-- Nested Replies -->
       </div>
       {{/each}}
