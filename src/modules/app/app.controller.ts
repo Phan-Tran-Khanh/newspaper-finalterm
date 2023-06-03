@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Query, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Article } from 'src/entity/article.entity';
-import { SearchQuery, SearchQueryType } from './dto/SearchQuery';
+import { SearchParms, SearchParamsType } from './dto/SearchQuery';
 
 @Controller()
 export class AppController {
@@ -28,8 +28,8 @@ export class AppController {
 
   @Get('/search')
   @Render('search')
-  async searchView(@Query() query: SearchQueryType) {
-    const searchQuery = new SearchQuery(query);
+  async searchView(@Query() query: SearchParamsType) {
+    const searchQuery = new SearchParms(query);
 
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),

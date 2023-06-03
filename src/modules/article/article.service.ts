@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/entity/article.entity';
 import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
-import { SearchQuery } from '../app/dto/SearchQuery';
+import { SearchParms } from '../app/dto/SearchQuery';
 import { Page } from '../app/dto/Page';
 
 @Injectable()
@@ -64,7 +64,7 @@ export class ArticleService {
       take,
     });
   }
-  async searchArticles(searchQuery: SearchQuery): Promise<Page<Article>> {
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
     const { page, pageSize } = searchQuery;
     const [articles, total] = await this.articleRepository.findAndCount({
       relations: ['createdBy', 'publishedBy'],

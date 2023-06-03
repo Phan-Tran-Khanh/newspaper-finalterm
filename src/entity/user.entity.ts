@@ -21,11 +21,6 @@ export class User {
   @IsEmail()
   email: string;
 
-  @Unique('unique_username', ['username'])
-  @Column()
-  @IsString()
-  username: string;
-
   @Column()
   @Exclude()
   password: string;

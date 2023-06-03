@@ -1,4 +1,4 @@
-export type SearchQueryType = {
+export type SearchParamsType = {
   category: string | undefined;
   label: string | undefined;
   time: 'day' | 'week' | 'month' | 'all' | undefined;
@@ -7,7 +7,7 @@ export type SearchQueryType = {
   pageSize: number | undefined;
 };
 
-export class SearchQuery {
+export class SearchParms {
   category: string;
   label: string;
   time: 'day' | 'week' | 'month' | 'all';
@@ -15,7 +15,7 @@ export class SearchQuery {
   page: number;
   pageSize: number;
 
-  constructor(query: SearchQueryType) {
+  constructor(query: SearchParamsType) {
     this.category = query.category || '';
     this.label = query.label || '';
     this.time = query.time || 'all';

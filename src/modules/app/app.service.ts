@@ -4,7 +4,7 @@ import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
 import slugify from 'slugify';
 import { Article } from 'src/entity/article.entity';
-import { SearchQuery } from './dto/SearchQuery';
+import { SearchParms } from './dto/SearchQuery';
 import { Page } from './dto/Page';
 
 @Injectable()
@@ -63,7 +63,7 @@ export class AppService {
     }
     return topArticles;
   }
-  async searchArticles(searchQuery: SearchQuery): Promise<Page<Article>> {
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
     return this.articleService.searchArticles(searchQuery);
   }
   async getDetailArticleBySlug(slug: string) {
