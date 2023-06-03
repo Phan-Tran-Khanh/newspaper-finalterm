@@ -4,6 +4,7 @@ export type SearchQueryType = {
   time: 'day' | 'week' | 'month' | 'all' | undefined;
   query: string | undefined;
   page: number | undefined;
+  pageSize: number | undefined;
 };
 
 export class SearchQuery {
@@ -12,12 +13,14 @@ export class SearchQuery {
   time: 'day' | 'week' | 'month' | 'all';
   query: string;
   page: number;
+  pageSize: number;
 
-  constructor(searchQuery: SearchQueryType) {
-    this.category = searchQuery.category || '';
-    this.label = searchQuery.label || '';
-    this.time = searchQuery.time || 'all';
-    this.query = searchQuery.query || '';
-    this.page = searchQuery.page || 1;
+  constructor(query: SearchQueryType) {
+    this.category = query.category || '';
+    this.label = query.label || '';
+    this.time = query.time || 'all';
+    this.query = query.query || '';
+    this.page = query.page || 1;
+    this.pageSize = query.pageSize || 10;
   }
 }

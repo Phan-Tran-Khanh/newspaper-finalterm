@@ -3,7 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/entity/article.entity';
 import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
-import { SearchQuery } from '../app/SearchQuery';
+import { SearchQuery } from '../app/dto/SearchQuery';
+import { Page } from '../app/dto/Page';
 
 @Injectable()
 export class ArticleService {
@@ -63,38 +64,25 @@ export class ArticleService {
       take,
     });
   }
-  async searchArticles(searchQuery: SearchQuery): Promise<Article[]> {
-    console.log(searchQuery);
-    return this.articleRepository.find();
-    // const { category, label, queryString, time } = query;
-    // const qb = this.articleRepository
-    //   .createQueryBuilder('article')
-    //   .leftJoinAndSelect('article.category', 'category')
-    //   .leftJoinAndSelect('article.labels', 'label')
-    //   .where('article.status = :status', { status: ArticleStatus.Published });
-    // if (category) {
-    //   qb.andWhere('category.slug = :category', { category });
-    // }
-    // if (label) {
-    //   qb.andWhere('label.slug = :label', { label });
-    // }
-    // if (queryString) {
-    //   qb.andWhere('article.title LIKE :queryString', {
-    //     queryString: `%${queryString}%`,
-    //   });
-    // }
-    // if (time) {
-    //   const now = new Date();
-    //   const timeMap = {
-    //     day: now.setDate(now.getDate() - 1),
-    //     week: now.setDate(now.getDate() - 7),
-    //     month: now.setDate(now.getDate() - 30),
-    //     year: now.setDate(now.getDate() - 365),
-    //   };
-    //   qb.andWhere('article.createdAt > :time', {
-    //     time: timeMap[time],
-    //   });
-    // }
-    // return qb.getMany();
+  async searchArticles(searchQuery: SearchQuery): Promise<Page<Article>> {
+    const { page, pageSize } = searchQuery;
+    const [articles, total] = await this.articleRepository.findAndCount({
+      relations: ['createdBy', 'publishedBy'],
+      where: {
+        status: ArticleStatus.Published,
+      },
+      order: {
+        publishedAt: 'DESC',
+      },
+      take: pageSize,
+      skip: (page - 1) * pageSize,
+    });
+
+    return {
+      content: articles,
+      totalPage: Math.ceil(total / pageSize),
+      page,
+      pageSize,
+    };
   }
 }
