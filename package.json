@@ -8,10 +8,10 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "pm2 start dist/main.js --name newspaper --watch",
+    "start": "node dist/main.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "pm2 start dist/main.js --name newspaper --watch",
     "repl:dev": "nest start --watch -- --entryFile repl",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "lint:staged": "lint-staged",
