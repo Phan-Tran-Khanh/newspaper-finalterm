@@ -83,7 +83,7 @@ export class ArticleService {
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.category', 'category')
       .leftJoinAndSelect('article.labels', 'label');
-    console.log(query);
+
     if (query.length > 0)
       queryBuilder.andWhere('article.textSearch @@ to_tsquery(:query)', {
         query,
