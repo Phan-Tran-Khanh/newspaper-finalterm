@@ -20,39 +20,39 @@
           <div class="col-md-6">
             <label for="update-fullname" class="form-label">Full Name</label>
             <input type="text" class="form-control" name="fullName" id="update-fullname"
-              value="{{firstName}} {{lastName}}">
+              value="{{../firstName}} {{../lastName}}">
           </div>
           <div class="col-md-6">
             <label for="update-penname" class="form-label">Pen Name</label>
-            <input type="text" class="form-control" name="penname" id="update-penname" value="{{penName}}">
+            <input type="text" class="form-control" name="penname" id="update-penname" value="{{../penName}}">
           </div>
           {{else}}
-          {{#ifEquals role.name 'Editor'}}
-          <div class="col-md-6">
-            <label for="update-fullname" class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="fullName" id="update-fullname"
-              value="{{firstName}} {{lastName}}">
-          </div>
-          <div class="col-md-6">
-            <label for="update-categoryname" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="update-categoryname" value="{{category.name}}" disabled>
-          </div>
-          {{else}}
-          <div class="col-md-6">
-            <label for="update-firstname" class="form-label">First Name</label>
-            <input type="text" class="form-control" name="firstName" id="update-firstname" value="{{firstName}}">
-          </div>
-          <div class="col-md-6">
-            <label for="update-lastname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" name="lastName" id="update-lastname" value="{{lastName}}">
-          </div>
-          {{/ifEquals}}
+            {{#ifEquals role.name 'Editor'}}
+            <div class="col-md-6">
+              <label for="update-fullname" class="form-label">Full Name</label>
+              <input type="text" class="form-control" name="fullName" id="update-fullname"
+                value="{{../firstName}} {{../lastName}}">
+            </div>
+            <div class="col-md-6">
+              <label for="update-categoryname" class="form-label">Category Name</label>
+              <input type="text" class="form-control" id="update-categoryname" value="{{../category.name}}" disabled>
+            </div>
+            {{else}}
+            <div class="col-md-6">
+              <label for="update-firstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" name="firstName" id="update-firstname" value="{{../firstName}}">
+            </div>
+            <div class="col-md-6">
+              <label for="update-lastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="lastName" id="update-lastname" value="{{../lastName}}">
+            </div>
+            {{/ifEquals}}
           {{/ifEquals}}
 
           <!-- Additional Info -->
           <div class="col-md-6">
             <label for="update-dob" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" name="dob" id="update-dob" value="{{dateOfBirth}}" />
+            <input type="date" class="form-control" name="dob" id="update-dob" value="{{formatDate dateOfBirth}}" />
           </div>
           <div class="col-md-6">
             <label for="update-gender" class="form-label">Gender</label><br>
@@ -71,7 +71,7 @@
           <hr class="border border-2 border-dark m-0">
 
           <!-- Email Input -->
-          <div {{#ifEquals role.name 'Subscriber' }} class="col-md-6" {{else}} class="col-md-12" {{/ifEquals}}>
+          <div {{#ifEquals role.name 'Subscriber'}} class="col-md-6" {{else}} class="col-md-12" {{/ifEquals}}>
             <label for="update-email" class="form-label">Email Address</label>
             <input type="email" class="form-control" id="update-email" value="{{email}}" disabled>
           </div>
@@ -86,7 +86,7 @@
                 <i class="bi bi-info-circle-fill"></i>
               </a>
             </label>
-            <input type="date" class="form-control" id="update-premium" value="{{subscriptionExpiryDate}}" disabled />
+            <input type="date" class="form-control" id="update-premium" value="{{formatDate ../subscriptionExpiryDate}}" disabled />
           </div>
           {{/ifEquals}}
 

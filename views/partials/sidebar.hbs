@@ -35,9 +35,12 @@
         </a>
       </li>
       <li class="mb-3">
-        <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out">
-          <i class="bi bi-box-arrow-left"></i> Log out
-        </a>
+        <form id="logout-form" action="/auth/logout" method="post">
+          <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out"
+            onclick="document.getElementById('logout-form').submit();">
+            <i class="bi bi-box-arrow-left"></i> Log out
+          </a>
+        </form>
       </li>
     </ul>
   </div>
