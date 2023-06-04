@@ -41,6 +41,12 @@ export class AuthController {
     this.authService.forgotPassword(body.email);
   }
 
+  @Post('logout')
+  logout(@Res() res: Response) {
+    res.clearCookie('jwt', { path: '/' });
+    res.redirect('/');
+  }
+
   @Post('reset-password')
   resetPassword(@Body() body: { otp: string; password: string }) {
     // const { otp, password } = body;

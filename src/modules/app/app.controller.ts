@@ -27,7 +27,6 @@ export class AppController {
         this.appService.getTopArticles(),
         this.appService.getTopArticlesByCategory(),
       ]);
-    console.log(req.user);
     return {
       file: 'index',
       user: req.user,
