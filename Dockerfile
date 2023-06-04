@@ -19,9 +19,7 @@ FROM node:18-alpine AS build
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package*.json ./
-
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
-
 COPY --chown=node:node . .
 
 RUN npm run build

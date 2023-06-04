@@ -10,7 +10,6 @@
 
   <form action="/search" method="get">
     <!-- Search Bar & Filters -->
-    {{#with searchParams}}
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
@@ -27,9 +26,9 @@
           <label class="input-group-text" for="time">Time</label>
           <select class="form-select" name="time" id="time">
             <option value="">Choose...</option>
-            <option value="day" {{#ifEquals time 'day' }} selected {{/ifEquals}}>Today</option>
-            <option value="week" {{#ifEquals time 'week' }} selected {{/ifEquals}}>This week</option>
-            <option value="month" {{#ifEquals time 'month' }} selected {{/ifEquals}}>This month</option>
+            <option value="day" {{#ifEquals searchParams.time 'day' }} selected {{/ifEquals}}>Today</option>
+            <option value="week" {{#ifEquals searchParams.time 'week' }} selected {{/ifEquals}}>This week</option>
+            <option value="month" {{#ifEquals searchParams.time 'month' }} selected {{/ifEquals}}>This month</option>
           </select>
         </div>
       </div>
@@ -40,9 +39,9 @@
           <select class="form-select" name="category" id="category">
             <option value="">Choose...</option>
             {{#each categories}}
-            <option value="{{name}}" {{#ifEquals ../category name}} selected {{/ifEquals}}>{{name}}</option>
+            <option value="{{name}}" {{#ifEquals ../searchParams.category name}} selected {{/ifEquals}}>{{name}}</option>
             {{#each children}}
-            <option value="{{name}}" {{#ifEquals ../category name}} selected {{/ifEquals}}>{{name}}</option>
+            <option value="{{name}}" {{#ifEquals ../searchParams.category name}} selected {{/ifEquals}}>{{name}}</option>
             {{/each}}
             {{/each}}
           </select>
@@ -55,13 +54,12 @@
           <select class="form-select" name="label" id="label">
             <option value="">Choose...</option>
             {{#each labels}}
-            <option value="{{name}}" {{#ifEquals ../label name}} selected {{/ifEquals}}>{{name}}</option>
+            <option value="{{name}}" {{#ifEquals ../searchParams.label name}} selected {{/ifEquals}}>{{name}}</option>
             {{/each}}
           </select>
         </div>
       </div>
     </div>
-    {{/with}}
     <!-- Search Bar & Filters -->
 
     <!-- List News Queried -->

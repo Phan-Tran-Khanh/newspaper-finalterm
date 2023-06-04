@@ -58,9 +58,9 @@
             <label for="update-gender" class="form-label">Gender</label><br>
             <select class="form-select" name="gender" id="update-gender">
               <option value="">Select your gender</option>
-              <option value="female" {{#if gender 'female' }} selected {{/if}}>Female</option>
-              <option value="male" {{#if gender 'male' }} selected {{/if}}>Male</option>
-              <option value="other" {{#if gender 'other' }} selected {{/if}}>Other</option>
+              <option value="female" {{#ifEquals gender 'female' }} selected {{/ifEquals}}>Female</option>
+              <option value="male" {{#ifEquals gender 'male' }} selected {{/ifEquals}}>Male</option>
+              <option value="other" {{#ifEquals gender 'other' }} selected {{/ifEquals}}>Other</option>
             </select>
           </div>
 
@@ -71,12 +71,12 @@
           <hr class="border border-2 border-dark m-0">
 
           <!-- Email Input -->
-          <div {{#ifEquals role.name 'SUBSCRIBER' }} class="col-md-6" {{else}} class="col-md-12" {{/ifEquals}}>
+          <div {{#ifEquals role.name 'Subscriber' }} class="col-md-6" {{else}} class="col-md-12" {{/ifEquals}}>
             <label for="update-email" class="form-label">Email Address</label>
             <input type="email" class="form-control" id="update-email" value="{{email}}" disabled>
           </div>
 
-          {{#ifEquals role.name 'SUBSCRIBER'}}
+          {{#ifEquals role.name 'Subscriber'}}
           <!-- Premium Expiration -->
           <div class="col-md-6">
             <label for="update-premium" class="form-label">

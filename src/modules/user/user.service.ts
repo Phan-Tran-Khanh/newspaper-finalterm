@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
 import { User } from 'src/entity/user.entity';
 import { Role } from 'src/entity/role.entity';
 
@@ -28,7 +27,10 @@ export class UserService {
   }
 
   findOneById(id: number): Promise<User | null> {
-    return this.userRepository.findOneBy({ id });
+    return this.userRepository.findOne({
+      where: { id },
+      relations: ['role'],
+    });
   }
 
   findOneByEmail(email: string): Promise<User | null> {
