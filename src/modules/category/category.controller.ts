@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { Protected } from 'src/decorator/protected.decorator';
 import { CategoryService } from './category.service';
 import { Category } from 'src/entity/category.entity';
@@ -13,7 +13,7 @@ export class CategoryController {
     return this.categoryService.create(dto);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() dto: Category) {
     return this.categoryService.update(+id, dto);
   }

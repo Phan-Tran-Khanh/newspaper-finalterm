@@ -48,25 +48,29 @@ export class AuthController {
   }
 
   @Post('reset-password')
-  resetPassword(@Body() body: { otp: string; password: string }) {
-    // const { otp, password } = body;
+  resetPassword(
+    @Body() body: { token: string; otp: string; password: string },
+  ) {
+    // const { token, otp, password } = body;
     this.authService.resetPassword(body);
   }
 
   @Get('refresh-token')
-  refresh() {
+  refreshToken() {
     // TODO
   }
 
   @Get('google')
   @UseGuards(GoogleAuthGuard)
-  googleAuth() {
-    // TODO
+  google() {
+    // NOTE: This route is never called because the GoogleAuthGuard redirects to Google
   }
 
-  @Get('google/redirect')
+  @Get('google/callback')
   @UseGuards(GoogleAuthGuard)
-  googleAuthRedirect() {
-    // TODO
+  async googleCallback(@Req() req: Request, @Res() res: Response) {
+    const { accessToken } = await this.authService.google(req.user as User);
+    res.cookie('jwt', accessToken, { httpOnly: true, path: '/' });
+    res.redirect('/');
   }
 }

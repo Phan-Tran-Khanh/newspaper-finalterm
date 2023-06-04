@@ -19,13 +19,19 @@ export class EmailService {
     });
   }
 
-  forgotPasswordTemplate(email: string, token: string): MailOptions {
-    const url = `http://localhost:3000/reset-password?token=${token}`;
+  forgotPasswordTemplate(
+    email: string,
+    token: string,
+    otp: number,
+  ): MailOptions {
+    const url = `${this.configService.get(
+      'SERVER_URL',
+    )}/reset-password?token=${token}`;
     return {
       to: email,
       subject: 'Reset your password',
       text: `Click the link to reset your password: ${url}`,
-      html: `<p>Click the link to reset your password: <a href="${url}">${url}</a></p>`,
+      html: `<p>Click the link to reset your password: <a href="${url}">${url}</a></p>\n<p>Or use this OTP: ${otp}</p>`,
     };
   }
 

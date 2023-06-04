@@ -1,6 +1,7 @@
 import {
   BadRequestException,
-  ForbiddenException,
+  CACHE_MANAGER,
+  Inject,
   Injectable,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -9,14 +10,17 @@ import { User } from 'src/entity/user.entity';
 import { UserService } from 'src/modules/user/user.service';
 import { EmailService } from 'src/modules/email/email.service';
 import { ConfigService } from '@nestjs/config';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class AuthService {
+  PREFIX_OTP = 'OTP_';
   constructor(
     private readonly usersService: UserService,
     private readonly jwtService: JwtService,
     private readonly emailService: EmailService,
     private readonly configService: ConfigService,
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async validateUser(email: string, password: string): Promise<User | null> {
@@ -39,9 +43,10 @@ export class AuthService {
   }
 
   async hashPassword(password: string) {
+    console.log(password, this.configService.get('BCRYPT_SALT'));
     return await bcrypt.hash(
       password,
-      parseInt(this.configService.get('BCRYPT_SALT') as string, 10),
+      this.configService.get('BCRYPT_SALT') as number | string,
     );
   }
 
@@ -54,7 +59,9 @@ export class AuthService {
   }
 
   async signup(dto: User) {
-    dto.password = await this.hashPassword(dto.password);
+    if (dto.password) {
+      dto.password = await this.hashPassword(dto.password);
+    }
     const user = await this.usersService.create(dto);
     return this.jwtSign(user);
   }
@@ -64,13 +71,29 @@ export class AuthService {
   }
 
   async resetPassword(body: any) {
-    const { token, password } = body;
-    const { sub: userId } = this.jwtService.verify(token);
-    const user = await this.usersService.findOneById(userId);
+    const { otp, token, password } = body;
+    let user = null;
+
+    if (token) {
+      const { sub: userId } = this.jwtService.verify(token);
+      user = await this.usersService.findOneById(userId);
+      if (!user) {
+        throw new BadRequestException('Token is invalid');
+      }
+    } else if (otp) {
+      const userId = await this.cacheManager.get(this.PREFIX_OTP + otp);
+      if (!userId) {
+        throw new BadRequestException('OTP is invalid');
+      }
+      await this.cacheManager.del(this.PREFIX_OTP + otp);
+      user = await this.usersService.findOneById(userId as number);
+      if (!user) {
+        throw new BadRequestException('User not found');
+      }
+    }
+
     if (user) {
-      this.usersService.update(userId, { password });
-    } else {
-      throw new ForbiddenException();
+      this.usersService.update(user.id, { password });
     }
   }
 
@@ -81,13 +104,30 @@ export class AuthService {
         { sub: user.id },
         { expiresIn: '10m' },
       );
+
+      const otp = this.generateOtp();
+      await this.cacheManager.set(this.PREFIX_OTP + otp, user.id, 600);
+
       const mailOptions = this.emailService.forgotPasswordTemplate(
         user.email,
         token,
+        otp,
       );
       this.emailService.sendMail(mailOptions);
     } else {
       throw new BadRequestException('Email not found');
     }
+  }
+
+  generateOtp(): number {
+    // otp have 6 ditgit
+    return Math.floor(100000 + Math.random() * 900000);
+  }
+
+  async google(user: User) {
+    if (!(await this.usersService.findOneByEmail(user.email))) {
+      return this.signup(user);
+    }
+    return this.login(user);
   }
 }
