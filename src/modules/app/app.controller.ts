@@ -45,13 +45,11 @@ export class AppController {
     @Req() req: Request & { user: User },
   ) {
     const searchParams = new SearchParms(query);
-    console.log(searchParams);
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
       this.appService.searchArticles(searchParams),
     ]);
-    console.log(articlesPage);
     return {
       file: 'search',
       user: req.user,

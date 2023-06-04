@@ -12,11 +12,9 @@ export default function registerHelpers(hbs: typeof hbsModule) {
     const start = 1;
     const end = parseInt(n, 10);
     let result = '';
-
     for (let i = start; i <= end; i++) {
       result += options.fn(i);
     }
-
     return result;
   });
 }
