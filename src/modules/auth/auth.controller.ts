@@ -13,6 +13,8 @@ import { AuthService } from './auth.service';
 import { LocalAuthGuard } from 'src/guards/local-auth.guard';
 import { GoogleAuthGuard } from 'src/guards/google-auth.guard';
 import { User } from 'src/entity/user.entity';
+import { FacebookAuthGuard } from 'src/guards/facebook-auth.guard';
+import { TwitterAuthGuard } from 'src/guards/twitter-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -70,6 +72,34 @@ export class AuthController {
   @UseGuards(GoogleAuthGuard)
   async googleCallback(@Req() req: Request, @Res() res: Response) {
     const { accessToken } = await this.authService.google(req.user as User);
+    res.cookie('jwt', accessToken, { httpOnly: true, path: '/' });
+    res.redirect('/');
+  }
+
+  @Get('facebook')
+  @UseGuards(FacebookAuthGuard)
+  facebook() {
+    // NOTE: This route is never called because the FacebookAuthGuard redirects to Facebook
+  }
+
+  @Get('facebook/callback')
+  @UseGuards(FacebookAuthGuard)
+  async facebookCallback(@Req() req: Request, @Res() res: Response) {
+    const { accessToken } = await this.authService.facebook(req.user as User);
+    res.cookie('jwt', accessToken, { httpOnly: true, path: '/' });
+    res.redirect('/');
+  }
+
+  @Get('twitter')
+  @UseGuards(FacebookAuthGuard)
+  twitter() {
+    // NOTE: This route is never called because the FacebookAuthGuard redirects to Facebook
+  }
+
+  @Get('twitter/callback')
+  @UseGuards(TwitterAuthGuard)
+  async twitterCallback(@Req() req: Request, @Res() res: Response) {
+    const { accessToken } = await this.authService.facebook(req.user as User);
     res.cookie('jwt', accessToken, { httpOnly: true, path: '/' });
     res.redirect('/');
   }

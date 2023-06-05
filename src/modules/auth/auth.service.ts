@@ -42,16 +42,15 @@ export class AuthService {
     };
   }
 
-  async hashPassword(password: string) {
-    console.log(password, this.configService.get('BCRYPT_SALT'));
-    return await bcrypt.hash(
+  hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(
       password,
-      this.configService.get('BCRYPT_SALT') as number | string,
+      this.configService.get('auth.bcrypt.saltOrRounds') as number,
     );
   }
 
-  async comparePassword(password: string, hashedPassword: string) {
-    return await bcrypt.compare(password, hashedPassword);
+  comparePassword(password: string, hashedPassword: string): Promise<boolean> {
+    return bcrypt.compare(password, hashedPassword);
   }
 
   login(user: User) {
@@ -125,6 +124,13 @@ export class AuthService {
   }
 
   async google(user: User) {
+    if (!(await this.usersService.findOneByEmail(user.email))) {
+      return this.signup(user);
+    }
+    return this.login(user);
+  }
+
+  async facebook(user: User) {
     if (!(await this.usersService.findOneByEmail(user.email))) {
       return this.signup(user);
     }

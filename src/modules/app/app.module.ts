@@ -10,7 +10,7 @@ import { EmailModule } from 'src/modules/email/email.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import databaseConfig from 'src/config/database.config';
-import { jwtConfig, googleConfig, bcryptConfig } from 'src/config/auth.config';
+import authConfig from 'src/config/auth.config';
 import emailConfig from 'src/config/email.config';
 import configuration from 'src/config/configuration';
 
@@ -18,14 +18,7 @@ import configuration from 'src/config/configuration';
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.dev.env', '.prod.env'],
-      load: [
-        databaseConfig,
-        jwtConfig,
-        googleConfig,
-        bcryptConfig,
-        emailConfig,
-        configuration,
-      ],
+      load: [databaseConfig, authConfig, emailConfig, configuration],
       isGlobal: true,
       expandVariables: true,
     }),
