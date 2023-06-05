@@ -39,9 +39,6 @@ export class Article extends Audit {
   @Column()
   bannerImageUrl: string;
 
-  @Column()
-  pdfUrl: string;
-
   @Column({ default: false })
   isPremium: boolean;
 

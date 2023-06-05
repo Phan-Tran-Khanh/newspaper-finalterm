@@ -72,7 +72,6 @@ export function fakeArticle(
   article.summary = faker.lorem.paragraph(10);
   article.content = faker.lorem.paragraphs(50);
   article.bannerImageUrl = fakeImageUrl();
-  article.pdfUrl = fakeImageUrl();
   article.isPremium = faker.datatype.boolean();
   article.viewCount = faker.datatype.number();
   article.weeklyViewCount = faker.datatype.number();
