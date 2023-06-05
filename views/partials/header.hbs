@@ -10,8 +10,8 @@
       <!-- Search Bar -->
       <form class="d-flex" action="/search" method="get">
         <div class="input-group">
-          <input class="form-control rounded-start border-end-0" name="query" type="search"
-            placeholder="Search..." aria-label="Search">
+          <input class="form-control rounded-start border-end-0" name="query" type="search" placeholder="Search..."
+            aria-label="Search">
           <button class="btn bg-white rounded-0 rounded-end border border-start-0" type="submit" title="Search">
             <i class="bi bi-search"></i>
           </button>
@@ -20,14 +20,14 @@
 
       {{#if user}}
       <!-- Logged in Offcanvas Trigger -->
-      <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a href="#" class="ms-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLoggedin"
+        aria-controls="offcanvasLoggedin">
+        <img class="rounded-circle object-fit-cover border border-light border-4" style="width: 50px; height: 50px;"
+          src="{{user.avatarUrl}}">
+      </a>
       {{else}}
       <!-- Login/ Signup Modals Trigger -->
-      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginSignup"
-        id="anonymity-btn">
+      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginSignup">
         <i class="bi bi-person-circle"></i>
         Log in
       </a>

@@ -9,14 +9,15 @@
     <ul class="list-unstyled ms-3">
       <li class="mb-3">
         <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
-          <img class="mh-25 mw-25" src="{{avatarUrl}}">
+          <img class="rounded-circle object-fit-cover border border-light border-4" style="width: 50px; height: 50px;"
+            src="{{avatarUrl}}">
           <span>{{firstName}} {{lastName}}</span>
         </a>
       </li>
       {{#ifEquals role.name 'Writer'}}
       <li class="mb-3">
         <a href="/writer/index" class="link-light">
-          <i class="bi bi-newspaper"></i> Submit Article
+          <i class="bi bi-pencil-square"></i> Submit Article
         </a>
       </li>
       <li class="mb-3">

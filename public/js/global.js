@@ -14,17 +14,12 @@ $(document).ready(function () {
     $('#logout-form').trigger("submit");
   });
 
-  // Reset Password
-  $('#forgotpw-form').on('submit', function (e) {
-    $('#modalResetPassword').modal('show');
-  });
-
   // Validate passwords inputted
-  $('#pws-match-err').hide();
+  $('[id$="-err"]').hide();
 
-  $('#signup-btn').on('click', function (e) {
-    let password = $('#signup-password').val();
-    let confirmPassword = $('#signup-repassword').val();
+  function validatePassword(event, password, confirmPassword, errorNotif) {
+    password = $(password).val();
+    confirmPassword = $(confirmPassword).val();
     let errorMessage = null;
 
     // Password length should be at least 8 characters
@@ -58,11 +53,52 @@ $(document).ready(function () {
     }
 
     if (errorMessage) {
-      $('#pws-err').text(errorMessage);
-      $('#pws-err').show();
-      e.preventDefault(); // Prevent form submission
+      $(errorNotif).text(errorMessage);
+      $(errorNotif).show();
+      event.preventDefault(); // Prevent form submission
     } else {
-      $('#pws-err').hide();
+      $(errorNotif).hide();
     }
+  }
+
+  $('#signup-btn').on('click', function (e) {
+    validatePassword(e, '#signup-password', '#signup-repassword', '#signup-err');
+  });
+
+  $('#resetpw-btn').on('click', function (e) {
+    validatePassword(e, '#reset-password', '#reset-repassword', '#resetpw-err');
+  });
+
+  function formSubmit(formID, urlPath, modalShow, modalHide, errorNotif) {
+    // Serialize form data
+    var formData = $(formID).serialize();
+
+    // Send AJAX request
+    $.ajax({
+      url: urlPath,
+      method: 'POST',
+      data: formData,
+      success: function (response) {
+        $(errorNotif).hide();
+        $(modalHide).modal('hide');
+        $(modalShow).modal('show');
+      },
+      error: function (xhr, status, error) {
+        $(errorNotif).text(error);
+        $(errorNotif).show();
+      }
+    });
+  }
+
+  // Handle forgot password submission without rendering
+  $('#forgotpw-form').on('submit', function (e) {
+    e.preventDefault(); // Prevent the default form submission behavior
+    formSubmit('#forgotpw-form', '/auth/forgot-password', '#modalResetPassword', '#modalForgotPassword', '#forgotpw-err');
+  });
+
+  // Handle reset password submission without rendering
+  $('#resetpw-form').on('submit', function (e) {
+    e.preventDefault(); // Prevent the default form submission behavior
+    formSubmit('#resetpw-form', '/auth/reset-password', '#modalLoginSignup', '#modalResetPassword', '#resetpw-err');
   });
 });
