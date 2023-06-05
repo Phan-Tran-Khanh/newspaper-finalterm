@@ -21,9 +21,17 @@
 
         <!-- Title and Content -->
         <div class="d-flex flex-column">
-          {{title}}
+          <h2>
+            {{title}}
+            {{#if ../user}}
+            <a href="{{pdfUrl}}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Download PDF">
+              <i class="bi bi-download"></i>
+            </a>
+            {{/if}}
+          </h2>
+          <br>
           {{summary}}
-          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
+          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto" />
           {{content}}
         </div>
 
@@ -51,7 +59,8 @@
     <!-- Same Category -->
     <div class="col-md-3">
       <div class="position-sticky top-0">
-        <a class="h5 fw-bold" href="/search?category={{article.category.name}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        <a class="h5 fw-bold" href="/search?category={{article.category.name}}"><i class="bi bi-book-half"></i> In this
+          section</a class="h5">
         {{#each relatedArticles}}
         <div class="card">
           <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
@@ -84,7 +93,7 @@
     <div id="comment-container" class="col-md-9">
       <!-- Reply -->
       <div class="card">
-        <form id="comment-input">
+        <form id="comment-input" method="post">
           <div class="card-body">
             <h5 class="card-title">COMMENT</h5>
             <div class="form-group">
@@ -93,7 +102,8 @@
             </div>
           </div>
           <div class="card-footer text-end bg-white border-0">
-            <button id="reply-new" {{#if user}} type="submit" {{else}} type="button" data-bs-toggle="modal" data-bs-target="#modalLoginRegister" {{/if}} class="btn">Reply</button>
+            <button id="reply-new" {{#if user}} type="submit" {{else}} type="button" data-bs-toggle="modal"
+              data-bs-target="#modalLoginSignup" {{/if}} class="btn">Reply</button>
           </div>
         </form>
       </div>
@@ -124,72 +134,6 @@
             <a href="#" class="reply-old">Reply</a>
           </div>
         </div>
-
-        <!-- Nested Replies -->
-        {{!-- <div class="card-footer bg-white border-0">
-          <a href="#" class="nested-replies">
-            <i class="bi bi-arrow-return-right"></i> 32 Replies
-          </a>
-          <!-- Reply Children -->
-          <div class="replies-container hstack gap-1">
-            <div class="vr"></div>
-            <div class="container-fluid small">
-              <!-- First Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25">
-                    <div class="media-body">
-                      <h6 class="mt-0">Joke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- First Child -->
-
-              <!-- Second Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25">
-                    <div class="media-body">
-                      <h6 class="mt-0">Jekeke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- Second Child -->
-            </div>
-          </div>
-          <!-- Reply Children -->
-        </div> --}}
-        <!-- Nested Replies -->
       </div>
       {{/each}}
       <!-- Old Comments -->

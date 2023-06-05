@@ -9,8 +9,8 @@
     <ul class="list-unstyled ms-3">
       <li class="mb-3">
         <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
-          <img src="https://via.placeholder.com/50x50">
-          <span>DongNike</span>
+          <img class="mh-25 mw-25" src="{{avatarUrl}}">
+          <span>{{firstName}} {{lastName}}</span>
         </a>
       </li>
       {{#ifEquals role.name 'Writer'}}
@@ -36,8 +36,7 @@
       </li>
       <li class="mb-3">
         <form id="logout-form" action="/auth/logout" method="post">
-          <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out"
-            onclick="document.getElementById('logout-form').submit();">
+          <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="offcanvas" aria-label="Log out">
             <i class="bi bi-box-arrow-left"></i> Log out
           </a>
         </form>

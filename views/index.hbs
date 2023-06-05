@@ -100,16 +100,12 @@
       <div id="carouselLatestNews{{@index}}" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           {{#each mostViewed}}
-          <button type="button" data-bs-target="#carouselLatestNews{{@../index}}" data-bs-slide-to="{{@index}}" {{#if @first}} class="active" {{/if}}
-            aria-current="true" aria-label="News {{@index}}"></button>
-          {{!-- <button type="button" data-bs-target="#carouselLatestNews{{@index}}" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselLatestNews{{@index}}" data-bs-slide-to="2"
-            aria-label="Slide 3"></button> --}}
+          <button type="button" data-bs-target="#carouselLatestNews{{@../index}}" data-bs-slide-to="{{@index}}" {{#if
+            @first}} class="active" {{/if}} aria-current="true" aria-label="News {{@index}}"></button>
           {{/each}}
         </div>
         <div class="carousel-inner">
-          {{#each mostViewed}}
+          {{#each latest}}
           <div class="carousel-item active">
             <div class="card">
               <div class="row row-cols-2 g-0">
@@ -147,7 +143,7 @@
         <h4 class="px-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
 
         <div class="row d-flex flex-nowrap">
-          {{#each latest}}
+          {{#each mostViewed}}
           <div class="card w-25">
             <img class="card-img-top banner" src="{{bannerImageUrl}}" alt="Card image cap">
             <div class="card-body small">
@@ -157,7 +153,7 @@
                 </a>
               </h6>
               <h6 class="card-subtitle mb-2 text-muted">
-=                <a href="/search?category={{category.name}}">
+                <a href="/search?category={{category.name}}">
                   {{category.name}}
                 </a>
               </h6>

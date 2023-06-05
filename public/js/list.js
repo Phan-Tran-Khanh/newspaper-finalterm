@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    // Initialize popover
-    $('[data-bs-toggle="popover"]').popover();
-
     // Event listener for "First" button click
     $('#first').on('click', function (e) {
         e.preventDefault();
