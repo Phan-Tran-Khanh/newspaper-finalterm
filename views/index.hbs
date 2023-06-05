@@ -6,16 +6,15 @@
         RISING THIS WEEK <i class="bi bi-graph-up-arrow text-primary"></i>
       </h1>
       <div id="carouselWeeklyNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="News 1"></button>
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1" aria-label="News 2"></button>
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="News 3"></button>
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="3" aria-label="News 4"></button>
-        </div>
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" aria-label="News 1" class="active"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1" aria-label="News 2"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="News 3"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="3" aria-label="News 4"></li>
+        </ol>
         <div class="carousel-inner">
           {{#each weeklyArticles}}
-          <div class="carousel-item active">
+          <div class="carousel-item {{#if @first}} active {{/if}}">
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
@@ -99,14 +98,14 @@
       <!-- Latest News -->
       <div id="carouselLatestNews{{@index}}" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          {{#each mostViewed}}
+          {{#each latest}}
           <button type="button" data-bs-target="#carouselLatestNews{{@../index}}" data-bs-slide-to="{{@index}}" {{#if
             @first}} class="active" {{/if}} aria-current="true" aria-label="News {{@index}}"></button>
           {{/each}}
         </div>
         <div class="carousel-inner">
           {{#each latest}}
-          <div class="carousel-item active">
+          <div class="carousel-item {{#if @first}} active {{/if}}">
             <div class="card">
               <div class="row row-cols-2 g-0">
                 <div>
@@ -145,7 +144,7 @@
         <div class="row d-flex flex-nowrap">
           {{#each mostViewed}}
           <div class="card w-25">
-            <img class="card-img-top banner" src="{{bannerImageUrl}}" alt="Card image cap">
+            <img class="card-img-top banner" src="{{bannerImageUrl}}">
             <div class="card-body small">
               <h6 class="card-title">
                 <a href="/article/{{slug}}">
