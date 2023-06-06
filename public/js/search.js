@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    // Initialize popover
-    $('[data-bs-toggle="popover"]').popover();
-
     $('.page-link').on('click', function (e) {
         e.preventDefault();
         let val = $(this).text();

@@ -14,9 +14,9 @@ $(document).ready(function () {
     $('#logout-form').trigger("submit");
   });
 
-  // Validate passwords inputted
   $('[id$="-err"]').hide();
 
+  // Validate passwords inputted
   function validatePassword(event, password, confirmPassword, errorNotif) {
     password = $(password).val();
     confirmPassword = $(confirmPassword).val();
@@ -69,15 +69,15 @@ $(document).ready(function () {
     validatePassword(e, '#reset-password', '#reset-repassword', '#resetpw-err');
   });
 
-  function formSubmit(formID, urlPath, modalShow, modalHide, errorNotif) {
-    // Serialize form data
-    var formData = $(formID).serialize();
+  // Handle forms submission without rendering
+  function formSubmit(event, formID, urlPath, modalShow, modalHide, errorNotif) {
+    event.preventDefault();
 
     // Send AJAX request
     $.ajax({
       url: urlPath,
       method: 'POST',
-      data: formData,
+      data: $(formID).serialize(),
       success: function (response) {
         $(errorNotif).hide();
         $(modalHide).modal('hide');
@@ -90,15 +90,33 @@ $(document).ready(function () {
     });
   }
 
-  // Handle forgot password submission without rendering
   $('#forgotpw-form').on('submit', function (e) {
-    e.preventDefault(); // Prevent the default form submission behavior
-    formSubmit('#forgotpw-form', '/auth/forgot-password', '#modalResetPassword', '#modalForgotPassword', '#forgotpw-err');
+    formSubmit(e, '#forgotpw-form', '/auth/forgot-password', '#modalResetPassword', '#modalForgotPassword', '#forgotpw-err');
   });
 
-  // Handle reset password submission without rendering
   $('#resetpw-form').on('submit', function (e) {
-    e.preventDefault(); // Prevent the default form submission behavior
-    formSubmit('#resetpw-form', '/auth/reset-password', '#modalLoginSignup', '#modalResetPassword', '#resetpw-err');
+    formSubmit(e, '#resetpw-form', '/auth/reset-password', '#modalLoginSignup', '#modalResetPassword', '#resetpw-err');
+  });
+
+  $('#login-form').on('submit', function (e) {
+    e.preventDefault();
+
+    // Send AJAX request
+    $.ajax({
+      url: '/auth/login',
+      method: 'POST',
+      data: $('#login-form').serialize(),
+      success: function (response) {
+        $('#login-err').hide();
+        $('#modalLoginSignup').modal('hide');
+      },
+      error: function (xhr, status, error) {
+        $('#login-err').text('Password or email is not correct.');
+        $('#login-err').show();
+      },
+      complete: function() {
+        location.reload();
+      }
+    });
   });
 });
