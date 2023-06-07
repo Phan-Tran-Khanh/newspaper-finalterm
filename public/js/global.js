@@ -109,14 +109,24 @@ $(document).ready(function () {
       success: function (response) {
         $('#login-err').hide();
         $('#modalLoginSignup').modal('hide');
+        setTimeout(function () {
+          location.reload();
+        }, 1000);
       },
       error: function (xhr, status, error) {
         $('#login-err').text('Password or email is not correct.');
         $('#login-err').show();
-      },
-      complete: function() {
-        location.reload();
       }
     });
   });
+
+  // Payment Method: Paypal
+  paypal.Buttons({
+    style: {
+      layout: 'vertical',
+      color: 'blue',
+      shape: 'rect',
+      label: 'paypal'
+    }
+  }).render('#paypal-button-container');
 });
