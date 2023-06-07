@@ -1,6 +1,6 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { Profile, Strategy } from 'passport-facebook';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -15,14 +15,15 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
     profile: Profile,
     callback: any,
   ) {
-    const { emails, name } = profile;
-    if (!emails?.length || !name) {
-      return callback(new Error('Invalid Facebook profile'));
+    console.log('profile', profile);
+    const { emails, displayName } = profile;
+    if (!emails?.length) {
+      return callback(new NotFoundException('Invalid Facebook profile'));
     }
     const user = {
       email: emails[0].value,
-      firstName: name.givenName,
-      lastName: name.familyName,
+      firstName: displayName,
+      lastName: displayName,
     };
     callback(null, user);
   }

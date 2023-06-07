@@ -82,6 +82,21 @@ export class AppController {
     };
   }
 
+  @Get('/payment')
+  @Render('payment')
+  async paymentView(@Req() req: Request & { user: User }) {
+    const [categories, labels] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+    ]);
+    return {
+      file: 'payment',
+      user: req.user,
+      categories,
+      labels,
+    };
+  }
+
   @Get('faker')
   async faker() {
     await this.appService.faker();
