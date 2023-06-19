@@ -1,0 +1,49 @@
+<!-- Reset Password Modal -->
+<div class="modal fade" id="modalResetPassword" tabindex="-1" aria-labelledby="modalResetPasswordLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form id="resetpw-form" action="/auth/reset-password" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalResetPasswordLabel">Confirm Reset Code and Create New Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-3">
+          <p>We just sent a code to {{email}}</p>
+          <div class="mb-3">
+            <label for="reset-code" class="form-label">Reset Code</label>
+            <input type="number" class="form-control" id="reset-code" name="reset-code"
+              aria-describedby="codeHelp" placeholder="Enter your reset code" required>
+            <div id="codeHelp" class="form-text">Enter 6-digits number in your mailbox</div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row" aria-describedby="pwHelp">
+              <div class="col">
+                <label for="reset-password" class="form-label">New Password</label>
+                <input type="password" class="form-control" name="password" id="reset-password"
+                  placeholder="Enter new password" required>
+              </div>
+              <div class="col">
+                <label for="reset-repassword" class="form-label">Re-enter new Password</label>
+                <input type="password" class="form-control" name="repassword" id="reset-repassword"
+                  placeholder="Re-enter new password" required>
+              </div>
+            </div>
+            <div id="pwHelp" class="form-text">Please confirm your new password</div>
+          </div>
+
+          <!-- Alert Error -->
+          <div id="resetpw-err" class="alert alert-warning" role="alert">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+            data-bs-target="#modalForgotPassword">Back</button>
+          <button id="resetpw-btn" type="submit" class="btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Reset Password Modal -->

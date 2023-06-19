@@ -1,4 +1,4 @@
-<main class="container-fluid my-3 bg-light">
+<main class="container my-3 bg-light">
   <!-- Weekly News -->
   <div class="row">
     <div class="col-md-12">
@@ -6,43 +6,33 @@
         RISING THIS WEEK <i class="bi bi-graph-up-arrow text-primary"></i>
       </h1>
       <div id="carouselWeeklyNews" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="0" aria-label="News 1" class="active"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="1" aria-label="News 2"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="2" aria-label="News 3"></li>
+          <li data-bs-target="#carouselWeeklyNews" data-bs-slide-to="3" aria-label="News 4"></li>
+        </ol>
         <div class="carousel-inner">
           {{#each weeklyArticles}}
-          {{#each weeklyArticles}}
-          <div class="carousel-item active">
+          <div class="carousel-item {{#if @first}} active {{/if}}">
             <div class="card">
               <div class="row g-0">
                 <div class="col-md-7">
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
-                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      {{#with category}}
-                      <a href="/search?category={{slug}}">
-                        {{name}}
+                      <a href="/search?category={{category.name}}">
+                        {{category.name}}
                       </a>
-                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
-                      <a href="/{{slug}}">
-                        {{title}}
-                      <a href="/{{slug}}">
+                      <a href="/article/{{slug}}">
                         {{title}}
                       </a>
                     </h5>
-                    <p class="card-text small">
-                      {{summary}}
-                    </p>
                     <p class="card-text small">
                       {{summary}}
                     </p>
@@ -51,7 +41,6 @@
               </div>
             </div>
           </div>
-          {{/each}}
           {{/each}}
         </div>
       </div>
@@ -62,39 +51,29 @@
   <!-- Top 10 Categories -->
   <div class="row mt-2 g-2 overflow-auto flex-nowrap d-flex align-items-stretch">
     {{#each topArticles}}
-    {{#each topArticles}}
     <div class="col-md-8">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
-            <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-start">
+            <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
           </div>
           <div class="col-md-7 d-flex flex-column small">
             <div class="card-body">
               <h6 class="card-subtitle text-muted">
-                {{#with category}}
-                <a href="/search?category={{slug}}">
-                  {{name}}
+                <a href="/search?category={{category.name}}">
+                  {{category.name}}
                 </a>
-                {{/with}}
               </h6>
               <h6 class="card-title">
-                <a href="/{{slug}}">
-                  {{title}}
-                <a href="/{{slug}}">
+                <a href="/article/{{slug}}">
                   {{title}}
                 </a>
               </h6>
-              <p class="card-text">
-                {{summary}}
-              </p>
               <p class="card-text">
                 {{summary}}
               </p>
             </div>
             <div class="card-footer bg-white">
-              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
               <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             </div>
           </div>
@@ -111,39 +90,37 @@
     <div class="col-md-12">
       <!-- Category Name -->
       <h2 class="bg-dark p-2">
-        <a class="link-light" href="list.html">World</a>
+        <a class="link-light" href="/search?category={{category.name}}">
+          {{category.name}}
+        </a>
       </h2>
 
       <!-- Latest News -->
-      <div id="carouselLatestNews1" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div id="carouselLatestNews{{@index}}" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselLatestNews1" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselLatestNews1" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselLatestNews1" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+          {{#each latest}}
+          <button type="button" data-bs-target="#carouselLatestNews{{@../index}}" data-bs-slide-to="{{@index}}" {{#if
+            @first}} class="active" {{/if}} aria-current="true" aria-label="News {{@index}}"></button>
+          {{/each}}
         </div>
         <div class="carousel-inner">
-          {{#each mostViewed}}
-          <div class="carousel-item active">
+          {{#each latest}}
+          <div class="carousel-item {{#if @first}} active {{/if}}">
             <div class="card">
               <div class="row row-cols-2 g-0">
                 <div>
-                  <img src="{{bannerImageUrl}}" class="d-block w-100 rounded-start">
+                  <img src="{{bannerImageUrl}}" class="d-block rounded-start banner">
                 </div>
                 <div>
                   <div class="card-body">
                     <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
-                      {{#with category}}
-                      <a href="/search?category={{slug}}">
-                        {{name}}
+                      <a href="/search?category={{category.name}}">
+                        {{category.name}}
                       </a>
-                      {{/with}}
                     </h6>
                     <h5 class="card-title mb-2">
-                      <a href="/{{slug}}">
+                      <a href="/article/{{slug}}">
                         {{title}}
                       </a>
                     </h5>
@@ -165,21 +142,19 @@
         <h4 class="px-2">Trending now <i class="bi bi-fire text-danger"></i></h4>
 
         <div class="row d-flex flex-nowrap">
-          {{#each latest}}
+          {{#each mostViewed}}
           <div class="card w-25">
-            <img class="card-img-top w-100" src="{{bannerImageUrl}}" alt="Card image cap">
+            <img class="card-img-top banner" src="{{bannerImageUrl}}">
             <div class="card-body small">
               <h6 class="card-title">
-                <a href="/{{slug}}">
+                <a href="/article/{{slug}}">
                   {{title}}
                 </a>
               </h6>
               <h6 class="card-subtitle mb-2 text-muted">
-                {{#with category}}
-                <a href="/search?category={{slug}}">
-                  {{name}}
+                <a href="/search?category={{category.name}}">
+                  {{category.name}}
                 </a>
-                {{/with}}
               </h6>
               <p class="card-text">
                 {{summary}}

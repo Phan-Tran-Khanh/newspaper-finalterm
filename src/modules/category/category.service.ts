@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category } from 'src/entity/category.entity';
-import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
@@ -12,24 +10,23 @@ export class CategoryService {
     private readonly categoryRepository: Repository<Category>,
   ) {}
 
-  create(createCategoryDto: CreateCategoryDto): Promise<Category> {
-    return this.categoryRepository.save(createCategoryDto);
+  create(dto: Category): Promise<Category> {
+    return this.categoryRepository.save(dto);
   }
 
   async findAll(): Promise<Category[]> {
     const categories = await this.categoryRepository.find({
       relations: ['parent', 'children'],
     });
+    // return categories;
     return categories.filter((category) => {
       return category.parent === null;
     });
   }
 
-  update(id: number, updateCategoryDto: UpdateCategoryDto): Promise<Category> {
-    return this.categoryRepository.save({
-      id,
-      ...updateCategoryDto,
-    });
+  update(id: number, dto: Category): Promise<Category> {
+    dto.id = id;
+    return this.categoryRepository.save(dto);
   }
 
   async remove(id: number): Promise<void> {
@@ -37,7 +34,6 @@ export class CategoryService {
   }
 
   async getMostViewedCategories(take = 10): Promise<Category[]> {
-    // join category and article table to get the sum of weeklyViewCount for each category
     const categories = await this.categoryRepository.find({
       take,
     });

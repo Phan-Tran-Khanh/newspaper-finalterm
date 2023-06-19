@@ -1,8 +1,12 @@
-import { Injectable, Query } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CategoryService } from 'src/modules/category/category.service';
 import { LabelService } from '../label/label.service';
 import { ArticleService } from '../article/article.service';
-import slugify from 'slugify';
+import { Article } from 'src/entity/article.entity';
+import { SearchParms } from './dto/SearchQuery';
+import { Page } from './dto/Page';
+import fake from 'src/utils/faker';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AppService {
@@ -10,20 +14,30 @@ export class AppService {
     private readonly categoryService: CategoryService,
     private readonly labelService: LabelService,
     private readonly articleService: ArticleService,
+    private readonly userService: UserService,
   ) {}
+  async faker() {
+    return fake(
+      this.categoryService,
+      this.labelService,
+      this.userService,
+      this.articleService,
+    );
+  }
   async getCategories() {
-    const categories = await this.categoryService.findAll();
-    return categories.map((category) => ({
-      ...category,
-      slug: slugify(category.name, { lower: true }),
-    }));
+    // const categories = await this.categoryService.findAll();
+    // const labels = await this.labelService.findAll();
+    // const users = await this.userService.findAll();
+    // categories.forEach((category) => {
+    //   for (let i = 0; i < 20; i++) {
+    //     const article = fakeArticle(category, labels, users);
+    //     this.articleService.create(article);
+    //   }
+    // });
+    return this.categoryService.findAll();
   }
   async getLabels() {
-    const labels = await this.labelService.findAll();
-    return labels.map((label) => ({
-      ...label,
-      slug: slugify(label.name, { lower: true }),
-    }));
+    return this.labelService.findAll();
   }
   async getWeeklyArticles() {
     return this.articleService.getWeeklyArticles();
@@ -56,18 +70,13 @@ export class AppService {
     }
     return topArticles;
   }
-  async searchArticles(query: {
-    category: string;
-    label: string;
-    time: 'day' | 'week' | 'month' | 'year';
-    queryString: string;
-  }) {
-    return this.articleService.searchArticles(query);
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
+    return this.articleService.searchArticles(searchQuery);
   }
   async getDetailArticleBySlug(slug: string) {
     return this.articleService.getDetailArticleBySlug(slug);
   }
-  async getRelatedArticles(article: any) {
+  async getRelatedArticles(article: Article) {
     return this.articleService.getMostViewedByCategory(article.category.id);
   }
 }

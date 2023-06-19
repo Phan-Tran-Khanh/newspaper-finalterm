@@ -3,6 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Article } from 'src/entity/article.entity';
 import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 import { Repository } from 'typeorm';
+import { SearchParms } from '../app/dto/SearchQuery';
+import { Page } from '../app/dto/Page';
+import slugify from 'slugify';
 
 @Injectable()
 export class ArticleService {
@@ -10,6 +13,18 @@ export class ArticleService {
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
   ) {}
+  findAll(): Promise<Article[]> {
+    return this.articleRepository.find();
+  }
+  create(dto: Article): Promise<Article> {
+    dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
+    return this.articleRepository.save(dto);
+  }
+  update(id: number, dto: Article): Promise<Article | null> {
+    dto.id = id;
+    dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
+    return this.articleRepository.save(dto);
+  }
   getLatestByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
@@ -62,41 +77,53 @@ export class ArticleService {
       take,
     });
   }
-  async searchArticles(query: {
-    category: string;
-    label: string;
-    time: 'day' | 'week' | 'month' | 'year';
-    queryString: string;
-  }): Promise<Article[]> {
-    const { category, label, queryString, time } = query;
-    const qb = this.articleRepository
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
+    const { page, pageSize, label, category, query, time } = searchQuery;
+    const queryBuilder = this.articleRepository
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.category', 'category')
-      .leftJoinAndSelect('article.labels', 'label')
-      .where('article.status = :status', { status: ArticleStatus.Published });
-    if (category) {
-      qb.andWhere('category.slug = :category', { category });
-    }
-    if (label) {
-      qb.andWhere('label.slug = :label', { label });
-    }
-    if (queryString) {
-      qb.andWhere('article.title LIKE :queryString', {
-        queryString: `%${queryString}%`,
+      .leftJoinAndSelect('article.labels', 'label');
+
+    if (query.length > 0)
+      queryBuilder.andWhere('article.textSearch @@ to_tsquery(:query)', {
+        query,
+      });
+
+    if (category.length > 0)
+      queryBuilder.andWhere('category.name = :category', { category });
+
+    if (label.length > 0)
+      queryBuilder.andWhere('label.name = :label', { label });
+
+    if (time === 'day') {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      queryBuilder.andWhere('article.publishedAt >= :today', { today });
+    } else if (time === 'week') {
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      queryBuilder.andWhere('article.publishedAt >= :oneWeekAgo', {
+        oneWeekAgo,
+      });
+    } else if (time === 'month') {
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      queryBuilder.andWhere('article.publishedAt >= :oneMonthAgo', {
+        oneMonthAgo,
       });
     }
-    if (time) {
-      const now = new Date();
-      const timeMap = {
-        day: now.setDate(now.getDate() - 1),
-        week: now.setDate(now.getDate() - 7),
-        month: now.setDate(now.getDate() - 30),
-        year: now.setDate(now.getDate() - 365),
-      };
-      qb.andWhere('article.createdAt > :time', {
-        time: timeMap[time],
-      });
-    }
-    return qb.getMany();
+    queryBuilder.orderBy('article.publishedAt', 'DESC');
+
+    const [articles, total] = await queryBuilder
+      .skip((page - 1) * pageSize)
+      .take(pageSize)
+      .getManyAndCount();
+
+    return {
+      content: articles,
+      totalPage: Math.ceil(total / pageSize),
+      page,
+      pageSize,
+    };
   }
 }

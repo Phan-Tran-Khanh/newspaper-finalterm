@@ -1,0 +1,177 @@
+<!-- Login/ Sign Up Modals -->
+<div class="modal fade" id="modalLoginSignup" tabindex="-1" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header pb-0 border-bottom-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body mx-3 pt-0">
+        <ul class="nav nav-tabs" id="login-signup-tabs" role="tablist">
+          <li class="nav-item flex-fill">
+            <a class="nav-link active text-center" id="tab-login" data-toggle="tab" href="#login" role="tab"
+              aria-controls="login" aria-selected="true">Login</a>
+          </li>
+          <li class="nav-item flex-fill">
+            <a class="nav-link text-center" id="tab-signup" data-toggle="tab" href="#signup" role="tab"
+              aria-controls="signup" aria-selected="false">Sign Up</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="login-signup-tabs-content">
+          <!-- Login Tab -->
+          <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="tab-login">
+            <form class="row g-3" id="login-form" action="/auth/login" method="post">
+              <!-- Email Input -->
+              <div class="col-md-12">
+                <label for="login-email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="login-email" placeholder="Enter email"
+                  required>
+              </div>
+
+              <!-- Password Input -->
+              <div class="col-md-12">
+                <label for="login-password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="login-password"
+                  placeholder="Enter password" required>
+              </div>
+
+              <!-- Alert Error -->
+              <div id="login-err" class="alert alert-warning" role="alert">
+              </div>
+
+              <!-- Checkbox RememberMe -->
+              <div class="col-md-6">
+                <div class="form-check mb-md-0">
+                  <input class="form-check-input" name="rememberMe" type="checkbox" value="" id="login-check" checked>
+                  <label class="form-check-label" for="loginCheck"> Remember me
+                  </label>
+                </div>
+              </div>
+
+              <!-- Forget Password Link -->
+              <div class="col-md-6 d-flex justify-content-end">
+                <a href="#!" data-bs-toggle="modal" data-bs-target="#modalForgotPassword">
+                  Forgot password?</a>
+              </div>
+
+              <!-- Login Button -->
+              <div class="d-grid">
+                <button id="login-btn" type="submit" class="btn">Login</button>
+              </div>
+
+              <!-- Third-party Login -->
+              <div class="text-center">
+                <p class="text-muted">or</p>
+                <p>Sign in with:</p>
+
+                <a href="/auth/facebook">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-facebook"></i>
+                  </button>
+                </a>
+
+                <a href="/auth/google">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-google"></i>
+                  </button>
+                </a>
+
+                <a href="/auth/twitter">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-twitter"></i>
+                  </button>
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <!-- Registration Tab -->
+          <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="tab-signup">
+            <form id="signup-form" class="row g-3" action="/auth/signup" method="post">
+              <!-- Full Name Input -->
+              <div class="col-md-6">
+                <label for="signup-firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstName" id="signup-firstname"
+                  placeholder="Enter first name" required>
+              </div>
+              <div class="col-md-6">
+                <label for="signup-lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastName" id="signup-lastname"
+                  placeholder="Enter last name" required>
+              </div>
+
+              <!-- DOB Input -->
+              <div class="col-md-6">
+                <label for="signup-dob" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" name="dateOfBirth" id="signup-dob" required>
+              </div>
+
+              <!-- Gender Input -->
+              <div class="col-md-6">
+                <label for="signup-gender" class="form-label">Gender</label><br>
+                <select class="form-select" name="gender" id="signup-gender" required>
+                  <option value="">Select your gender</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Email Input -->
+              <div class="col-md-12">
+                <label for="signup-email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" id="signup-email" placeholder="Enter email"
+                  required>
+              </div>
+
+              <!-- Password Input -->
+              <div class="col-md-6">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="signup-password"
+                  placeholder="Enter password" required>
+              </div>
+              <div class="col-md-6">
+                <label for="signup-repassword" class="form-label">Re-password</label>
+                <input type="password" class="form-control" name="repassword" id="signup-repassword"
+                  placeholder="Re-enter password" required>
+              </div>
+              <!-- Alert Error -->
+              <div id="signup-err" class="alert alert-warning" role="alert">
+              </div>
+
+              <!-- Sign Up Button -->
+              <div class="d-grid">
+                <button id="signup-btn" type="submit" class="btn">Sign Up</button>
+              </div>
+
+              <!-- Third-party Sign Up -->
+              <div class="text-center mb-3">
+                <p class="text-muted">or</p>
+                <p>Sign up with:</p>
+
+                <a href="/auth/facebook">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-facebook"></i>
+                  </button>
+                </a>
+
+                <a href="/auth/google">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-google"></i>
+                  </button>
+                </a>
+
+                <a href="/auth/twitter">
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="bi bi-twitter"></i>
+                  </button>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login/ Sign Up Modals -->

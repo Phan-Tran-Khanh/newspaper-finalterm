@@ -15,6 +15,12 @@ a:hover {
     color: #007bff;
 }
 
+.banner {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    width: 100%;
+}
+
 /* Categories */
 .navbar-nav li.nav-item a:hover {
     background-color: #212529;

@@ -1,17 +1,16 @@
-import { Controller, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { Roles } from 'src/decorator/roles.decorator';
+import { User } from 'src/entity/user.entity';
 
-@Roles('ADMIN')
+@Roles('Admin')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  create(@Body() dto: User) {
+    return this.userService.create(dto);
   }
 
   // @Get()
@@ -24,9 +23,9 @@ export class UserController {
   //   return this.userService.findOne(+id);
   // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() dto: User) {
+    return this.userService.update(+id, dto);
   }
 
   @Delete(':id')

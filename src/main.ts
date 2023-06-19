@@ -6,8 +6,9 @@ import { Logger } from '@nestjs/common';
 import * as hbs from 'hbs';
 import { join } from 'path';
 import * as morgan from 'morgan';
+import * as cookieParser from 'cookie-parser';
 import { AppModule } from 'src/modules/app/app.module';
-import slugify from 'slugify';
+import registerHelpers from './utils/hbs';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -16,13 +17,12 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
+  app.set('view options', { layout: 'layouts/main' });
   hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
-  hbs.registerHelper('slugify', (options: Handlebars.HelperOptions) => {
-    return slugify(options.fn(this), { lower: true });
-  });
-  hbs.registerHelper('inRange', (index: number, start: number, end: number) => {
-    return start <= index && index <= end;
-  });
+  registerHelpers(hbs);
+
+  //set up cookies
+  app.use(cookieParser());
 
   // set up request logger
   app.use(
@@ -42,8 +42,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
+  // set up application
   const configService = app.get(ConfigService);
-  const port = configService.get('PORT') || 3000;
+  const port = configService.get('SERVER_PORT');
   await app.listen(port);
 
   Logger.log(`Server is listening on port ${port}`, 'NestApplication');

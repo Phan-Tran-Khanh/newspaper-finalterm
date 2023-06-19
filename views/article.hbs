@@ -2,26 +2,18 @@
   <!-- Main Article -->
   <div class="row g-2">
     {{#with article}}
-    {{#with article}}
     <!-- Detail -->
     <div class="col-md-9">
       <div class="container">
         <!-- Category and Date Time -->
         <div class="row row-cols-2">
-          {{#with category}}
-          {{#with category}}
           <div class="col text-start small fw-bold text-muted">
-            <a href="/search?category={{slug}}" class="text-decoration-none">
-              {{name}}
-            <a href="/search?category={{slug}}" class="text-decoration-none">
-              {{name}}
+            <a href="/search?category={{category.name}}" class="text-decoration-none">
+              {{category.name}}
             </a>
           </div>
-          {{/with}}
-          {{/with}}
           <div class="col text-end small">
             <p class="text-muted">
-              {{publishedAt}}
               {{publishedAt}}
             </p>
           </div>
@@ -29,13 +21,19 @@
 
         <!-- Title and Content -->
         <div class="d-flex flex-column">
-          {{title}}
+          <h2>
+            {{title}}
+            {{#if ../user}}
+            <a href="/pdf/{{slug}}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Download PDF">
+              <i class="bi bi-download"></i>
+            </a>
+            {{/if}}
+          </h2>
+          <br>
           {{summary}}
-          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
-          {{content}}
-          {{title}}
-          {{summary}}
-          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
+          <br>
+          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto" />
+          <br>
           {{content}}
         </div>
 
@@ -44,18 +42,13 @@
           <div class="col text-start small">
             <span>tags: </span>
             {{#each labels}}
-            <a href="/search?label={{slug}}" class="text-decoration-none">
-              {{name}}
-            {{#each labels}}
-            <a href="/search?label={{slug}}" class="text-decoration-none">
+            <a href="/search?label={{name}}" class="text-decoration-none">
               {{name}}
             </a>
-            {{/each}}
             {{/each}}
           </div>
           <div class="col text-end">
             <p class="fw-bold">
-              {{createdBy.penName}}
               {{createdBy.penName}}
             </p>
           </div>
@@ -63,49 +56,33 @@
       </div>
     </div>
     {{/with}}
-    {{/with}}
     <!-- Detail -->
 
     <!-- Same Category -->
     <div class="col-md-3">
       <div class="position-sticky top-0">
-        <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
-        {{#each relatedArticles}}
-        <a class="h5 fw-bold" href="/search?category={{article.category.slug}}"><i class="bi bi-book-half"></i> In this section</a class="h5">
+        <a class="h5 fw-bold" href="/search?category={{article.category.name}}"><i class="bi bi-book-half"></i> In this
+          section</a class="h5">
         {{#each relatedArticles}}
         <div class="card">
-          <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
-          <img class="card-img-top" src="{{bannerImageUrl}}" alt="Card image cap">
+          <img class="card-img-top" src="{{bannerImageUrl}}">
           <div class="card-body small">
             <h6 class="card-title">
-              <a href="/{{slug}}">
-                {{title}}
-              <a href="/{{slug}}">
+              <a href="/article/{{slug}}">
                 {{title}}
               </a>
             </h6>
             <h6 class="card-subtitle mb-2 text-muted">
-              {{#with category}}
-              <a href="/search?category={{slug}}">
-                {{name}}
-              {{#with category}}
-              <a href="/search?category={{slug}}">
-                {{name}}
+              <a href="/search?category={{category.name}}">
+                {{category.name}}
               </a>
-              {{/with}}
-              {{/with}}
             </h6>
-            <p class="card-text">
-              {{summary}}
-            </p>
-            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
             <p class="card-text">
               {{summary}}
             </p>
             <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
           </div>
         </div>
-        {{/each}}
         {{/each}}
       </div>
     </div>
@@ -118,7 +95,7 @@
     <div id="comment-container" class="col-md-9">
       <!-- Reply -->
       <div class="card">
-        <form id="comment-input">
+        <form id="comment-input" method="post">
           <div class="card-body">
             <h5 class="card-title">COMMENT</h5>
             <div class="form-group">
@@ -127,7 +104,8 @@
             </div>
           </div>
           <div class="card-footer text-end bg-white border-0">
-            <button id="reply-new" type="submit" class="btn">Reply</button>
+            <button id="reply-new" {{#if user}} type="submit" {{else}} type="button" data-bs-toggle="modal"
+              data-bs-target="#modalLoginSignup" {{/if}} class="btn">Reply</button>
           </div>
         </form>
       </div>
@@ -138,11 +116,11 @@
       <div class="card mt-2">
         <div class="card-body">
           <div class="media">
-            <img src="https://via.placeholder.com/50x50" alt="...">
+            <img src="{{createdBy.avatarUrl}}">
             <div class="media-body">
-              <h5 class="mt-0">{{user.fullname}}</h5>
+              <h5 class="mt-0">{{createdBy.firstName}} {{createdBy.lastName}}</h5>
               <p>
-                {{body}}
+                {{content}}
               </p>
             </div>
             <p class="card-text small text-muted">{{createdAt}}</p>
@@ -151,84 +129,14 @@
             <a href="#" class="like-input me-3 position-relative">
               <i class="bi bi-hand-thumbs-up"></i> Like
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                {{likesCount}}
-                {{likesCount}}
+                {{reactCount}}
                 <span class="visually-hidden">Total Likes</span>
               </span>
             </a>
             <a href="#" class="reply-old">Reply</a>
           </div>
         </div>
-
-        {{!-- TODO: Replies Children --}}
-        {{!-- TODO: Replies Children --}}
-        <!-- Nested Replies -->
-        <div class="card-footer bg-white border-0">
-          <a href="#" class="nested-replies">
-            <i class="bi bi-arrow-return-right"></i> 32 Replies
-          </a>
-          <!-- Reply Children -->
-          <div class="replies-container hstack gap-1">
-            <div class="vr"></div>
-            <div class="container-fluid small">
-              <!-- First Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25" >
-                    <div class="media-body">
-                      <h6 class="mt-0">Joke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- First Child -->
-
-              <!-- Second Child -->
-              <div class="card">
-                <div class="card-body">
-                  <div class="media">
-                    <img src="https://via.placeholder.com/25x25" alt="...">
-                    <div class="media-body">
-                      <h6 class="mt-0">Jekeke Doe</h6>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A officiis
-                        quaerat
-                      </p>
-                    </div>
-                    <p class="card-text small text-muted">Posted 3 days ago</p>
-                  </div>
-                  <div class="d-flex align-items-center mt-3">
-                    <a href="#" class="like-input me-3 position-relative">
-                      <i class="bi bi-hand-thumbs-up"></i> Like
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">Total Likes</span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <!-- Second Child -->
-            </div>
-          </div>
-          <!-- Reply Children -->
-        </div>
-        <!-- Nested Replies -->
       </div>
-      {{/each}}
       {{/each}}
       <!-- Old Comments -->
     </div>
