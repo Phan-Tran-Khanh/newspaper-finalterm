@@ -1,4 +1,24 @@
-<main class="container-fluid">
+<body class="container-fluid">
+  <header class="sticky-top">
+    <!-- Upper Header -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="e_Branding container-fluid">
+        <!-- Brand Name -->
+        <a href="../index.html" class="navbar-brand w-50 h-50 me-auto">
+          <img class="w-50 h-50" src="../../public/images/logo.png"></img>
+        </a>
+
+        <!-- Logged in Offcanvas Trigger -->
+        <button class="navbar-toggler ms-3 border-light" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasLoggedin" aria-controls="offcanvasLoggedin" id="user-btn">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Upper Header -->
+  </header>
+
+
   <div class="e_Content_Details container">
     <!-- Detail -->
     <div class="post-detail col-md-9">
@@ -168,6 +188,52 @@
   </div>
   <!-- Writer Info Modals -->
 
+  <footer id="footer" class="bg-dark text-light py-5">
+    <div class="container">
+      <div class="row">
+        <!-- About developers -->
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>20120018 - Tran Kieu Minh Lam</p>
+          <p>20120067 - Ng Pham Ba Duy</p>
+          <p>20120304 - Phan Tran Khanh</p>
+        </div>
+
+        <!-- Address -->
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <p>
+            <a href="https://www.google.com/maps?q=227+Nguyen+Van+Cu+Str.,+D5,+HCMC,+Vietnam+10001" target="_blank"><i
+                class="bi bi-geo-alt"></i> 227 Nguyen Van Cu Str., D5, HCMC, Vietnam
+              10001</a>
+          </p>
+          <p>
+            <i class="bi bi-telephone"></i> +1 (123) 456-7890
+          </p>
+          <p>
+            <a href="mailto:info@newspaper.com"><i class="bi bi-envelope"></i> info@newspaper.com</a>
+          </p>
+        </div>
+
+        <!-- Digital Contact -->
+        <div class="col-md-4">
+          <h5>Follow Us</h5>
+          <a href="https://www.facebook.com"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.twitter.com"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.instagram.com"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Brand Name -->
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-center">© 2023 Newspaper.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -185,4 +251,4 @@
   </script>
   <script src="../../public/mock/editor.js"></script>
   <script src="../../public/js/editor.js"></script>
-</main>
+</body>
