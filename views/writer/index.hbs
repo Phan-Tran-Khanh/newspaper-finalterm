@@ -1,14 +1,28 @@
-<main class="mx-3 my-3 bg-light p-3">
-  {{#with article}}
-  <form action="/writer/list" method="post">
+<main class="container my-3 bg-light">
+  <form {{#if article}} action="/writer/create" {{else}} action="/writer/edit" {{/if}} method="post">
+    <!-- Editor Feedback Section -->
+    {{#with article}}
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-light bg-dark p-2">
+          Editor Feedback
+        </h2>
+        <textarea id="editor-feedback" class="w-100" disabled>
+          {{note}}
+        </textarea>
+      </div>
+    </div>
+    {{/with}}
+    <!-- Editor Feedback Section -->
+
     <!-- WYSIWYG Section (TinyMCE) -->
     <div class="row">
       <div class="col-md-12">
         <h2 class="text-light bg-dark p-2">
           Newsroom
         </h2>
-        <textarea id="reporter-editor" class="w-100" name="content">
-          {{content}}
+        <textarea id="writer-editor" class="w-100" name="content">
+          {{article.content}}
         </textarea>
       </div>
     </div>
@@ -26,28 +40,59 @@
           <div class="row g-0">
             <div class="col-md-7 d-flex flex-column">
               <div class="card-body">
-                <p class="card-text small text-muted">{{createdBy.penName}} - {{createdAt}}</p>
+                <p id="created-date" class="card-text small text-muted">{{user.penName}}</p>
+                <select class="form-select card-subtitle" name="category" id="category">
+                  <option value="">Choose category...</option>
+                  {{#each categories}}
+                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                    {{name}}</option>
+                  {{#each children}}
+                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                    {{name}}</option>
+                  {{/each}}
+                  {{/each}}
+                </select>
+                <input class="form-control card-title" name="title" style="font-size: 1.25rem; font-weight: 500;" {{#if
+                  article.title}} value="{{article.title}}" {{else}} value="[Example Title]" {{/if}}>
+                </input>
+                <input class="form-control card-text" name="summary" {{#if article.title}} value="{{article.summary}}"
+                  {{else}} value="[Example Abstract]" {{/if}}>
+                </input>
+                {{!-- <p class="card-text small text-muted">{{user.penName}} - {{createdAt}}</p>
                 <h6 class="card-subtitle tinymce-heading text-muted">
                   {{category}}
                 </h6>
                 <h5 class="card-title tinymce-heading">
                   {{title}}
                 </h5>
-                <p class="card-text tinymce-body">{{summary}}</p>
+                <p class="card-text tinymce-body">{{summary}}</p> --}}
               </div>
               <div class="card-footer">
-                <p class="card-text small text-muted">
+                {{!-- <p class="card-text small text-muted">
                   <span class="fw-semibold">
                     tags:
                   </span>
                   <span class="tinymce-heading">
                     {{label}}
                   </span>
-                </p>
+                </p> --}}
+                <div class="input-group input-group-sm">
+                  <label class="card-text small text-muted fw-semibold p-2" for="label">tags:</label>
+                  <select class="form-select" name="label" id="label">
+                    <option value="">Choose...</option>
+                    {{#each labels}}
+                    <option value="{{name}}" {{#ifEquals @root.article.label.name name}} selected {{/ifEquals}}>{{name}}
+                    </option>
+                    {{/each}}
+                  </select>
+                </div>
               </div>
             </div>
-            <div id="tinymce-img" class="col-md-5">
-              <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end">
+            <div {{!-- id="tinymce-img" --}}
+              class="col-md-5 d-flex justify-content-center align-items-center flex-column">
+              <img id="preview" {{#with article}} src="{{bannerImageUrl}}" {{#with}}>
+              <label for="uploadImage" class="btn btn-primary px-5">Upload Image</label>
+              <input id="uploadImage" name="bannerImageUrl" type="file" onChange="previewImg(event)" accept="image/png, image/jpeg" hidden/>
             </div>
           </div>
         </div>
@@ -55,8 +100,7 @@
     </div>
     <!-- Preview Section -->
     <div class="text-center border-top p-2 mt-3">
-      <button type="submit" id="publish-btn" class="btn px-5">Publish</button>
+      <button type="submit" id="publish-btn" class="btn px-5">{{#if article}} Update {{else}} Publish {{/if}}</button>
     </div>
   </form>
-  {{/width}}
 </main>

@@ -14,7 +14,7 @@
           </div>
           <div class="col text-end small">
             <p class="text-muted">
-              {{publishedAt}}
+              {{formatDate publishedAt}}
             </p>
           </div>
         </div>
@@ -80,7 +80,7 @@
             <p class="card-text">
               {{summary}}
             </p>
-            <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+            <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
           </div>
         </div>
         {{/each}}

@@ -1,9 +1,7 @@
 import * as hbsModule from 'hbs';
 
 export default function registerHelpers(hbs: typeof hbsModule) {
-  hbs.registerHelper(
-    'ifEquals',
-    (a: any, b: any, options: Handlebars.HelperOptions) => {
+  hbs.registerHelper('ifEquals', (a: any, b: any, options: Handlebars.HelperOptions) => {
       if (!a || !b) return options.inverse(this);
       return a == b ? options.fn(this) : options.inverse(this);
     },
@@ -23,5 +21,31 @@ export default function registerHelpers(hbs: typeof hbsModule) {
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
+  });
+  hbs.registerHelper('ifCond', (v1, operator, v2, options) => {
+    switch (operator) {
+      case '==':
+        return (v1 == v2) ? options.fn(this) : options.inverse(this);
+      case '===':
+        return (v1 === v2) ? options.fn(this) : options.inverse(this);
+      case '!=':
+        return (v1 != v2) ? options.fn(this) : options.inverse(this);
+      case '!==':
+        return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+      case '<':
+        return (v1 < v2) ? options.fn(this) : options.inverse(this);
+      case '<=':
+        return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+      case '>':
+        return (v1 > v2) ? options.fn(this) : options.inverse(this);
+      case '>=':
+        return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+      case '&&':
+        return (v1 && v2) ? options.fn(this) : options.inverse(this);
+      case '||':
+        return (v1 || v2) ? options.fn(this) : options.inverse(this);
+      default:
+        return options.inverse(this);
+    }
   });
 }

@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-5">
                   <div class="card-body">
-                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
                       <a href="/search?category={{category.name}}">
                         {{category.name}}
@@ -74,7 +74,7 @@
               </p>
             </div>
             <div class="card-footer bg-white">
-              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div>
                   <div class="card-body">
-                    <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+                    <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
                     <h6 class="card-subtitle text-muted">
                       <a href="/search?category={{category.name}}">
                         {{category.name}}
@@ -159,7 +159,7 @@
               <p class="card-text">
                 {{summary}}
               </p>
-              <p class="card-text small text-muted">{{createdBy.penName}} - {{publishedAt}}</p>
+              <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
             </div>
           </div>
           {{/each}}
