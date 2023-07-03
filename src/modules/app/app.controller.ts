@@ -136,4 +136,34 @@ export class AppController {
     await this.appService.faker();
     return 'ok';
   }
+
+  @Get('/admin')
+  @Render('admin/admin')
+  async adminView(@Req() req: Request) {
+    // const [categories, labels] = await Promise.all([
+  }
+
+  @Get('writer')
+  @Render('writer/index')
+  async writerView(@Req() req: Request) {
+    const [categories, labels] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+    ]);
+    return {
+      file: 'writer/index',
+      user: req.user,
+      categories,
+      labels,
+    };
+  }
+
+  @Get('writer/search')
+  @Render('writer/search')
+  async writerSearchView(
+    @Query() query: SearchParamsType,
+    @Req() req: Request,
+  ) {
+    // TODO
+  }
 }

@@ -13,6 +13,7 @@ import databaseConfig from 'src/config/database.config';
 import authConfig from 'src/config/auth.config';
 import emailConfig from 'src/config/email.config';
 import configuration from 'src/config/configuration';
+import { EditorController } from './editor.controller';
 
 @Module({
   imports: [
@@ -33,7 +34,7 @@ import configuration from 'src/config/configuration';
     LabelModule,
     EmailModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, EditorController],
   providers: [AppService],
 })
 export class AppModule {}
