@@ -140,7 +140,20 @@ export class AppController {
   @Get('/admin')
   @Render('admin/admin')
   async adminView(@Req() req: Request) {
-    // const [categories, labels] = await Promise.all([
+    const [categories, labels, articles, users] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticles(),
+      this.appService.getUsers(),
+    ]);
+    return {
+      file: 'admin/admin',
+      user: req.user,
+      categories,
+      articles,
+      labels,
+      users,
+    };
   }
 
   @Get('writer')

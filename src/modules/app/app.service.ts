@@ -24,16 +24,13 @@ export class AppService {
       this.articleService,
     );
   }
+  async getUsers() {
+    return this.userService.findAll();
+  }
+  async getArticles() {
+    return this.articleService.findAll();
+  }
   async getCategories() {
-    // const categories = await this.categoryService.findAll();
-    // const labels = await this.labelService.findAll();
-    // const users = await this.userService.findAll();
-    // categories.forEach((category) => {
-    //   for (let i = 0; i < 20; i++) {
-    //     const article = fakeArticle(category, labels, users);
-    //     this.articleService.create(article);
-    //   }
-    // });
     return this.categoryService.findAll();
   }
   async getLabels() {
