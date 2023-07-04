@@ -1,5 +1,5 @@
 <main class="container my-3 bg-light">
-  <form {{#if article}} action="/writer/edit" {{else}} action="/writer/create" {{/if}} method="post">
+  <form action="/article" method="post">
     <!-- Editor Feedback Section -->
     {{#with article}}
     <input name="id" value="{{id}}" hidden>
@@ -46,10 +46,10 @@
                 <select id="category" name="category" class="form-select card-subtitle" required>
                   <option value="">Choose category...</option>
                   {{#each categories}}
-                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                  <option value="{{id}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
                     {{name}}</option>
                   {{#each children}}
-                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                  <option value="{{id}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
                     {{name}}</option>
                   {{/each}}
                   {{/each}}

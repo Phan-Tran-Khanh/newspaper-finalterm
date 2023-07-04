@@ -104,9 +104,10 @@ export class AppController {
       this.appService.getCategories(),
       this.appService.getDetailArticleBySlug(slug),
     ]);
-    const relatedArticles = await this.appService.getRelatedArticles(
-      article as Article,
-    );
+    if (article === null) {
+      throw new NotFoundException(`Article with slug ${slug} is not found!`);
+    }
+    const relatedArticles = await this.appService.getRelatedArticles(article);
     return {
       file: 'article',
       categories,
@@ -177,6 +178,19 @@ export class AppController {
     @Query() query: SearchParamsType,
     @Req() req: Request,
   ) {
-    // TODO
+    const [categories, labels, articlesPage] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.searchArticles(new SearchParms(query)),
+    ]);
+    return {
+      file: 'writer/search',
+      user: req.user,
+      categories,
+      labels,
+      articles: articlesPage.content,
+      totalPage: articlesPage.totalPage,
+      searchParams: new SearchParms(query),
+    };
   }
 }
