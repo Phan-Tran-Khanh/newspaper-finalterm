@@ -71,5 +71,14 @@ function previewImg(event) {
 $(document).ready(function () {
   var today = new Date();
   var formattedDate = today.toDateString();
-  $("#dateElement").append(" - " + formattedDate);
+  $("#created-date").append(" - " + formattedDate);
+
+  $("select#label").mousedown(function (e) {
+    e.preventDefault();
+    var select = this;
+    var scroll = select.scrollTop;
+    e.target.selected = !e.target.selected;
+    setTimeout(function () { select.scrollTop = scroll; }, 0);
+    $(select).focus();
+  }).mousemove(function (e) { e.preventDefault() });
 });

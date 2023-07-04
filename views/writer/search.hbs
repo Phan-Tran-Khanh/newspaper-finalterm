@@ -25,12 +25,12 @@
           <label class="input-group-text" for="status">Status</label>
           <select class="form-select" name="status" id="status">
             <option value="" selected>Choose...</option>
-            <option value="rejected" {{#ifEquals searchParams.status 'rejected' }} selected {{/ifEquals}}>Rejected
+            <option value="Rejected" {{#ifEquals searchParams.status 'Rejected' }} selected {{/ifEquals}}>Rejected
             </option>
-            <option value="approved" {{#ifEquals searchParams.status 'approved' }} selected {{/ifEquals}}>Approved
+            <option value="Approved" {{#ifEquals searchParams.status 'Approved' }} selected {{/ifEquals}}>Approved
             </option>
-            <option value="pending" {{#ifEquals searchParams.status 'pending' }} selected {{/ifEquals}}>Pending</option>
-            <option value="published" {{#ifEquals searchParams.status 'published' }} selected {{/ifEquals}}>Published
+            <option value="Pending" {{#ifEquals searchParams.status 'Pending' }} selected {{/ifEquals}}>Pending</option>
+            <option value="Published" {{#ifEquals searchParams.status 'Published' }} selected {{/ifEquals}}>Published
             </option>
           </select>
         </div>
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- List News Queried -->
     {{#each articles}}
     <div class="card mb-3 position-relative">
@@ -83,13 +83,13 @@
               <a href="/article/{{slug}}">
                 {{title}}
               </a>
-              {{#ifEquals status 'pending'}}
+              {{#ifEquals status 'Pending'}}
               <a href="/writer/edit/{{slug}}">
                 <i class="bi bi-pencil-square" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover"
                   data-bs-content="Edit Article"></i>
               </a>
               {{/ifEquals}}
-              {{#ifEquals status 'rejected'}}
+              {{#ifEquals status 'Rejected'}}
               <a href="/writer/edit/{{slug}}">
                 <i class="bi bi-pencil-square" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover"
                   data-bs-content="Edit Article"></i>
@@ -113,14 +113,17 @@
           <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end">
         </div>
       </div>
-      <!-- Premium Tag -->
-      {{#if isPremium}}
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-        Excl
-        <span class="visually-hidden">Premium Article</span>
+      <!-- Status Tag -->
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill
+      {{#ifEquals status 'Published'}} bg-success {{/ifEquals}} 
+      {{#ifEquals status 'Approved'}} bg-success {{/ifEquals}} 
+      {{#ifEquals status 'Rejected'}} bg-danger {{/ifEquals}} 
+      {{#ifEquals status 'Pending'}} bg-dark {{/ifEquals}}">
+        {{status}}
+        <span class="visually-hidden">Article Status</span>
       </span>
-      {{/if}}
-      <!-- Premium Tag -->
+
+      <!-- Status Tag -->
     </div>
     {{/each}}
     <!-- List News Queried -->
