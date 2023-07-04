@@ -104,9 +104,10 @@ export class AppController {
       this.appService.getCategories(),
       this.appService.getDetailArticleBySlug(slug),
     ]);
-    const relatedArticles = await this.appService.getRelatedArticles(
-      article as Article,
-    );
+    if (article === null) {
+      throw new NotFoundException(`Article with slug ${slug} is not found!`);
+    }
+    const relatedArticles = await this.appService.getRelatedArticles(article);
     return {
       file: 'article',
       categories,

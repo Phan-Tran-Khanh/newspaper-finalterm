@@ -1,5 +1,5 @@
 <main class="container my-3 bg-light">
-  <form {{#if article}} action="/writer/create" {{else}} action="/writer/edit" {{/if}} method="post">
+  <form action="/article" method="post">
     <!-- Editor Feedback Section -->
     {{#with article}}
     <div class="row">
@@ -44,10 +44,10 @@
                 <select class="form-select card-subtitle" name="category" id="category">
                   <option value="">Choose category...</option>
                   {{#each categories}}
-                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                  <option value="{{id}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
                     {{name}}</option>
                   {{#each children}}
-                  <option value="{{name}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
+                  <option value="{{id}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
                     {{name}}</option>
                   {{/each}}
                   {{/each}}
@@ -90,7 +90,7 @@
             </div>
             <div {{!-- id="tinymce-img" --}}
               class="col-md-5 d-flex justify-content-center align-items-center flex-column">
-              <img id="preview" {{#with article}} src="{{bannerImageUrl}}" {{#with}}>
+              <img id="preview" {{#with article}} src="{{bannerImageUrl}}" {{/with}}>
               <label for="uploadImage" class="btn btn-primary px-5">Upload Image</label>
               <input id="uploadImage" name="bannerImageUrl" type="file" onChange="previewImg(event)" accept="image/png, image/jpeg" hidden/>
             </div>

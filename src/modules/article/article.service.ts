@@ -25,6 +25,9 @@ export class ArticleService {
     dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
     return this.articleRepository.save(dto);
   }
+  remove(id: number) {
+    this.articleRepository.delete(id);
+  }
   getLatestByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
       where: {
@@ -53,7 +56,7 @@ export class ArticleService {
       take,
     });
   }
-  async getDetailArticleBySlug(slug: string): Promise<Article | null> {
+  async getArticleBySlug(slug: string): Promise<Article | null> {
     const article = await this.articleRepository.findOne({
       where: { slug, status: ArticleStatus.Published },
       relations: ['createdBy', 'category', 'labels'],
