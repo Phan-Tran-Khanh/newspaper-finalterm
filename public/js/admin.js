@@ -1,53 +1,55 @@
 //Load screen
 // Action when load page:
-$(document).ready(function() {
-    showCategories();
+$(document).ready(function () {
+  showCategories();
 });
 
 //Function: navigate pand
-$("body").on("click", ".nav-item", function(){
-    let cur_nav = $(this).data("type");
-    $("ul.nav > li.nav-item").each(function () {
-        if ($(this).data("type") == cur_nav) {
-            $(this).children("a").removeClass('text-white');
-            $(this).children("a").addClass('active');
-        }
-        else {
-            $(this).children("a").addClass('text-white');
-            $(this).children("a").removeClass('active');
-        }
-    });
-    switch (cur_nav) {
-        case 'categories':
-            showCategories();
-            break;
-        case 'tags':
-            showTags();
-            break;
-        case 'news':
-            showNews();
-            break;
-        case 'users':
-            showUsers();
-            break;
-        default:
-            break;
+$('body').on('click', '.nav-item', function () {
+  let cur_nav = $(this).data('type');
+  $('ul.nav > li.nav-item').each(function () {
+    if ($(this).data('type') == cur_nav) {
+      $(this).children('a').removeClass('text-white');
+      $(this).children('a').addClass('active');
+    } else {
+      $(this).children('a').addClass('text-white');
+      $(this).children('a').removeClass('active');
     }
+  });
+  switch (cur_nav) {
+    case 'categories':
+      showCategories();
+      break;
+    case 'tags':
+      showTags();
+      break;
+    case 'news':
+      showNews();
+      break;
+    case 'users':
+      showUsers();
+      break;
+    default:
+      break;
+  }
 });
 
 function showCategories() {
-    $('div.nav-content').empty();
-    $('div.nav-content').append('<div class="header h1">CATEGORY</div><hr>');
+  $('div.nav-content').empty();
+  $('div.nav-content').append('<div class="header h1">CATEGORY</div><hr>');
 
-    var table = $('<table id="cate-table" class="table table-striped"></table>')
-    table.append('<colgroup>\
+  var table = $('<table id="cate-table" class="table table-striped"></table>');
+  table.append(
+    '<colgroup>\
             <col span="1" style="width: 50%;">\
             <col span="1" style="width: 20%;">\
             <col span="1" style="width: 20%;">\
             <col span="1" style="width: 5%;">\
             <col span="1" style="width: 5%;">\
-        </colgroup>')
-    table.append('<thead class="table-dark">\
+        </colgroup>',
+  );
+  table.append(
+    '<thead class="table-dark">\
                     <tr>\
                         <th>Tag</th>\
                         <th>No. editors</th>\
@@ -55,18 +57,20 @@ function showCategories() {
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
                     </tr>\
-                </thead>')
-    
-    var tbody = $('<tbody></tbody>');
-    for (let i=0; i<cateTable.length; i++) {
-        tbody.append('<tr data-cate-id="' + i + '">\
-                        <td>' + cateTable[i].Category + '</td>\
-                        <td>' + cateTable[i]["No. editors"] + '</td>\
-                        <td>' + cateTable[i]["No. news"] + '</td>\
-                        <td class="text-center btn-edit-cate"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
-                        <td class="text-center btn-remove-cate"><a href="#"/><i class="bi bi-trash3"></i></td>\
-                    </tr>');
-    }
+                </thead>',
+  );
+
+  var tbody = $('<tbody></tbody>');
+  for (let i = 0; i < cateTable.length; i++) {
+    tbody.append(
+      '<tr data-cate-id="'+ i +'">\
+            <td>' + cateTable[i].Category + '</td>\
+            <td>' + cateTable[i]["No. editors"] + '</td>\
+            <td>' + cateTable[i]["No. news"] + '</td>\
+            <td class="text-center btn-edit-cate"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
+            <td class="text-center btn-remove-cate"><a href="#"/><i class="bi bi-trash3"></i></td>\
+        </tr>',
+    );}
     table.append(tbody);
     $('div.nav-content').append(table);
 
@@ -90,7 +94,7 @@ function showCategories() {
                     </tr>';
         // Append the new row to the table body
         $('table#cate-table tbody').append(newRow);
-        itemInput.value = ''
+        itemInput.value = '';
         // Close the modal
         $('#modalAddCate').modal('hide');
       });
@@ -99,8 +103,7 @@ function showCategories() {
 function showTags() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">TAG</div><hr>');
-    var table = $('<table id="tag-table" class="table table-striped"></table>')
-    
+    var table = $('<table id="tag-table" class="table table-striped"></table>');    
     var tbody = $('<tbody></tbody>');
     table.append('<colgroup>\
                     <col span="1" style="width: 50%;">\
@@ -108,7 +111,7 @@ function showTags() {
                     <col span="1" style="width: 20%;">\
                     <col span="1" style="width: 5%;">\
                     <col span="1" style="width: 5%;">\
-                </colgroup>')
+                </colgroup>');
     table.append('<thead class="table-dark">\
                     <tr>\
                         <th>Tag</th>\
@@ -117,7 +120,7 @@ function showTags() {
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
                     </tr>\
-                </thead>')
+                </thead>');
 
     for (let i = 0; i < tagTable.length; i++) {
         var rowValue = tagTable[i];
@@ -153,7 +156,7 @@ function showTags() {
                     </tr>';
         // Append the new row to the table body
         $('table#tag-table tbody').append(newRow);
-        itemInput.value = ''
+        itemInput.value = '';
         // Close the modal
         $('#modalAddTag').modal('hide');
     });
@@ -163,7 +166,7 @@ function showNews() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">NEWS</div><hr>');
 
-    var table = $('<table id="news-table" class="table table-striped"></table>')
+    var table = $('<table id="news-table" class="table table-striped"></table>');
     var tbody = $('<tbody></tbody>');
 
     table.append('<colgroup>\
@@ -172,7 +175,7 @@ function showNews() {
                     <col span="1" style="width: 25%;">\
                     <col span="1" style="width: 10%;">\
                     <col span="1" style="width: 10%;">\
-                </colgroup>')
+                </colgroup>');
     table.append('<thead class="table-dark">\
                     <tr>\
                         <th>Title</th>\
@@ -181,7 +184,7 @@ function showNews() {
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
                     </tr>\
-                </thead>')
+                </thead>');
 
     for (let i = 0; i < newsTable.length; i++) {
         var rowValue = newsTable[i];
@@ -222,8 +225,8 @@ function showNews() {
                     </tr>';
         // Append the new row to the table body
         $('table#news-table tbody').append(newRow);
-        titleInput.value = ''
-        absInput.value = ''
+        titleInput.value = '';
+        absInput.value = '';
         // Close the modal
         $('#modalAddNews').modal('hide');
 
@@ -234,7 +237,7 @@ function showUsers() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">USERS</div><hr>');
 
-    var table = $('<table id="user-table" class="table table-striped"></table>')
+    var table = $('<table id="user-table" class="table table-striped"></table>');
     var tbody = $('<tbody></tbody>');
     
     table.append('<colgroup>\
@@ -244,7 +247,7 @@ function showUsers() {
                     <col span="1" style="width: 23%;">\
                     <col span="1" style="width: 4%;">\
                     <col span="1" style="width: 4%;">\
-                </colgroup>')
+                </colgroup>');
     table.append('<thead class="table-dark">\
                     <tr>\
                         <th>Username</th>\
@@ -254,24 +257,24 @@ function showUsers() {
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
                     </tr>\
-                </thead>')
+                </thead>');
 
     for (let i = 0; i < usersTable.length; i++) {
         var rowValue = usersTable[i];
-        var cateValue = '&nbsp;'
+        var cateValue = '&nbsp;';
         if (rowValue.Permission === 'Editor') {
             cateValue ='<select class="form-select">\
                             <option selected>'+rowValue.Category[0]+'</option>\
                             <option>'+rowValue.Category[1]+'</option>\
                             <option>'+rowValue.Category[2]+'</option>\
-                        </select>'
+                        </select>';
         }
 
-        var durationValue = '&nbsp;'
+        var durationValue = '&nbsp;';
         if (rowValue.Permission === 'Subcriber') {
             durationValue ='<div class="input-group date">\
                                 <input class="form-control" type="datetime-local" value="'+rowValue["Premium Duration"]+'">\
-                            </div>'
+                            </div>';
         }
 
 
@@ -282,7 +285,7 @@ function showUsers() {
                         <td>'+durationValue+'</td>\
                         <td class="text-center btn-edit-user"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditUser"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
-                    </tr>')
+                    </tr>');
         tbody.append(row);
     }
     table.append(tbody);
@@ -338,8 +341,8 @@ function showUsers() {
             }
             // Append the new row to the table body
             $('table#user-table tbody').append(newRow);
-            usernameInput.value = ''
-            permissionInput.value = ''
+            usernameInput.value = '';
+            permissionInput.value = '';
             // Close the modal
             $('#modalAddUser').modal('hide');
         });  
