@@ -1,15 +1,13 @@
-var cateTable = [
-    {
-        "Category": "Economy",
-        "No. editors": "5",
-        "No. news": "5"
-    },
-    {
-        "Category": "International",
-        "No. editors": "5",
-        "No. news": "5"
-    }
-]
+var cateTab = []
+{{#each categories}}
+    cateTab.push({
+      "id": {{id}},
+      "name": '{{{name}}}',
+      {{!-- "noEditor": {{noEditor}},
+      "noNews": {{noNews}}, --}}
+    })
+{{/each}}
+console.log("========>", cateTab);
 
 var tagTable = [
     {
@@ -22,7 +20,7 @@ var tagTable = [
         "No. editors": "6765",
         "No. news": "522"
     }
-]
+];
 
 var newsTable = [
     {
@@ -35,7 +33,7 @@ var newsTable = [
         "Views": "232332",
         "Status": ["Xuất bản", "Bản nháp"]
     }
-]
+];
 
 var usersTable = [
     {
@@ -57,4 +55,4 @@ var usersTable = [
         "Permission": "Subcriber",
         "Premium Duration": "2033-06-06T19:30"
     }
-]
+];

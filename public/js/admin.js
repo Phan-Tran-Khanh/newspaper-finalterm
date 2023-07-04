@@ -1,4 +1,8 @@
-//Load screen
+// import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
+
+const ArticleStatus = ["Draft", "Approved", "Pending", "Rejected", "Published"];
+
+// Load screen
 // Action when load page:
 $(document).ready(function () {
   showCategories();
@@ -51,7 +55,7 @@ function showCategories() {
   table.append(
     '<thead class="table-dark">\
                     <tr>\
-                        <th>Tag</th>\
+                        <th>Category</th>\
                         <th>No. editors</th>\
                         <th>No. news</th>\
                         <th>&nbsp;</th>\
@@ -61,12 +65,12 @@ function showCategories() {
   );
 
   var tbody = $('<tbody></tbody>');
-  for (let i = 0; i < cateTable.length; i++) {
+  for (let i = 0; i < window.cateTable.length; i++) {
     tbody.append(
-      '<tr data-cate-id="'+ i +'">\
-            <td>' + cateTable[i].Category + '</td>\
-            <td>' + cateTable[i]["No. editors"] + '</td>\
-            <td>' + cateTable[i]["No. news"] + '</td>\
+      '<tr data-cate-id="'+ window.cateTable[i].id +'">\
+            <td>' + window.cateTable[i].name + '</td>\
+            <td>' + window.cateTable[i].noEditor + '</td>\
+            <td>' + window.cateTable[i].noNews + '</td>\
             <td class="text-center btn-edit-cate"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
             <td class="text-center btn-remove-cate"><a href="#"/><i class="bi bi-trash3"></i></td>\
         </tr>',
@@ -122,12 +126,12 @@ function showTags() {
                     </tr>\
                 </thead>');
 
-    for (let i = 0; i < tagTable.length; i++) {
-        var rowValue = tagTable[i];
-        var row = $('<tr data-tag-id="'+i+'">\
-                        <td>'+ rowValue["Tag"] +'</td>\
-                        <td>'+ rowValue["No. editors"] +'</td>\
-                        <td>'+ rowValue["No. news"] +'</td>\
+    for (let i = 0; i < window.tagTable.length; i++) {
+        var rowValue = window.tagTable[i];
+        var row = $('<tr data-tag-id="'+rowValue.id+'">\
+                        <td>'+ rowValue.name +'</td>\
+                        <td>'+ rowValue.noEditor +'</td>\
+                        <td>'+ rowValue.noNews +'</td>\
                         <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-tag"><a href="#"/><i class="bi bi-trash3"></i></td>\
                     </tr>');
@@ -186,15 +190,18 @@ function showNews() {
                     </tr>\
                 </thead>');
 
-    for (let i = 0; i < newsTable.length; i++) {
-        var rowValue = newsTable[i];
-        var row = $('<tr data-news-id="'+i+'">\
-                        <td>'+ rowValue["Title"] +'</td>\
-                        <td>'+ rowValue["Views"] +'</td>\
-                        <td><select class="form-select">\
-                            <option>' + rowValue["Status"][0] + '</option>\
-                            <option>' + rowValue["Status"][1] +'</option>\
-                        </select></td>\
+    var selectStatusForm = '<select class="form-select">';
+    for (let item in ArticleStatus) {
+        selectStatusForm += '<option>' + ArticleStatus[item] + '</option>';
+    }
+    selectStatusForm += '</select>';
+
+    for (let i = 0; i < window.newsTable.length; i++) {
+        var rowValue = window.newsTable[i];
+        var row = $('<tr data-news-id="'+rowValue.id+'">\
+                        <td>'+ rowValue.title +'</td>\
+                        <td>'+ rowValue.viewCount +'</td>\
+                        <td>' + selectStatusForm + '</td>\
                         <td class="text-center btn-edit-news"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditNews"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-news"><a href="#"/><i class="bi bi-trash3"></i></td>\
                     </tr>');
@@ -251,7 +258,7 @@ function showUsers() {
     table.append('<thead class="table-dark">\
                     <tr>\
                         <th>Username</th>\
-                        <th>Permission</th>\
+                        <th>Role</th>\
                         <th>Category</th>\
                         <th>Premium Duration</th>\
                         <th>&nbsp;</th>\
@@ -259,28 +266,31 @@ function showUsers() {
                     </tr>\
                 </thead>');
 
-    for (let i = 0; i < usersTable.length; i++) {
-        var rowValue = usersTable[i];
+    var selectCateForm = '<td><select class="form-select">';
+    for (let item in cateTable) {
+        selectCateForm += '<option>' + cateTable[item].name + '</option>';
+    }
+
+    for (let i = 0; i < window.usersTable.length; i++) {
+        var rowValue = window.usersTable[i];
+
         var cateValue = '&nbsp;';
-        if (rowValue.Permission === 'Editor') {
-            cateValue ='<select class="form-select">\
-                            <option selected>'+rowValue.Category[0]+'</option>\
-                            <option>'+rowValue.Category[1]+'</option>\
-                            <option>'+rowValue.Category[2]+'</option>\
-                        </select>';
+        if (rowValue.role === 'Editor') {
+            selectCateForm += '<option selected>' + rowValue.category + '</option></select>';
+            cateValue = selectCateForm;
         }
 
         var durationValue = '&nbsp;';
-        if (rowValue.Permission === 'Subcriber') {
+        if (rowValue.role === 'Subscriber') {
             durationValue ='<div class="input-group date">\
-                                <input class="form-control" type="datetime-local" value="'+rowValue["Premium Duration"]+'">\
+                                <input class="form-control" type="datetime-local" value="'+rowValue["subcriptionExpiryDate"]+'">\
                             </div>';
         }
 
 
         var row = $('<tr data-user-id="'+i+'">\
-                        <td>'+rowValue.Username+'</td>\
-                        <td>'+rowValue.Permission+'</td>\
+                        <td>'+rowValue.email+'</td>\
+                        <td>'+rowValue.role+'</td>\
                         <td>'+cateValue+'</td>\
                         <td>'+durationValue+'</td>\
                         <td class="text-center btn-edit-user"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditUser"><i class="bi bi-pencil-square"></i></a></td>\
