@@ -80,6 +80,12 @@
               <label for="input-cate" class="form-label">Category: </label>
               <input type="text" class="form-control" id="input-cate" value="Category#1">
             </div>
+
+            <div class="col-md-6">
+              <label for="input-cate-desp" class="form-label">Description: </label>
+              <input type="text" class="form-control" id="input-cate-desp" value="CategoryDesp#1">
+            </div>
+
           </form>
         </div>
 
@@ -449,6 +455,7 @@
         window.cateTable.push({
           "id": {{id}},
           "name": '{{{name}}}',
+          "description": '{{{description}}}',
           {{!-- 
           "noEditor": {{noEditor}},
           "noNews": {{noNews}}, 
@@ -463,6 +470,7 @@
         window.tagTable.push({
           "id": {{id}},
           "name": '{{{name}}}',
+          "description": '{{{description}}}',
           {{!-- 
           "noEditor": {{noEditor}},
           "noNews": {{noNews}}, 
