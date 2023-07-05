@@ -1,8 +1,3 @@
-//Support function: delay time
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 let cur_id = null;
 
 // Action when load page:
@@ -12,54 +7,54 @@ $(document).ready(function() {
     if (site_list) LoadPosts();
     if (site_detail) {        
         let params = new URLSearchParams(location.search);
-        cur_id = params.get('post_id')
-        if (!site_approve && !site_disapprove) LoadDetailedPost(cur_id)
-        else if (site_approve) LoadApprovedPost(cur_id)
+        cur_id = params.get('post_id');
+        if (!site_approve && !site_disapprove) LoadDetailedPost(cur_id);
+        else if (site_approve) LoadApprovedPost(cur_id);
     }
 });
 
 //Function: [INDEX]  navigate to detail post
 $("body").on("click", ".post-info-s, .post-img-s", function(){
     let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
-    window.location.replace('./pages/details.html?post_id='+Post_id);
+    window.location.replace('./detail?post_id='+Post_id);
 });
 
 //Function: [INDEX]  navigate to disapprove post
 $("body").on("click", ".post-btn-del", function(){
     let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
-    window.location.replace('./pages/disapprove.html?post_id='+Post_id);
+    window.location.replace('./disapprove?post_id='+Post_id);
 });
 
 //Function: [DETAIL] return to post list
 $("body").on("click", ".back-to-list", function(){
-    window.location.replace('../index.html');
+    window.location.replace('./list');
 });
 
 //Function: [DETAIL] navigate to disapprove page
 $("body").on("click", ".btn-disapprove", function(){
     let Post_id = parseInt($('.post-detail').data("post-id"));
-    window.location.replace('./disapprove.html?post_id='+Post_id);
+    window.location.replace('./disapprove?post_id='+Post_id);
 });
 
 //Function: [DETAIL] navigate to disapprove page
 $("body").on("click", ".btn-approve", function(){
     let Post_id = parseInt($('.post-detail').data("post-id"));
-    window.location.replace('./approve.html?post_id='+Post_id);
+    window.location.replace('./approve?post_id='+Post_id);
 });
 
 //Function: [DISAPPROVE/APPROVE]  return to post detail
 $("body").on("click", ".btn-back", function(){
-    window.location.replace('./details.html?post_id='+cur_id);
+    window.location.replace('./detail?post_id='+cur_id);
 });
 
 //Function: [DISAPPROVE]  navigate to post list
 $("body").on("click", ".btn-send", function(){
-    window.location.replace('../index.html');
+    window.location.replace('./list');
 });
 
 //Function: [APPROVE]  navigate to post list
 $("body").on("click", ".btn-publish", function(){
-    window.location.replace('../index.html');
+    window.location.replace('./list');
 });
 
 //Function: load all posts
@@ -136,9 +131,9 @@ function LoadPosts() {
 }
 
 //Function: Load detail of a post
-function LoadDetailedPost(id) {
+function LoadDetailedPost(id) {    
     var item = posts[id];
-    item['image']='.'+item['image'];
+    item['image']='..'+item['image'];
     $(".e_Content_Details").empty();
     let html_post = $('<div class="post-detail col-md-9" data-post-id="'+item['id']+'"></div>');
     html_post.append('<div class="row row-cols-2">\
@@ -179,7 +174,7 @@ function LoadDetailedPost(id) {
 //Function: Load detail of a post
 function LoadApprovedPost(id) {
     var item = posts[id];
-    item['image']='.'+item['image'];
+    item['image']='..'+item['image'];
     $(".approve-area").empty();
     $(".approve-area").append('<div class="approve header h2">\
                                 <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>\
