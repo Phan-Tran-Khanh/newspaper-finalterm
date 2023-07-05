@@ -275,7 +275,7 @@ function showUsers() {
                     </tr>\
                 </thead>');
 
-    var selectCateForm = '<td><select class="form-select">';
+    var selectCateForm = '<select class="form-select">';
     for (let item in cateTable) {
         selectCateForm += '<option>' + cateTable[item].name + '</option>';
     }
@@ -285,19 +285,25 @@ function showUsers() {
 
         var cateValue = '&nbsp;';
         if (rowValue.role === 'Editor') {
-            selectCateForm += '<option selected>' + rowValue.category + '</option></select>';
-            cateValue = selectCateForm;
+            cateValue = selectCateForm + 
+                        '<option selected>' + rowValue.category + '</option></select>';
         }
 
         var durationValue = '&nbsp;';
         if (rowValue.role === 'Subscriber') {
+            var tmpDate = new Date(rowValue["subcriptionExpiryDate"]);            
+            if (isNaN(tmpDate.getTime())) {            
+                tmpDate = new Date();
+            }
+
+            var formattedDate = tmpDate.toISOString().slice(0, 16);
             durationValue ='<div class="input-group date">\
-                                <input class="form-control" type="datetime-local" value="'+rowValue["subcriptionExpiryDate"]+'">\
+                                <input class="form-control" type="datetime-local" value="'+formattedDate+'">\
                             </div>';
         }
 
 
-        var row = $('<tr data-user-id="'+i+'">\
+        var row = $('<tr data-user-id="'+rowValue.id+'">\
                         <td>'+rowValue.email+'</td>\
                         <td>'+rowValue.role+'</td>\
                         <td>'+cateValue+'</td>\
