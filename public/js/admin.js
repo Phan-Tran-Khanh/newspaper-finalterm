@@ -42,6 +42,7 @@ function showCategories() {
   $('div.nav-content').empty();
   $('div.nav-content').append('<div class="header h1">CATEGORY</div><hr>');
 
+  var adminTable = $('<div class="admin-table"></div>');
   var table = $('<table id="cate-table" class="table table-striped"></table>');
   table.append(
     '<colgroup>\
@@ -76,7 +77,8 @@ function showCategories() {
         </tr>',
     );}
     table.append(tbody);
-    $('div.nav-content').append(table);
+    adminTable.append(table);
+    $('div.nav-content').append(adminTable);
 
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddCate"><i class="bi bi-plus"></i>Add</a></button>');
 
@@ -107,6 +109,7 @@ function showCategories() {
 function showTags() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">TAG</div><hr>');
+    var adminTable = $('<div class="admin-table"></div>');
     var table = $('<table id="tag-table" class="table table-striped"></table>');    
     var tbody = $('<tbody></tbody>');
     table.append('<colgroup>\
@@ -138,7 +141,9 @@ function showTags() {
         tbody.append(row);
     }
     table.append(tbody);
-    $('div.nav-content').append(table);
+    adminTable.append(table);
+    $('div.nav-content').append(adminTable);
+
 
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddTag"><i class="bi bi-plus"></i>Add</a></button>');
 
@@ -170,6 +175,8 @@ function showNews() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">NEWS</div><hr>');
 
+    
+    var adminTable = $('<div class="admin-table"></div>');var adminTable = $('<div class="admin-table"></div>');
     var table = $('<table id="news-table" class="table table-striped"></table>');
     var tbody = $('<tbody></tbody>');
 
@@ -208,7 +215,8 @@ function showNews() {
         tbody.append(row);
     }                
     table.append(tbody);
-    $('div.nav-content').append(table);
+    adminTable.append(table);
+    $('div.nav-content').append(adminTable);
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddNews"><i class="bi bi-plus"></i>Add</a></button>');
     
     $('div.nav-content').on('click', '.btn-remove-news', function() {
@@ -244,6 +252,7 @@ function showUsers() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">USERS</div><hr>');
 
+    var adminTable = $('<div class="admin-table"></div>');
     var table = $('<table id="user-table" class="table table-striped"></table>');
     var tbody = $('<tbody></tbody>');
     
@@ -299,7 +308,9 @@ function showUsers() {
         tbody.append(row);
     }
     table.append(tbody);
-    $('div.nav-content').append(table);
+    adminTable.append(table);
+    $('div.nav-content').append(adminTable);
+
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddUser"><i class="bi bi-plus"></i>Add</a></button>');
 
     $('div.nav-content').on('click', '.btn-remove-user', function() {
