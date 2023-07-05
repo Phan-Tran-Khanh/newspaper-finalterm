@@ -498,15 +498,17 @@
   <script>
     window.usersTable = []
     {{#each users}}
+      {{log email role.name subcriptionExpiryDate}}
         window.usersTable.push({
-          "id": {{id}},
+          "id": '{{{id}}}',
           "email": '{{{email}}}',
-          "role": '{{{role}}}',
-          "category": '{{{category}}}',
+          "role": '{{{role.name}}}',
+          "category": '{{{category.name}}}',
           "subcriptionExpiryDate": '{{{subcriptionExpiryDate}}}',
         })
     {{/each}}
   </script>
 
   <script type="module" src="./js/admin.js"></script>
+  <script type="text/x-handlebars" src="./mock/admin.js"></script>
 </html>
