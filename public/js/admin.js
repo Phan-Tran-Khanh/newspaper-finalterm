@@ -171,6 +171,12 @@ function showTags() {
     });
 }
 
+$('body').on('click', '.admin-news-title', function () {
+    let slug = $(this).data('admin-title-id');
+    window.location.replace('./article/'+slug);
+});
+  
+
 function showNews() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">NEWS</div><hr>');
@@ -206,7 +212,7 @@ function showNews() {
     for (let i = 0; i < window.newsTable.length; i++) {
         var rowValue = window.newsTable[i];
         var row = $('<tr data-news-id="'+rowValue.id+'">\
-                        <td>'+ rowValue.title +'</td>\
+                        <td class="admin-news-title" data-admin-title-id="' + rowValue.slug + '" >'+ rowValue.title +'</td>\
                         <td>'+ rowValue.viewCount +'</td>\
                         <td>' + selectStatusForm + '</td>\
                         <td class="text-center btn-edit-news"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditNews"><i class="bi bi-pencil-square"></i></a></td>\
