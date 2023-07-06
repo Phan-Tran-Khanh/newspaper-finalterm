@@ -4,7 +4,7 @@ articles.forEach(article => {
       id: article.id,
       title: article.title,
       viewCount: article.viewCount,
-      status: article.status
+      status: article.status,
     });
   });
   
