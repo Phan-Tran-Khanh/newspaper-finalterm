@@ -38,6 +38,16 @@ $('body').on('click', '.nav-item', function () {
   }
 });
 
+$('body').on('click', '.admin-cate-name', function () {
+    let cate_idx = $(this).data('admin-cate-idx');
+    
+    const myCateName = document.getElementById('show-cate-name');
+    const myCateDesc = document.getElementById('show-cate-desc');
+
+    myCateDesc.innerHTML = window.cateTable[cate_idx].description;
+    myCateName.innerHTML = window.cateTable[cate_idx].name;
+});
+
 function showCategories() {
   $('div.nav-content').empty();
   $('div.nav-content').append('<div class="header h1">CATEGORY</div><hr>');
@@ -69,7 +79,7 @@ function showCategories() {
   for (let i = 0; i < window.cateTable.length; i++) {
     tbody.append(
       '<tr data-cate-id="'+ window.cateTable[i].id +'">\
-            <td>' + window.cateTable[i].name + '</td>\
+            <td class="admin-cate-name" data-bs-target="#modalShowCate" data-bs-toggle="modal" data-admin-cate-idx="' + i + '" >' + window.cateTable[i].name + '</td>\
             <td>' + window.cateTable[i].noEditor + '</td>\
             <td>' + window.cateTable[i].noNews + '</td>\
             <td class="text-center btn-edit-cate"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
@@ -106,6 +116,17 @@ function showCategories() {
       });
 }
 
+$('body').on('click', '.admin-tag-name', function () {
+    let tag_idx = $(this).data('admin-tag-idx');
+    
+    const myTagName = document.getElementById('show-tag-name');
+    const myTagDesc = document.getElementById('show-tag-desc');
+
+    myTagDesc.innerHTML = window.tagTable[tag_idx].description;
+    myTagName.innerHTML = window.tagTable[tag_idx].name;
+});
+  
+
 function showTags() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">TAG</div><hr>');
@@ -132,7 +153,7 @@ function showTags() {
     for (let i = 0; i < window.tagTable.length; i++) {
         var rowValue = window.tagTable[i];
         var row = $('<tr data-tag-id="'+rowValue.id+'">\
-                        <td>'+ rowValue.name +'</td>\
+                        <td class="admin-tag-name" data-bs-target="#modalShowTag" data-bs-toggle="modal" data-admin-tag-idx="' + i + '" >' + rowValue.name + '</td>\
                         <td>'+ rowValue.noEditor +'</td>\
                         <td>'+ rowValue.noNews +'</td>\
                         <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
@@ -254,6 +275,11 @@ function showNews() {
     });  
 }
 
+$('body').on('click', '.admin-user-name', function () {
+    let userID = $(this).data('admin-name-id');
+    console.log(userID);
+});
+  
 function showUsers() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">USERS</div><hr>');
@@ -310,7 +336,7 @@ function showUsers() {
 
 
         var row = $('<tr data-user-id="'+rowValue.id+'">\
-                        <td>'+rowValue.email+'</td>\
+                        <td class="admin-user-name" data-admin-name-id="' + rowValue.id + '" >'+rowValue.name+'</td>\
                         <td>'+rowValue.role+'</td>\
                         <td>'+cateValue+'</td>\
                         <td>'+durationValue+'</td>\

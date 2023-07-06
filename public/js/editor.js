@@ -179,6 +179,9 @@ function LoadApprovedPost(id) {
     $(".approve-area").append('<div class="approve header h2">\
                                 <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>\
                             </div>');
+
+    let categoryOption = '<option value="Thời sự">Thời sự</option>\'
+                            
     let html_post = $('<div class="approve-content" data-post-id="'+item['id']+'"></div>');
     html_post.append('<div class="approve-c text">\
                     <div class="approve-r datetime">\

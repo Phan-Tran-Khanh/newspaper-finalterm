@@ -1,33 +1,33 @@
 <html class="container-fluid">
-  <!-- Logged in Offcanvas -->
-  <div class="offcanvas offcanvas-end text-bg-dark w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasLoggedin"
-    aria-labelledby="offcanvasLoggedinLabel">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="list-unstyled ms-3">
-        <li class="mb-3">
-          <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
-            <img src="https://via.placeholder.com/50x50">
-            <span>DongNike</span>
-          </a>
-        </li>
-        <li class="mb-3">
-          <a href="#footer" class="link-light">
-            <i class="bi bi-people"></i> About us
-          </a>
-        </li>
-        <li class="mb-3">
-          <a href="#" class="link-light" id="logout-btn" data-bs-dismiss="modal" aria-label="Log out">
-            <i class="bi bi-box-arrow-left"></i> Log out
-          </a>
-        </li>
-      </ul>
+  <!-- The Modal Show Category -->
+  <div id="modalShowCate" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>CATEGORY</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="show-cate-label" class="form-label">Category: </label> <br>
+              <label id="show-cate-name"></label> <br>
+              <label id="show-cate-desc"></label> <br>
+            </div>
+          </form>
+        </div>
+
+      </div>
     </div>
   </div>
-  <!-- Logged in Offcanvas -->
 
+  
   <!-- The Modal Edit Category -->
   <div id="modalEditCate" class="modal" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -96,6 +96,35 @@
     </div>
 
   </div>
+
+  <!-- The Modal Show Tag -->
+  <div id="modalShowTag" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header pb-0 border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body mx-3 pt-0">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <h5>TAG</h5>
+            </div>
+            <hr class="border border-2 border-dark m-0">
+
+            <div class="col-md-6">
+              <label for="show-tag-label" class="form-label">Tag: </label> <br>
+              <label id="show-tag-name"></label> <br>
+              <label id="show-tag-desc"></label> <br>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
   <!-- The Modal Edit Tag -->
   <div id="modalEditTag" class="modal" tabindex="-1">
@@ -183,8 +212,13 @@
               <input type="text" class="form-control" id="update-title" value="News#1">
             </div>
             <div class="col-md-6">
-              <label for="update-abs" class="form-label">Abstract: </label>
-              <input type="text" class="form-control" id="update-abs" value="News#1">
+              <label for="update-abs" class="form-label" style="display: block;">Status: </label>
+              <select class="form-select">
+                <option value="hhh">Draft</option>
+                {{#each ArticleStatus}}
+                <option value={{this}}>{{this}}</option>
+                {{/each}}
+              </select>
             </div>
           </form>
         </div>
@@ -502,6 +536,7 @@
         window.usersTable.push({
           "id": '{{{id}}}',
           "email": '{{{email}}}',
+          "name": '{{lastName}} {{firstName}}',
           "role": '{{{role.name}}}',
           "category": '{{{category.name}}}',
           "subcriptionExpiryDate": '{{{subcriptionExpiryDate}}}',
