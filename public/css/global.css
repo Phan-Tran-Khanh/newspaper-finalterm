@@ -171,6 +171,7 @@ button[type="submit"]:hover {
     max-height: 30em;
  }
  th {
+    z-index: 1000;
     position: sticky;
     top: 0;
     background: white;
