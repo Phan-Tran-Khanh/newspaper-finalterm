@@ -498,7 +498,6 @@
   <script>
     window.usersTable = []
     {{#each users}}
-      {{log email role.name subcriptionExpiryDate}}
         window.usersTable.push({
           "id": '{{{id}}}',
           "email": '{{{email}}}',
@@ -510,5 +509,5 @@
   </script>
 
   <script type="module" src="./js/admin.js"></script>
-  <script type="text/x-handlebars" src="./mock/admin.js"></script>
+  <script src="./mock/admin.js"></script>
 </html>

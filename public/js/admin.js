@@ -293,7 +293,7 @@ function showUsers() {
         if (rowValue.role === 'Subscriber') {
             var tmpDate = new Date(rowValue["subcriptionExpiryDate"]);            
             if (isNaN(tmpDate.getTime())) {            
-                tmpDate = new Date();
+                tmpDate = new Date(-8640000000000000);
             }
 
             var formattedDate = tmpDate.toISOString().slice(0, 16);
