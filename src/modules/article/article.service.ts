@@ -15,7 +15,7 @@ export class ArticleService {
   ) {}
   findAll(): Promise<Article[]> {
     return this.articleRepository.find({
-      relations: ['category', 'labels'],
+      relations: ['category', 'labels', 'publishedBy', 'createdBy'],
     });
   }
   create(dto: Article): Promise<Article> {

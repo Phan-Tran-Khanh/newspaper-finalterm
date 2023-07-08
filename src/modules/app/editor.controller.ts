@@ -59,10 +59,11 @@ export class EditorController {
   @Get('list')
   @Render('editor/list')
   async listView(@Req() req: Request) {
-    const [categories, labels, articles] = await Promise.all([
+    const [categories, labels, articles, users] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
       this.appService.getArticles(),
+      this.appService.getUsers(),
     ]);
     return {
       file: 'editor/list',
@@ -70,6 +71,7 @@ export class EditorController {
       categories,
       labels,
       articles,
+      users,
     };
   }
 }

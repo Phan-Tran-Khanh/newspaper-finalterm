@@ -77,7 +77,7 @@ export function fakeArticle(
   article.weeklyViewCount = faker.datatype.number();
   article.status = ArticleStatus.Published;
   article.publishedAt = faker.date.past();
-  article.publishedBy = faker.helpers.arrayElement(users).id;
+  // article.publishedBy = faker.helpers.arrayElement(users).id;
   article.createdAt = faker.date.past();
   article.createdBy = faker.helpers.arrayElement(users).id;
   article.category = category;

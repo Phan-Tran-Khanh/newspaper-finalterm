@@ -16,6 +16,7 @@ import axios from 'axios';
 import { AppService } from './app.service';
 import { SearchParms, SearchParamsType } from './dto/SearchQuery';
 import { JwtInterceptor } from 'src/interceptors/JwtInterceptors';
+import { ImgurClient } from 'imgur';
 
 @Controller()
 @UseInterceptors(JwtInterceptor)
