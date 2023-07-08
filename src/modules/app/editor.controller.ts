@@ -59,19 +59,17 @@ export class EditorController {
   @Get('list')
   @Render('editor/list')
   async listView(@Req() req: Request) {
-    const [categories, labels, articles, users] = await Promise.all([
+    const [categories, labels, articles] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.getArticles(),
-      this.appService.getUsers(),
+      this.appService.getArticles()
     ]);
     return {
       file: 'editor/list',
       user: req.user,
       categories,
       labels,
-      articles,
-      users,
+      articles
     };
   }
 }
