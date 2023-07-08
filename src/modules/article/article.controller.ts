@@ -25,4 +25,14 @@ export class ArticleController {
   remove(@Param('id') id: string) {
     return this.articleService.remove(+id);
   }
+
+  @Put(':id/aprrove')
+  aprrove(@Param('id') id: string, @Body() dto: Article) {
+    return this.articleService.aprrove(+id);
+  }
+
+  @Put(':id/reject')
+  reject(@Param('id') id: string, @Body() dto: Article) {
+    return this.articleService.reject(+id);
+  }
 }

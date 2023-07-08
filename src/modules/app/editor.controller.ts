@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req } from '@nestjs/common';
+import { Controller, Get, Param, Render, Req } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AppService } from './app.service';
 
@@ -8,24 +8,68 @@ export class EditorController {
   @Get('approve')
   @Render('editor/approve')
   async editorView(@Req() req: Request) {
-    // TODO
+    const [categories, labels, articles] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticles(),
+    ]);
+    return {
+      file: 'editor/approve',
+      user: req.user,
+      categories,
+      labels,
+      articles,
+    };
   }
 
   @Get('disapprove')
   @Render('editor/disapprove')
   async disapproveView(@Req() req: Request) {
-    // TODO
+    const [categories, labels, articles] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticles(),
+    ]);
+    return {
+      file: 'editor/disapprove',
+      user: req.user,
+      categories,
+      labels,
+      articles,
+    };
   }
 
-  @Get('detail')
+  @Get('detail/:slug')
   @Render('editor/detail')
-  async detailView(@Req() req: Request) {
-    // TODO
+  async detailView(@Req() req: Request, @Param('slug') slug: string) {
+    const [categories, labels, article] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticleBySlug(slug),
+    ]);
+    return {
+      file: 'editor/detail',
+      user: req.user,
+      categories,
+      labels,
+      article,
+    };
   }
 
   @Get('list')
   @Render('editor/list')
   async listView(@Req() req: Request) {
-    // TODO
+    const [categories, labels, articles] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticles()
+    ]);
+    return {
+      file: 'editor/list',
+      user: req.user,
+      categories,
+      labels,
+      articles
+    };
   }
 }

@@ -47,4 +47,15 @@ export class UserService {
   async remove(id: number): Promise<void> {
     await this.userRepository.delete(id);
   }
+
+  async getEditorsByCategoryId(categoryId: number): Promise<User[]> {
+    return this.userRepository.findBy({
+      category: {
+        id: categoryId,
+      },
+      role: {
+        name: 'Editor',
+      },
+    });
+  }
 }

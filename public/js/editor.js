@@ -59,15 +59,14 @@ $("body").on("click", ".btn-publish", function(){
 
 //Function: load all posts
 function LoadPosts() {
-    console.log(posts);
     let numPages = 4;
 
     //display posts on each page
     $(".post-list-area").empty();
     for (let page=1; page<=1; page++){
         let html_postList = $('<div class="post-list" data-page="'+page+'"></div>'); 
-        for (let i=0; i<4; i++){
-            let item = posts[i];
+        for (let i=0; i<window.posts.length; i++){
+            let item = window.posts[i];
             let html_post = $('<div class="e_Post card mb-3" data-post-id="'+item['id']+'"></div>');
             let html_row = $('<div class="row g-0"></div>');
             html_row.append('<div class="col-md-6 d-flex flex-column post-info-s">\
@@ -132,7 +131,7 @@ function LoadPosts() {
 
 //Function: Load detail of a post
 function LoadDetailedPost(id) {    
-    var item = posts[id];
+    var item = window.posts[id];
     item['image']='..'+item['image'];
     $(".e_Content_Details").empty();
     let html_post = $('<div class="post-detail col-md-9" data-post-id="'+item['id']+'"></div>');
@@ -173,14 +172,12 @@ function LoadDetailedPost(id) {
 
 //Function: Load detail of a post
 function LoadApprovedPost(id) {
-    var item = posts[id];
+    var item = window.posts[id];
     item['image']='..'+item['image'];
     $(".approve-area").empty();
     $(".approve-area").append('<div class="approve header h2">\
                                 <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>\
                             </div>');
-
-    let categoryOption = '<option value="Thời sự">Thời sự</option>\'
                             
     let html_post = $('<div class="approve-content" data-post-id="'+item['id']+'"></div>');
     html_post.append('<div class="approve-c text">\
