@@ -19,9 +19,9 @@
       </div>
     </div>
     <!-- Filters -->
-    <div class="row row-cols-md-3 my-3">
+    <div class="row my-2">
       <!-- Time -->
-      <div class="col">
+      <div class="col-md-4 my-2">
         <div class="input-group">
           <label class="input-group-text" for="time">Time</label>
           <select class="form-select" name="time" id="time">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <!-- Categories -->
-      <div class="col">
+      <div class="col-md-4 my-2">
         <div class="input-group">
           <label class="input-group-text" for="category">Category</label>
           <select class="form-select" name="category" id="category">
@@ -48,7 +48,7 @@
         </div>
       </div>
       <!-- Tags -->
-      <div class="col">
+      <div class="col-md-4 my-2">
         <div class="input-group">
           <label class="input-group-text" for="label">Tags</label>
           <select class="form-select" name="label" id="label">
@@ -65,7 +65,7 @@
     {{#each articles}}
     <div class="card mb-3 position-relative">
       <div class="row g-0">
-        <div class="col-md-7 d-flex flex-column">
+        <div class="col-md-7 d-flex flex-column order-md-1 order-2">
           <div class="card-body">
             <p class="card-text small text-muted">{{createdBy.penName}} - {{formatDate publishedAt}}</p>
             <h6 class="card-subtitle text-muted">
@@ -91,8 +91,8 @@
             </p>
           </div>
         </div>
-        <div class="col-md-5">
-          <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-end">
+        <div class="col-md-5 order-md-2 order-1">
+          <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-2">
         </div>
       </div>
       <!-- Premium Tag -->

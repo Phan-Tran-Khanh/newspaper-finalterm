@@ -43,7 +43,7 @@
             <div class="col-md-7 d-flex flex-column">
               <div class="card-body">
                 <p id="created-date" class="card-text small text-muted">{{user.penName}}</p>
-                <select id="category" name="category" class="form-select card-subtitle" required>
+                <select id="category" name="category" class="form-select card-subtitle my-1" required>
                   <option value="">Choose category...</option>
                   {{#each categories}}
                   <option value="{{id}}" {{#ifEquals @root.article.category.name name}} selected {{/ifEquals}}>
@@ -54,10 +54,10 @@
                   {{/each}}
                   {{/each}}
                 </select>
-                <input class="form-control card-title" name="title" style="font-size: 1.25rem; font-weight: 500;"
+                <input name="title" class="form-control card-title my-1" style="font-size: 1.25rem; font-weight: 500;"
                   placeholder="Title" {{#with article}} value="{{title}}" {{/with}} required>
                 </input>
-                <input class="form-control card-text" name="summary" placeholder="Abstract" {{#with article}}
+                <input name="summary" class="form-control card-text my-1" placeholder="Abstract" {{#with article}}
                   value="{{summary}}" {{/with}} required>
                 </input>
               </div>
