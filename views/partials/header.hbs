@@ -1,9 +1,9 @@
 <header class="sticky-top">
   <!-- Upper Header -->
   <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex">
       <!-- Brand Name -->
-      <a href="/" class="navbar-brand w-50 h-50 me-auto">
+      <a href="/" class="navbar-brand w-50 h-50 flex-grow-1">
         <img class="w-50 h-50" src="/images/logo.png"></img>
       </a>
 
@@ -20,14 +20,14 @@
 
       {{#if user}}
       <!-- Logged in Offcanvas Trigger -->
-      <a href="#" class="ms-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLoggedin"
+      <a href="#" class="ms-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLoggedin"
         aria-controls="offcanvasLoggedin">
         <img class="rounded-circle object-fit-cover border border-light border-4" style="width: 50px; height: 50px;"
           src="{{user.avatarUrl}}">
       </a>
       {{else}}
       <!-- Login/ Signup Modals Trigger -->
-      <a href="#" class="link-light ms-3" data-bs-toggle="modal" data-bs-target="#modalLoginSignup">
+      <a href="#" class="link-light ms-1" data-bs-toggle="modal" data-bs-target="#modalLoginSignup">
         <i class="bi bi-person-circle"></i>
         Log in
       </a>
@@ -39,28 +39,29 @@
   <!-- Categories Navigation -->
   <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
     <div class="container-fluid">
-      <div class="collapse navbar-collapse justify-content-between">
-        <ul class="navbar-nav">
+      <button id="navigateTo" class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse"
+        data-bs-target="#categoriesList" aria-expanded="false" aria-label="Toggle Categories">
+        Navigate to <i class="bi bi-caret-down"></i>
+      </button>
+      <div id="categoriesList" class="collapse navbar-collapse">
+        <ul class="navbar-nav flex-grow-1 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link active" href="/">
               <i class="bi bi-house-door"></i> Home
             </a>
           </li>
-        </ul>
-        {{#each categories}}
-        <ul class="navbar-nav">
+          {{#each categories}}
           <li class="nav-item dropdown">
-            <a class="nav-link" href="/search?category={{name}}" role="button">
-              {{name}}
-            </a>
-            <div class="dropdown-menu">
+            <a class="nav-link active dropdown-toggle" href="/search?category={{name}}"
+              data-bs-toggle="dropdown">{{name}}</a>
+            <ul class="dropdown-menu">
               {{#each children}}
-              <a class="dropdown-item" href="/search?category={{name}}">{{name}}</a>
+              <li><a class="dropdown-item" href="/search?category={{name}}">{{name}}</a></li>
               {{/each}}
-            </div>
+            </ul>
           </li>
+          {{/each}}
         </ul>
-        {{/each}}
       </div>
     </div>
   </nav>
