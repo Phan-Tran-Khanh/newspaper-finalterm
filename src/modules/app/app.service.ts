@@ -70,7 +70,7 @@ export class AppService {
   async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
     return this.articleService.searchArticles(searchQuery);
   }
-  async getDetailArticleBySlug(slug: string): Promise<Article | null> {
+  async getArticleBySlug(slug: string): Promise<Article | null> {
     return this.articleService.getArticleBySlug(slug);
   }
   async getRelatedArticles(article: Article) {

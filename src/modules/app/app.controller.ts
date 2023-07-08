@@ -14,7 +14,6 @@ import * as PDFDocument from 'pdfkit';
 import * as sharp from 'sharp';
 import axios from 'axios';
 import { AppService } from './app.service';
-import { Article } from 'src/entity/article.entity';
 import { SearchParms, SearchParamsType } from './dto/SearchQuery';
 import { JwtInterceptor } from 'src/interceptors/JwtInterceptors';
 
@@ -64,7 +63,7 @@ export class AppController {
 
   @Get('pdf/:slug')
   async pdfFile(@Param('slug') slug: string, @Res() res: Response) {
-    const article = await this.appService.getDetailArticleBySlug(slug);
+    const article = await this.appService.getArticleBySlug(slug);
     if (article === null) {
       throw new NotFoundException(`Article with slug ${slug} is not found!`);
     }
@@ -102,7 +101,7 @@ export class AppController {
   async articleView(@Param('slug') slug: string, @Req() req: Request) {
     const [categories, article] = await Promise.all([
       this.appService.getCategories(),
-      this.appService.getDetailArticleBySlug(slug),
+      this.appService.getArticleBySlug(slug),
     ]);
     if (article === null) {
       throw new NotFoundException(`Article with slug ${slug} is not found!`);
