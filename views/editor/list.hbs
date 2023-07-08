@@ -103,6 +103,26 @@
     var site_disapprove = false;
     var site_approve = false;
   </script>
-  <script src="/mock/editor.js"></script>
+
+  <script>
+    window.posts = []
+    {{#each articles}}
+      var article = {
+        id: "{{slug}}",
+        title: "{{title}}",
+        abstract: "{{summary}}",
+        details: "{{content}}",
+        category: "{{category.name}}",
+        datetime: "{{publishedAt}}",
+        image: "{{bannerImageUrl}}",
+      };
+      {{#each labels}}
+        article.tags.append(" {{name}}");
+      {{/each}}
+      window.posts.push(article);
+    {{/each}}
+  </script>
+
+  {{!-- <script src="/mock/editor.js"></script> --}}
   <script src="/js/editor.js"></script>
 </body>
