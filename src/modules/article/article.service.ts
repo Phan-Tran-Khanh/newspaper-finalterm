@@ -14,7 +14,9 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
   ) {}
   findAll(): Promise<Article[]> {
-    return this.articleRepository.find();
+    return this.articleRepository.find({
+      relations: ['category', 'labels'],
+    });
   }
   create(dto: Article): Promise<Article> {
     dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
@@ -27,6 +29,19 @@ export class ArticleService {
   }
   remove(id: number) {
     this.articleRepository.delete(id);
+  }
+  async getArticlesByCategoryId(categoryId: number): Promise<Article[]> {
+    return this.articleRepository.find({
+      where: {
+        category: {
+          id: categoryId,
+        },
+        status: ArticleStatus.Published,
+      },
+      order: {
+        publishedAt: 'DESC',
+      },
+    });
   }
   getLatestByCategory(categoryId: number, take = 10): Promise<Article[]> {
     return this.articleRepository.find({
@@ -128,5 +143,11 @@ export class ArticleService {
       page,
       pageSize,
     };
+  }
+  aprrove(id: number): Promise<Article | null> {
+    return this.articleRepository.save({ id, status: ArticleStatus.Published });
+  }
+  reject(id: number): Promise<Article | null> {
+    return this.articleRepository.save({ id, status: ArticleStatus.Rejected });
   }
 }

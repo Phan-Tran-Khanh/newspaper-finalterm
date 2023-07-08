@@ -39,6 +39,21 @@ export class AppService {
   async getWeeklyArticles() {
     return this.articleService.getWeeklyArticles();
   }
+  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
+    return this.articleService.searchArticles(searchQuery);
+  }
+  async getArticleBySlug(slug: string): Promise<Article | null> {
+    return this.articleService.getArticleBySlug(slug);
+  }
+  async getRelatedArticles(article: Article) {
+    return this.articleService.getMostViewedByCategory(article.category.id);
+  }
+  async getEditorsByCategoryId(categoryId: number) {
+    return this.userService.getEditorsByCategoryId(categoryId);
+  }
+  async getArticlesByCategoryId(categoryId: number) {
+    return this.articleService.getArticlesByCategoryId(categoryId);
+  }
   async getTopArticles() {
     const topCategories = await this.categoryService.getMostViewedCategories();
     const topArticles = [];
@@ -66,14 +81,5 @@ export class AppService {
       });
     }
     return topArticles;
-  }
-  async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
-    return this.articleService.searchArticles(searchQuery);
-  }
-  async getArticleBySlug(slug: string): Promise<Article | null> {
-    return this.articleService.getArticleBySlug(slug);
-  }
-  async getRelatedArticles(article: Article) {
-    return this.articleService.getMostViewedByCategory(article.category.id);
   }
 }

@@ -146,12 +146,20 @@ export class AppController {
       this.appService.getArticles(),
       this.appService.getUsers(),
     ]);
+
     return {
       file: 'admin/admin',
       user: req.user,
-      categories,
+      categories: categories.map((category) => ({
+        ...category,
+        noEditor: category.editorCount,
+        noNews: category.articleCount,
+      })),
       articles,
-      labels,
+      labels: labels.map((label) => ({
+        ...label,
+        noNews: label.articleCount,
+      })),
       users,
     };
   }

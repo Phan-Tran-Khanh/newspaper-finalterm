@@ -9,6 +9,9 @@ export class Label {
   @Column()
   name: string;
 
+  @Column({ default: 0 })
+  articleCount: number;
+
   @Column()
   description: string;
 }

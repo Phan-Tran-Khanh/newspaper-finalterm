@@ -18,6 +18,12 @@ export class Category {
   @Column()
   description: string;
 
+  @Column({ default: 0 })
+  editorCount: number;
+
+  @Column({ default: 0 })
+  articleCount: number;
+
   @ManyToOne(() => Category, (category) => category.children)
   parent: Category;
 
