@@ -2,10 +2,11 @@ tinymce.init({
   selector: '#writer-editor',
   plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-  images_file_types: 'jpg,svg,webp'
+  images_file_types: 'jpg,svg,webp',
+  height : "480"
 });
 
-// Preview Article Heading
+/* // Preview Article Heading
 var headingConfig = {
   selector: '.tinymce-heading',
   menubar: false,
@@ -60,7 +61,7 @@ let imgConfig = {
 
 tinymce.init(headingConfig);
 tinymce.init(bodyConfig);
-tinymce.init(imgConfig);
+tinymce.init(imgConfig); */
 
 function previewImg(event) {
   var fileName = URL.createObjectURL(event.target.files[0]);
