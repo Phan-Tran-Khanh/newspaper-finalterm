@@ -340,6 +340,64 @@ $('body').on('click', '.admin-user-name', function () {
     console.log(userID);
 });
   
+$('body').on('click', '.btn-edit-user', function () {
+    let id= $(this).data('edit-user-index');
+    console.log(id);
+    let role = window.usersTable[id].role;
+
+    if (role == "Editor") {
+        document.getElementById('form-label-edit-user').textContent = "Category: ";
+
+        var selectCateForm = '<select class="form-select">';
+        for (let item in cateTable) {
+            if (item === window.usersTable[id].category) {
+                selectCateForm += '<option value="'+ cateTable[item].name +'" selected>' + cateTable[item].name + '</option>';
+            } else {
+                selectCateForm += '<option value="'+ cateTable[item].name +'">' + cateTable[item].name + '</option>';
+            }
+        }
+        selectCateForm += '</select>';
+
+        document.getElementById('admin-input-edit-user').innerHTML = selectCateForm;
+    } else if (role == "Subscriber") {
+        document.getElementById('form-label-edit-user').textContent = "Premium Duration: ";
+
+        var tmpDate = new Date(window.usersTable[id]["subcriptionExpiryDate"]);
+        if (isNaN(tmpDate.getTime())) {            
+            tmpDate = new Date(-8640000000000000);
+        }
+
+        var formattedDate = tmpDate.toISOString().slice(0, 16);
+        var durationValue ='<div class="input-group date">\
+                            <input class="form-control" type="datetime-local" value="'+formattedDate+'">\
+                        </div>';
+
+        document.getElementById('admin-input-edit-user').innerHTML = durationValue;
+    }
+});
+
+$('body').on('click', '.submit-edit-user-btn', function () {
+    let label = document.getElementById('form-label-edit-user').textContent;
+
+    if (label == "Category: ") {
+        let selectElement = document.querySelector("#admin-input-edit-user select");
+
+        console.log(label, selectElement.value);
+    } else {
+        let inputElement = document.querySelector(".input-group.date input[type='datetime-local']");
+        let datetimeValue = inputElement.value;
+        let datetime = new Date(datetimeValue);
+        
+        if (isNaN(datetime.getTime())) {            
+            datetime = new Date(-8640000000000000);
+        }
+
+        var formattedDate = datetime.toISOString().slice(0, 16);
+
+        console.log(label, formattedDate);
+    }    
+});
+
 function showUsers() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">USERS</div><hr>');
@@ -400,7 +458,7 @@ function showUsers() {
                         <td>'+rowValue.role+'</td>\
                         <td>'+cateValue+'</td>\
                         <td>'+durationValue+'</td>\
-                        <td class="text-center btn-edit-user"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditUser"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-edit-user" data-edit-user-index="'+i+'"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditUser"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
                     </tr>');
         tbody.append(row);
