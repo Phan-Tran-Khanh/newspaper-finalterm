@@ -16,8 +16,9 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="show-cate-label" class="form-label">Category: </label> <br>
+              <label for="show-cate-label" class="form-label">Name: </label>
               <label id="show-cate-name"></label> <br>
+              <label for="show-cate-label" class="form-label">Description: </label>
               <label id="show-cate-desc"></label> <br>
             </div>
           </form>
@@ -114,8 +115,9 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="show-tag-label" class="form-label">Tag: </label> <br>
+              <label for="show-tag-label" class="form-label">Name: </label>
               <label id="show-tag-name"></label> <br>
+              <label for="show-tag-label" class="form-label">Description: </label>
               <label id="show-tag-desc"></label> <br>
             </div>
           </form>
@@ -144,8 +146,10 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="update-tag" class="form-label">Tag: </label>
-              <input type="text" class="form-control" id="update-tag" value="Tag#1">
+              <label for="update-tag" class="form-label">Name: </label>
+              <input type="text" class="form-control" id="update-tag">
+              <label for="update-tag" class="form-label">Description: </label>
+              <input type="text" class="form-control" id="update-tag-desc">
             </div>
           </form>
         </div>
@@ -490,8 +494,8 @@
           "id": {{id}},
           "name": '{{{name}}}',
           "description": '{{{description}}}',
-          "noEditor": {{noEditor}},
-          "noNews": {{noNews}},
+          "noEditor": {{editorCount}},
+          "noNews": {{articleCount}},
         })
     {{/each}}
   </script>
@@ -503,8 +507,7 @@
           "id": {{id}},
           "name": '{{{name}}}',
           "description": '{{{description}}}',
-          {{!-- "noEditor": {{noEditor}}, --}}
-          "noNews": {{noNews}}, 
+          "noNews": {{articleCount}}, 
         })
     {{/each}}
   </script>

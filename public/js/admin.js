@@ -48,6 +48,12 @@ $('body').on('click', '.admin-cate-name', function () {
     myCateName.innerHTML = window.cateTable[cate_idx].name;
 });
 
+$('body').on('click', '.btn-edit-cate', function() {
+    let id = $(this).data('admin-add-idx');    
+    let input = document.getElementById('update-cate');
+    input.value = window.cateTable[id].name;
+});
+
 function showCategories() {
   $('div.nav-content').empty();
   $('div.nav-content').append('<div class="header h1">CATEGORY</div><hr>');
@@ -82,7 +88,7 @@ function showCategories() {
             <td class="admin-cate-name" data-bs-target="#modalShowCate" data-bs-toggle="modal" data-admin-cate-idx="' + i + '" >' + window.cateTable[i].name + '</td>\
             <td>' + window.cateTable[i].noEditor + '</td>\
             <td>' + window.cateTable[i].noNews + '</td>\
-            <td class="text-center btn-edit-cate"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
+            <td class="text-center btn-edit-cate" data-admin-add-idx="'+i+'"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCate"><i class="bi bi-pencil-square"></i></a></td>\
             <td class="text-center btn-remove-cate"><a href="#"/><i class="bi bi-trash3"></i></td>\
         </tr>',
     );}
@@ -95,7 +101,7 @@ function showCategories() {
     $('div.nav-content').on('click', '.btn-remove-cate', function() {
         $(this).closest('tr').remove();
     });
-
+    
     // Add event listener to the "Add" button
     $('#add-category-btn').on('click', function() {
         var itemInput = document.getElementById('input-cate');
@@ -125,7 +131,15 @@ $('body').on('click', '.admin-tag-name', function () {
     myTagDesc.innerHTML = window.tagTable[tag_idx].description;
     myTagName.innerHTML = window.tagTable[tag_idx].name;
 });
-  
+
+$('body').on('click', '.btn-edit-tag', function() {
+    let id = $(this).data('admin-edit-tag');    
+    let inputName = document.getElementById('update-tag');
+    let inputDesc = document.getElementById('update-tag-desc');
+
+    inputName.value = window.tagTable[id].name;
+    inputDesc.value = window.tagTable[id].description;
+});
 
 function showTags() {
     $('div.nav-content').empty();
@@ -134,8 +148,8 @@ function showTags() {
     var table = $('<table id="tag-table" class="table table-striped"></table>');    
     var tbody = $('<tbody></tbody>');
     table.append('<colgroup>\
-                    <col span="1" style="width: 50%;">\
-                    <col span="1" style="width: 20%;">\
+                    <col span="1" style="width: 25%;">\
+                    <col span="1" style="width: 45%;">\
                     <col span="1" style="width: 20%;">\
                     <col span="1" style="width: 5%;">\
                     <col span="1" style="width: 5%;">\
@@ -143,7 +157,7 @@ function showTags() {
     table.append('<thead class="table-dark">\
                     <tr>\
                         <th>Tag</th>\
-                        <th>No. editors</th>\
+                        <th>Description</th>\
                         <th>No. news</th>\
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
@@ -154,9 +168,9 @@ function showTags() {
         var rowValue = window.tagTable[i];
         var row = $('<tr data-tag-id="'+rowValue.id+'">\
                         <td class="admin-tag-name" data-bs-target="#modalShowTag" data-bs-toggle="modal" data-admin-tag-idx="' + i + '" >' + rowValue.name + '</td>\
-                        <td>'+ rowValue.noEditor +'</td>\
+                        <td>'+ rowValue.description +'</td>\
                         <td>'+ rowValue.noNews +'</td>\
-                        <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-edit-tag" data-admin-edit-tag="'+i+'"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-tag"><a href="#"/><i class="bi bi-trash3"></i></td>\
                     </tr>');
         tbody.append(row);
