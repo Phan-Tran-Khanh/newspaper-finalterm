@@ -1,69 +1,62 @@
 <body class="container-fluid">
   <div class="e_Content_Details container">
+    {{#with article}}
     <!-- Detail -->
     <div class="post-detail col-md-9">
       <!-- Category and Date Time -->
       <div class="row row-cols-2">
         <div class="col text-start small back-to-list">
-          <a href="#" class="text-decoration-none">
-            Politics
-          </a>
+            <a href="/search?category={{category.name}}" class="text-decoration-none">
+              {{category.name}}
+            </a>
         </div>
         <div class="col text-end small">
           <p class="text-muted">
-            Thứ sáu, 14/4/2023, 16:15 (GMT+7)
+            {{formatDate publishedAt}}
           </p>
         </div>
       </div>
 
       <!-- Title and Content -->
       <div class="row">
-        <h2>
-          Example Title
-        </h2>
+          <h2>
+            {{title}}
+            <a href="/pdf/{{slug}}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Download PDF">
+              <i class="bi bi-download"></i>
+            </a>
+          </h2>
         <p>
-          Example Abstract:
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sed aliquam
-          pariatur delectus, quod, quo autem accusantium ullam nulla doloremque placeat a magnam quos
-          facere cum ipsam quia illo quis.
-          Dignissimos sit officiis cum quos possimus perferendis delectus voluptatum perspiciatis
-          architecto nulla accusamus quaerat dolorum culpa, reiciendis sequi deleniti iste quod! Et
-          debitis ullam nostrum explicabo eligendi eaque similique optio.
+          {{summary}}
         </p>
-        <figure>
-          <img src="public/images/news1.jpg"  class="img-fluid">
-          <figcaption class="small">Fig.1 - BBC News</figcaption>
-        </figure>
-        <p>
-          Example Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea vitae natus
-          iure nisi iusto magni, quaerat repudiandae sapiente vero illo? Earum praesentium quis enim
-          veniam ipsam voluptas, delectus repudiandae explicabo.
-          Asperiores quo, explicabo ab quae commodi nam ea, nulla dolore consequatur fugiat accusamus
-          eius maxime atque quasi ipsa minus iure voluptatibus temporibus ipsum nihil doloremque
-          necessitatibus! Amet aliquam voluptatem architecto.
-        </p>
+        <br>
+        <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto" />
+        <br>
+        <p>{{content}}</p>
       </div>
 
       <!-- Tags and Reporter -->
       <div class="row row-cols-2">
         <div class="col text-start small">
           <span>tags: </span>
-          <a href="#" class="text-decoration-none">
-            Agriculture
-          </a>
+            {{#each labels}}
+            <a href="/search?label={{name}}" class="text-decoration-none">
+              {{name}}
+            </a>
+            {{/each}}
         </div>
         <div class="col text-end">
           <p class="fw-bold">
-            Lệ Tuyết
+            {{createdBy.penName}}
           </p>
         </div>
       </div>
     </div>
     <!-- Detail -->
     <div class="post action">
-      <button type="button" class="btn btn-danger disapprove">Từ chối</button>
-      <button type="button" class="btn btn-success approve">Duyệt</button>
+      <button type="button" class="btn btn-danger btn-disapprove" data-post-id="{{slug}}">Từ chối</button>
+      <button type="button" class="btn btn-success btn-approve" data-post-id="{{slug}}">Duyệt</button>
     </div>
+    {{/with}}
   </div>
 
   <script>
@@ -72,6 +65,5 @@
     var site_disapprove = false;
     var site_approve = false;
   </script>
-  <script src="/mock/editor.js"></script>
   <script src="/js/editor.js"></script>
 </body>

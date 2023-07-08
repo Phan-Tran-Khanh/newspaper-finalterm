@@ -97,6 +97,7 @@ function showCategories() {
     $('div.nav-content').append(adminTable);
 
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddCate"><i class="bi bi-plus"></i>Add</a></button>');
+    $('div.nav-content').append("<br>");
 
     $('div.nav-content').on('click', '.btn-remove-cate', function() {
         $(this).closest('tr').remove();
@@ -179,8 +180,8 @@ function showTags() {
     adminTable.append(table);
     $('div.nav-content').append(adminTable);
 
-
     $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddTag"><i class="bi bi-plus"></i>Add</a></button>');
+    $('div.nav-content').append("<br>");
 
     $('div.nav-content').on('click', '.btn-remove-tag', function() {
         $(this).closest('tr').remove();
@@ -189,11 +190,12 @@ function showTags() {
     // Add event listener to the "Add" button
     $('#add-tag-btn').on('click', function() {
         var itemInput = document.getElementById('input-tag');
+        var itemDesc = document.getElementById('input-tag-desc');
 
         // Create a new row with the required HTML structure
         var newRow = '<tr>\
                         <td>' + itemInput.value +'</td>\
-                        <td>0</td>\
+                        <td>'+ itemDesc.value +'</td>\
                         <td>0</td>\
                         <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-tag"><a href="#"/><i class="bi bi-trash3"></i></td>\
@@ -211,20 +213,50 @@ $('body').on('click', '.admin-news-title', function () {
     window.location.replace('./article/'+slug);
 });
   
+$('body').on('click', '.btn-edit-news', function() {
+    let id = $(this).data('admin-edit-news');
+    let isPremium = window.newsTable[id].isPremium;
+        if (isPremium) {
+            document.getElementById('admin-news-edit-premium').checked = true;
+        }
+
+    let status = window.newsTable[id].status;
+        var selectStatusForm = '<select id="news-edt-cate-form" class="form-select">';
+        for (let item in ArticleStatus) {
+          var option = '<option value="' + ArticleStatus[item] + '"';
+          if (ArticleStatus[item] === status) {
+            option += ' selected';
+          }
+          option += '>' + ArticleStatus[item] + '</option>';
+          selectStatusForm += option;
+        }
+        selectStatusForm += '</select>';
+
+    let inputStatus = document.getElementById('admin-news-edit-status');
+    inputStatus.innerHTML = selectStatusForm;
+});
+
+$('body').on('click', '.btn-sm-edit-news', function() {
+    let isPremium = document.getElementById('admin-news-edit-premium').checked;
+    let status = document.getElementById('news-edt-cate-form');
+
+    
+    console.log("=======",isPremium, status.value);
+});
 
 function showNews() {
     $('div.nav-content').empty();
     $('div.nav-content').append('<div class="header h1">NEWS</div><hr>');
-
     
-    var adminTable = $('<div class="admin-table"></div>');var adminTable = $('<div class="admin-table"></div>');
+    var adminTable = $('<div class="admin-table"></div>');
     var table = $('<table id="news-table" class="table table-striped"></table>');
     var tbody = $('<tbody></tbody>');
 
     table.append('<colgroup>\
                     <col span="1" style="width: 30%;">\
-                    <col span="1" style="width: 25%;">\
-                    <col span="1" style="width: 25%;">\
+                    <col span="1" style="width: 15%;">\
+                    <col span="1" style="width: 15%;">\
+                    <col span="1" style="width: 20%;">\
                     <col span="1" style="width: 10%;">\
                     <col span="1" style="width: 10%;">\
                 </colgroup>');
@@ -232,25 +264,38 @@ function showNews() {
                     <tr>\
                         <th>Title</th>\
                         <th>Views</th>\
+                        <th>Premium</th>\
                         <th>Status</th>\
                         <th>&nbsp;</th>\
                         <th>&nbsp;</th>\
                     </tr>\
                 </thead>');
 
-    var selectStatusForm = '<select class="form-select">';
-    for (let item in ArticleStatus) {
-        selectStatusForm += '<option>' + ArticleStatus[item] + '</option>';
-    }
-    selectStatusForm += '</select>';
-
     for (let i = 0; i < window.newsTable.length; i++) {
         var rowValue = window.newsTable[i];
+
+        var selectStatusForm = '<select class="form-select">';
+        for (let item in ArticleStatus) {
+          var option = '<option';
+          if (ArticleStatus[item] === rowValue.status) {
+            option += ' selected';
+          }
+          option += '>' + ArticleStatus[item] + '</option>';
+          selectStatusForm += option;
+        }
+        selectStatusForm += '</select>';
+
+        var premiumBox = '<input type="checkbox" onclick="return false;"/>';
+        if (rowValue.isPremium) {
+            premiumBox = '<input type="checkbox" checked onclick="return false;"/>';
+        }
+
         var row = $('<tr data-news-id="'+rowValue.id+'">\
                         <td class="admin-news-title" data-admin-title-id="' + rowValue.slug + '" >'+ rowValue.title +'</td>\
                         <td>'+ rowValue.viewCount +'</td>\
+                        <td>'+premiumBox+'</td>\
                         <td>' + selectStatusForm + '</td>\
-                        <td class="text-center btn-edit-news"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditNews"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-edit-news" data-admin-edit-news="'+i+'"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditNews"><i class="bi bi-pencil-square"></i></a></td>\
                         <td class="text-center btn-remove-news"><a href="#"/><i class="bi bi-trash3"></i></td>\
                     </tr>');
         tbody.append(row);
@@ -258,7 +303,8 @@ function showNews() {
     table.append(tbody);
     adminTable.append(table);
     $('div.nav-content').append(adminTable);
-    $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddNews"><i class="bi bi-plus"></i>Add</a></button>');
+    $('div.nav-content').append("<br>");
+    // $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddNews"><i class="bi bi-plus"></i>Add</a></button>');
     
     $('div.nav-content').on('click', '.btn-remove-news', function() {
         $(this).closest('tr').remove();
@@ -363,60 +409,61 @@ function showUsers() {
     adminTable.append(table);
     $('div.nav-content').append(adminTable);
 
-    $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddUser"><i class="bi bi-plus"></i>Add</a></button>');
+    $('div.nav-content').append("<br>");
+    // $('div.nav-content').append('<button type="button" class="btn btn-default" style="color:dodgerblue;"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalAddUser"><i class="bi bi-plus"></i>Add</a></button>');
 
     $('div.nav-content').on('click', '.btn-remove-user', function() {
         $(this).closest('tr').remove();
     });
 
-        // Add event listener to the "Add" button
-        $('#add-user-btn').on('click', function() {
-            var usernameInput = document.getElementById('input-username');
-            var dropdown = document.getElementById('input-permission');
-            var permissionInput = dropdown.options[dropdown.selectedIndex];            
-    
-            var newRow;
-            // Create a new row with the required HTML structure
-            if (String(permissionInput.value) == 'Subcriber') {
-                newRow = '<tr>\
-                            <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
-                            <td>' + permissionInput.value +'</td>\
-                            <td></td>\
-                            <td><select class="form-select">\
-                                <option>Xuất bản</option>\
-                                <option>Bản nháp</option>\
-                            </select></td>\
-                            <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
-                            <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
-                        </tr>';
-            } else if (String(permissionInput.value) == 'Editor') {
-                newRow = '<tr>\
-                            <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
-                            <td>' + permissionInput.value +'</td>\
-                            <td><select class="form-select">\
-                                <option selected>Mục lục</option>\
-                                <option>Kinh doanh</option>\
-                                <option>Thế giới</option>\
-                            </select></td>\
-                            <td></td>\
-                            <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
-                            <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
-                        </tr>';
-            } else if (String(permissionInput.value) == 'Writer'){
-                newRow = '<tr>\
-                            <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
-                            <td>' + permissionInput.value +'</td>\
-                            <td></td>\
-                            <td></td>\
-                            <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
-                            <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
-                        </tr>';
-            }
-            // Append the new row to the table body
-            $('table#user-table tbody').append(newRow);
-            usernameInput.value = '';
-            permissionInput.value = '';
-            // Close the modal
-            $('#modalAddUser').modal('hide');
-        });  
+    // Add event listener to the "Add" button
+    $('#add-user-btn').on('click', function() {
+        var usernameInput = document.getElementById('input-username');
+        var dropdown = document.getElementById('input-permission');
+        var permissionInput = dropdown.options[dropdown.selectedIndex];            
+
+        var newRow;
+        // Create a new row with the required HTML structure
+        if (String(permissionInput.value) == 'Subcriber') {
+            newRow = '<tr>\
+                        <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
+                        <td>' + permissionInput.value +'</td>\
+                        <td></td>\
+                        <td><select class="form-select">\
+                            <option>Xuất bản</option>\
+                            <option>Bản nháp</option>\
+                        </select></td>\
+                        <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
+                    </tr>';
+        } else if (String(permissionInput.value) == 'Editor') {
+            newRow = '<tr>\
+                        <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
+                        <td>' + permissionInput.value +'</td>\
+                        <td><select class="form-select">\
+                            <option selected>Mục lục</option>\
+                            <option>Kinh doanh</option>\
+                            <option>Thế giới</option>\
+                        </select></td>\
+                        <td></td>\
+                        <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
+                    </tr>';
+        } else if (String(permissionInput.value) == 'Writer'){
+            newRow = '<tr>\
+                        <td><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalUserInformation">' + usernameInput.value +'</td>\
+                        <td>' + permissionInput.value +'</td>\
+                        <td></td>\
+                        <td></td>\
+                        <td class="text-center btn-edit-tag"><a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditTag"><i class="bi bi-pencil-square"></i></a></td>\
+                        <td class="text-center btn-remove-user"><a href="#"/><i class="bi bi-trash3"></i></td>\
+                    </tr>';
+        }
+        // Append the new row to the table body
+        $('table#user-table tbody').append(newRow);
+        usernameInput.value = '';
+        permissionInput.value = '';
+        // Close the modal
+        $('#modalAddUser').modal('hide');
+    });  
 }
