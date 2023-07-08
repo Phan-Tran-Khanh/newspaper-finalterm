@@ -5,37 +5,37 @@ import { AppService } from './app.service';
 @Controller('editor')
 export class EditorController {
   constructor(private readonly appService: AppService) {}
-  @Get('approve')
+  @Get('approve/:slug')
   @Render('editor/approve')
-  async editorView(@Req() req: Request) {
-    const [categories, labels, articles] = await Promise.all([
+  async editorView(@Req() req: Request, @Param('slug') slug: string) {
+    const [categories, labels, article] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.getArticles(),
+      this.appService.getArticleBySlug(slug),
     ]);
     return {
       file: 'editor/approve',
       user: req.user,
       categories,
       labels,
-      articles,
+      article,
     };
   }
 
-  @Get('disapprove')
+  @Get('disapprove/:slug')
   @Render('editor/disapprove')
-  async disapproveView(@Req() req: Request) {
-    const [categories, labels, articles] = await Promise.all([
+  async disapproveView(@Req() req: Request, @Param('slug') slug: string) {
+    const [categories, labels, article] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.getArticles(),
+      this.appService.getArticleBySlug(slug),
     ]);
     return {
       file: 'editor/disapprove',
       user: req.user,
       categories,
       labels,
-      articles,
+      article,
     };
   }
 

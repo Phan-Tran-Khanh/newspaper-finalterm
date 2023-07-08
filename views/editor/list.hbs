@@ -109,6 +109,7 @@
     {{#each articles}}
       var article = {
         id: "{{slug}}",
+        reporter: "{{publishedBy.lastName}} {{publishedBy.firstName}}",
         title: "{{title}}",
         abstract: "{{summary}}",
         details: "{{content}}",
@@ -116,13 +117,15 @@
         datetime: "{{publishedAt}}",
         image: "{{bannerImageUrl}}",
       };
+
+      article.tags = [];
       {{#each labels}}
-        article.tags.append(" {{name}}");
+        article.tags.push("{{name}}");
       {{/each}}
+
       window.posts.push(article);
-    {{/each}}
+    {{/each}}    
   </script>
 
-  {{!-- <script src="/mock/editor.js"></script> --}}
   <script src="/js/editor.js"></script>
 </body>

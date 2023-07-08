@@ -1,24 +1,24 @@
-<body class="container-fluid">
+<body class="container-fluid">  
   <div class="e_Disapprove container">
     <div class="disapprove-content">
       <div class="disapprove header h2">
         <span><strong>NỘI DUNG BÀI VIẾT</strong></span>
       </div>
-      <div id="d-content-area">
-        <script>
-          var editor = new FroalaEditor('#d-content-area');
-        </script>
+
+      <div class="row">
+        <div class="col-md-12">
+          <textarea id="d-content-area" autofocus class="w-100" cols="50" rows="10" name="content" required>
+            {{article.content}}
+          </textarea>
+        </div>
       </div>
+
     </div>
     <div class="disapprove-reason">
       <div class="disapprove header h2">
         <span><strong>LÝ DO TỪ CHỐI</strong></span>
       </div>
-      <div id="d-reason-area">
-        <script>
-          var editor = new FroalaEditor('#d-reason-area');
-        </script>
-      </div>
+      <textarea id="d-reason-area" class="w-100" cols="50" rows="10" name="content" required></textarea>
 
     </div>
     <div class="disapprove action">
