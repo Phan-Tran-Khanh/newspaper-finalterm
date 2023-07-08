@@ -20,7 +20,7 @@
     <!-- Filters -->
     <div class="row my-2">
       <!-- Status -->
-      <div class="col-md-4 my-2">
+      <div class="col-md-3 my-2">
         <div class="input-group">
           <label class="input-group-text" for="status">Status</label>
           <select class="form-select" name="status" id="status">
@@ -35,8 +35,20 @@
           </select>
         </div>
       </div>
+      <!-- Search In -->
+      <div class="col-md-3 my-2">
+        <div class="input-group">
+          <label class="input-group-text" for="in">Search in</label>
+          <select class="form-select" name="in" id="in">
+            <option value="" selected>All</option>
+            <option value="Title">Title</option>
+            <option value="Abstract">Abstract</option>
+            <option value="Body">Body</option>
+          </select>
+        </div>
+      </div>
       <!-- Categories -->
-      <div class="col-md-4 my-2">
+      <div class="col-md-3 my-2">
         <div class="input-group">
           <label class="input-group-text" for="category">Category</label>
           <select class="form-select" name="category" id="category">
@@ -53,7 +65,7 @@
         </div>
       </div>
       <!-- Tags -->
-      <div class="col-md-4 my-2">
+      <div class="col-md-3 my-2">
         <div class="input-group">
           <label class="input-group-text" for="label">Tags</label>
           <select class="form-select" name="label" id="label">
