@@ -32,7 +32,7 @@
           <br>
           {{summary}}
           <br>
-          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto" />
+          <img src="{{bannerImageUrl}}" width="70%" height="" style="margin: auto"/>
           <br>
           {{content}}
         </div>
@@ -95,13 +95,13 @@
     <div id="comment-container" class="col-md-9">
       <!-- Reply -->
       <div class="card">
-        <form id="comment-input" action="/article/{{article.id}}/comment" method="post">
-          <input type="hidden" name="articleId" value="{{article.id}}">
+        <form id="comment-form" action="/article/{{article.id}}/comment" method="post">
+          <input name="articleId" value="{{article.id}}" hidden>
           <div class="card-body">
             <h5 class="card-title">COMMENT</h5>
             <div class="form-group">
               <label for="comment">Leave your comment below:</label>
-              <textarea class="form-control" id="comment-text" rows="2"></textarea>
+              <textarea id="comment-text" class="form-control" name="content" rows="2"></textarea>
             </div>
           </div>
           <div class="card-footer text-end bg-white border-0">
@@ -117,16 +117,16 @@
       <div class="card mt-2">
         <div class="card-body">
           <div class="media">
-            <img src="{{createdBy.avatarUrl}}">
+            <img class="rounded-circle object-fit-cover border border-dark border-2" style="width: 50px; height: 50px;" src="{{createdBy.avatarUrl}}">
             <div class="media-body">
               <h5 class="mt-0">{{createdBy.firstName}} {{createdBy.lastName}}</h5>
               <p>
                 {{content}}
               </p>
             </div>
-            <p class="card-text small text-muted">{{createdAt}}</p>
+            <p class="card-text small text-muted">{{formatDate createdAt}}</p>
           </div>
-          <div class="d-flex align-items-center mt-3">
+          {{!-- <div class="d-flex align-items-center mt-3">
             <a href="#" class="like-input me-3 position-relative">
               <i class="bi bi-hand-thumbs-up"></i> Like
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -134,8 +134,7 @@
                 <span class="visually-hidden">Total Likes</span>
               </span>
             </a>
-            <a href="#" class="reply-old">Reply</a>
-          </div>
+          </div> --}}
         </div>
       </div>
       {{/each}}

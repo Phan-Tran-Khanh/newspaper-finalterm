@@ -9,9 +9,9 @@
     <ul class="list-unstyled ms-3">
       <li class="mb-3">
         <a href="#" class="link-light" data-bs-toggle="modal" data-bs-target="#modalUserInformation">
-          <img class="rounded-circle object-fit-cover border border-light border-4" style="width: 50px; height: 50px;"
+          <img id="account-avatar" class="rounded-circle object-fit-cover border border-light border-4" style="width: 50px; height: 50px;"
             src="{{avatarUrl}}">
-          <span>{{firstName}} {{lastName}}</span>
+          <span id="account-name">{{firstName}} {{lastName}}</span>
         </a>
       </li>
       {{#ifEquals role.name 'Writer'}}
@@ -27,8 +27,18 @@
       </li>
       {{/ifEquals}}
       {{#ifEquals role.name 'Editor'}}
+      <li class="mb-3">
+        <a href="/editor/search" method="get" class="link-light">
+          <i class="bi bi-newspaper"></i> Writers' Articles
+        </a>
+      </li>
       {{/ifEquals}}
       {{#ifEquals role.name 'Admin'}}
+      <li class="mb-3">
+        <a href="/admin" method="get" class="link-light">
+          <i class="bi bi-newspaper"></i> Dashboard
+        </a>
+      </li>
       {{/ifEquals}}
       <li class="mb-3">
         <a href="#footer" class="link-light">

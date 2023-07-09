@@ -1,5 +1,5 @@
 <main class="container my-3 bg-light">
-  <form action="/article" method="post">
+  <form id="article-form" action="/article" method="post">
     <!-- Editor Feedback Section -->
     {{#with article}}
     <input name="id" value="{{id}}" hidden>
@@ -54,18 +54,16 @@
                   {{/each}}
                   {{/each}}
                 </select>
-                <input name="title" class="form-control card-title my-1" style="font-size: 1.25rem; font-weight: 500;"
-                  placeholder="Title" {{#with article}} value="{{title}}" {{/with}} required>
-                </input>
-                <input name="summary" class="form-control card-text my-1" placeholder="Abstract" {{#with article}}
-                  value="{{summary}}" {{/with}} required>
-                </input>
+                <textarea name="title" class="form-control card-title my-1" rows="1"
+                  style="font-size: 1.25rem; font-weight: 500;" placeholder="Title" {{#with article}} value="{{title}}"
+                  {{/with}} required></textarea>
+                <textarea name="summary" class="form-control card-text my-1" rows="4" placeholder="Abstract" {{#with
+                  article}} value="{{summary}}" {{/with}} required></textarea>
               </div>
               <div class="card-footer">
                 <div class="input-group input-group-sm">
                   <label class="card-text small text-muted fw-semibold p-2" for="label">tags:</label>
-                  <select id="label" name="label" class="form-select" multiple required>
-                    <option value="">Choose...</option>
+                  <select id="label-init" name="label" class="form-select" multiple required>
                     {{#each labels}}
                     <option value="{{name}}" {{#ifEquals @root.article.label.name name}} selected {{/ifEquals}}>{{name}}
                     </option>
@@ -87,7 +85,7 @@
     </div>
     <!-- Preview Section -->
     <div class="text-center border-top p-2 mt-3">
-      <button type="submit" id="publish-btn" class="btn px-5" onclick="uploadImgToImgur()">{{#if article}} Update
+      <button type="submit" id="post-article-btn" class="btn px-5" onclick="uploadImgToImgur()">{{#if article}} Update
         {{else}} Publish {{/if}}</button>
     </div>
   </form>
