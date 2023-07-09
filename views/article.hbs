@@ -95,7 +95,8 @@
     <div id="comment-container" class="col-md-9">
       <!-- Reply -->
       <div class="card">
-        <form id="comment-input" method="post">
+        <form id="comment-input" action="/article/{{article.id}}/comment" method="post">
+          <input type="hidden" name="articleId" value="{{article.id}}">
           <div class="card-body">
             <h5 class="card-title">COMMENT</h5>
             <div class="form-group">

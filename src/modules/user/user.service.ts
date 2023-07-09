@@ -22,6 +22,9 @@ export class UserService {
     const user = this.userRepository.create(dto);
     const role = await this.roleRepository.findOneBy({ name: 'Subscriber' });
     user.role = role as Role;
+    const currentDate = new Date();
+    user.subcriptionExpiryDate = new Date();
+    user.subcriptionExpiryDate.setDate(currentDate.getDate() + 7);
     return this.userRepository.save(user);
   }
 
@@ -48,7 +51,15 @@ export class UserService {
   async update(id: number, dto: any): Promise<User | null> {
     if (dto.password)
       dto.password = await this.hashPassword(dto.password);
-    return this.userRepository.save({ id, ...dto });
+    for (const key in dto) {
+      if (!dto[key]) {
+        delete dto[key];
+      }
+    }
+    return this.userRepository.save({
+      id,
+      ...dto,
+    });
   }
 
   async remove(id: number): Promise<void> {

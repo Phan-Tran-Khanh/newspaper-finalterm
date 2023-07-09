@@ -106,6 +106,9 @@ export class AppController {
     if (article === null) {
       throw new NotFoundException(`Article with slug ${slug} is not found!`);
     }
+    if (article.isPremium && !req.user && !req.user ) {
+
+    }
     const relatedArticles = await this.appService.getRelatedArticles(article);
     return {
       file: 'article',
@@ -129,12 +132,6 @@ export class AppController {
       categories,
       labels,
     };
-  }
-
-  @Get('faker')
-  async faker() {
-    await this.appService.faker();
-    return 'ok';
   }
 
   @Get('/admin')

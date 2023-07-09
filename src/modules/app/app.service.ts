@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CategoryService } from 'src/modules/category/category.service';
 import { LabelService } from '../label/label.service';
-import { ArticleService } from '../article/article.service';
+import { ArticleService } from '../article/article.service.impl';
 import { Article } from 'src/entity/article.entity';
 import { SearchParms } from './dto/SearchQuery';
 import { Page } from './dto/Page';
-import fake from 'src/utils/faker';
+// import fake from 'src/utils/faker';
 import { UserService } from '../user/user.service';
 
 @Injectable()
@@ -16,14 +16,14 @@ export class AppService {
     private readonly articleService: ArticleService,
     private readonly userService: UserService,
   ) {}
-  async faker() {
-    return fake(
-      this.categoryService,
-      this.labelService,
-      this.userService,
-      this.articleService,
-    );
-  }
+  // async faker() {
+  //   return fake(
+  //     this.categoryService,
+  //     this.labelService,
+  //     this.userService,
+  //     this.articleService,
+  //   );
+  // }
   async getUsers() {
     return this.userService.findAll();
   }
@@ -46,7 +46,7 @@ export class AppService {
     return this.articleService.getArticleBySlug(slug);
   }
   async getRelatedArticles(article: Article) {
-    return this.articleService.getMostViewedByCategory(article.category.id);
+    return this.articleService.getMostViewedByCategory(article.category.id, 5);
   }
   async getEditorsByCategoryId(categoryId: number) {
     return this.userService.getEditorsByCategoryId(categoryId);

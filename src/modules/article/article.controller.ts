@@ -1,8 +1,7 @@
 import { Controller, Post, Body, Put, Param, Delete } from '@nestjs/common';
-// import { Protected } from 'src/decorator/protected.decorator';
 import { Article } from 'src/entity/article.entity';
-import { ArticleService } from './article.service';
-import { CategoryService } from '../category/category.service';
+import { ArticleService } from './article.service.impl';
+import { Comment } from 'src/entity/comment.entity';
 
 @Controller('article')
 // @Protected('Writer')
@@ -34,5 +33,10 @@ export class ArticleController {
   @Put(':id/reject')
   reject(@Param('id') id: string, @Body() dto: Article) {
     return this.articleService.reject(+id);
+  }
+
+  @Put(':id/comment')
+  comment(@Param('id') id: string, @Body() dto: Comment) {
+    return this.articleService.comment(+id, dto);
   }
 }
