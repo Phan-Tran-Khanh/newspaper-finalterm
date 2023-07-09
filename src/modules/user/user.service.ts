@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from 'src/entity/user.entity';
 import { Role } from 'src/entity/role.entity';
+import * as bcrypt from 'bcrypt';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UserService {
@@ -11,9 +13,12 @@ export class UserService {
     private readonly userRepository: Repository<User>,
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
+    private readonly configService: ConfigService,
   ) {}
 
   async create(dto: User): Promise<User> {
+    if (dto.password)
+      dto.password = await this.hashPassword(dto.password);
     const user = this.userRepository.create(dto);
     const role = await this.roleRepository.findOneBy({ name: 'Subscriber' });
     user.role = role as Role;
@@ -40,8 +45,10 @@ export class UserService {
     });
   }
 
-  update(id: number, updateDto: any): Promise<User | null> {
-    return this.userRepository.save({ id, ...updateDto });
+  async update(id: number, dto: any): Promise<User | null> {
+    if (dto.password)
+      dto.password = await this.hashPassword(dto.password);
+    return this.userRepository.save({ id, ...dto });
   }
 
   async remove(id: number): Promise<void> {
@@ -57,5 +64,12 @@ export class UserService {
         name: 'Editor',
       },
     });
+  }
+
+  hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(
+      password,
+      this.configService.get('auth.bcrypt.saltOrRounds') as number,
+    );
   }
 }

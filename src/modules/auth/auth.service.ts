@@ -42,13 +42,6 @@ export class AuthService {
     };
   }
 
-  hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(
-      password,
-      this.configService.get('auth.bcrypt.saltOrRounds') as number,
-    );
-  }
-
   comparePassword(password: string, hashedPassword: string): Promise<boolean> {
     return bcrypt.compare(password, hashedPassword);
   }
@@ -58,9 +51,6 @@ export class AuthService {
   }
 
   async signup(dto: User) {
-    if (dto.password) {
-      dto.password = await this.hashPassword(dto.password);
-    }
     const user = await this.usersService.create(dto);
     return this.jwtSign(user);
   }
