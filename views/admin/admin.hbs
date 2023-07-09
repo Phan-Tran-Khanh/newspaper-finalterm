@@ -180,8 +180,10 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="input-tag" class="form-label">Tag: </label>
+              <label for="input-tag" class="form-label">Name: </label>
               <input type="text" class="form-control" id="input-tag" value="Tag#1">
+              <label for="input-tag-desc" class="form-label">Description: </label>
+              <input type="text" class="form-control" id="input-tag-desc" value="Description#1">
             </div>
           </form>
         </div>
@@ -212,23 +214,18 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="update-title" class="form-label">Title: </label>
-              <input type="text" class="form-control" id="update-title" value="News#1">
+              <label for="admin-news-edit-premium" class="form-label" style="display: block;">Premium: </label>
+              <input type="checkbox" onclick="return true;" id="admin-news-edit-premium"/>
             </div>
             <div class="col-md-6">
-              <label for="update-abs" class="form-label" style="display: block;">Status: </label>
-              <select class="form-select">
-                <option value="hhh">Draft</option>
-                {{#each ArticleStatus}}
-                <option value={{this}}>{{this}}</option>
-                {{/each}}
-              </select>
+              <label for="admin-news-edit-status" class="form-label" style="display: block;">Status: </label>
+              <div id="admin-news-edit-status"></div>
             </div>
           </form>
         </div>
 
         <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+          <button type="submit" class="btn btn-sm-edit-news" data-bs-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -284,19 +281,16 @@
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
-              <label for="update-username" class="form-label">Username: </label>
-              <input type="text" class="form-control" id="update-username" value="User#1">
+              <label for="admin-input-edit-user" class="form-label" id="form-label-edit-user"></label>
+              <div id="admin-input-edit-user"></div>
             </div>
-            <div class="col-md-6">
-              <label for="update-permission" class="form-label">Permission: </label>
-              <input type="text" class="form-control" id="update-permission" value="User#1">
-            </div>
+
 
           </form>
         </div>
 
         <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
+          <button type="submit" class="btn btn-primary submit-edit-user-btn" data-bs-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -521,10 +515,7 @@
           "viewCount": '{{{viewCount}}}',
           "status": '{{{status}}}',
           "slug": '{{{slug}}}',
-          {{!-- 
-          "noEditor": {{noEditor}},
-          "noNews": {{noNews}}, 
-          --}}
+          "isPremium": {{{isPremium}}},
         })
     {{/each}}
   </script>

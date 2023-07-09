@@ -2,10 +2,11 @@ tinymce.init({
   selector: '#writer-editor',
   plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-  images_file_types: 'jpg,svg,webp'
+  images_file_types: 'jpg,svg,webp',
+  height : "480"
 });
 
-// Preview Article Heading
+/* // Preview Article Heading
 var headingConfig = {
   selector: '.tinymce-heading',
   menubar: false,
@@ -60,12 +61,37 @@ let imgConfig = {
 
 tinymce.init(headingConfig);
 tinymce.init(bodyConfig);
-tinymce.init(imgConfig);
+tinymce.init(imgConfig); */
 
 function previewImg(event) {
   var fileName = URL.createObjectURL(event.target.files[0]);
   $("#preview").attr("src", fileName);
   $("#preview").addClass("banner");
+  $("#uploadImgButton").text("Change Image")
+}
+
+function uploadImgToImgur() {
+  const input = document.getElementById('uploadImage');
+  const file = input.files[0];
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  fetch('https://api.imgur.com/3/image', {
+    method: 'POST',
+    headers: {
+      Authorization: 'd296f70487afe57', // Imgur API key
+    },
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      const imageUrl = data.data.link;
+      $('#uploadImgUrl').val(imageUrl);
+    })
+    .catch(error => {
+      console.error('Error uploading image:', error);
+    });
 }
 
 $(document).ready(function () {

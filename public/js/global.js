@@ -68,6 +68,17 @@ $(document).ready(function () {
   // Initialize popovers
   $('[data-bs-toggle="popover"]').popover();
 
+  // Expand Categories Collapse
+  $('#navigateTo').on('click', function () {
+    var iconCaret = $(this).find('i');
+    iconCaret.toggleClass('rotate-caret');
+    if (iconCaret.hasClass('rotate-caret')) {
+      iconCaret.removeClass('bi-caret-down').addClass('bi-caret-right-fill');
+    } else {
+      iconCaret.removeClass('bi-caret-right-fill').addClass('bi-caret-down');
+    }
+  });
+
   // Switch to the corresponding tab when clicking on a tab link in Login/Register Modals
   $('#login-signup-tabs a').on('click', function (e) {
     e.preventDefault();

@@ -50,6 +50,7 @@
     "passport-twitter": "^1.0.4",
     "pdfkit": "^0.13.0",
     "pg": "^8.9.0",
+    "react-froala-wysiwyg": "^4.0.19",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "sharp": "^0.32.1",

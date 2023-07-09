@@ -1,28 +1,22 @@
-let cur_id = null;
+let Post_id = null;
 
 // Action when load page:
 $(document).ready(function() {
     $('[data-bs-toggle="popover"]').popover();
 
     if (site_list) LoadPosts();
-    if (site_detail) {        
-        let params = new URLSearchParams(location.search);
-        cur_id = params.get('post_id');
-        if (!site_approve && !site_disapprove) LoadDetailedPost(cur_id);
-        else if (site_approve) LoadApprovedPost(cur_id);
-    }
 });
 
 //Function: [INDEX]  navigate to detail post
 $("body").on("click", ".post-info-s, .post-img-s", function(){
-    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
-    window.location.replace('./detail?post_id='+Post_id);
+    Post_id = $(this).parents('.e_Post').data("post-id");
+    window.location.replace('./detail/'+Post_id);
 });
 
 //Function: [INDEX]  navigate to disapprove post
 $("body").on("click", ".post-btn-del", function(){
-    let Post_id = parseInt($(this).parents('.e_Post').data("post-id"));
-    window.location.replace('./disapprove?post_id='+Post_id);
+    Post_id = $(this).parents('.e_Post').data("post-id");
+    window.location.replace('./disapprove/'+Post_id);
 });
 
 //Function: [DETAIL] return to post list
@@ -32,29 +26,36 @@ $("body").on("click", ".back-to-list", function(){
 
 //Function: [DETAIL] navigate to disapprove page
 $("body").on("click", ".btn-disapprove", function(){
-    let Post_id = parseInt($('.post-detail').data("post-id"));
-    window.location.replace('./disapprove?post_id='+Post_id);
+    Post_id = $(this).data("post-id");
+    window.location.replace('../disapprove/'+Post_id);
 });
 
-//Function: [DETAIL] navigate to disapprove page
-$("body").on("click", ".btn-approve", function(){
-    let Post_id = parseInt($('.post-detail').data("post-id"));
-    window.location.replace('./approve?post_id='+Post_id);
+//Function: [DETAIL] navigate to approve page
+$("body").on("click", ".btn-approve", function(){    
+    Post_id = $(this).data("post-id");
+    window.location.replace('../approve/'+Post_id);
 });
 
 //Function: [DISAPPROVE/APPROVE]  return to post detail
 $("body").on("click", ".btn-back", function(){
-    window.location.replace('./detail?post_id='+cur_id);
+    let pathname = (window.location.pathname).split('/');
+    Post_id = pathname[pathname.length-1];
+
+    window.location.replace('../detail/'+Post_id);
 });
 
 //Function: [DISAPPROVE]  navigate to post list
 $("body").on("click", ".btn-send", function(){
-    window.location.replace('./list');
+    var reason = document.getElementById('d-reason-area').value;
+
+    console.log(reason);
+
+    window.location.replace('../list');
 });
 
 //Function: [APPROVE]  navigate to post list
 $("body").on("click", ".btn-publish", function(){
-    window.location.replace('./list');
+    window.location.replace('../list');
 });
 
 //Function: load all posts
@@ -168,47 +169,6 @@ function LoadDetailedPost(id) {
                                     <button type="button" class="btn btn-danger btn-disapprove">Từ chối</button>\
                                     <button type="button" class="btn btn-success btn-approve">Duyệt</button>\
                                 </div>');
-}
-
-//Function: Load detail of a post
-function LoadApprovedPost(id) {
-    var item = window.posts[id];
-    item['image']='..'+item['image'];
-    $(".approve-area").empty();
-    $(".approve-area").append('<div class="approve header h2">\
-                                <span><strong>XUẤT BẢN TRỰC TUYẾN</strong></span>\
-                            </div>');
-                            
-    let html_post = $('<div class="approve-content" data-post-id="'+item['id']+'"></div>');
-    html_post.append('<div class="approve-c text">\
-                    <div class="approve-r datetime">\
-                        <label for="a-datetime">Datetime</label>\
-                        <div class="input-group date" id="a-datetime">\
-                            <input class="form-control" type="datetime-local">\
-                        </div>\
-                    </div>\
-                    <div class="approve-r category">\
-                        <label for="a-category">Category</label>\
-                        <input type="text" class="form-control" id="a-category" value="'+item['category']+'">\
-                    </div>\
-                    <div class="approve-r title">\
-                        <label for="a-title">Title</label>\
-                        <input type="text" class="form-control" id="a-title" value="'+item['title']+'">\
-                    </div>\
-                    <div class="approve-r abstract">\
-                        <label for="a-abstract">Abstract</label>\
-                        <textarea type="text" class="form-control" id="a-abstract">'+item['abstract']+'</textarea>\
-                    </div>\
-                    <div class="approve-r tags">\
-                        <label for="a-tags">tags:</label>\
-                        <input type="text" class="form-control" id="a-tags" value="'+item['tags']+'">\
-                    </div>\
-                </div>');
-    html_post.append('<div class="approve-c image">\
-                        <img src="'+item['image']+'" class="d-block w-100 h-100">\
-                    </div>');
-                    
-    $(".approve-area").append(html_post);
 }
 
 $("#logout-btn").on("click", function() {

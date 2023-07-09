@@ -1,9 +1,5 @@
-i:not(.bi.bi-search) {
+i {
     color: #ffc107;
-}
-
-i:not(.bi.bi-search):hover {
-    color: #f8f9fa;
 }
 
 a {
@@ -22,13 +18,30 @@ a:hover {
 }
 
 /* Categories */
-.navbar-nav li.nav-item a:hover {
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+        margin-top: 0;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+.navbar .nav-link:hover,
+.dropdown-menu .dropdown-item:hover {
     background-color: #212529;
     color: #F8F9FA;
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
+.dropdown-toggle::after {
+    display:none;
+}
+
+.rotate-caret {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
 }
 /* Categories */
 
