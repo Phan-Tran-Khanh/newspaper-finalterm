@@ -6,14 +6,11 @@ tinymce.init({
   height: "480"
 });
 
-var imgData;
-
 function previewImg(event) {
   var imgUrl = URL.createObjectURL(event.target.files[0]);
   $("#preview").attr("src", imgUrl);
   $("#preview").addClass("banner");
   $("#uploadImgButton").text("Change Image");
-  imgData = event.target.files[0];
 }
 
 $(document).ready(function () {
@@ -34,13 +31,13 @@ $(document).ready(function () {
 
   // Banner Image Section
   $('#post-article-btn').on('click', function (e) {
-    // $('#uploadImage').prop('files')[0]
     e.preventDefault();
     var formData = new FormData();
-    formData.append('file', imgData);
+    formData.append('file', $('#uploadImage').prop('files')[0]);
+    formData.append('upload_preset', 'sip8xn8w'); // Cloudinary upload preset for unsigned mode
 
     $.ajax({
-      url: 'https://api.cloudinary.com/v1_1/ddvyn6ajr/image/upload',
+      url: 'https://api.cloudinary.com/v1_1/ddvyn6ajr/image/upload', // Cloudinary Cloud_name
       type: 'POST',
       data: formData,
       processData: false,
@@ -51,35 +48,8 @@ $(document).ready(function () {
         $('#article-form').submit();
       },
       error: function (error) {
-        console.log('Error:', error);
+        console.log('Error uploading banner image:', error);
       }
     });
-    /* var reader = new FileReader();
-    reader.onloadend = function () {
-      var base64imgData = reader.result;
-      $.ajax({
-        url: 'https://api.imgur.com/3/image.json',
-        type: 'POST',
-        headers: {
-          Authorization: 'Client-ID 7261552ce2127e8'
-        },
-        data: {
-          image: base64imgData
-        },
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-          var imageUrl = response.data.link;
-          console.log('imgurl = ' + imageUrl);
-          $('#uploadImgUrl').val(imageUrl);
-          $('#article-form').submit();
-        },
-        error: function (error) {
-          console.log('Error uploading image: ' + error);
-        }
-      });
-    }
-    reader.readAsDataURL(imgData); */
   });
 });
