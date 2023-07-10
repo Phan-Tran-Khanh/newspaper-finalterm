@@ -73,9 +73,11 @@ export class ArticleService implements ArticleServiceInterface {
       take,
     });
   }
-  async getArticleBySlug(slug: string): Promise<Article | null> {
+  async getArticleBySlug(
+    slug: string,
+  ): Promise<Article | null> {
     const article = await this.articleRepository.findOne({
-      where: { slug, status: ArticleStatus.Published },
+      where: { slug },
       relations: ['createdBy', 'category', 'labels'],
     });
     if (article) {

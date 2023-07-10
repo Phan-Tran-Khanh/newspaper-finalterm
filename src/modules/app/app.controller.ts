@@ -194,6 +194,7 @@ export class AppController {
       this.appService.getLabels(),
       this.appService.getArticleBySlug(slug),
     ]);
+
     return {
       file: 'writer/index',
       user: req.user,

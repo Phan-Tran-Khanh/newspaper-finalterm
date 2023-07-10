@@ -7,6 +7,7 @@ import { SearchParms } from './dto/SearchQuery';
 import { Page } from './dto/Page';
 // import fake from 'src/utils/faker';
 import { UserService } from '../user/user.service';
+import { ArticleStatus } from 'src/enum/ArticleStatus.enum';
 
 @Injectable()
 export class AppService {
