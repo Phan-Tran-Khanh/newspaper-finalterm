@@ -25,7 +25,7 @@
         <div class="input-group">
           <label class="input-group-text" for="time">Time</label>
           <select class="form-select" name="time" id="time">
-            <option value="">Choose...</option>
+            <option value="">All</option>
             <option value="day" {{#ifEquals searchParams.time 'day' }} selected {{/ifEquals}}>Today</option>
             <option value="week" {{#ifEquals searchParams.time 'week' }} selected {{/ifEquals}}>This week</option>
             <option value="month" {{#ifEquals searchParams.time 'month' }} selected {{/ifEquals}}>This month</option>
@@ -49,7 +49,7 @@
         <div class="input-group">
           <label class="input-group-text" for="category">Category</label>
           <select class="form-select" name="category" id="category">
-            <option value="">Choose...</option>
+            <option value="">All</option>
             {{#each categories}}
             <option value="{{name}}" {{#ifEquals @root.searchParams.category name}} selected {{/ifEquals}}>{{name}}</option>
             {{#each children}}
@@ -64,7 +64,7 @@
         <div class="input-group">
           <label class="input-group-text" for="label">Tags</label>
           <select class="form-select" name="label" id="label">
-            <option value="">Choose...</option>
+            <option value="">All</option>
             {{#each labels}}
             <option value="{{name}}" {{#ifEquals @root.searchParams.label name}} selected {{/ifEquals}}>{{name}}</option>
             {{/each}}

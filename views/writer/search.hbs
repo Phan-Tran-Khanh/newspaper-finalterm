@@ -24,7 +24,7 @@
         <div class="input-group">
           <label class="input-group-text" for="status">Status</label>
           <select class="form-select" name="status" id="status">
-            <option value="" selected>Choose...</option>
+            <option value="">All</option>
             <option value="Rejected" {{#ifEquals searchParams.status 'Rejected' }} selected {{/ifEquals}}>Rejected
             </option>
             <option value="Approved" {{#ifEquals searchParams.status 'Approved' }} selected {{/ifEquals}}>Approved
@@ -38,8 +38,8 @@
       <!-- Search In -->
       <div class="col-md-3 my-2">
         <div class="input-group">
-          <label class="input-group-text" for="in">Search in</label>
-          <select class="form-select" name="in" id="in">
+          <label class="input-group-text" for="field">Search in</label>
+          <select class="form-select" name="field" id="field">
             <option value="" selected>All</option>
             <option value="Title">Title</option>
             <option value="Abstract">Abstract</option>
@@ -52,7 +52,7 @@
         <div class="input-group">
           <label class="input-group-text" for="category">Category</label>
           <select class="form-select" name="category" id="category">
-            <option value="">Choose...</option>
+            <option value="">All</option>
             {{#each categories}}
             <option value="{{name}}" {{#ifEquals @root.searchParams.category name}} selected {{/ifEquals}}>{{name}}
             </option>
@@ -69,7 +69,7 @@
         <div class="input-group">
           <label class="input-group-text" for="label">Tags</label>
           <select class="form-select" name="label" id="label">
-            <option value="">Choose...</option>
+            <option value="">All</option>
             {{#each labels}}
             <option value="{{name}}" {{#ifEquals @root.searchParams.label name}} selected {{/ifEquals}}>{{name}}
             </option>
