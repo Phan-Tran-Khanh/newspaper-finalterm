@@ -3,7 +3,7 @@ tinymce.init({
   plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
   images_file_types: 'jpg,svg,webp',
-  height : "480"
+  height: "480"
 });
 
 var imgData;
@@ -36,27 +36,32 @@ $(document).ready(function () {
   $('#post-article-btn').on('click', function (e) {
     // $('#uploadImage').prop('files')[0]
     e.preventDefault();
-    $.ajax({
-      url: 'https://api.imgur.com/3/image',
-      type: 'POST',
-      headers: {
-        Authorization: 'Client-ID d296f70487afe57'
-      },
-      data: {
-        image: imgData
-      },
-      cache: false,
-      contentType: false,
-      processData: false,
-      success: function(response) {
-        var imageUrl = response.data.link;
-        console.log('imgurl = ' + imageUrl);
-        $('#uploadImgUrl').val(imageUrl);
-        $('#article-form').submit();
-      },
-      error: function() {
-        console.log('Error uploading image.');
-      }
-    });
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      var base64imgData = reader.result;
+      $.ajax({
+        url: 'https://api.imgur.com/3/image',
+        type: 'POST',
+        headers: {
+          Authorization: 'Client-ID d296f70487afe57'
+        },
+        data: {
+          image: base64imgData
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var imageUrl = response.data.link;
+          console.log('imgurl = ' + imageUrl);
+          $('#uploadImgUrl').val(imageUrl);
+          $('#article-form').submit();
+        },
+        error: function () {
+          console.log('Error uploading image.');
+        }
+      });
+    }
+    reader.readAsDataURL(imgData);
   });
 });
