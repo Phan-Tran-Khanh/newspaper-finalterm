@@ -57,8 +57,9 @@ $(document).ready(function () {
           $('#uploadImgUrl').val(imageUrl);
           $('#article-form').submit();
         },
-        error: function () {
+        error: function (error) {
           console.log('Error uploading image.');
+          console.log(error);
         }
       });
     }
