@@ -23,10 +23,12 @@
         <div class="d-flex flex-column">
           <h2>
             {{title}}
-            {{#if ../user}}
+            {{#if @root.user}}
+            {{#if isPremium}}
             <a href="/pdf/{{slug}}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" title="Download PDF">
               <i class="bi bi-download"></i>
             </a>
+            {{/if}}
             {{/if}}
           </h2>
           <br>

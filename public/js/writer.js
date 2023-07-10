@@ -6,11 +6,14 @@ tinymce.init({
   height : "480"
 });
 
+var imgData;
+
 function previewImg(event) {
-  var fileName = URL.createObjectURL(event.target.files[0]);
-  $("#preview").attr("src", fileName);
+  var imgUrl = URL.createObjectURL(event.target.files[0]);
+  $("#preview").attr("src", imgUrl);
   $("#preview").addClass("banner");
   $("#uploadImgButton").text("Change Image");
+  imgData = event.target.files[0];
 }
 
 $(document).ready(function () {
@@ -31,6 +34,7 @@ $(document).ready(function () {
 
   // Banner Image Section
   $('#post-article-btn').on('click', function (e) {
+    // $('#uploadImage').prop('files')[0]
     e.preventDefault();
     $.ajax({
       url: 'https://api.imgur.com/3/image',
@@ -39,7 +43,7 @@ $(document).ready(function () {
         Authorization: 'Client-ID d296f70487afe57'
       },
       data: {
-        image: $('#uploadImage').prop('files')[0]
+        image: imgData
       },
       cache: false,
       contentType: false,
