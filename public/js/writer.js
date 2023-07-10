@@ -36,14 +36,32 @@ $(document).ready(function () {
   $('#post-article-btn').on('click', function (e) {
     // $('#uploadImage').prop('files')[0]
     e.preventDefault();
-    var reader = new FileReader();
+    var formData = new FormData();
+    formData.append('file', imgData);
+
+    $.ajax({
+      url: 'https://api.cloudinary.com/v1_1/ddvyn6ajr/image/upload',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        var imageUrl = data.secure_url;
+        $('#uploadImgUrl').val(imageUrl);
+        $('#article-form').submit();
+      },
+      error: function (error) {
+        console.log('Error:', error);
+      }
+    });
+    /* var reader = new FileReader();
     reader.onloadend = function () {
       var base64imgData = reader.result;
       $.ajax({
         url: 'https://api.imgur.com/3/image.json',
         type: 'POST',
         headers: {
-          Authorization: 'Client-ID d296f70487afe57'
+          Authorization: 'Client-ID 7261552ce2127e8'
         },
         data: {
           image: base64imgData
@@ -62,6 +80,6 @@ $(document).ready(function () {
         }
       });
     }
-    reader.readAsDataURL(imgData);
+    reader.readAsDataURL(imgData); */
   });
 });
