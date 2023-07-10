@@ -40,7 +40,7 @@ $(document).ready(function () {
     reader.onloadend = function () {
       var base64imgData = reader.result;
       $.ajax({
-        url: 'https://api.imgur.com/3/image',
+        url: 'https://api.imgur.com/3/image.json',
         type: 'POST',
         headers: {
           Authorization: 'Client-ID d296f70487afe57'
@@ -58,8 +58,7 @@ $(document).ready(function () {
           $('#article-form').submit();
         },
         error: function (error) {
-          console.log('Error uploading image.');
-          console.log(error);
+          console.log('Error uploading image: ' + error);
         }
       });
     }

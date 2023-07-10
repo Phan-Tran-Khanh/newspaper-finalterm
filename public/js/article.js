@@ -33,23 +33,4 @@ $(document).ready(function () {
         });
     });
     /* Add New Comment */
-
-    /* Press Like Link */
-    /* $('.like-input').on('click', function (e) {
-        e.preventDefault();
-        let badge = $(this).find(".badge");
-        let count = parseInt(badge.text());
-        let icon = $(this).find('i');
-        // Toggle between 'bi-hand-thumbs-up' and 'bi-hand-thumbs-up-fill' classes
-        if (icon.hasClass("bi-hand-thumbs-up")) {
-            icon.removeClass("bi-hand-thumbs-up").addClass("bi-hand-thumbs-up-fill");
-            count += 1; // Increment the count by 1
-        } else {
-            icon.removeClass("bi-hand-thumbs-up-fill").addClass("bi-hand-thumbs-up");
-            count -= 1; // Decrement the count by 1
-        }
-        // Update the badge count
-        badge.text(count);
-    }); */
-    /* Press Like Link */
 });
