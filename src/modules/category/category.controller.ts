@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Delete, Redirect } from '@nestjs/common';
 import { Protected } from 'src/decorator/protected.decorator';
 import { CategoryService } from './category.service';
 import { Category } from 'src/entity/category.entity';
@@ -9,7 +9,9 @@ export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Post()
-  create(@Body() dto: Category) {
+  @Redirect('/admin')
+  create(@Body() dto: Category | any) {
+    if (dto.isDelete) return this.categoryService.remove(dto.id);
     if (dto?.id !== undefined) return this.categoryService.update(dto.id, dto);
     return this.categoryService.create(dto);
   }

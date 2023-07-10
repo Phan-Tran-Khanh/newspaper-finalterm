@@ -17,7 +17,8 @@ export class LabelController {
   constructor(private readonly labelService: LabelService) {}
 
   @Post()
-  create(@Body() dto: Label) {
+  create(@Body() dto: Label | any) {
+    if (dto.isDelete) return this.labelService.remove(dto.id);
     if (dto?.id !== undefined) return this.labelService.update(dto.id, dto);
     return this.labelService.create(dto);
   }

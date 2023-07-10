@@ -57,10 +57,8 @@
                   {{/each}}
                 </select>
                 <textarea name="title" class="form-control card-title my-1" rows="1"
-                  style="font-size: 1.25rem; font-weight: 500;" placeholder="Title" {{#with article}} value="{{title}}"
-                  {{/with}} required></textarea>
-                <textarea name="summary" class="form-control card-text my-1" rows="4" placeholder="Abstract" {{#with
-                  article}} value="{{summary}}" {{/with}} required></textarea>
+                  style="font-size: 1.25rem; font-weight: 500;" placeholder="Title" required>{{#with article}} {{title}} {{/with}}</textarea>
+                <textarea name="summary" class="form-control card-text my-1" rows="4" placeholder="Abstract" required>{{#with article}}{{summary}}{{/with}}</textarea>
               </div>
               <div class="card-footer">
                 <div class="input-group input-group-sm">
@@ -75,7 +73,7 @@
               </div>
             </div>
             <div class="col-md-5 d-flex justify-content-center align-items-center flex-column">
-              <img id="preview" {{#with article}} src="{{bannerImageUrl}}" {{/with}}>
+              <img id="preview" {{#with article}} class="banner" src="{{bannerImageUrl}}" {{/with}}>
               <label id="uploadImgButton" for="uploadImage" class="btn btn-primary px-5">Upload Banner Image</label>
               <input id="uploadImage" type="file" onChange="previewImg(event)" accept="image/png, image/jpeg" hidden
                 required>

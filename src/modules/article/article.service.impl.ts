@@ -8,20 +8,34 @@ import { Page } from '../app/dto/Page';
 import slugify from 'slugify';
 import { ArticleServiceInterface } from './article.service';
 import { Comment } from 'src/entity/comment.entity';
+import { Label } from 'src/entity/label.entity';
 
 @Injectable()
 export class ArticleService implements ArticleServiceInterface {
   constructor(
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
+    private readonly labelRepository: Repository<Label>,
   ) {}
   findAll(): Promise<Article[]> {
     return this.articleRepository.find({
       relations: ['category', 'labels', 'publishedBy', 'createdBy'],
     });
   }
-  create(dto: Article): Promise<Article> {
+  async create(dto: Article): Promise<Article> {
     dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
+    dto.status = ArticleStatus.Pending;
+    dto.publishedAt = new Date();
+    const labels: Label[] = [];
+    dto.labels.forEach(async (label) => {
+      labels.push(
+        (await this.labelRepository.findOne({
+          where: { name: label.name },
+        })) as Label,
+      );
+    });
+    dto.labels = labels;
+
     return this.articleRepository.save(dto);
   }
   update(id: number, dto: Article): Promise<Article | null> {
@@ -73,9 +87,7 @@ export class ArticleService implements ArticleServiceInterface {
       take,
     });
   }
-  async getArticleBySlug(
-    slug: string,
-  ): Promise<Article | null> {
+  async getArticleBySlug(slug: string): Promise<Article | null> {
     const article = await this.articleRepository.findOne({
       where: { slug },
       relations: ['createdBy', 'category', 'labels'],

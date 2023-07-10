@@ -18,7 +18,8 @@ export class UserController {
 
   @Post()
   @Redirect('/')
-  create(@Body() dto: User) {
+  create(@Body() dto: User | any) {
+    if (dto.isDelete) return this.userService.remove(dto.id);
     if (dto.id) {
       return this.userService.update(dto.id, dto);
     }
