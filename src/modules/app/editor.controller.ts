@@ -75,7 +75,7 @@ export class EditorController {
     ]);
     return {
       file: 'editor/list',
-      user: { ...req.user, category: categories[0] },
+      user: req.user,
       categories,
       labels,
       articles,
