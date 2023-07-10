@@ -12,7 +12,7 @@ import { Protected } from 'src/decorator/protected.decorator';
 import { Label } from 'src/entity/label.entity';
 
 @Controller('label')
-@Protected('Admin')
+// @Protected('Admin')
 export class LabelController {
   constructor(private readonly labelService: LabelService) {}
 

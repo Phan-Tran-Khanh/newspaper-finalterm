@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { Roles } from 'src/decorator/roles.decorator';
 import { User } from 'src/entity/user.entity';
 
-@Roles('Admin')
+// @Roles('Admin')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
