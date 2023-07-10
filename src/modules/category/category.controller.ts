@@ -10,6 +10,7 @@ export class CategoryController {
 
   @Post()
   create(@Body() dto: Category) {
+    if (dto?.id !== undefined) return this.categoryService.update(dto.id, dto);
     return this.categoryService.create(dto);
   }
 

@@ -45,7 +45,8 @@ export class AppController {
   @Get('/search')
   @Render('search')
   async searchView(@Query() query: SearchParamsType, @Req() req: Request) {
-    const isPremiumUser = (req.user as User)?.subcriptionExpiryDate > new Date();
+    const isPremiumUser =
+      (req.user as User)?.subcriptionExpiryDate > new Date();
     const searchParams = new SearchParms(query, isPremiumUser);
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),
@@ -191,10 +192,13 @@ export class AppController {
     @Query() query: SearchParamsType,
     @Req() req: Request,
   ) {
+    const user = req.user as User;
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.searchArticles(new SearchParms(query)),
+      this.appService.searchArticles(
+        new SearchParms({ ...query, createdBy: user.id }),
+      ),
     ]);
     return {
       file: 'writer/search',
