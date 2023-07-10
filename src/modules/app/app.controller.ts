@@ -186,6 +186,23 @@ export class AppController {
     };
   }
 
+  @Get('writer/article/:slug')
+  @Render('writer/index')
+  async writerArticleView(@Req() req: Request, @Param('slug') slug: string) {
+    const [categories, labels, article] = await Promise.all([
+      this.appService.getCategories(),
+      this.appService.getLabels(),
+      this.appService.getArticleBySlug(slug),
+    ]);
+    return {
+      file: 'writer/index',
+      user: req.user,
+      categories,
+      labels,
+      article,
+    };
+  }
+
   @Get('writer/search')
   @Render('writer/search')
   async writerSearchView(

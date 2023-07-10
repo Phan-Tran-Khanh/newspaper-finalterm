@@ -4,7 +4,7 @@ import { Audit } from './audit';
 
 @Entity()
 export class Comment extends Audit {
-  @Column()
+  @Column({ nullable: true })
   content: string;
 
   @ManyToOne(() => Comment, (comment) => comment.children)

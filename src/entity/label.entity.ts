@@ -12,6 +12,6 @@ export class Label {
   @Column({ default: 0 })
   articleCount: number;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 }

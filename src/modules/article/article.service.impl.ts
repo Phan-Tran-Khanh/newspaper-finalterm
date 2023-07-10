@@ -118,7 +118,7 @@ export class ArticleService implements ArticleServiceInterface {
       queryBuilder.andWhere('article.createdBy = :createdBy', { createdBy });
     }
 
-    if (status) {
+    if (status != 'all') {
       queryBuilder.andWhere('article.status = :status', { status });
     }
 

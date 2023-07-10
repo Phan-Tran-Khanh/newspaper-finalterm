@@ -17,17 +17,17 @@ import { Audit } from './audit';
 
 @Entity()
 export class Article extends Audit {
-  @Column()
+  @Column({ nullable: true })
   @MaxLength(255)
   title: string;
 
   @Column({ unique: true })
   slug: string;
 
-  @Column()
+  @Column({ nullable: true })
   summary: string;
 
-  @Column()
+  @Column({ nullable: true })
   content: string;
 
   @Column({ default: 0 })
@@ -36,7 +36,7 @@ export class Article extends Audit {
   @Column({ default: 0 })
   weeklyViewCount: number;
 
-  @Column()
+  @Column({ nullable: true })
   bannerImageUrl: string;
 
   @Column({ default: false })
@@ -45,7 +45,7 @@ export class Article extends Audit {
   @Column({ type: 'tsvector', select: false })
   textSearch: string;
 
-  @Column({ enum: ArticleStatus, default: ArticleStatus.Draft })
+  @Column({ enum: ArticleStatus, default: ArticleStatus.Pending })
   status: ArticleStatus;
 
   @Column({ nullable: true })
