@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Delete, Redirect } from '@nestjs/common';
 import { Article } from 'src/entity/article.entity';
 import { ArticleService } from './article.service.impl';
 import { Comment } from 'src/entity/comment.entity';
@@ -9,6 +9,7 @@ export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
   @Post()
+  @Redirect('/writer/search')
   create(@Body() dto: Article) {
     console.log(dto);
     if (dto?.id !== undefined) return this.articleService.update(dto.id, dto);

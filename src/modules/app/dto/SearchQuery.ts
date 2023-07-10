@@ -6,6 +6,9 @@ export type SearchParamsType = {
   query: string | undefined;
   page: number | undefined;
   pageSize: number | undefined;
+  status: 'Draft' | 'Published' | 'Approved' | 'Pending' | 'Rejected' | 'all';
+  isPremium: boolean;
+  createdBy: number;
 };
 
 export class SearchParms {
@@ -17,6 +20,8 @@ export class SearchParms {
   page: number;
   pageSize: number;
   isPremium: boolean;
+  status: 'Draft' | 'Published' | 'Approved' | 'Pending' | 'Rejected' | 'all';
+  createdBy: number | null;
 
   constructor(params: SearchParamsType, isPremium = false) {
     this.category = params.category || '';
@@ -27,5 +32,7 @@ export class SearchParms {
     this.pageSize = params.pageSize || 10;
     this.field = params.field || 'all';
     this.isPremium = isPremium;
+    this.status = params.status || 'all';
+    this.createdBy = params.createdBy;
   }
 }

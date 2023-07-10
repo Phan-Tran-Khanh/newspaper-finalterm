@@ -18,6 +18,7 @@ export class LabelController {
 
   @Post()
   create(@Body() dto: Label) {
+    if (dto?.id !== undefined) return this.labelService.update(dto.id, dto);
     return this.labelService.create(dto);
   }
 

@@ -98,11 +98,29 @@ export class ArticleService implements ArticleServiceInterface {
     });
   }
   async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
-    const { page, pageSize, label, category, query, time, field } = searchQuery;
+    const {
+      page,
+      pageSize,
+      label,
+      category,
+      query,
+      time,
+      field,
+      createdBy,
+      status,
+    } = searchQuery;
     const queryBuilder = this.articleRepository
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.category', 'category')
       .leftJoinAndSelect('article.labels', 'label');
+
+    if (createdBy) {
+      queryBuilder.andWhere('article.createdBy = :createdBy', { createdBy });
+    }
+
+    if (status) {
+      queryBuilder.andWhere('article.status = :status', { status });
+    }
 
     if (query.length > 0) {
       if (field === 'all') {
