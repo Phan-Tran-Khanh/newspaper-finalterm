@@ -1,8 +1,17 @@
-import { Controller, Get, Param, Render, Req } from '@nestjs/common';
-import { Request, Response } from 'express';
+import {
+  Controller,
+  Get,
+  Param,
+  Render,
+  Req,
+  UseInterceptors,
+} from '@nestjs/common';
+import { Request } from 'express';
 import { AppService } from './app.service';
+import { JwtInterceptor } from 'src/interceptors/JwtInterceptors';
 
 @Controller('editor')
+@UseInterceptors(JwtInterceptor)
 export class EditorController {
   constructor(private readonly appService: AppService) {}
   @Get('approve/:slug')
@@ -62,14 +71,14 @@ export class EditorController {
     const [categories, labels, articles] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
-      this.appService.getArticles()
+      this.appService.getArticles(),
     ]);
     return {
       file: 'editor/list',
-      user: req.user,
+      user: { ...req.user, category: categories[0] },
       categories,
       labels,
-      articles
+      articles,
     };
   }
 }

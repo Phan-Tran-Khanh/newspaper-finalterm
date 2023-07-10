@@ -16,8 +16,9 @@ export class SearchParms {
   query: string;
   page: number;
   pageSize: number;
+  isPremium: boolean;
 
-  constructor(params: SearchParamsType) {
+  constructor(params: SearchParamsType, isPremium = false) {
     this.category = params.category || '';
     this.label = params.label || '';
     this.time = params.time || 'all';
@@ -25,5 +26,6 @@ export class SearchParms {
     this.page = params.page || 1;
     this.pageSize = params.pageSize || 10;
     this.field = params.field || 'all';
+    this.isPremium = isPremium;
   }
 }
