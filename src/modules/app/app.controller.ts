@@ -16,6 +16,7 @@ import axios from 'axios';
 import { AppService } from './app.service';
 import { SearchParms, SearchParamsType } from './dto/SearchQuery';
 import { JwtInterceptor } from 'src/interceptors/JwtInterceptors';
+import { User } from 'src/entity/user.entity';
 
 @Controller()
 @UseInterceptors(JwtInterceptor)
@@ -106,8 +107,15 @@ export class AppController {
     if (article === null) {
       throw new NotFoundException(`Article with slug ${slug} is not found!`);
     }
-    if (article.isPremium && !req.user && !req.user ) {
-
+    if (article.isPremium && req.user !== undefined) {
+      const user = req.user as User;
+      if (user.subcriptionExpiryDate < new Date()) {
+        return {
+          file: 'payment',
+          categories,
+          user: req.user,
+        };
+      }
     }
     const relatedArticles = await this.appService.getRelatedArticles(article);
     return {

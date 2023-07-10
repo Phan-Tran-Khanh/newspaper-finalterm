@@ -98,16 +98,34 @@ export class ArticleService implements ArticleServiceInterface {
     });
   }
   async searchArticles(searchQuery: SearchParms): Promise<Page<Article>> {
-    const { page, pageSize, label, category, query, time } = searchQuery;
+    const { page, pageSize, label, category, query, time, field } = searchQuery;
     const queryBuilder = this.articleRepository
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.category', 'category')
       .leftJoinAndSelect('article.labels', 'label');
 
-    if (query.length > 0)
-      queryBuilder.andWhere('article.textSearch @@ to_tsquery(:query)', {
-        query,
-      });
+    if (query.length > 0) {
+      if (field === 'all') {
+        queryBuilder.andWhere('article.textSearch @@ to_tsquery(:query)', {
+          query,
+        });
+      }
+      if (field === 'title') {
+        queryBuilder.andWhere('article.title ILIKE :query', {
+          query: `%${query}%`,
+        });
+      }
+      if (field === 'body') {
+        queryBuilder.andWhere('article.body ILIKE :query', {
+          query: `%${query}%`,
+        });
+      }
+      if (field === 'abstract') {
+        queryBuilder.andWhere('article.abstract ILIKE :query', {
+          query: `%${query}%`,
+        });
+      }
+    }
 
     if (category.length > 0)
       queryBuilder.andWhere('category.name = :category', { category });
