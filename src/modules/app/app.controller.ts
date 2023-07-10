@@ -45,7 +45,8 @@ export class AppController {
   @Get('/search')
   @Render('search')
   async searchView(@Query() query: SearchParamsType, @Req() req: Request) {
-    const searchParams = new SearchParms(query);
+    const isPremiumUser = (req.user as User)?.subcriptionExpiryDate > new Date();
+    const searchParams = new SearchParms(query, isPremiumUser);
     const [categories, labels, articlesPage] = await Promise.all([
       this.appService.getCategories(),
       this.appService.getLabels(),
