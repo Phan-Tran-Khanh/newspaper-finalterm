@@ -23,11 +23,16 @@
       <!-- Time -->
       <div class="col-md-3 my-2">
         <div class="input-group">
-          <label class="input-group-text" for="articleStatus">Status</label>
-          <select class="form-select" name="status" id="articleStatus">
+          <label class="input-group-text" for="status">Status</label>
+          <select class="form-select" name="status" id="status">
             <option value="">All</option>
-            <option value="Approved" {{#ifEquals searchParams.status 'Approved' }} selected {{/ifEquals}}>Approved</option>
-            <option value="Rejected" {{#ifEquals searchParams.status 'Rejected' }} selected {{/ifEquals}}>Rejected</option>
+            <option value="Rejected" {{#ifEquals searchParams.status 'Rejected' }} selected {{/ifEquals}}>Rejected
+            </option>
+            <option value="Approved" {{#ifEquals searchParams.status 'Approved' }} selected {{/ifEquals}}>Approved
+            </option>
+            <option value="Pending" {{#ifEquals searchParams.status 'Pending' }} selected {{/ifEquals}}>Pending</option>
+            <option value="Published" {{#ifEquals searchParams.status 'Published' }} selected {{/ifEquals}}>Published
+            </option>
           </select>
         </div>
       </div>
@@ -105,19 +110,23 @@
         <div class="col-md-4 order-md-2 order-1">
           <img src="{{bannerImageUrl}}" class="d-block w-100 h-100 rounded-2">
         </div>
+        {{#ifEquals status 'Pending'}}
         <div class="col-md-1 d-grid post-btn-del">
           <a href="/editor/disapprove/{{slug}}" class="btn btn-danger btn-block">
             <i class="bi bi-trash"></i>
           </a>
         </div>
+        {{/ifEquals}}
       </div>
       <!-- Premium Tag -->
-      {{#if isPremium}}
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-        Excl
-        <span class="visually-hidden">Premium Article</span>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill
+      {{#ifEquals status 'Published'}} bg-success {{/ifEquals}} 
+      {{#ifEquals status 'Approved'}} bg-success {{/ifEquals}} 
+      {{#ifEquals status 'Rejected'}} bg-danger {{/ifEquals}} 
+      {{#ifEquals status 'Pending'}} bg-dark {{/ifEquals}}">
+        {{status}}
+        <span class="visually-hidden">Article Status</span>
       </span>
-      {{/if}}
       <!-- Premium Tag -->
     </div>    
     {{/each}}

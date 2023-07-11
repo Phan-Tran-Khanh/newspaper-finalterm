@@ -50,6 +50,9 @@
   {{#ifEquals user.role.name 'Admin'}}
   <script src="/js/writer.js"></script>
   {{/ifEquals}}
+  {{#ifEquals user.role.name 'Editor'}}
+  <script src="/js/search.js"></script>
+  {{/ifEquals}}
 </body>
 
 </html>
