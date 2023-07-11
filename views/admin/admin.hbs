@@ -39,21 +39,20 @@
         </div>
 
         <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
+          <form id="admin-edit-cate-form" action="category/" method="post" class="row g-3">
             <div class="col-md-12">
               <h5>CATEGORY</h5>
             </div>
-            <hr class="border border-2 border-dark m-0">
-
+            <hr class="border border-2 border-dark m-0">            
+            <input id="update-cate-id" type="hidden" name="id">
             <div class="col-md-6">
               <label for="update-cate" class="form-label">Category: </label>
-              <input type="text" class="form-control" id="update-cate" value="Category#1">
+              <input type="text" class="form-control" name="name" id="update-cate" value="Category#1">
+            </div>
+            <div class="modal-footer justify-content-center p-0">
+              <button type="submit" id="btn-submit-edit-cate-id" class="btn-submit-edit-cate btn-primary" data-bs-dismiss="modal">Save Changes</button>
             </div>
           </form>
-        </div>
-
-        <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -71,12 +70,13 @@
         </div>
 
         <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
+          <form class="row g-3" action="category/" method="post">
             <div class="col-md-12">
               <h5>ADD CATEGORY</h5>
             </div>
             <hr class="border border-2 border-dark m-0">
-
+            <input type="hidden" name="editorCount" value=0>
+            <input type="hidden" name="articleCount" value=0>
             <div class="col-md-6">
               <label for="input-cate" class="form-label">Category: </label>
               <input type="text" class="form-control" id="input-cate" value="Category#1">
@@ -139,24 +139,25 @@
         </div>
 
         <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
+          <form class="row g-3" action="label/" method="post">
             <div class="col-md-12">
               <h5>Tag</h5>
             </div>
             <hr class="border border-2 border-dark m-0">
 
             <div class="col-md-6">
+              <input id="update-tag-id" type="hidden" name="id">
               <label for="update-tag" class="form-label">Name: </label>
-              <input type="text" class="form-control" id="update-tag">
-              <label for="update-tag" class="form-label">Description: </label>
-              <input type="text" class="form-control" id="update-tag-desc">
+              <input name="name" type="text" class="form-control" id="update-tag">
+              <label for="update-tag-desc" class="form-label">Description: </label>
+              <input name="description" type="text" class="form-control" id="update-tag-desc">
+            </div>
+            <div class="modal-footer justify-content-center p-0">
+              <button type="submit" class="btn-submit-edit-tag btn-primary" data-bs-dismiss="modal">Save Changes</button>
             </div>
           </form>
         </div>
 
-        <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save Changes</button>
-        </div>
       </div>
     </div>
 
@@ -173,7 +174,7 @@
         </div>
 
         <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
+          <form class="row g-3" action="label/" method="post">
             <div class="col-md-12">
               <h5>ADD Tag</h5>
             </div>
@@ -181,16 +182,16 @@
 
             <div class="col-md-6">
               <label for="input-tag" class="form-label">Name: </label>
-              <input type="text" class="form-control" id="input-tag" value="Tag#1">
+              <input name="name" type="text" class="form-control" id="input-tag" value="Tag#1">
               <label for="input-tag-desc" class="form-label">Description: </label>
-              <input type="text" class="form-control" id="input-tag-desc" value="Description#1">
+              <input name="description" type="text" class="form-control" id="input-tag-desc" value="Description#1">
+            </div>
+            <div class="modal-footer justify-content-center p-0">
+              <button type="submit" class="btn btn-primary" id="add-tag-btn" data-bs-dismiss="modal">Add</button>
             </div>
           </form>
         </div>
 
-        <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" id="add-tag-btn" data-bs-dismiss="modal">Add</button>
-        </div>
       </div>
     </div>
 
@@ -207,65 +208,34 @@
         </div>
 
         <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
+          <form class="row g-3" action="article/" method="post">
             <div class="col-md-12">
               <h5>News</h5>
             </div>
             <hr class="border border-2 border-dark m-0">
 
+            <input type="hidden" name="id" id="admin-edit-news-id">
             <div class="col-md-6">
               <label for="admin-news-edit-premium" class="form-label" style="display: block;">Premium: </label>
-              <input type="checkbox" onclick="return true;" id="admin-news-edit-premium"/>
+              <input name="isPremium" type="checkbox" onclick="return true;" id="admin-news-edit-premium"/>
             </div>
             <div class="col-md-6">
               <label for="admin-news-edit-status" class="form-label" style="display: block;">Status: </label>
-              <div id="admin-news-edit-status"></div>
+              <input id="admin-news-edit-status" name="status"/>
+            </div>
+            <div class="modal-footer justify-content-center p-0">
+              <button type="submit" class="btn-submit-edit-news btn-sm-edit-news" data-bs-dismiss="modal">Save Changes</button>
             </div>
           </form>
         </div>
 
-        <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-sm-edit-news" data-bs-dismiss="modal">Save Changes</button>
-        </div>
       </div>
     </div>
 
   </div>
 
-  <!-- The Modal Add News -->
-  <div id="modalAddNews" class="modal" tabindex="-1">
-
-    <div class="modal-dialog modal-lg">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <div class="modal-header pb-0 border-bottom-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body mx-3 pt-0">
-          <form class="row g-3">
-            <div class="col-md-12">
-              <h5>ADD News</h5>
-            </div>
-            <hr class="border border-2 border-dark m-0">
-
-            <div class="col-md-6">
-              <label for="input-news-title" class="form-label">Title: </label>
-              <input type="text" class="form-control" id="input-news-title" value="News#1">
-            </div>
-          </form>
-        </div>
-
-        <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary" id="add-news-btn" data-bs-dismiss="modal">Add</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
   <!-- The Modal Edit User -->
   <div id="modalEditUser" class="modal" tabindex="-1">
-
     <div class="modal-dialog modal-lg">
       <!-- Modal content -->
       <div class="modal-content">
@@ -282,15 +252,13 @@
 
             <div class="col-md-6">
               <label for="admin-input-edit-user" class="form-label" id="form-label-edit-user"></label>
-              <div id="admin-input-edit-user"></div>
+              <input id="admin-input-edit-user"/>
             </div>
-
-
           </form>
         </div>
 
         <div class="modal-footer justify-content-center p-0">
-          <button type="submit" class="btn btn-primary submit-edit-user-btn" data-bs-dismiss="modal">Save Changes</button>
+          <button type="submit" id="btn-submit-edit-user-id" class="btn-submit-edit-user btn-primary submit-edit-user-btn" data-bs-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -336,7 +304,6 @@
     </div>
 
   </div>
-
 
   <!-- Writer Info Modals -->
   <div class="modal fade" tabindex="-1" id="modalUserInformation">
@@ -535,5 +502,4 @@
   </script>
 
   <script type="module" src="./js/admin.js"></script>
-  <script src="./mock/admin.js"></script>
 </html>

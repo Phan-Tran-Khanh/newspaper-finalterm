@@ -51,6 +51,10 @@ $('body').on('click', '.admin-cate-name', function () {
 $('body').on('click', '.btn-edit-cate', function() {
     let id = $(this).data('admin-add-idx');    
     let input = document.getElementById('update-cate');
+
+    let form_id = document.getElementById('update-cate-desc');
+    form_id.value = window.cateTable[id].description;
+
     input.value = window.cateTable[id].name;
 });
 
@@ -137,6 +141,9 @@ $('body').on('click', '.btn-edit-tag', function() {
     let id = $(this).data('admin-edit-tag');    
     let inputName = document.getElementById('update-tag');
     let inputDesc = document.getElementById('update-tag-desc');
+
+    let putID = document.getElementById('update-tag-id');
+    putID.value = window.tagTable[id].id;
 
     inputName.value = window.tagTable[id].name;
     inputDesc.value = window.tagTable[id].description;
@@ -232,16 +239,12 @@ $('body').on('click', '.btn-edit-news', function() {
         }
         selectStatusForm += '</select>';
 
+    let putID = document.getElementById('admin-edit-news-id');
+    putID.value = window.newsTable[id].id;
+    
+
     let inputStatus = document.getElementById('admin-news-edit-status');
     inputStatus.innerHTML = selectStatusForm;
-});
-
-$('body').on('click', '.btn-sm-edit-news', function() {
-    let isPremium = document.getElementById('admin-news-edit-premium').checked;
-    let status = document.getElementById('news-edt-cate-form');
-
-    
-    console.log("=======",isPremium, status.value);
 });
 
 function showNews() {
@@ -342,25 +345,28 @@ $('body').on('click', '.admin-user-name', function () {
   
 $('body').on('click', '.btn-edit-user', function () {
     let id= $(this).data('edit-user-index');
-    console.log(id);
     let role = window.usersTable[id].role;
 
+    let form_edit_user = document.getElementById('form-label-edit-user');
+
     if (role == "Editor") {
-        document.getElementById('form-label-edit-user').textContent = "Category: ";
+        form_edit_user.textContent = "Category: ";
+        form_edit_user.name = "category";
 
         var selectCateForm = '<select class="form-select">';
         for (let item in cateTable) {
-            if (item === window.usersTable[id].category) {
-                selectCateForm += '<option value="'+ cateTable[item].name +'" selected>' + cateTable[item].name + '</option>';
+            if (cateTable[item].name === window.usersTable[id].category) {
+                selectCateForm += '<option value="'+ cateTable[item].id +'" selected>' + cateTable[item].name + '</option>';
             } else {
-                selectCateForm += '<option value="'+ cateTable[item].name +'">' + cateTable[item].name + '</option>';
+                selectCateForm += '<option value="'+ cateTable[item].id +'">' + cateTable[item].name + '</option>';
             }
         }
         selectCateForm += '</select>';
 
         document.getElementById('admin-input-edit-user').innerHTML = selectCateForm;
     } else if (role == "Subscriber") {
-        document.getElementById('form-label-edit-user').textContent = "Premium Duration: ";
+        form_edit_user.textContent = "Premium Duration: ";
+        form_edit_user.name = "subcriptionExpiryDate";
 
         var tmpDate = new Date(window.usersTable[id]["subcriptionExpiryDate"]);
         if (isNaN(tmpDate.getTime())) {            
@@ -377,12 +383,11 @@ $('body').on('click', '.btn-edit-user', function () {
 });
 
 $('body').on('click', '.submit-edit-user-btn', function () {
-    let label = document.getElementById('form-label-edit-user').textContent;
+    let form_edit_user = document.getElementById('form-label-edit-user');
+    let label = form_edit_user.textContent;
 
     if (label == "Category: ") {
-        let selectElement = document.querySelector("#admin-input-edit-user select");
-
-        console.log(label, selectElement.value);
+        form_edit_user.value = document.querySelector("#admin-input-edit-user select");
     } else {
         let inputElement = document.querySelector(".input-group.date input[type='datetime-local']");
         let datetimeValue = inputElement.value;
@@ -393,8 +398,8 @@ $('body').on('click', '.submit-edit-user-btn', function () {
         }
 
         var formattedDate = datetime.toISOString().slice(0, 16);
-
-        console.log(label, formattedDate);
+        form_edit_user.value = formattedDate;
+        
     }    
 });
 
@@ -427,7 +432,7 @@ function showUsers() {
 
     var selectCateForm = '<select class="form-select">';
     for (let item in cateTable) {
-        selectCateForm += '<option>' + cateTable[item].name + '</option>';
+        selectCateForm += '<option disabled>' + cateTable[item].name + '</option>';
     }
 
     for (let i = 0; i < window.usersTable.length; i++) {
