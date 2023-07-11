@@ -23,12 +23,11 @@
       <!-- Time -->
       <div class="col-md-3 my-2">
         <div class="input-group">
-          <label class="input-group-text" for="time">Time</label>
-          <select class="form-select" name="time" id="time">
+          <label class="input-group-text" for="articleStatus">Status</label>
+          <select class="form-select" name="status" id="articleStatus">
             <option value="">All</option>
-            <option value="day" {{#ifEquals searchParams.time 'day' }} selected {{/ifEquals}}>Today</option>
-            <option value="week" {{#ifEquals searchParams.time 'week' }} selected {{/ifEquals}}>This week</option>
-            <option value="month" {{#ifEquals searchParams.time 'month' }} selected {{/ifEquals}}>This month</option>
+            <option value="Approved" {{#ifEquals searchParams.status 'Approved' }} selected {{/ifEquals}}>Approved</option>
+            <option value="Rejected" {{#ifEquals searchParams.status 'Rejected' }} selected {{/ifEquals}}>Rejected</option>
           </select>
         </div>
       </div>

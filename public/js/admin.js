@@ -50,12 +50,11 @@ $('body').on('click', '.admin-cate-name', function () {
 
 $('body').on('click', '.btn-edit-cate', function() {
     let id = $(this).data('admin-add-idx');    
+    console.log("====", id);
     let input = document.getElementById('update-cate');
 
-    let form_id = document.getElementById('update-cate-desc');
-    form_id.value = window.cateTable[id].description;
-
     input.value = window.cateTable[id].name;
+    document.getElementById("update-cate-id").value=window.cateTable[id].id;
 });
 
 function showCategories() {
@@ -209,7 +208,6 @@ function showTags() {
                     </tr>';
         // Append the new row to the table body
         $('table#tag-table tbody').append(newRow);
-        itemInput.value = '';
         // Close the modal
         $('#modalAddTag').modal('hide');
     });
@@ -243,8 +241,17 @@ $('body').on('click', '.btn-edit-news', function() {
     putID.value = window.newsTable[id].id;
     
 
-    let inputStatus = document.getElementById('admin-news-edit-status');
+    let inputStatus = document.getElementById('admin-news-edit-status-form');
     inputStatus.innerHTML = selectStatusForm;
+});
+
+$('body').on('click', '.btn-submit-edit-news', function() {
+    let checkbox = document.querySelector('admin-news-edit-premium');
+    document.getElementById('admin-news-edit-premium').check = checkbox.checked;
+
+
+    let statusSelected = document.getElementById("news-edt-cate-form").value;
+    document.getElementById('admin-edit-news-status').value = statusSelected;
 });
 
 function showNews() {
