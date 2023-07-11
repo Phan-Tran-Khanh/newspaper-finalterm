@@ -17,8 +17,7 @@ export class UserService {
   ) {}
 
   async create(dto: User): Promise<User> {
-    if (dto.password)
-      dto.password = await this.hashPassword(dto.password);
+    if (dto.password) dto.password = await this.hashPassword(dto.password);
     const user = this.userRepository.create(dto);
     const role = await this.roleRepository.findOneBy({ name: 'Subscriber' });
     user.role = role as Role;
@@ -49,17 +48,11 @@ export class UserService {
   }
 
   async update(id: number, dto: any): Promise<User | null> {
-    if (dto.password)
-      dto.password = await this.hashPassword(dto.password);
-    for (const key in dto) {
-      if (!dto[key]) {
-        delete dto[key];
-      }
-    }
-    return this.userRepository.save({
-      id,
-      ...dto,
-    });
+    if (dto.password) dto.password = await this.hashPassword(dto.password);
+    const entity = await this.userRepository.findOneBy({ id });
+    if (!entity) return null;
+    Object.assign(entity, dto);
+    return this.userRepository.save(entity);
   }
 
   async remove(id: number): Promise<void> {

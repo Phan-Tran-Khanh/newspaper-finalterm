@@ -21,9 +21,11 @@ export class LabelService {
     return this.labelRepository.findOneBy({ id });
   }
 
-  update(id: number, dto: Label): Promise<Label> {
-    dto.id = id;
-    return this.labelRepository.save(dto);
+  async update(id: number, dto: Label): Promise<Label | null> {
+    const entity = await this.labelRepository.findOneBy({ id });
+    if (!entity) return null;
+    Object.assign(entity, dto);
+    return this.labelRepository.save(entity);
   }
 
   remove(id: number) {

@@ -26,10 +26,12 @@ export class ArticleService implements ArticleServiceInterface {
     dto.publishedAt = new Date();
     return this.articleRepository.save(dto);
   }
-  update(id: number, dto: Article): Promise<Article | null> {
-    dto.id = id;
+  async update(id: number, dto: Article): Promise<Article | null> {
     dto.slug = slugify(dto.title, { lower: true }) + '-' + Date.now();
-    return this.articleRepository.save(dto);
+    const entity = await this.articleRepository.findOneBy({ id });
+    if (!entity) return null;
+    Object.assign(entity, dto);
+    return this.articleRepository.save(entity);
   }
   remove(id: number) {
     this.articleRepository.delete(id);

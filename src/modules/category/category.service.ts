@@ -24,9 +24,11 @@ export class CategoryService {
     });
   }
 
-  update(id: number, dto: Category): Promise<Category> {
-    dto.id = id;
-    return this.categoryRepository.save(dto);
+  async update(id: number, dto: Partial<Category>): Promise<Category | null> {
+    const entity = await this.categoryRepository.findOneBy({ id });
+    if (!entity) return null;
+    Object.assign(entity, dto);
+    return this.categoryRepository.save(entity);
   }
 
   async remove(id: number): Promise<void> {
