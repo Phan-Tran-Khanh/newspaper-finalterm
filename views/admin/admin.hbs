@@ -182,9 +182,9 @@
 
             <div class="col-md-6">
               <label for="input-tag" class="form-label">Name: </label>
-              <input name="name" type="text" class="form-control" id="input-tag" value="Tag#1">
+              <input name="name" type="text" class="form-control" id="input-tag" value="New Tag">
               <label for="input-tag-desc" class="form-label">Description: </label>
-              <input name="description" type="text" class="form-control" id="input-tag-desc" value="Description#1">
+              <input name="description" type="text" class="form-control" id="input-tag-desc" value="New Description">
             </div>
             <div class="modal-footer justify-content-center p-0">
               <button type="submit" class="btn btn-primary" id="add-tag-btn" data-bs-dismiss="modal">Add</button>
@@ -215,16 +215,28 @@
             <hr class="border border-2 border-dark m-0">
 
             <input type="hidden" name="id" id="admin-edit-news-id">
+            <input type="hidden" name="status" id="admin-edit-news-status">
             <div class="col-md-6">
               <label for="admin-news-edit-premium" class="form-label" style="display: block;">Premium: </label>
               <input name="isPremium" type="checkbox" onclick="return true;" id="admin-news-edit-premium"/>
             </div>
             <div class="col-md-6">
               <label for="admin-news-edit-status" class="form-label" style="display: block;">Status: </label>
-              <input id="admin-news-edit-status" name="status"/>
+              <div id="admin-news-edit-status-form"></div>
             </div>
+            <script>
+              function migrateEditNew() {
+                console.log("=========" ,document.getElementById("news-edt-cate-form").value, checkbox.checked)
+
+                let checkbox = document.querySelector('admin-news-edit-premium');
+                document.getElementById('admin-news-edit-premium').value = checkbox.checked;
+
+                let statusSelected = document.getElementById("news-edt-cate-form").value;
+                document.getElementById('admin-edit-news-status').value = statusSelected;
+              }
+            </script>
             <div class="modal-footer justify-content-center p-0">
-              <button type="submit" class="btn-submit-edit-news btn-sm-edit-news" data-bs-dismiss="modal">Save Changes</button>
+              <button onclick="migrateEditNew()" type="submit" class="btn-submit-edit-news btn-sm-edit-news" data-bs-dismiss="modal">Save Changes</button>
             </div>
           </form>
         </div>
@@ -383,25 +395,25 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item" data-type="categories">
-          <a href="#" class="nav-link active">
+          <a href="#categories" class="nav-link active">
             <i class="bi bi-columns-gap"></i>
             Categories
           </a>
         </li>
         <li class="nav-item" data-type="tags">
-          <a href="#" class="nav-link text-white">
+          <a href="#tags" class="nav-link text-white">
             <i class="bi bi-tags"></i>
             Tags
           </a>
         </li>
         <li class="nav-item" data-type="news">
-          <a href="#" class="nav-link text-white">
+          <a href="#news" class="nav-link text-white">
             <i class="bi bi-newspaper"></i>
             News
           </a>
         </li>
         <li class="nav-item" data-type="users">
-          <a href="#" class="nav-link text-white">
+          <a href="#users" class="nav-link text-white">
             <i class="bi bi-people"></i>
             Users
           </a>
