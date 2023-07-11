@@ -10,7 +10,7 @@ import { ArticleServiceInterface } from './article.service';
 import { Comment } from 'src/entity/comment.entity';
 
 @Injectable()
-export class ArticleService implements ArticleServiceInterface {
+export class rn ArticleService implements ArticleServiceInterface {
   constructor(
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
